@@ -1,0 +1,168 @@
+\documentclass[a4paper,
+               fontsize=11pt
+%                parskip=half,
+%                chapterprefix=true,
+%                numbers=noenddot
+               ]{scrbook}
+% \usepackage[utf8]{inputenc}
+
+\usepackage{tocloft}                % Compress TOC and LOF
+\usepackage{amsmath,amssymb}        % AMS symbols and environments
+% \usepackage{mathtools}              % More math symbols and environments
+\usepackage{fontspec}               % Selecting fonts
+\usepackage{unicode-math}           % Use unicode math font, not TeX
+\usepackage[main=english,dutch,italian]{babel}         % Correct hyphenation
+\usepackage{subfig}                 % Subfigures
+\usepackage{booktabs}               % Nicer tables
+% \usepackage{xcolor}                 % Colours in text
+\usepackage{ccicons}                % Creative Commons icons
+\usepackage{pdfpages}               % Insert PDF pages
+\usepackage{bookmark}               % Add things in TOC
+% \usepackage[hypcap=true]{caption}   % Correctly placed anchors for hyperlinks
+\usepackage{scrlayer-scrpage}       % \renewpagestyle Customise head and foot regions
+% \usepackage{etoolbox}               % Easy programming to modify TeX stuff
+\usepackage{metalogo}               % XeTeX logo
+
+% \setlength\columnseprule{.4pt}
+\usepackage[square]{natbib}         % Bibliography management
+
+
+\author{Michele Mastropietro}
+\title{Simulating Dwarf Galaxies in the Fornax Cluster}
+\date{}
+
+\definecolor{greenforlinks}{rgb}{0.09, 0.45, 0.27}
+% \PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\makeatletter
+\hypersetup{breaklinks=true,
+            colorlinks=true,
+            allcolors=greenforlinks,
+            linktoc=all,
+%             pagebackref=true,
+            pdftitle=\@title,
+            pdfauthor=\@author
+           }
+\makeatother
+
+% Chapter title style
+\makeatletter
+\setlength{\fboxsep}{0cm}
+\renewcommand*{\@@makechapterhead}[1]{%
+  \vspace*{3\baselineskip plus \parskip}
+  \makebox{%
+    \makebox[\linewidth]{\parbox[c][2cm]{\linewidth}{\if@mainmatter\raggedleft\fi\size@chapter{#1}}}%
+    \if@mainmatter%
+      \makebox[\marginparsep]{\parbox[c][2cm]{\marginparsep}{\centering\rule{1pt}{2cm}}}%
+      \makebox[4cm]{\parbox[c][2cm]{4cm}{\scalebox{5}{\thechapter\autodot}}}%
+    \fi
+  }%
+  \vspace*{1.5\baselineskip plus .1\baselineskip minus .167\baselineskip}
+}
+\makeatother
+
+% Bullets
+\renewcommand{\labelitemi}{►}
+
+% Custom commands
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\refch}[1]{\hyperref[#1]{Chapter}~\ref{#1}}
+\newcommand{\refchs}[1]{Chapters~\ref{#1}}
+\newcommand{\refap}[1]{\hyperref[#1]{Appendix}~\ref{#1}}
+\newcommand{\reffig}[1]{\hyperref[#1]{Figure}~\ref{#1}}
+\newcommand{\reffigit}[1]{\hyperref[#1]{Figura}~\ref{#1}}
+\newcommand{\reffignl}[1]{\hyperref[#1]{Figuur}~\ref{#1}}
+\newcommand{\reffigs}[1]{Figures~\ref{#1}}
+\newcommand{\reffigp}[1]{\hyperref[#1]{Figure}~\ref{#1} on \hyperref[#1]{page}~\pageref{#1}}
+\newcommand{\reftab}[1]{\hyperref[#1]{Table}~\ref{#1}}
+
+
+
+% Figure captions with no indentation
+% \setcapindent{0pt}
+
+% List of figures title as "Figures"
+\renewcaptionname{english}{\listfigurename}{Figures}
+\renewcaptionname{english}{\listtablename}{Tables}
+
+% Add half-title to PDF bookmarks
+\makeatletter
+\pretocmd{\maketitle}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[0]{Preliminaries}{title}
+  \pdfbookmark[1]{Half title}{title}% 
+}{}{}%
+% Add table of contents to PDF bookmarks
+\pretocmd{\tableofcontents}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[1]{Table of contents}{toc}%
+}{}{}%
+% Add list of figures to PDF bookmarks
+\pretocmd{\listoffigures}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[1]{List of figures}{lof}%
+}{}{}%
+\makeatother
+
+% Font setup
+\setmainfont[Path=fonts/,
+             Extension=.otf, 
+             Ligatures=TeX,
+             ItalicFont=*-Italic,
+             BoldFont=FeijoaBold,
+             StylisticSet=6]{FeijoaMedium}
+% \setmonofont[BoldFont=GTPressuraMono-Bold,ItalicFont=GTPressuraMono-LightItalic]{GTPressuraMono-Light}
+% \setmathfont{Asana Math}
+\newfontfamily\fanciestfont[Path=fonts/,Extension=.otf,Ligatures={TeX,Discretionary}]{FeijoaDisplay}
+\newfontfamily\fancyfont[Path=fonts/,Extension=.otf,BoldFont=FeijoaBold,
+Ligatures=TeX]{FeijoaDisplay}
+\newfontfamily\chapternumberfont[Path=fonts/,Extension=.otf,Ligatures=TeX,Numbers=Lining]{FeijoaDisplay}
+\addtokomafont{disposition}{\fancyfont}
+\addtokomafont{title}{\fancyfont}
+\addtokomafont{chapter}{\fancyfont}
+\addtokomafont{chapterentry}{\normalfont\scshape}
+\addtokomafont{descriptionlabel}{\normalfont\bfseries}
+\addtokomafont{caption}{\footnotesize}
+
+% Levels in table of contents
+\setcounter{tocdepth}{1}
+
+
+
+
+
+\begin{document}
+
+\frontmatter
+
+\input{pre}
+
+\cleardoublepage
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+
+\mainmatter
+
+
+
+
+
+\input{introduction}
+
+\input{simulations}
+
+\input{conclusions}
+
+\appendix
+
+% \backmatter
+
+
+\end{document}
