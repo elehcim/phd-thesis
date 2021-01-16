@@ -1,2 +1,46 @@
 \chapter{Simulations}
 \label{ch:simulations}
+
+Numerical simulations have emerged as a new tool to do science, alongside theory and experiments.
+In his review, \cite{Heng2014} poses himself the question "Is numerical mimicry a third way of establishing truth?``. Unlike other, laboratory-based disciplines, astronomers may not exert full control over their experiments — one simply cannot rearrange objects in the sky.
+
+
+
+
+\section{Smoothed Particles Hydrodynamics}
+Smoothed Particles Hydrodynamics (SPH) is a finite volume, particle based numerical method to solve the Navier-Stokes equation of motion for a fluid.
+It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
+
+Other methods exists to discretize the fluid domain, like Adaptive Mesh Refinement (AMR).
+On the other hand SPH is meshfree.
+
+Recently, more flexible methods (which come with their own difficulties) have emerged \citep{Springel2010, Shadowfax}.
+Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming . 
+Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test), which can be solved analytically, can serve as a benchmark for the accuracy of the numerical solution. This is for example done with an L2-norm \citep{Borrow}.
+Numerical solutions are always a tradeoff between the accuracy and the practicality.
+It is interesting to see how a certain gain in accuracy is translated in an increase in \emph{time-to-solution}. the But at the end of the day if we pay attention to the the trend is 
+
+SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}.
+
+In his original treatment 
+
+
+
+
+\section{Density Estimation from particles ensemble}
+
+A possible choice for the kernel is a gaussian.
+% TODO kernel
+It's much more practical to use a finite support approximation of a gaussian.
+The most used for SPH are the Schoenberg \cite{} B-spline function, generated as the Fourier transform \citep{Price2012}:
+\begin{equation}
+M_n(x, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)\cos(kh)\d k}
+\end{equation}
+
+
+
+
+
+\paragraph{Role of the normalization term}
+
+In 
