@@ -1,5 +1,5 @@
-\documentclass[a4paper,
-               fontsize=11pt
+\documentclass[a5paper,
+               fontsize=9pt
 %                parskip=half,
 %                chapterprefix=true,
 %                numbers=noenddot
@@ -78,6 +78,7 @@
 \newcommand{\reffigp}[1]{\hyperref[#1]{Figure}~\ref{#1} on \hyperref[#1]{page}~\pageref{#1}}
 \newcommand{\reftab}[1]{\hyperref[#1]{Table}~\ref{#1}}
 
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
 
 
 % Figure captions with no indentation
@@ -162,7 +163,14 @@ Ligatures=TeX]{FeijoaDisplay}
 
 \appendix
 
-% \backmatter
+
+\addtocontents{toc}{\medskip\bigskip}
+
+\backmatter%
+
+% Bibliograhy
+\bibliographystyle{plainnat}
+{\small\bibliography{library}}
 
 
 \end{document}
