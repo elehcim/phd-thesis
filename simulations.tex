@@ -8,15 +8,16 @@ In his review, \cite{Heng2014} poses himself the question "Is numerical mimicry 
 
 
 \section{Smoothed Particles Hydrodynamics}
-Smoothed Particles Hydrodynamics (SPH) is a finite volume, particle based numerical method to solve the Navier-Stokes equation of motion for a fluid.
+Smoothed Particles Hydrodynamics (SPH) is a finite volume, particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
 It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
 
 Other methods exists to discretize the fluid domain, like Adaptive Mesh Refinement (AMR).
 On the other hand SPH is meshfree.
 
-Recently, more flexible methods (which come with their own difficulties) have emerged \citep{Springel2010, Shadowfax}.
+Recently, more flexible methods (which come with their own difficulties) have emerged \citep{Springel2010, Shadowfax, Arepo}.
 Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming . 
-Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test), which can be solved analytically, can serve as a benchmark for the accuracy of the numerical solution. This is for example done with an L2-norm \citep{Borrow}.
+Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
+which can be solved analytically, can serve as a benchmark for the accuracy of the numerical solution. This is for example done with an L2-norm \citep{Borrow}.
 Numerical solutions are always a tradeoff between the accuracy and the practicality.
 It is interesting to see how a certain gain in accuracy is translated in an increase in \emph{time-to-solution}. the But at the end of the day if we pay attention to the the trend is 
 
