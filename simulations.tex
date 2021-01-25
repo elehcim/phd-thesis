@@ -23,25 +23,39 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}.
 
-In his original treatment 
-
-
-
-
-\section{Density Estimation from particles ensemble}
-
-A possible choice for the kernel is a gaussian.
-% TODO kernel
-It's much more practical to use a finite support approximation of a gaussian.
-The most used for SPH are the Schoenberg \cite{} B-spline function, generated as the Fourier transform \citep{Price2012}:
+In his original treatment \citet{Gingold1977} the probabilities of were defined as 
 \begin{equation}
-M_n(x, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)\cos(kh)\d k}
+ \mathcal{E}[\rho] % TODO expected values
 \end{equation}
 
 
 
 
 
-\paragraph{Role of the normalization term}
+\section{Density Estimation from particles ensemble}
+A possible choice for the kernel is a gaussian.
+% TODO kernel
+It's much more practical to use a finite support approximation of a gaussian.
+The most used for SPH are the Schoenberg \cite{Schoenberg1988} B-spline function, generated as the Fourier transform %TODO of what?
+\citep{Price2012}:
+\begin{equation}
+M_n(x, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)\cos(kh)\d k}
+\end{equation}
 
-In 
+It is convenient to write the kernel as a function of $q$, the distance normalized by the smoothing length: $q=x/h$.
+The most widely used is the cubic spline kernel $M_4$:
+\begin{equation}
+M_4(q) = \frac{1}{\pi h^3} \left\{ \begin{array}{ll}
+\frac{1}{4}(2-q)^3 - (1 - q)^{3}, & 0 \le q < 1; \\
+\frac{1}{4}(2-q)^3, & 1 \le q < 2; \\
+0. & q \ge 2, \end{array} \right. \label{eq:cubicspline}
+\end{equation}
+
+\paragraph{Role of the normalization term}
+% TODO probabilistic treatment if it fits
+It is somehow striking that the normalization term is not the default in current visualization routines, the only reason being spurious effects when dealing with free surfaces \citep{Price2007}.
+
+\begin{equation}
+ A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}
+\end{equation}
+
