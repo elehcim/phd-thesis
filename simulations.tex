@@ -1,69 +1,188 @@
 \chapter{Simulations}
 \label{ch:simulations}
 
-Numerical simulations have emerged as a new tool to do science, alongside theory and experiments.
-In his review, \cite{Heng2014} poses himself the question "Is numerical mimicry a third way of establishing truth?``. Unlike other, laboratory-based disciplines, astronomers may not exert full control over their experiments — one simply cannot rearrange objects in the sky.
+Numerical simulations have emerged as a new tool to investigate nature, alongside theory and experiments.
+This is particularly valid for astronomy where, unlike other laboratory-based disciplines, astronomers may not exert full control over their experiments \citep{Heng2014}.
 
+Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2016}.
+This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems. In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
+The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
+% The main assumption of this is that particles... \citep{Vandenbroucke2016}.
+In the following we will be dealing with hydrodynamics of fluids, given that the main components of galaxies are successfully described in terms of fluids.
 
+\section{Hydrodynamics}
 
+\subsection{Boltzmann Equation - Equations of motion}
+% We will assume that dark matter consists of small particles that are orders of magnitude smaller than the typical distance scales in our galaxies, so that we will treat it as a collisionless fluid.
+% SPH The main assumption SPH can be used to solve the 
+% The equation of hydrodynamics are derived from the Boltzmann equation.
+This equation is generally valid for any type of fluid, also for a collisionless fluid.
+The direct numerical solution of the CBE, a non-linear PDE in seven dimensions, is not feasible.
+% In this case we can solve the Boltzmann equation directly, by using characteristic solutions.
+To this end, we represent the collisionless fluid by $N$ mass elements (particles).
+In practice an $N$-body method is a tool for solving the collisionless Boltzmann equations.
+% In this way then it reduces to solving the gravitational interactions for this $N$-body system \citep{Dehnem2011}.
 
-\section{Smoothed Particles Hydrodynamics}
-Smoothed Particles Hydrodynamics (SPH) is a finite volume, particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
-It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
-
-Other methods exists to discretize the fluid domain, like Adaptive Mesh Refinement (AMR).
-On the other hand SPH is meshfree.
-
-Recently, more flexible methods (which come with their own difficulties) have emerged \citep{Springel2010, Shadowfax, Arepo}.
-Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming . 
-Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
-which can be solved analytically, can serve as a benchmark for the accuracy of the numerical solution. This is for example done with an L2-norm \citep{Borrow}.
-Numerical solutions are always a tradeoff between the accuracy and the practicality.
-It is interesting to see how a certain gain in accuracy is translated in an increase in \emph{time-to-solution}. the But at the end of the day if we pay attention to the the trend is 
-
-SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}.
-
-In his original treatment \citet{Gingold1977} the probabilities of were defined as 
+At any given time, it is possible to fully describe an $N$-body system (a set of particles with equal mass $m$) by its distribution function $f(\v x, \v v, t)$ which represents the number density of particles in the 6D phase space $(\vect x, \vect v)$. By multiplying this function with the phase space volume element $\d{\v x} \d{\v v}$, we obtain the number of particles within this phase space volume element at a given time $t$.
+The number density $n$ in physical space is obtained by integrating over the velocity:
 \begin{equation}
- \mathbb{E}[\rho] % TODO expected values
+n(\v x,t ) = \int f(\v x, \v v, t) \d{\v v}.
+\end{equation}
+The spatial density is then simply $\rho=mn$.
+
+Collisionless Boltzmann equation (a.k.a. Vlasov equation).
+\begin{equation}
 \end{equation}
 
+\section{N-Body systems}
+% It is interesting to note that in this description the particles have basically completely vanished and have been replaced with a continuum fluid description. Later, 
+For the purpose of solving the equations, the main idea is to discretize the equations above introducing paritcles. These are then not the real physical particles any more, rather they are fiducial macro particles that sample the phase-space in a Monte-Carlo fashion \citep{Springel2016}.
+
+
+\subsection{Smoothed Particles Hydrodynamics}
+Smoothed Particles Hydrodynamics (SPH) is a finite volume, lagrangian particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
+It is a lagrangian method because the elements carrying information about the fluid move along the fluid itself.
+% It is finite volume because it.
+
+A different approach to discretize the fluid domain is to use Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
+Recently, so called \emph{moving-mesh} methods have emerged. They combine both approaches and are more flexible but come with their own difficulties \citep{Springel2010, Shadowfax, Arepo}.
+% Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming. 
+Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
+which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
+Numerical solutions are always a tradeoff between the accuracy and the practicality.
+It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution}.
+%But at the end of the day if we pay attention to the the trend is 
+
+SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
+
+In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
+\begin{equation}
+ E[\rho] % TODO expected values
+\end{equation}
+
+% From J. Monaghan https://www.youtube.com/watch?v=tAXHCAEgSuE
+% The general procedure of SPH for solving equations is:
+% \begin{itemize}
+%  \item Replace the continuum by particles
+% \item Calculate forces on particles
+% \item Follow the motion of the particles
+% \end{itemize}
+In statistics the basic interpolant is used to compute probability density except that they do not have mass.
+Instead, for $N$ samples they have the factor $\frac 1 N$.
 
 
 
+% Cambridge David Kendall professor of statistics they wanted to calculate probability distributions from samples. They use the same kind of interpolation.
+
+% Problems: Accessing particles (if you have gravity the tree that you build to compute distances and gravity interactions between all the particles can be used in hydrodinamics too.
+% The hydro differential equations become a set of ordinary differential equations and (t42:00) and a way to  timestepping is needed.
+% Try to construct your discretized equations in a way that it contains the conservation properties of the continuum.
 
 \section{Density Estimation from particles ensemble}
 A possible choice for the kernel is a gaussian.
 % TODO kernel
 It's much more practical to use a finite support approximation of a gaussian.
-The most used for SPH are the Schoenberg \cite{Schoenberg1988} B-spline function, generated as the Fourier transform %TODO of what?
-\citep{Price2012}:
+The most used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1988}, generated as the Fourier transform \citep{Price2012}:
 \begin{equation}
-M_n(x, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)\cos(kh)\d k}
+M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
 \end{equation}
 
-It is convenient to write the kernel as a function of $q$, the distance normalized by the smoothing length: $q=x/h$.
-The most widely used is the cubic spline kernel $M_4$:
+By increasing $n$ we obtain progressively better approximations to the Gaussian. It is convenient to require continuity in at least the first and second derivatives, so the lowest order and most widely used B-spline useful for SPH is the cubic spline kernel $M_4$:
 \begin{equation}
-M_4(q) = \frac{1}{\pi h^3} \left\{ \begin{array}{ll}
+M_4(q) = \frac{1}{\pi h^3} \left\{
+\begin{array}{ll}
 \frac{1}{4}(2-q)^3 - (1 - q)^{3}, & 0 \le q < 1; \\
 \frac{1}{4}(2-q)^3, & 1 \le q < 2; \\
-0. & q \ge 2, \end{array} \right. \label{eq:cubicspline}
+0. & q \ge 2,
+\end{array}
+\right.
+\label{eq:cubicspline}
 \end{equation}
+where $q=r/h$ is the distance normalized by the smoothing length.
 
 \paragraph{Role of the normalization term}
 % TODO probabilistic treatment if it fits
 It is somehow striking that the normalization term is not the default in current visualization routines, the only reason being spurious effects when dealing with free surfaces \citep{Price2007}.
 
 \begin{equation}
- A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}
+ A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}.
 \end{equation}
 
 
 \section{Dwarf galaxies models}
 \citet{Verbeke2017}
+\subsection{Gravity}
 \subsection{Hydrodynamics}
 \subsection{Sub-grid models}
+For a review see \citet{Verbeke2017, Vandenbroucke2016}.
+
+\paragraph{Star Formation}
+Star particles are formed in converging, cold and dense regions of gas.
+The following three conditions must be true for a gas particle to be eligible to become a star particle.
+\begin{align*}
+ T_g &< 15000 \text{~K},\\
+ \rho_g &> 100 \text{~amu~cm}^{-3},\\
+ \nabla \cdot \v v &< 0.
+\end{align*}
+
+The conversion into star particles of gas particles which meet the above conditions is governed by a Schmidt relation \citep{Schmidt1959}
+\begin{equation}                                                                              
+\dot{\rho}_\star = -\dot{\rho}_g = c_\star \frac{\rho}{t_g}.
+\label{eq:schmidt_relation}
+\end{equation}
+Following \citep{Stinson2006} we assume the characteristic time of formation as the dynamical time $t_g = (4 \pi G \rho_g)^{-1/2}$, whereas $c_\star$ is the star formation efficiency which can be adjusted to match observations.
+
+From this, we can solve the simple differential equation: 
+\begin{equation}
+\rho_\star = 1 - e^{c_\star \frac{t}{t_g}}.
+\end{equation}
+We can then use a stochastic method to determine if an eligible gas particle has to be turned in a gas particle.
+The Monte Carlo threshold probability of star formation event:
+\begin{equation}
+P_\star = 1-\exp(-\frac{c_\star \delta t}{t_g}),
+\end{equation}
+where $\delta t$ is the integration time step.
+Given a random number $X \in \mathcal{U}(0,1)$ a star can form if $X < P_\star$.
+Several authors \citep{Stinson2006, Cloet-Osselaer2012, Revaz2009} have pointed out that since the star formation is a self-regulating process the star formation rate is weakly dependent on the the choice of $c_\star$ above $0.1$. In our case we use $c_\star = 0.25$.
+The new star particle inherits the position, velocity and metallicity of its gas particle progenitor.
+In all effects, star particles represent a stellar population with single age and metallicity (SSP, Single Stellar Population) with a Chabrier initial-mass function, \citet{Chabrier2003}.
+
+\paragraph{Stellar feedback}
+By \emph{feedback mechanism} it is meant any process that allows to exchange energy, matter and/or momentum between galaxy components. Stars have a huge influence on the interstellar medium (ISM), they pump energy and matter in the surrounding gas mainly enriching ISM with newly formed metals.
+
+The first type of feedback comes from supernovae events. Two main supernovae type are important in simulations. For massive stars, when all the fusion fuel is consumed, gravitation overcome the internal hydrodynamic pressure. The core of the star collapses generating a shock wave which blows away most of the star's outer atmosphere in a massive explosion, leaving behind only a small fraction of its mass, locked up in a remnant (a neutron star or a black hole). This type of core-collapse supernova is called \snii{} (type II supernova).
+This type of feedback lasts from the death of the most massive stars of the sampled by the particle's SSP, until the death of the least massive stars which are still capable of going supernova ($>8$ \Msun ): $0.005 - 0.043$ Gyr.
+For less massive stars, Type~Ia supernova occurs in a binary star system made by a red giant and a white dwarf.
+The gas from a red giant overflows onto a white dwarf and when a critical mass is reached, the white dwarf can no longer be supported and collapses, then rebounds. Neutrinos are thought to play an important role in this expansion \citep{Wongwathanarat2017}.
+Because it involves less massive stars and demands a period of steady accretion the feedback of \snia{} is returned $1.54 − 1.87$~Gyr after the birth of the star particle. Energy injection of \snia{} is delayed by a normally distributed offset-time following \citet{Strolger2004}.
+Feedback from supernovae events of type Ia (\snia) and II (\snii) inject $10^{51}$~erg into the surrounding ISM. For more details, the reader is referred to \cite{Valcke2008}.
+
+% Adapted from Simon Driver
+%Ia vs Ib depends on if the companion has hydrogen in the atmosphere.
+
+Supernovae events increase the metal content of the ISM tracked by Fe and Mg element abundances in gas particles.
+A second type type of feedback is stellar wind from young O and B stars.
+
+In simulation stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
+
+
+% The stellar population in the star particle is modelled by an initial mass function which tells how many stars are formed with a certain amount of mass. 
+
+\subsection{Extended gas physics}
+\paragraph{Radiative cooling}
+
+\paragraph{Ionization aware equation of state}
+\paragraph{Ultraviolet background}
+UV background is implemented and varies with redshift following the model by \citet{Faucher-Giguere2009}.
 \subsection{Moving box}
-\citet{Nichols2015}
-\citet{Hausammann2019}
+
+Using SPH it is computationally challenging to simulate an entire cluster of hot gas while at the same time having the resolution to properly treat the interactions at the interface between the interstellar and intra-cluster medium (or ICM) that cause ram pressure stripping.
+
+We have opted to use the moving-box technique described by \citet{Nichols2015} and further developed by \citet{Hausammann2019}.
+We enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
+Gas is injected from the open "front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below. This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
+Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
+This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
+A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box. 
+A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
+
