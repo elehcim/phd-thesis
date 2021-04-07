@@ -1,0 +1,1 @@
+bibtool -s -r process.rsc -i library.bib -o references.bib
