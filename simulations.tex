@@ -34,6 +34,7 @@ The spatial density is then simply $\rho=mn$.
 
 Collisionless Boltzmann equation (a.k.a. Vlasov equation).
 \begin{equation}
+...
 \end{equation}
 
 \section{N-Body systems}
@@ -57,10 +58,10 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
-In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
-\begin{equation}
- E[\rho] % TODO expected values
-\end{equation}
+% In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
+% \begin{equation}
+%  E[\rho] = ...% TODO expected values
+% \end{equation}
 
 % From J. Monaghan https://www.youtube.com/watch?v=tAXHCAEgSuE
 % The general procedure of SPH for solving equations is:
@@ -69,7 +70,7 @@ In his original treatment \citet{Gingold1977} the probabilities of ... were defi
 %  \item Calculate forces on particles
 %  \item Follow the motion of the particles
 % \end{itemize}
-In statistics the basic interpolant is used to compute probability density except that they do not have mass.
+% In statistics the basic interpolant is used to compute probability density except that they do not have mass.
 % Instead, for $N$ samples they have the factor $\frac 1 N$.
 
 
@@ -109,7 +110,7 @@ It is somehow striking that the normalization term is not the default in current
 \begin{equation}
  A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}.
 \end{equation}
-
+...
 
 \section{Dwarf galaxies models}
 \citet{Verbeke2017}
@@ -124,7 +125,7 @@ The following three conditions must be true for a gas particle to be eligible to
 \begin{align*}
  T_g &< 15000 \text{~K},\\
  \rho_g &> 100 \text{~amu~cm}^{-3},\\
- \nabla \cdot \v v &< 0.
+ \nabla \cdot \v v & < 0.
 \end{align*}
 
 The conversion into star particles of gas particles which meet the above conditions is governed by a Schmidt relation \citep{Schmidt1959}
