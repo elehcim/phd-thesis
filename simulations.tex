@@ -1,3 +1,5 @@
+% !TEX root = thesis.tex
+
 \chapter{Simulations}
 \label{ch:simulations}
 
@@ -53,7 +55,7 @@ Numerical solutions are always a tradeoff between the accuracy and the practical
 It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution}.
 %But at the end of the day if we pay attention to the the trend is 
 
-SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
+SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
 In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
 \begin{equation}
@@ -64,11 +66,11 @@ In his original treatment \citet{Gingold1977} the probabilities of ... were defi
 % The general procedure of SPH for solving equations is:
 % \begin{itemize}
 %  \item Replace the continuum by particles
-% \item Calculate forces on particles
-% \item Follow the motion of the particles
+%  \item Calculate forces on particles
+%  \item Follow the motion of the particles
 % \end{itemize}
 In statistics the basic interpolant is used to compute probability density except that they do not have mass.
-Instead, for $N$ samples they have the factor $\frac 1 N$.
+% Instead, for $N$ samples they have the factor $\frac 1 N$.
 
 
 
@@ -160,9 +162,10 @@ Feedback from supernovae events of type Ia (\snia) and II (\snii) inject $10^{51
 % Adapted from Simon Driver
 %Ia vs Ib depends on if the companion has hydrogen in the atmosphere.
 
-Supernovae events increase the metal content of the ISM tracked by Fe and Mg element abundances in gas particles.
-A second type type of feedback is stellar wind from young O and B stars.
+Supernovae events increase the metal content of the ISM. %tracked by Fe and Mg element abundances in gas particles.
+In simulations these effects are taken into account by keeping track of two independent metallicities:\feh, \mgfe, corresponding to a fast contribution by the supernova explosions of massive stars, and a slow contribution by the supernova explosions of less massive stars \citep{DeRijcke2013, Vandenbroucke2016}.
 
+A second type type of feedback is stellar wind from young O and B stars.
 In simulation stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
 
 
@@ -172,8 +175,61 @@ In simulation stellar wind is taken into account as a uniformly spread energy in
 \paragraph{Radiative cooling}
 
 \paragraph{Ionization aware equation of state}
+In an ideal gas with a single type of constituents, the pressure is given by the equation of state:
+\begin{equation}
+p = n k_B T
+\end{equation}
+
+From \citep[p. 161]{Vandenbroucke2016}, in a multiphase, multicomponent gas with species $S$, this becomes:
+\begin{equation}
+p = \left(\sum_S n_s + n_e(T)\right) k_BT =\frac{\rho k_B T}{\bar\mu}
+\end{equation}
+where we introduced the mean constituent mass $\bar\mu$ which is precomputed and tabulated as a function of $\bar\mu = \bar\mu(T, \feh, \mgfe, z, \rho)$.
+
+\subparagraph{Modified equation of energy when considering ionization}
+We assume a gas of ${}^1$H with an ionization fraction $x$.
+We consider the internal energy to be composed by a (thermal) kinetic part and a ionization part:
+\begin{equation}
+\label{eq:u}
+u = u_\text{kin} + u_\text{ion}
+\end{equation}
+The kinetic term (directly linked with the temperature) is defined as
+\begin{equation}
+u_\text{kin} = \frac 3 2 k_B T/ \mu, 
+\end{equation}
+whereas the ionization energy is
+\begin{equation}
+\label{eq:u_ion}
+u_\text{ion} = \dfrac{\chi_\text H}{m_\text H} x,
+\end{equation}
+with $\chi_\text H$ and $m_H$ the ionization energy and atomic mass of ${}^1$H.
+
+Assuming no temporal composition changes in the gas (i.e. assuming the gas in ionization equilibrium), the ionization fraction is a function only of the temperature (i.e. the internal kinetic energy) $x = x(T) = x(u_\text{kin})$, which allows the temporal derivative of equation \eqref{eq:u_ion} to be written as:
+\begin{equation}
+\label{eq:du_ion}
+\dv{u_\text{ion}}{t} = 
+\frac{\chi_\text H}{m_\text H} \dv{x}{u_\text{kin}} \dv{u_\text{kin}}{t}
+\end{equation}
+From equations \eqref{eq:u} and \eqref{eq:du_ion}:
+% \begin{equation}
+% \dv{u_\text{kin}}{t} = \dv{u}{t} - \frac{\chi_\text H}{m_\text H} \dv{x}{u_\text{kin}} \dv{u_\text{kin}}{t}
+% \end{equation}
+\begin{equation}
+\dv{u}{t} = \dv{u_\text{kin}}{t} \left( 1+\frac{\chi_\text H}{m_\text H} \dv{x}{u_\text{kin}}\right).
+\end{equation}
+By defining $X_\text{ukin} = \frac{\chi_\text H}{m_\text H} \dv{x}{u_\text{kin}}$,
+the energy equation is then:
+\begin{equation}
+\dv{u}{t} = \dfrac{1}{ 1 + X_\text{ukin}} \dv{u_\text{kin}}{t}
+\end{equation}
+
+Instead of evolving the total thermal energy, we can hence evolve the kinetic thermal energy, and adapt the thermal energy equation by applying the correction term $X_\text{ukin}$.
+This can be precomputed and tabulated as a function of $(T, \feh, \mgfe, z, \rho)$.
+
 \paragraph{Ultraviolet background}
 UV background is implemented and varies with redshift following the model by \citet{Faucher-Giguere2009}.
+
+
 \subsection{Moving box}
 
 Using SPH it is computationally challenging to simulate an entire cluster of hot gas while at the same time having the resolution to properly treat the interactions at the interface between the interstellar and intra-cluster medium (or ICM) that cause ram pressure stripping.
