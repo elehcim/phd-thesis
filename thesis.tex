@@ -12,7 +12,6 @@
 \usepackage{fontspec}               % Selecting fonts
 \usepackage{unicode-math}           % Use unicode math font, not TeX
 \usepackage[main=english,dutch,italian]{babel}         % Correct hyphenation
-\usepackage{subfig}                 % Subfigures
 \usepackage{booktabs}               % Nicer tables
 % \usepackage{xcolor}                 % Colours in text
 \usepackage{ccicons}                % Creative Commons icons
@@ -26,6 +25,19 @@
 % \setlength\columnseprule{.4pt}
 \usepackage[round]{natbib}         % Bibliography management
 \usepackage{physics}
+\usepackage{subcaption}
+\usepackage{verbatim}              % for \begin{comment} environment.
+
+
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcommand{\bss}[2][c]{%
+  \begin{tabular}[b]{@{}#1@{}}#2\end{tabular}%
+}
+
+
+\graphicspath{{figures/}}
+
 
 \author{Michele Mastropietro}
 \title{Simulating Dwarf Galaxies in the Fornax Cluster}
@@ -145,9 +157,9 @@ Ligatures=TeX]{FeijoaDisplay}
 
 \tableofcontents
 
-\listoffigures
+% \listoffigures
 
-\listoftables
+% \listoftables
 
 
 \mainmatter
