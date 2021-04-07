@@ -13,3 +13,5 @@ thesis.bbl
 thesis.aux
 .DS_Store
 *.lof
+# Mendeley's automatically generated bib
+library.bib
