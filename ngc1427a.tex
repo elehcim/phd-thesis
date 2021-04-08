@@ -36,7 +36,7 @@
 
 \begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{NGC1427A.png}
+\includegraphics[width=\textwidth]{NGC1427A-crop.png}
 \caption{False-colour image of NGC 1427A, based on HST Advanced Camera for Surveys (ACS) archival data (Proposal ID: 9689; PI: M. Gregg).
 The following colour bands were used: blue=475W; green=775W; red=625W+660N (stellar emission was subtracted from the 660N image using a scaled 775W image).
 This colour scheme makes the H$\alpha$ emission stand out in red. An asinh stretch was applied to bring out also the faint details.
@@ -156,22 +156,22 @@ Their new data indeed rule out a ram pressure origin for the optical appearance 
 
 \section{Simulations} \label{sec:simulations}
 \begin{figure*}
-\begin{subfigure}[b]{0.33\textwidth}
+\begin{subfigure}[b]{0.329\textwidth}
  \centering
- \includegraphics[width=\textwidth]{NGC_LIKE/SB-crop.png}
+ \includegraphics[width=\textwidth]{NGC_LIKE/SB.pdf}
  \caption{}
  \label{fig:sb_arrows}
 \end{subfigure}
  \hfill
-  \begin{subfigure}[b]{0.32\textwidth}
-  \includegraphics[width=\textwidth]{NGC_LIKE/HI-crop.png}
+  \begin{subfigure}[b]{0.329\textwidth}
+  \includegraphics[width=\textwidth]{NGC_LIKE/HI.pdf}
   \caption{}
   \label{fig:sim_hi_density}
 \end{subfigure}
 \hfill
-\begin{subfigure}[b]{0.33\textwidth}
+\begin{subfigure}[b]{0.329\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{NGC_LIKE/HI_VEL-crop.png}
+  \includegraphics[width=\textwidth]{NGC_LIKE/HI_VEL.pdf}
   \caption{}
   \label{fig:sim_hi_kin}
 \end{subfigure}
@@ -308,7 +308,7 @@ In total, we obtained a dataset of 424,656 oriented snapshots.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{good_traj-crop.png}
+\includegraphics[width=0.5\columnwidth]{good_traj.pdf}
 \caption{A trajectory with pericenter of 200~kpc. In blue the orbital phases for which there are snapshots with projected distance and recessional velocity compatible with the ones of NGC~1427A (i.e. snapshots fulfilling requirements (i)-(ii)) for some points of view.
 In this case $r_p = 137$~kpc, $v_p = -693$~km/s.
 }
@@ -364,7 +364,7 @@ Each direction can be defined using two angles ($\varphi$ and $\theta$) represen
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\columnwidth]{angles-crop.png}
+  \includegraphics[width=0.5\columnwidth]{angles.pdf}
   \caption{Angles $\varphi, \theta$ defining the points of view of each snapshot of the trajectory of Figure \ref{fig:good_traj}. The angles are used to rotate the selected snapshots in order to obtain the target $r_p, v_p$. Only a subset of snapshots can be oriented to fulfil the requirements.}
   \label{fig:phitheta}
 \end{figure}
@@ -403,12 +403,8 @@ The counterpart in NGC~1427A would be the faint stellar South-West elongation vi
 
 \begin{figure*}
 \centering
-% \includegraphics[width=\textwidth]{histo/hist_all_passage-crop.png}
-% \includegraphics[width=\textwidth]{histo/26.5-crop.png}
-% \includegraphics[width=\textwidth]{histo/26.5_29bins_3_stacked-crop.png}
-% \includegraphics[width=\textwidth]{histo/histo_iso26.5_bins0.35-16-crop.png}
-% \includegraphics[width=\textwidth]{histo/hist_first_passage-crop.png}
-\caption{BBOX PROBLEMS Histograms of oriented snapshots fulfilling the requirements (i)-(iv), selected to be around first (blue) or second (orange) pericenter and grouped by orbital pericenter distances (50, 100, 150, 200, 300 kpc).
+\includegraphics[width=\textwidth]{histo/histo_iso26.5_bins0.35-16.pdf}
+\caption{Histograms of oriented snapshots fulfilling the requirements (i)-(iv), selected to be around first (blue) or second (orange) pericenter and grouped by orbital pericenter distances (50, 100, 150, 200, 300 kpc).
 The isophote used to compute the stellar tail inclination is $26.5$~mag/arcsec$^2$ in $r'$ band.
 The distribution is peaked at around 150 Myr before pericenter passage, especially in more radial orbits. The result is robust enough to be visible on stricter angle tolerances $\delta = [20, 15, 10]$~deg.
 }
@@ -417,8 +413,8 @@ The distribution is peaked at around 150 Myr before pericenter passage, especial
 
 \begin{figure*}
 \centering
-% \includegraphics[width=\textwidth]{histo/iso_comparison_tol15_asym0.0_bins0.35-16-crop.png}
-\caption{BBOX PROBLEMS Distribution in time relative to pericenter passage of oriented snapshots fulfilling the requirements (i)-(iv) with tolerance $\delta=15$ deg. Histograms of selected snapshots are coloured relative to their orbital phase: around first (blue) or second (orange) pericenter.
+\includegraphics[width=\textwidth]{histo/one_tol_bins0.35-25-crop.png}
+\caption{Distribution in time relative to pericenter passage of oriented snapshots fulfilling the requirements (i)-(iv) with tolerance $\delta=15$ deg. Histograms of selected snapshots are coloured relative to their orbital phase: around first (blue) or second (orange) pericenter.
 Each column corresponds to a different isophote used to compute the stellar tidal orientation.
 Irrespective of the isophote, the distribution remains peaked  around 150 Myr before pericenter passage.}
 \label{fig:histo_noperi}
@@ -439,7 +435,7 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{histo/multi_tol_dist_gauss_bins600_25-crop.png}
+\includegraphics[width=0.5\columnwidth]{histo/multi_tol_dist_gauss_bins600_25.pdf}
 \caption{Distribution of selected oriented snapshots with multiple tolerance $\delta$ along the projected line of sight. The zero point is 20~Mpc, assumed distance of NGC~1399. Positive values mean the galaxy being \emph{in front of} the cluster centre. 
 %Overplotted a Kernel Desity Estimation for the distribution.
 }
@@ -448,7 +444,7 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{histo/multi_tol_vel_angle_bins_gauss90_25-crop.png}
+\includegraphics[width=0.5\columnwidth]{histo/multi_tol_vel_angle_bins_gauss90_25.pdf}
 \caption{Distribution of the flight angle $\gamma$ of selected oriented snapshots with multiple tolerances $\delta$. $\gamma$ is defined as the angle between the galactic velocity vector in the the cluster reference frame and the line of sight direction. 
 %Overplotted a Kernel Desity Estimation for the distribution.
 }
@@ -487,7 +483,7 @@ The reason of this can be hypothesised in the tidal pull close to the pericenter
 
 \begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{histo/hist2d_tp_A_bins20_kde-crop.png}
+\includegraphics[width=\textwidth]{histo/hist2d_tp_A_bins20_kde.pdf}
 \caption{2D histogram of selected oriented snapshots with tolerance $\delta=20$~deg.
 The distribution is plotted with time from first pericenter passage on the $x$ axis, whereas on the $y$ axis the \emph{Asymmetry} non-parametric measure as defined by \citet{Lotz2004}.
 Each column corresponds to a different isophote used to compute the stellar tidal orientation.
@@ -501,7 +497,7 @@ We overplot a kernel density estimation of the distribution for the snapshots ap
 \subsubsection{The origin of the asymmetric stellar tidal tails}
 \begin{figure*}
 % \includegraphics[width=\textwidth]{panel3a-crop.pdf}
-\includegraphics[width=\textwidth]{panels/panel68p100-crop.png}
+\includegraphics[width=\textwidth]{panel68p100-crop.png}
 \caption{Evolution in time of the simulation with ID 68 around first pericenter passage, projected in a way that the first column has $r_p = 137$ kpc, $v_p = 693$ km/s, the target values for NGC~1427A.
 All the other snapshots are seen from the same point of view as the first one.
 Black arrow is the direction to the cluster center whereas the green is the instantaneous velocity direction of the galaxy projected on the plane of the sky. In the first column, an ellipse fitted on the 26.5 mag/arcsec$^2$ is shown to highlight the direction of the tidal elongation.
