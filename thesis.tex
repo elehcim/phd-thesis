@@ -23,6 +23,14 @@
 % \usepackage{etoolbox}               % Easy programming to modify TeX stuff
 \usepackage{metalogo}               % XeTeX logo
 
+% From: https://tex.stackexchange.com/a/504869
+\newenvironment{abstract}[1]{%
+\begin{center}\normalfont\textbf{Abstract}\end{center}
+{\begin{quotation}
+\textit{\small{#1}}
+\end{quotation}}
+}{\vspace{1cm}}
+
 % \setlength\columnseprule{.4pt}
 \usepackage[round]{natbib}          % Bibliography management
 \usepackage{subcaption}
