@@ -125,7 +125,7 @@ The following three conditions must be true for a gas particle to be eligible to
 \begin{align*}
  T_g &< 15000 \text{~K},\\
  \rho_g &> 100 \text{~amu~cm}^{-3},\\
- \nabla \cdot \v v & < 0.
+ \nabla \cdot \vect v & < 0.
 \end{align*}
 
 The conversion into star particles of gas particles which meet the above conditions is governed by a Schmidt relation \citep{Schmidt1959}
@@ -240,6 +240,27 @@ We enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a win
 Gas is injected from the open "front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below. This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
 Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
-A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box. 
+A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
 A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
+
+\paragraph{Reference frames} In a moving box simulation, reference frames have an inportant roles.
+We define the inertial reference frame where the cluster is at the origin.
+Relative to that the box moves and rotates.
+To represent the correct rotations, the moving box is 
+
+
+\subsection{Recovering the correct kinematics from a moving box simulation}
+\label{sec:corret_kinematics}
+Following the convention in \citet{Nichols2015}, capital letters are used for vectors in the inertial frame whereas small letters for vectors in the moving box (rotating frame).
+Let $\vect \Omega$ be the angular velocity of the box in the inertial frame, and $\mathbf q$ the quaternion which at each point in time maps the $-y$ axis of the rotating reference frame to the direction of the velocity of the box in the inertial frame, $\Vp$.
+A vector $\vect X$ in the inertial frame, corresponds to $\vect x = \mathbf q^{-1}\, \vect X \,\mathbf q $ in the rotating frame.
+
+The velocity of the box is measured using a fixed point inside the box, called \emph{pivot}, whose coordinates relative to the box are $\mathbf{x}_{\mathrm p}$ and its velocity and acceleration in the inertial frame relative to the cluster are denoted with $\Vp$ and $\Ap$, respectively.
+The \emph{pivot} represents the position in the box of minimal specific energy at the start of the simulation \citep{Hausammann2019}.
+From this, $\vect \Omega$ can be computed as $\vect{\Omega} = {(\Vp\times\Ap)}/{\Vp^2}$ and the angular velocity of the box w.r.t. the rotating frame simply as $\vect \omega = \mathbf q^{-1}\, \vect \Omega\, \mathbf q $.
+We can then transform from rotating to inertial coordinates by applying this transformation:
+\begin{equation}
+\vect V = \Vp + \mathbf q \left(\mathbf v + \vect \omega \times (\mathbf x-\mathbf x_{\mathrm p})\right) \mathbf q^{-1}
+\end{equation}
+where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in the rotating frame, respectively, and $\mathbf V$ its velocity in the inertial frame. % For simplicity in the following we don't take into account $\Vp$ since its contribution to the line of sight velocity is negligible.
 
