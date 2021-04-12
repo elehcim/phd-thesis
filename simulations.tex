@@ -82,9 +82,9 @@ SPH has been originally developed as a \emph{probabilistic} particle method for 
 % Try to construct your discretized equations in a way that it contains the conservation properties of the continuum.
 
 \section{Density Estimation from particles ensemble}
-A possible choice for the kernel is a gaussian.
+A possible choice for the kernel is a Gaussian.
 % TODO kernel
-It's much more practical to use a finite support approximation of a gaussian.
+It's much more practical to use a finite support approximation of a Gaussian.
 The most used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1988}, generated as the Fourier transform \citep{Price2012}:
 \begin{equation}
 M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
