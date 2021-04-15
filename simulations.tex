@@ -257,10 +257,91 @@ A vector $\vect X$ in the inertial frame, corresponds to $\vect x = \mathbf q^{-
 
 The velocity of the box is measured using a fixed point inside the box, called \emph{pivot}, whose coordinates relative to the box are $\mathbf{x}_{\mathrm p}$ and its velocity and acceleration in the inertial frame relative to the cluster are denoted with $\Vp$ and $\Ap$, respectively.
 The \emph{pivot} represents the position in the box of minimal specific energy at the start of the simulation \citep{Hausammann2019}.
-From this, $\vect \Omega$ can be computed as $\vect{\Omega} = {(\Vp\times\Ap)}/{\Vp^2}$ and the angular velocity of the box w.r.t. the rotating frame simply as $\vect \omega = \mathbf q^{-1}\, \vect \Omega\, \mathbf q $.
+From this, $\vect \Omega$ can be computed as 
+\begin{equation}
+ \vect{\Omega} = {(\Vp\times\Ap)}/{\Vp^2}
+\end{equation}
+and the angular velocity of the box w.r.t. the rotating frame simply as:
+\begin{equation}
+\vect \omega = \mathbf q^{-1}\, \vect \Omega\, \mathbf q.
+\end{equation}
 We can then transform from rotating to inertial coordinates by applying this transformation:
 \begin{equation}
 \vect V = \Vp + \mathbf q \left(\mathbf v + \vect \omega \times (\mathbf x-\mathbf x_{\mathrm p})\right) \mathbf q^{-1}
 \end{equation}
 where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in the rotating frame, respectively, and $\mathbf V$ its velocity in the inertial frame. % For simplicity in the following we don't take into account $\Vp$ since its contribution to the line of sight velocity is negligible.
 
+
+\section{Simulating the Fornax cluster environment}\label{sec:fornax_sim}
+
+\subsection{Cluster model}
+
+\subsubsection{Dark matter}
+The simulations take into account both ram pressure stripping and the tidal interaction with the cluster.
+The latter is simulated as a single spherically symmetric static NFW potential profile \citep{Navarro1996} with mass $M~=~10^{14}$~\Msun{} \citep{Drinkwater2001a}:
+\begin{equation}
+    \Phi(r) = \frac{G M}{r} \frac{\log(1+r/R_s)}{\log(1 + c) - \frac{c}{1+c}}
+\end{equation}
+with scale length $R_s = 120$ kpc and $c=8.15$ derived from scaling relations in e.g. \citet{Gentile2004, Wechsler2002}:
+\begin{equation}
+    c \simeq 20 \left(\frac{M}{10^{11} \text{\Msun{}} }\right)^{-0.13}, \qquad
+    R_s = \frac 1 c \left(\frac{M}{\frac 4 3 \pi 200 \rho_c}\right)^\frac 1 3,
+\end{equation}
+with $\rho_c = 127.3$~\Msun{}~kpc$^{-3}$ the critical density of the universe at $z=0$ for a cosmology with Hubble constant $h=0.67$ and $\Omega_m = 0.31$ \citep{Planck2015}.
+The cluster virial radius of the model is $R_{\mathrm{vir}} = c R_s = 978$~kpc.
+
+\subsubsection{ICM} \label{sec:ICM}
+Following \citet{Paolillo2002}, we use the superposition of three spherically symmetric beta-models, $\rho(r) = \rho_0 (1 + (r/r_0)^2 )^{-3\beta/2}$, to construct the gas density profile in the Fornax cluster, as shown in Figure \ref{fig:profiles}.
+They identify three contributions to the hot gas distributions: a central component (dominating for $r<5''$), coincident with the optical galaxy NGC1399; a less dense and more extended galactic component ($50''<r<400''$); and a cluster component ($r>400''$).
+We assume the gas to be in hydrostatic equilibrium with temperature $T(r)$ computed as:
+\begin{equation}
+   T(r) = \frac {m_p}{k_B \rho(r)} \int_r^\infty \rho(r') \frac{GM(r')}{r'^2} \mathrm{d} r'
+\end{equation}
+where $M(r)$ is the mass of the gas, stars and dark matter beyond radius $r$, $m_p$ is the proton mass, $G$ and $k_B$ the gravitational and Boltzmann constants.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{PaolilloRho.png}
+\caption{Gas density profile $\rho(r)$ of the  Fornax Cluster model as a superposition of three beta models from measurements described in \citet{Paolillo2002}, from which we also adopt the nomenclature for the different beta models.
+}
+\label{fig:profiles}
+\end{figure}
+
+These two radial profiles allow us to inject particles with the proper density and temperature in the moving box, hence recreating the environmental condition of the cluster as the dwarf orbits through it.
+
+\subsection{Simulation parameters}
+We carried out a set of simulations starting from five MoRIA models of late-type galaxies taken at $z = 0.5$.
+The overall goal in setting up the simulations is to study the evolution of late-type galaxies in a cluster environment.
+The choice of the redshift of infall has been motivated by the fact that the number of red dwarfs in the Fornax cluster has increased significantly since $z = 0.5$ \citep{Stott2007, DeRijcke2010}.
+That indicates that the conversion of late-type to early-type dwarfs (and hence the acquisition of late-type dwarfs by clusters) is probably a recent event.
+
+We selected dwarfs models covering the stellar mass range of $10^{7.5}-10^{9}$ and we injected each of them on 5 different orbits with pericenter distances of $50, 100, 150, 200,$ and $300$~kpc and with a fixed apocenter of 800 kpc.
+The starting point of the infall is always at a radial distance of 600~kpc.
+We chose a lower radial distance of the starting position w.r.t. the virial radius given the very low cluster density in that region and the low orbital velocity of the dwarf near apocentre.
+In this way, simulations could be concentrated on the infall and the pericenter passages of the simulated dwarfs.
+We evolved the galaxies for $5.5$~Gyrs up to $z=0$.
+The initial stellar masses are reported in Table \ref{tbl:sim}. All simulations presented in this paper, at time of injection have exponentially declining SB profiles with Sersic index around 1.0.
+Every $10$~Myr a snapshot is saved, yielding around 560 snapshots for each simulation.
+This high snapshot cadence has proven to be important for the following analysis (see Section \ref{sec:morphological_quest}).
+Adhering to the simulation goal of following the evolution of a gas-rich late-type dwarf in a Fornax-like cluster, the initial snapshot of the most massive dwarf (ID 41) has been taken at $z=0.4$ because at $z=0.5$ it was still undergoing a major merger event.
+This is equivalent to having this galaxy falling into the cluster more recently.
+No sizeable effect has been noted in simulations results highlighting a different behaviour with respect to the other galaxies \citep[which underwent their last merger before infalling to the cluster at $z=0.5$, see e.g.][]{Cloet-Osselaer2014}.
+This has had the only implication of a lower number of snapshots used in the technique explained in Section \ref{sec:morphological_quest}, but, as we shall see in the following, given that first pericenter passage turns out to be the most significant orbital phase, no notable bias is expected.
+
+\begin{table}
+	\centering
+	\footnotesize
+\begin{tabular}{cx{1.3cm}x{0.5cm}x{0.8cm}x{0.7cm}x{0.4cm}x{1.4cm}}
+\toprule
+Sim ID & $\log_{10}$(M$_\star$)\newline(M$_\odot$) & $R_e$ \newline (kpc) & $\sigma_\star$ \newline (km/s)\\
+\midrule
+%   62 &  6.66 &  0.8 &  11.4 &  -11.8 &  0.5 &  25.8 \\
+  71 &  7.58 &  1.9 &  21.9 \\
+  68 &  7.96 &  2.6 &  15.6 \\
+  69 &  8.04 &  2.3 &  24.6 \\
+  41 &  8.78 &  1.7 &  30.4 \\
+\bottomrule
+\end{tabular}
+	\caption{Features at time of infall ($z=0.5$) of the selected MoRIA dwarf models used in this work}
+\label{tbl:sim}
+\end{table}
