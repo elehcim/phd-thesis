@@ -237,16 +237,36 @@ Using SPH it is computationally challenging to simulate an entire cluster of hot
 
 We have opted to use the moving-box technique described by \citet{Nichols2015} and further developed by \citet{Hausammann2019}.
 We enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
-Gas is injected from the open "front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below. This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
+Gas is injected from the open ``front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below.
+This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
 Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
-A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
-A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
+% A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
 
-\paragraph{Reference frames} In a moving box simulation, reference frames have an inportant roles.
+\paragraph{Reference frames} In a moving box simulation, reference frames have an important roles.
 We define the inertial reference frame where the cluster is at the origin.
 Relative to that the box moves and rotates.
 To represent the correct rotations, the moving box is 
+
+\subsubsection{Quaternions}
+For completeness we introduce briefly quaternions algebra
+
+\paragraph{Critically damped oscillator}
+A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
+\begin{equation}
+ ...
+\end{equation}
+We started by noting empirically that for our typical galaxy size a sufficient acceleration is around ...
+We want to dump the oscillation as fast as possible, so using a critically damped oscillator with $\zeta... $
+
+A typical behaviour of the \emph{adhoc acceleration} is shown in figure \ref{fig:adhoc}
+
+\begin{figure}
+\centering
+%  \includegraphics[width=0.8\textwidth]{adhoc.png}
+\caption{Adoc acceleration of the simulation ID 69 with pericenter 200.}
+\label{fig:adhoc}
+\end{figure}
 
 
 \subsection{Recovering the correct kinematics from a moving box simulation}
