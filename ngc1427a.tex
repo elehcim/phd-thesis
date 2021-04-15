@@ -65,20 +65,20 @@ In the next section, we give a short overview of the observed properties of NGC 
 \centering
 \begin{subfigure}[b]{0.49\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{NGC_LIKE/ngc_location.pdf}\\[3ex]
+  \includegraphics[width=\textwidth]{NGC_LIKE/ngc_location_scale.pdf}\\[3ex]
   \caption{}
   \label{fig:hi_contours}
 \end{subfigure}
 % \hfill
 \begin{subfigure}[b]{0.49\textwidth}
   \centering
-  \includegraphics[width=0.9\textwidth]{NGC_LIKE/NGC_1427A_HI_kinematics_with_colorbar.png}\\[3ex]
+  \includegraphics[width=0.9\textwidth]{NGC_LIKE/kin_scale.pdf}\\[3ex]
   \caption{}
   \label{fig:hi_kin}
 \end{subfigure}
 \begin{subfigure}[b]{0.6\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{NGC_LIKE/r_band_27_5-crop.png}\\[3ex]
+  \includegraphics[width=\textwidth]{NGC_LIKE/ngc_tide_scale.pdf}%\\[3ex]
   \caption{}
   \label{fig:r_band}
 \end{subfigure}
@@ -86,7 +86,8 @@ In the next section, we give a short overview of the observed properties of NGC 
 \caption{
 Images of NGC~1427A from \citet{Lee-Waddell2018} for illustrative purposes:~(a) VST image with overplotted in red contours of constant \Hi{} column density at levels $(0.5, 1, 2, 5, 10) \times 10^{20}$~amu~cm$^{-2}$;
 (b) gas kinematics (recessional velocity in km/s)
-(c) $r'$-band image (in mag/arcsec$^2$).}
+(c) $r'$-band image (in mag/arcsec$^2$).
+A length scale at the assumed cluster distance is indicated in red.}
 \label{fig:NGC_OBSERVATIONS}
 \end{figure*}
 NGC 1427A is a gas-rich dwarf irregular galaxy in the Fornax Cluster.
@@ -145,21 +146,22 @@ Their new data indeed rule out a ram pressure origin for the optical appearance 
 % \end{figure}
 
 \section{Simulations} \label{sec:simulations}
-\begin{figure*}
-\begin{subfigure}[b]{0.329\textwidth}
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
  \centering
  \includegraphics[width=\textwidth]{NGC_LIKE/SB.pdf}
  \caption{}
  \label{fig:sb_arrows}
 \end{subfigure}
  \hfill
-  \begin{subfigure}[b]{0.329\textwidth}
+  \begin{subfigure}[b]{0.5\textwidth}
   \includegraphics[width=\textwidth]{NGC_LIKE/HI.pdf}
   \caption{}
   \label{fig:sim_hi_density}
 \end{subfigure}
 \hfill
-\begin{subfigure}[b]{0.329\textwidth}
+\begin{subfigure}[b]{0.5\textwidth}
   \centering
   \includegraphics[width=\textwidth]{NGC_LIKE/HI_VEL.pdf}
   \caption{}
@@ -168,15 +170,15 @@ Their new data indeed rule out a ram pressure origin for the optical appearance 
  \vfill
 \caption{A simulation snapshot (ID 68, see Table \ref{tbl:sim}) on an orbit with 100 kpc pericenter distance, showing stellar tidal and gaseous stripped tails.
 (a) $r'$-band surface brightness with \Hi{} column density contours as seen from a point of view for which the projected cluster-centric distance $r_p = 77$ kpc and the recessional velocity $-793$ km/s. 
-\Hi{} contours are drawn at column density levels [$10^{17}, 10^{18}, 10^{19}, 10^{20}, 10^{21}$] amu cm$^{-2}$. The white arrow points towards the cluster centre, whereas the blue and the red arrows are the computed orientation of the stellar tail and the gaseous tail respectively, see Section \ref{sec:morphological_quest}.
+\Hi{} contours are drawn at column density levels [$10^{17}, 10^{18}, 10^{19}, 10^{20}, 10^{21}$]~amu~cm$^{-2}$. The white arrow points towards the cluster centre, whereas the blue and the red arrows are the computed orientation of the stellar tail and the gaseous tail respectively, see Section \ref{sec:morphological_quest}.
 %(same as \citet{Lee-Waddell2018})
 (b) The column density of the neutral hydrogen, highlighting clumpy blobs of stripped \Hi{}.
 (c) SPH map of the \Hi{} velocity field where the \Hi{} tail in its rightmost part is receding more than the more detached part.
-For reference, the [22, 24, 26, 28] mag/arcsec$^2$ isophotes are shown as dashed red contours.
+For reference, the [22, 24, 26, 28]~mag/arcsec$^2$ isophotes are shown as dashed red contours.
 We stress that our Fornax cluster dwarf galaxy simulations were not designed to reproduce all the details of this particular galaxy. Nonetheless, remarkable similarities can be found.} 
 
 \label{fig:selected_snapshot}
-\end{figure*}
+\end{figure}
 
 The simulations used in this chapter are described in full details in chapter \ref{ch:simulations}. We stress that they have not been set up to mimic NGC~1427A in any particular way. Therefore, not all details can be expected to exactly match with observations.
 Nonetheless, these simulations provide valuable insights not only into the phenomena at play but, more importantly, they can be used to infer the most likely current orbital phase of the galaxy. 
@@ -268,9 +270,16 @@ We observed each snapshot from different points of view in order to select the s
 \end{enumerate}
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{alpha_beta_coloured_for_fig.pdf}
+\includegraphics[width=0.65\columnwidth]{alpha_beta_coloured_for_fig.pdf}
 \caption{Angles $\alpha, \beta$ definitions used to set up the  requirements for the morphological search. $\delta$ is the angle tolerance used for the selection. Blue and red arrows are defined as in Figure \ref{fig:sb_arrows}. Darker grey shaded regions are the allowed directions of the oriented snapshots tidal stellar tail and \Hi{} tail.}
 \label{fig:angles_scheme}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.55\columnwidth]{good_traj.pdf}
+\caption{A trajectory with pericenter of 200~kpc. In blue the orbital phases for which there are snapshots with projected distance and recessional velocity compatible with the ones of NGC~1427A (i.e. snapshots fulfilling requirements (i)-(ii)) for some points of view.
+In this case $r_p = 137$~kpc, $v_p = -693$~km/s.}
+\label{fig:good_traj}
 \end{figure}
 We highlight that the search has been carried out using only morphological and orbital parameters, given our focus on the peculiar morphology of NGC~1427A.
 Moreover, the criteria used to compare simulations to observations are the ones that best represent the effects of the cluster environment: the relative directions of the tidal pull and the ram pressure stripping. Indeed, the first two requirements put constraints on the orbital position and hence on the orbital phase of the simulated dwarf. The latter two require that the isophotal tail and the neutral gas tail are oriented as in NGC~1427A.
@@ -295,15 +304,6 @@ Practically, we fixed an offset in both quantities $r_p = \bar r_p \pm \Delta r$
 Also we added four other targets: $(\bar r_p \pm \Delta r, \bar v_p)$ and $(\bar r_p, \bar v_p \pm \Delta v)$ with same ($\Delta r, \Delta v$) as before.
 Including the exact target $\bar r_p, \bar v_p$, at the end, we had nine targets to check for each snapshot.
 In total, we obtained a dataset of 424,656 oriented snapshots.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\columnwidth]{good_traj.pdf}
-\caption{A trajectory with pericenter of 200~kpc. In blue the orbital phases for which there are snapshots with projected distance and recessional velocity compatible with the ones of NGC~1427A (i.e. snapshots fulfilling requirements (i)-(ii)) for some points of view.
-In this case $r_p = 137$~kpc, $v_p = -693$~km/s.
-}
-\label{fig:good_traj}
-\end{figure}
 
 For each snapshot surviving the selection of requirements (i) and (ii) and oriented so that $r_p$ and $v_p$ are the ones imposed, we created the surface brightness map and \Hi{} map.
 We first fitted an ellipse to the contour corresponding to the $26.5$~mag/arcsec$^2$ isophote in $r'$ band.
@@ -354,7 +354,7 @@ Each direction can be defined using two angles ($\varphi$ and $\theta$) represen
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\columnwidth]{angles.pdf}
+  \includegraphics[width=0.8\columnwidth]{angles.pdf}
   \caption{Angles $\varphi, \theta$ defining the points of view of each snapshot of the trajectory of Figure \ref{fig:good_traj}. The angles are used to rotate the selected snapshots in order to obtain the target $r_p, v_p$. Only a subset of snapshots can be oriented to fulfil the requirements.}
   \label{fig:phitheta}
 \end{figure}
@@ -365,7 +365,7 @@ The angles $\varphi$ and $\theta$ are used to rotate the simulated galaxy as if 
 \subsection{Distribution along the orbit of points of view satisfying the requirements}
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{rps-crop.png}
+\includegraphics[width=0.8\columnwidth]{rps-crop.png}
 \caption{The strength of the ram pressure ($\rho v^2$) as a function of normalised time $\tau = (t-t_p)/T_r$, where $t_p$ is the time of first pericenter passage and $T_r$ is the orbit's radial period, for the ID 69 simulations on multiple orbits (orbit pericenter in kpc is indicated in the legend). The colour scales traces orbital distance with respect to the cluster center.}
 \label{fig:r_rps}
 \end{figure}
@@ -377,7 +377,7 @@ Our orbital and morphological criteria are preferentially met by simulations wit
 Less massive galaxies and galaxies on radial orbits are completely stripped from their HI gas, see Figure \ref{fig:m_hi}.
 \begin{figure*}
 \centering
-\includegraphics[width=0.8\textwidth]{m_hi-crop.png}
+\includegraphics[width=\textwidth]{m_hi-crop.png}
 \caption{Neutral gas mass as a function of normalised time $\tau$ as defined in Figure \ref{fig:r_rps}.
 Each panel is labelled with the simulation ID (cf. Table~\ref{tbl:sim}) and contains information for the simulated dwarf launched on orbits with different pericenter distances (50, 100, 150, 200, 300 kpc identified by the colour legend in the top-left panel). Gas is compressed when the isolated galaxy enters the cluster and as a consequence it cools down, thus increasing the neutral hydrogen mass. Obviously, around pericenter, ram pressure stripping is effective at driving down the gas mass (as shown also in Figure~\ref{fig:r_rps}).
 }
@@ -425,7 +425,7 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{histo/multi_tol_dist_gauss_bins600_25.pdf}
+\includegraphics[width=0.8\columnwidth]{histo/multi_tol_dist_gauss_bins600_25.pdf}
 \caption{Distribution of selected oriented snapshots with multiple tolerance $\delta$ along the projected line of sight. The zero point is 20~Mpc, assumed distance of NGC~1399. Positive values mean the galaxy being \emph{in front of} the cluster centre. 
 %Overplotted a Kernel Desity Estimation for the distribution.
 }
@@ -434,7 +434,7 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\columnwidth]{histo/multi_tol_vel_angle_bins_gauss90_25.pdf}
+\includegraphics[width=0.8\columnwidth]{histo/multi_tol_vel_angle_bins_gauss90_25.pdf}
 \caption{Distribution of the flight angle $\gamma$ of selected oriented snapshots with multiple tolerances $\delta$. $\gamma$ is defined as the angle between the galactic velocity vector in the the cluster reference frame and the line of sight direction. 
 %Overplotted a Kernel Desity Estimation for the distribution.
 }
@@ -442,7 +442,7 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=0.4\columnwidth]{gamma.pdf}
+\includegraphics[width=0.5\columnwidth]{gamma.pdf}
 \caption{Definitions of angle of flight $\gamma$ and radial distance $z$. $\vec v$ is the orbital velocity of the galaxy.
 }
 \label{fig:gamma}
@@ -451,15 +451,6 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 \section{Discussion} \label{sec:discussion}
 
 \subsection{The asymmetric stellar tidal tails}
-% We noticed that the main body of NGC 1427A has an asymmetric stellar tail. We investigated the non-parametric asymmetric measure.
-% We chose the snapshot shown in Figures \ref{fig:kin} and \ref{fig:vstar}, because of its stellar and \Hi{} morphology, the instantaneous line of sight recessional velocity w.r.t. the cluster centre and the angular separation from it.
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=.9\columnwidth]{traj-crop.pdf}
-% \caption{Dwarf trajectory. Dashed circle is the cluster virial radius. Small red circle the current position of the galaxy where the front tidal tail is most prominent.}
-% \label{fig:orbit}
-% \end{figure}
 
 \subsubsection{Including asymmetry as a constraint}
 As a way of quantifying the asymmetric stellar tides, we computed the non-parametric measure Asymmetry \citep[as defined by][]{Lotz2004} of our oriented snapshots. For each oriented snapshot we fed its surface brightness map to \verb|statmorph| \citep{Rodriguez-Gomez2019} isolating the region of the map within 27~mag/arcsec$^2$.
