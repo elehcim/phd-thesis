@@ -4,7 +4,7 @@
 \cleardoublepage% Move to first page of new chapter
 \let\cleardoublepage\relax% Don't allow page break
 \noindent \small{Based on: \emph{A tale of two tails: insights from simulations into the formation of the peculiar dwarf galaxy NGC~1427A}, Mastropietro~M., De Rijcke~S., Peletier~R.F.. Submitted to MNRAS.}
-\chapter{NGC~1427A}
+\chapter[A tale of two tails: on the formation of NGC~1427A]{Insights from simulations into the formation of the peculiar dwarf galaxy NGC~1427A}
 \label{ch:ngc1427a}
 }
 
@@ -116,9 +116,7 @@ To try and identify the environmental processes acting on NGC~1427A, we first se
 These parameters are most tightly linked with NGC~1427A's orbit through the Fornax Cluster and are expected to be relatively insensitive to the accidents and vagaries of its evolution before its acquisition by the cluster. 
 
 Thus, our analysis differs from that of \citet{Lee-Waddell2018} where the ram-pressure hypothesis is discussed based on stellar colour and galaxy morphology information.
-% Paolo's comment
 Their new data indeed rule out a ram pressure origin for the optical appearance of the galaxy, but they leave open the question whether ram pressure may have played a role in the formation of the \Hi{} tail.
-%to rule out ram pressure as a possible cause of the  tails (although it might play a secondary role after the tails have been created by another process).
 
 % We carried out a morphological search throughout our suite of simulations to isolate snapshots with the above properties respecting.% which can be useful to characterise the effects leading to such peculiar morphology.
 % We found that the main effects generating peculiar morphology are indeed the combination of galaxy rotation, ram pressure and tidal interaction close to the cluster centre.
@@ -192,10 +190,10 @@ Nonetheless, these simulations provide valuable insights not only into the pheno
 We carried out a systematic search among all the simulation snapshots, portraying different dwarfs at different times on different orbits.
 We observed each snapshot from different points of view in order to select the snapshots and their orientation most resembling the observed galaxy using four measurable quantities:
 \begin{enumerate}
-    \item the projected cluster-centric distance, $r_p$;
-    \item the line-of-sight velocity with respect to the cluster centre,~$v_p$;
-    \item the position angle of the outer isophotes, quantified as the angle $\alpha$ between the projected cluster centre direction and the direction of the $26.5$~mag/arcsec$^2$ isophote in $r'$ band, see Figure~\ref{fig:angles_scheme};
-    \item the orientation of the \Hi{} tail as measured with the angle $\beta$ between the isophote orientation and the direction of the highest variance of the image obtained by computing the second order moments of the \Hi{} SPH map \citep{Stobie1980}.
+    \item[(i)] the projected cluster-centric distance, $r_p$;
+    \item[(ii)] the line-of-sight velocity with respect to the cluster centre,~$v_p$;
+    \item[(iii)] the position angle of the outer isophotes, quantified as the angle $\alpha$ between the projected cluster centre direction and the direction of the $26.5$~mag/arcsec$^2$ isophote in $r'$ band, see Figure~\ref{fig:angles_scheme};
+    \item[(iv)] the orientation of the \Hi{} tail as measured with the angle $\beta$ between the isophote orientation and the direction of the highest variance of the image obtained by computing the second order moments of the \Hi{} SPH map \citep{Stobie1980}.
 \end{enumerate}
 \begin{figure}
 \centering
@@ -382,14 +380,14 @@ Our result would indicate the real tail to be roughly a factor 1.3 longer than t
 \subsection{The asymmetric stellar tidal tails}
 
 \subsubsection{Including asymmetry as a constraint}
-As a way of quantifying the asymmetric stellar tides, we computed the non-parametric measure Asymmetry \citep[as defined by][]{Lotz2004} of our oriented snapshots. For each oriented snapshot we fed its surface brightness map to \verb|statmorph| \citep{Rodriguez-Gomez2019} isolating the region of the map within 27~mag/arcsec$^2$.
-As a reference, \citet{Su2021} find an Asymmetry of 0.23 for NGC~1427A.
-We tried to add the Asymmetry to the constraints described in Section \ref{sec:morphological_quest}. Given that almost all the oriented snapshots have an Asymmetry higher than 0.2 \citep[in line with the average of $0.53\pm0.22$ for galaxies with intense star formation as reported by][]{Conselice2003}, we find that isolating snapshots at least as asymmetric as NGC~1427A do not affect the results.
+As a way of quantifying the asymmetric stellar tides, we computed the non-parametric measure Asymmetry \citep[as defined by][]{Lotz2004} of our oriented snapshots. For each oriented snapshot we fed its surface brightness map to \verb|statmorph| \citep{Rodriguez-Gomez2019} isolating the region of the map within $27$~mag/arcsec$^2$.
+As a reference, \citet{Su2021} find an Asymmetry of $0.23$ for NGC~1427A.
+We tried to add the Asymmetry to the constraints described in Section \ref{sec:morphological_quest}. Given that almost all the oriented snapshots have an Asymmetry higher than $0.2$ \citep[in line with the average of $0.53\pm0.22$ for galaxies with intense star formation as reported by][]{Conselice2003}, we find that isolating snapshots at least as asymmetric as NGC~1427A do not affect the results.
 
 By plotting Asymmetry on selected snapshots as a function of time from pericenter, as shown in Figure \ref{fig:histo2d_asym}, it can be seen that selected snapshots closer to the pericenter become more symmetric.
-The reason of this can be hypothesised in the tidal pull close to the pericenter which squeezes the galaxy elongating it, hence removing asymmetric regions of the galaxies.
-
-%computing Asymmetry~$A$ of the main body of the galaxy (without the Northern Clump) taken from the 625W band of HST image (as the one used in Figure~\ref{fig:NGC1427A}), gives a result of $A=0.23$.
+A possible reason of this can be hypothesised in the tidal pull close to the pericenter which squeezes the galaxy elongating it, hence removing asymmetric regions of the galaxies.
+Indeed all simulations show an Asymmetry greater than the one of NGC~1427A. We note that this is in line with \citet{Rodriguez-Gomez2019} who find a systematically higher asymmetry for simulated galaxy of Illustris and Illustris TNG \citep{Vogelsberger2014, Pillepich2018}, especially in the low mass range.
+In fact, in a numerical simulation each star particle created represents stars of $\approx 1000$ \Msun{}: a simulated galaxy is always more "granular" than an observed real galaxy due to the limited resolution.
 
 \begin{figure*}
 \centering
@@ -405,26 +403,25 @@ We overplot a kernel density estimation of the distribution for the snapshots ap
 % \subsubsection{Including isophotal twisting as a constraint}
 
 \subsubsection{The origin of the asymmetric stellar tidal tails}
-\begin{figure*}
-% \includegraphics[width=\textwidth]{panel3a-crop.pdf}
-\includegraphics[width=\textwidth]{panel68p100-crop.png}
-\caption{Evolution in time of the simulation with ID 68 around first pericenter passage, projected in a way that the first column has $r_p = 137$ kpc, $v_p = 693$ km/s, the target values for NGC~1427A.
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=0.95\textwidth]{panel68p100-crop.png}
+\caption{Evolution in time of the simulation with ID 68 around first pericenter passage, projected in a way that the first column has $r_p = 137$~kpc, $v_p = 693$~km/s, the target values for NGC~1427A.
 All the other snapshots are seen from the same point of view as the first one.
-Black arrow is the direction to the cluster center whereas the green is the instantaneous velocity direction of the galaxy projected on the plane of the sky. In the first column, an ellipse fitted on the 26.5 mag/arcsec$^2$ is shown to highlight the direction of the tidal elongation.
-The first row represents the surface brightness of snapshots. \Hi{} Contours are [$10^{17}, 10^{18}, 10^{19}, 10^{20}, 10^{21}$]~amu~cm$^{-2}$.
+Black arrow indicates the direction to the cluster centre whereas the green indicates the instantaneous velocity direction of the galaxy projected on the plane of the sky. In the first column, an ellipse fitted on the $26.5$ mag/arcsec$^2$ is shown to highlight the direction of the tidal elongation.
+The first row represents the surface brightness of snapshots around the first pericenter. \Hi{} Contours are [$10^{17}, 10^{18}, 10^{19}, 10^{20}, 10^{21}$]~amu~cm$^{-2}$.
 Second row the $g'$-$r'$ colour.
-Third and fourth row the v-band SPH-average age and velocity of star particles along the line of sight.
-}
+Third and fourth row the v-band SPH-average age and velocity of star particles along the line of sight.}
 \label{fig:panel}
-\end{figure*}
+\end{sidewaysfigure}
 
-By looking at different simulation snapshots evolving with time, we can reconstruct a series of events leading to the generation of the leading edge stellar tail.
-We focus our discussion to the case of the galaxy with ID 68 on an orbit with pericenter 100~kpc, as shown in Figure \ref{fig:panel}.
+An interesting effect of the pericenter passage is the formation of an asymmetric tidal tail, a stellar elongation more pronounced in just one direction, as that shown in the fourth column of Figure~\ref{fig:panel}.
+This effect can be investigated by looking at different simulation snapshots evolving with time around a pericenter passage.
+We focus our discussion to the case of the galaxy with ID 68 on an orbit with pericenter $100$~kpc.
+In Figure~\ref{fig:panel}, the snapshot in the first column is the one who has passed the filters described in Section~\ref{sec:morphological_quest} and represents a snapshot which is in good agreement to the observation, given its stellar and gaseous tail directions and the projected clustercentric distance and recessional velocity.
 
+We can then reconstruct a series of events leading to the generation of the leading edge stellar tail.
 The tidal forces exerted by the Fornax Cluster become markedly asymmetric as a galaxy approaches pericentre on a radial orbit. The steeply deepening gravitational potential well can raise a stronger leading stellar tidal tail while producing a weaker trailing tail during a fast swing-by of a galaxy close to the cluster centre. After pericentre, the leading tail twists due to the curvature of the galaxy's orbit, the rapidly changing direction of the gravitational force, and the internal rotation of the galaxy.
-%While approaching pericentre, around 300 Myr before it, stars closer to the centre of the cluster and therefore facing ``front'' w.r.t. the galaxy velocity are pulled ahead of the galaxy.
-%The galaxy at this moment has the highest cluster-centric velocity along its orbit ($\sim985$ km/s) and therefore the direction of the tidal pull is rapidly changing.
-%After pericentre, the front tail twists due the curvature of the orbit and the residual internal stellar rotation.
 Effectively the pericentre passage injects energy into the galaxy resulting in a temporary increase of its angular momentum.
 
 At the same time, the gaseous tail is always directed opposite to the instantaneous velocity.
@@ -478,13 +475,16 @@ We can sum up the main results in the following points:
     \item Following our modelling it is possible to estimate the most likely position of a NGC~1427A-like galaxy to be around 200 kpc in front of the cluster centre. Also, the most likely flight direction (represented by the angle $\gamma$ in the paper) is around 50 deg.
 \end{itemize}
 
-% Analysis of data and plots have been made possible thanks to open-source software:
-% \verb|pynbody| \citep{Pontzen2013},
-% \verb|numpy| \citep{numpy},
-% \verb|scipy| \citep{scipy},
-% \verb|pandas| \citep{pandas},
-% \verb|matplotlib| \citep{Hunter2004},
-% glnemo2
-% \verb|astropy| \citep{TheAstropyCollaboration2018},
-% \verb|statmorph| \citep{Rodriguez-Gomez2019}.
+\section*{Data availability}
+The data underlying this article and the algorithms used are available at this GitHub repository: \url{https://github.com/elehcim/ngc1427apaper}.
 
+\section*{Acknowledgements}
+M.M. thanks F. D'Eugenio and A. Nersesian for insightful discussions.
+Analysis of data and plots have been made possible thanks to open-source software:
+\verb|pynbody| \citep{Pontzen2013},
+\verb|numpy| \citep{numpy},
+\verb|scipy| \citep{scipy},
+\verb|pandas| \citep{pandas},
+\verb|matplotlib| \citep{Hunter2004},
+\verb|astropy| \citep{TheAstropyCollaboration2018},
+\verb|statmorph| \citep{Rodriguez-Gomez2019}.
