@@ -116,6 +116,12 @@ It is somehow striking that the normalization term is not the default in current
 
 \section{Dwarf galaxies models}
 MoRIA models \citet{Verbeke2017}
+
+They have a virial mass of $M_{200}\approx 10^{10} - 10^{11}$\Msun{}.
+The dark particle mass is $m_{\mathrm{dm}} = 2 \cdot 10^4$ \Msun{}.
+The baryonic particle mass $m_{\mathrm{b}}$ follows from the relation $\Omega_\mathrm{b}/\Omega_{\mathrm{dm}} = 0.2115$ \citep{Planck2015}.
+Number of particles $n_\mathrm{b} = n_{\mathrm{dm}} = 5 \cdot 10^5 - 2 \cdot 10^6$ \Msun{}.
+They have been simulated using the merger tree technique...
 \subsection{Gravity}
 \subsection{Hydrodynamics}
 \subsection{Sub-grid models}
@@ -240,14 +246,14 @@ Using SPH it is computationally challenging to simulate an entire cluster of hot
 \begin{figure}[h]
  \centering
  \includegraphics[width=\textwidth]{MovingBox.pdf}
- \caption{An illustration of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster. The gas density is color coded \citep[using the \texttt{glnemo2} software][]{Lambert2012}. Note the number of particles involved, almost 2 millions.
+ \caption{An illustration of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster. Colors show the gas density \citep[using the \texttt{glnemo2} software][]{Lambert2012}. Note the number of particles involved, almost 2 millions.
  Using the moving box technique allow to concentrate resources on the interesting part of the simulation. Also it allows for an increased resolution at the dwarf-cluster interface, better resolving the stripping.}
  \label{fig:MovingBox}
 \end{figure}
 
 We have opted to use the moving-box technique described by \citet{Nichols2015} and further developed by \citet{Hausammann2019}.
 As shown in Figure~\ref{fig:MovingBox}, we enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
-Gas is injected from the open ``front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below.
+Gas is injected from the open ``front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below in Section \ref{sec:fornax_sim}.
 This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
 Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
