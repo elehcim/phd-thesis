@@ -6,7 +6,7 @@
 Numerical simulations have emerged as a new tool to investigate nature, alongside theory and experiments.
 This is particularly valid for astronomy where, unlike other laboratory-based disciplines, astronomers may not exert full control over their experiments \citep{Heng2014}.
 
-Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2016}.
+Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2015}.
 This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems. In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
 % The main assumption of this is that particles... \citep{Vandenbroucke2016}.
@@ -39,7 +39,7 @@ Collisionless Boltzmann equation (a.k.a. Vlasov equation).
 
 \section{N-Body systems}
 % It is interesting to note that in this description the particles have basically completely vanished and have been replaced with a continuum fluid description. Later, 
-For the purpose of solving the equations, the main idea is to discretize the equations above introducing paritcles. These are then not the real physical particles any more, rather they are fiducial macro particles that sample the phase-space in a Monte-Carlo fashion \citep{Springel2016}.
+For the purpose of solving the equations, the main idea is to discretize the equations above introducing paritcles. These are then not the real physical particles any more, rather they are fiducial macro particles that sample the phase-space in a Monte-Carlo fashion \citep{Springel2015}.
 
 
 \subsection{Smoothed Particles Hydrodynamics}
@@ -52,7 +52,7 @@ Recently, so called \emph{moving-mesh} methods have emerged. They combine both a
 % Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming. 
 Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
 which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
-Numerical solutions are always a tradeoff between the accuracy and the practicality.
+Numerical solutions are always a trade-off between accuracy and practicality.
 It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution}.
 %But at the end of the day if we pay attention to the the trend is 
 
@@ -90,7 +90,9 @@ The most used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg19
 M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
 \end{equation}
 
-By increasing $n$ we obtain progressively better approximations to the Gaussian. It is convenient to require continuity in at least the first and second derivatives, so the lowest order and most widely used B-spline useful for SPH is the cubic spline kernel $M_4$:
+By increasing $n$ we obtain progressively better approximations of a Gaussian.
+It is convenient to require continuity in at least the first and second derivatives.
+Accordingly, the most widely used B-spline for SPH is the lowest order B-spline with this features which is the cubic spline kernel $M_4$:
 \begin{equation}
 M_4(q) = \frac{1}{\pi h^3} \left\{
 \begin{array}{ll}
@@ -235,8 +237,16 @@ UV background is implemented and varies with redshift following the model by \ci
 
 Using SPH it is computationally challenging to simulate an entire cluster of hot gas while at the same time having the resolution to properly treat the interactions at the interface between the interstellar and intra-cluster medium (or ICM) that cause ram pressure stripping.
 
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{MovingBox.pdf}
+ \caption{An illustration of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster. The gas density is color coded \citep[using the \texttt{glnemo2} software][]{Lambert2012}. Note the number of particles involved, almost 2 millions.
+ Using the moving box technique allow to concentrate resources on the interesting part of the simulation. Also it allows for an increased resolution at the dwarf-cluster interface, better resolving the stripping.}
+ \label{fig:MovingBox}
+\end{figure}
+
 We have opted to use the moving-box technique described by \citet{Nichols2015} and further developed by \citet{Hausammann2019}.
-We enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
+As shown in Figure~\ref{fig:MovingBox}, we enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
 Gas is injected from the open ``front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below.
 This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
 Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
@@ -302,7 +312,9 @@ The vector $\vec x'$ resulting from the rotation of $\vec x$ of an angle $\varph
 \vect x' = \bar{\vect q}\, \vect x \, \vect q 
 \end{equation}
 where $\vect x' = (0, \vec x')$ \citep[for a proof, see e.g.][sec. 1.4]{Graf2008}.
-With a slight abuse of notation we will write $\vec x' = \bar{\vect q}\, \vec x \, \vect q$ or directly $\vect x' = \bar{\vect q}\, \vect x \, \vect q$, given that it will be clear from the context what is a quaternion (mainly just $\vect q$).
+
+In the following sections we'll write equations that involve the rotation a quaternion by a vector.
+With a slight abuse of notation we will write directly $\vect x' = \bar{\vect q}\, \vect x \, \vect q$, considering that the vector indicated in boldface $\vect x$ should be understood to be the pure quaternion $(0, \vec x)$.% given that it will be clear from the context what is a quaternion (mainly just $\vect q$).
 
 \subsubsection{Critically damped oscillator}
 A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
