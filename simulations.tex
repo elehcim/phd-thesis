@@ -117,12 +117,14 @@ It is somehow striking that the normalization term is not the default in current
 \section{Dwarf galaxies models}
 We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-body/SPH simulations of late-type isolated dwarf galaxies \citep{Verbeke2017}.
 MoRIA dwarfs are cosmologically motivated models of galaxies ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$.
-Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \cite{Cloet-Osselaer2014}.
+Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \citep{Cloet-Osselaer2014}.
 
 MoRIA dwarfs are the sum of multiple researchers work, starting with the implemetation of models for star formation and chemical enrichment \citep{Valcke2008}. 
 Then, in addition to the mass, rotation has been found to have a significant influence on the evolution and appearance of dwarf galaxies and their star formation \citep{Schroyen2011}.
 Later, the addition of advanced prescriptions for cooling has allowed to increase the resolution when simulating the formation of cold, neutral, high-density clouds suitable for star formation \citep{DeRijcke2013}. %\citep{Verbeke2015}.
-MoRIA models could then be used to investigate and reproduce a whole range of observational properties of dwarfs in the field. Studies have been devoted to characterize their cosmological evolution \citep{Cloet-Osselaer2012}, their star formation evolution \citep{Verbeke2015}, their neutral gas contents and kinematics \citep{Koleva2014}, and the analysis of neutral gas kinematics has helped to shed light onto the ``Too big-too fail'' problem \citep{Verbeke2017}.
+MoRIA models could then be used to investigate and reproduce a whole range of observational properties of dwarfs in the field.
+Studies have been devoted to characterize their cosmological evolution \citep{Cloet-Osselaer2012}, their star formation evolution \citep{Verbeke2015}, their neutral gas contents and kinematics \citep{Koleva2014}.
+This has helped to shed light onto the ``Too big-too fail'' problem \citep{Verbeke2017}.
 
 
 \paragraph{Physical characteristics} MoRIA dwarfs, have a virial mass at $z=0$ of $M_{200} \approx 10^{10} - 10^{11}$\Msun{}. The dark particle mass is $m_{\mathrm{dm}} = 2 \cdot 10^4$ \Msun{} whereas the baryonic particle mass $m_{\mathrm{b}}$ follows from the relation $\Omega_\mathrm{b}/\Omega_{\mathrm{dm}} = 0.2115$ \citep{Planck2015}.
@@ -161,7 +163,7 @@ P_\star = 1-\exp(-\frac{c_\star \delta t}{t_g}),
 \end{equation}
 where $\delta t$ is the integration time step.
 Given a random number $X \in \mathcal{U}(0,1)$ a star can form if $X < P_\star$.
-Several authors \citep{Stinson2006, Cloet-Osselaer2012, Revaz2009} have pointed out that since the star formation is a self-regulating process the star formation rate is weakly dependent on the the choice of $c_\star$ above $0.1$. In our case we use $c_\star = 0.25$.
+Several authors \citep{Stinson2006, Revaz2009, Cloet-Osselaer2012} have pointed out that since the star formation is a self-regulating process the star formation rate is weakly dependent on the the choice of $c_\star$ above $0.1$. In our case we use $c_\star = 0.25$.
 The new star particle inherits the position, velocity and metallicity of its gas particle progenitor.
 In all effects, star particles represent a stellar population with single age and metallicity (SSP, Single Stellar Population) with a Chabrier initial-mass function, \citet{Chabrier2003}.
 
