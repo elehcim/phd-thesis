@@ -247,8 +247,12 @@ the energy equation is then:
 Instead of evolving the total thermal energy, we can hence evolve the kinetic thermal energy, and adapt the thermal energy equation by applying the correction term $X_\text{ukin}$.
 This can be precomputed and tabulated as a function of $(T, \feh, \mgfe, z, \rho)$.
 
+In galaxy simulations this ionization-aware equation of state has the effects of absorbing energy of modeled supernovae explosions. This has been shown in a Sedov-Taylor blast wave by \citet{Vandenbroucke2013}, where the ionization potential absorbs a significant fraction of the energy injected spent ionizing the gas rather than heating it. This process can alter the effects of thermal feedback and should not be neglected in simulations of galaxies, where supernovae explosions play an important role.
+
 \paragraph{Ultraviolet background}
-UV background is implemented and varies with redshift following the model by \citet{Faucher-Giguere2009}.
+UV background (UVB) is a photoionizing radiation due to young UV bright stars or e.g. to QSO whose spectra gets filtered by the Gunn-Peterson effect. It is responsible for preventing gas from cooling in low-mass halos at high redshift \citep{Efstathiou1992, Navarro1997}.
+In our simulations, UVB is taken into account in the look-up-tables for gas cooling/heating, for the ionization equilibrium and the mean molecular mass. Its dependence on redshift is implemented following the model by \citet{Faucher-Giguere2009}.
+Since in dense neutral region of gas the UVB's photons will be absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of UVB is modeled with an exponential decay for neutral hydrogen regions with number density $n_{\text{H}\textsc i} \geq 0.007$~amu~cm$^{-3}$.
 
 
 \section{Moving box}
