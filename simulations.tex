@@ -141,7 +141,7 @@ Star particles are formed in converging, cold and dense regions of gas.
 The following three conditions must be true for a gas particle to be eligible to become a star particle.
 \begin{align*}
  T_g &< 15000 \text{~K},\\
- \rho_g &> 100 \text{~amu~cm}^{-3},\\
+ \rho_g &> 100 \text{~amu/cm}^{3},\\
  \nabla \cdot \vect v & < 0.
 \end{align*}
 
@@ -202,7 +202,10 @@ From \citep[p. 161]{Vandenbroucke2016}, in a multiphase, multicomponent gas with
 \begin{equation}
 p = \left(\sum_S n_s + n_e(T)\right) k_BT =\frac{\rho k_B T}{\bar\mu}
 \end{equation}
-where we introduced the mean constituent mass $\bar\mu$ which is precomputed and tabulated as a function of $\bar\mu = \bar\mu(T, \feh, \mgfe, z, \rho)$.
+where we introduced the mean constituent mass $\bar\mu$.
+This quantity depends on the chemical composition of the gas, its ionization state and the temperature.
+As such, following models from \citet{DeRijcke2013}, we can precompute and tabulate it as a function of:
+\[\bar\mu = \bar\mu(T, \feh, \mgfe, z, \rho).\]
 
 \subparagraph{Modified equation of energy when considering ionization}
 We assume a gas of ${}^1$H with an ionization fraction $x$.
@@ -248,7 +251,7 @@ This can be precomputed and tabulated as a function of $(T, \feh, \mgfe, z, \rho
 UV background is implemented and varies with redshift following the model by \citet{Faucher-Giguere2009}.
 
 
-\subsection{Moving box}
+\section{Moving box}
 
 Using SPH it is computationally challenging to simulate an entire cluster of hot gas while at the same time having the resolution to properly treat the interactions at the interface between the interstellar and intra-cluster medium (or ICM) that cause ram pressure stripping.
 
@@ -273,7 +276,7 @@ We define the inertial reference frame where the cluster is at the origin.
 Relative to that the box moves and rotates.
 To represent the correct rotations, the moving box is 
 
-\subsubsection{Quaternions}
+\subsection{Quaternions}
 For completeness, we briefly introduce quaternions algebra.
 Following \citet{Graf2008}, a quaternion is a set of four parameters, a real value $q_0$ and three imaginary values $q_1\vect{i},q_2\vect{j},q_3\vect{k}$ with $q_1,q_2,q_3 \in \mathbb{R}$ usually represented as:
 \begin{equation}
@@ -301,7 +304,7 @@ Its conjugate~$\bar{\vect q}$ is defined as:
 \end{equation}
 and its norm as:
 \begin{equation}
- |\vect q| = \sqrt{q_0^2+q_1^2+q_2^2+q_3^2}.
+ \norm{\vect q} = \sqrt{q_0^2+q_1^2+q_2^2+q_3^2}.
 \end{equation}
 
 From eqs. \eqref{eq:hamilton_quaternion} and \eqref{eq:hamilton_quaternion_mixed} in particular we can write the general formula for the non commutative quaternion multiplication, i.e. given two quaternions $\vect q$ and $\vect p$:
@@ -309,16 +312,16 @@ From eqs. \eqref{eq:hamilton_quaternion} and \eqref{eq:hamilton_quaternion_mixed
  \vect q \vect p = (q_0 p_0 - \vec q \cdot \vec p, \, q_0 \vec p + p_0 \vec q + \vec q \times \vec p).
  \label{eq:quaternion_multiplication}
 \end{equation}
-From \eqref{eq:conjugate} it follows that $\vect q \bar{\vect q} = |\vect q|^2 \equiv (|\vect q|^2, \vec 0)$. For unit quaternions ($|\vect q| = 1$), we can write $\bar{\vect q} = \vect q^{-1}$.% because $\vect 1 \equiv (0$.
+From \eqref{eq:conjugate} it follows that $\vect q \bar{\vect q} = \norm{\vect q}^2 \equiv (\norm{\vect q}^2, \vec 0)$. For unit quaternions ($\norm{\vect q} = 1$), we can write $\bar{\vect q} = \vect q^{-1}$.% because $\vect 1 \equiv (0$.
 
 \paragraph{Quaternions and rotations} Unit quaternions are also called \emph{rotation quaternions}.
 They can be used to completely describe a rotation of an angle $\varphi$ around the axis $\vec q$.
 
 Let's consider a unit quaternion $\vect q$. It can be always written as:
 \begin{equation}
- \vect q = (q_0, \vec q) = (\cos \frac \varphi 2, \sin \frac \varphi 2\, \hat n), \quad \text{with } |\hat n|=1,
+ \vect q = (q_0, \vec q) = (\cos \frac \varphi 2, \sin \frac \varphi 2\, \hat n), \quad \text{with } \norm{\hat n}=1,
 \end{equation}
-where $\hat n \equiv \frac{\vec q}{|\vec q|}$ is the versor of $\vec q$.\\
+where $\hat n \equiv \vec q/\norm{\vec q}$ is the versor of $\vec q$.\\
 A vector in three-dimensional space $\vec x \in \mathbb R^3$ can be expressed as a \emph{pure quaternion}, a quaternion with no real part: $\vect x = (0, \vec x)$.
 % It can therefore multiplied by a quaternion using relation \eqref{eq:quaternion_multiplication}.
 
@@ -331,7 +334,7 @@ where $\vect x' = (0, \vec x')$ \citep[for a proof, see e.g.][sec. 1.4]{Graf2008
 In the following sections we'll write equations that involve the rotation a quaternion by a vector.
 With a slight abuse of notation we will write directly $\vect x' = \bar{\vect q}\, \vect x \, \vect q$, considering that the vector indicated in boldface $\vect x$ should be understood to be the pure quaternion $(0, \vec x)$.% given that it will be clear from the context what is a quaternion (mainly just $\vect q$).
 
-\subsubsection{Critically damped oscillator}
+\subsection{Critically damped oscillator}
 A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
 \begin{equation}
  ...
