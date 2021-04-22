@@ -7,12 +7,22 @@ Numerical simulations have emerged as a new tool to investigate nature, alongsid
 This is particularly valid for astronomy where, unlike other laboratory-based disciplines, astronomers may not exert full control over their experiments \citep{Heng2014}.
 
 Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2015}.
-This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems. In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
+This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems.
+In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
 % The main assumption of this is that particles... \citep{Vandenbroucke2016}.
 In the following we will be dealing with hydrodynamics of fluids, given that the main components of galaxies are successfully described in terms of fluids.
 
-\section{Hydrodynamics}
+\section{General assumptions}
+We will assume the Cold Dark Matter (CMD) paradigm (in a $\Lambda$CDM cosmology), which has gained consensus among the scientific community throughout the years even if up to now, there has been no detection of it \citep[see e.g.][for an extensive and historical overview]{Einasto2010}.
+In a dwarf galaxy simulation three kind of fluids are generally taken into account each following different models: dark matter, gas and star. The latter two are so called \emph{baryonic} matter.
+
+Dark matter is hypothesized to consist of small particles that are orders of magnitude smaller than the typical distance scales in our galaxies, so that they constitute a collisionless fluid.
+Similarly, the cross section of stars is small compared to galactic scales, and makes them collisionless as well.
+Stars, though, affect the gas by pumping energy and metals into their surroundings.
+Dark matter and stars are therefore sensitive only to gravity, a weak, conservative, long-range force which is caused by a generally smooth potential.
+
+On the other hand, as we shall see, gas is collisional and its behaviour at any point is affected by short-range interactions, whose modeling requires other assumptions.
 
 \subsection{Boltzmann Equation - Equations of motion}
 % We will assume that dark matter consists of small particles that are orders of magnitude smaller than the typical distance scales in our galaxies, so that we will treat it as a collisionless fluid.
