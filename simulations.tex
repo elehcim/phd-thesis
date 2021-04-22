@@ -10,7 +10,7 @@ Computer simulations are essentially a tools to solve complex systems of equatio
 This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems.
 In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
-% The main assumption of this is that particles... \citep{Vandenbroucke2016}.
+In fact, we are not interested in the motion of each molecule in detail, rather we will use a statistical approach . 
 In the following we will be dealing with hydrodynamics of fluids, given that the main components of galaxies are successfully described in terms of fluids.
 
 \section{General assumptions}
@@ -22,30 +22,38 @@ Similarly, the cross section of stars is small compared to galactic scales, and 
 Stars, though, affect the gas by pumping energy and metals into their surroundings.
 Dark matter and stars are therefore sensitive only to gravity, a weak, conservative, long-range force which is caused by a generally smooth potential.
 
-On the other hand, as we shall see, gas is collisional and its behaviour at any point is affected by short-range interactions, whose modeling requires other assumptions.
+On the other hand, as we shall see, gas is collisional and its behaviour at any point is affected by short-range interactions, whose modeling requires other assumptions (see below Sections \ref{sec:extended_gas_physics} and \ref{sec:dwarf_models}).
 
 \subsection{Boltzmann Equation - Equations of motion}
-% We will assume that dark matter consists of small particles that are orders of magnitude smaller than the typical distance scales in our galaxies, so that we will treat it as a collisionless fluid.
-% SPH The main assumption SPH can be used to solve the 
-% The equation of hydrodynamics are derived from the Boltzmann equation.
-This equation is generally valid for any type of fluid, also for a collisionless fluid.
-The direct numerical solution of the CBE, a non-linear PDE in seven dimensions, is not feasible.
-% In this case we can solve the Boltzmann equation directly, by using characteristic solutions.
-To this end, we represent the collisionless fluid by $N$ mass elements (particles).
-In practice an $N$-body method is a tool for solving the collisionless Boltzmann equations.
-% In this way then it reduces to solving the gravitational interactions for this $N$-body system \citep{Dehnem2011}.
+The Boltzmann Equation is the general equation which governs the behaviour of a fluid.
+From it, the equations of motions can be derived and solved to assess the evolution in time of the fluid.
 
-At any given time, it is possible to fully describe an $N$-body system (a set of particles with equal mass $m$) by its distribution function $f(\vect x, \vect v, t)$ which represents the number density of particles in the 6D phase space $(\vect x, \vect v)$. By multiplying this function with the phase space volume element $\d{\vect x} \d{\vect v}$, we obtain the number of particles within this phase space volume element at a given time $t$.
-The number density $n$ in physical space is obtained by integrating over the velocity:
+As we already mentioned, we use a statistical approach for treating a fluid.
+For each point of the fluid we would like to know its position and velocity.
+At any given time $t$ we can write the distribution function
 \begin{equation}
-n(\vect x,t ) = \int f(\vect x, \vect v, t) \d{\vect v}.
+f(\vect x, \vect v, t)
 \end{equation}
-The spatial density is then simply $\rho=mn$.
+which describes the number of molecules lying withing a spatial volume $\dd[3]{\vect x}$ about $\vect x$ and with velocity lying in a velocity-space volume $\dd[3]{\vect v}$ about $\vect v$.
+These elementary volumes $\dd[3]{\vect x}$ and $\dd[3]{\vect v}$ are finite volume elements which are large enough to contain a very large number of molecules and still small enough to be considered as points when compared to macroscopic dimensions \citep{Huang1987}.
+% The distribution function has We can therefore introduce the concept of elementary volume in the 6D phase space $(\vect x, \vect v)$.
 
-Collisionless Boltzmann equation (a.k.a. Vlasov equation).
+% in the elementary volume distribution of the position and velocity of a typical particle
+% by its distribution function $f(\vect x, \vect v, t)$ which represents the number density of fluid molecules in the 6D phase space $(\vect x, \vect v)$.
+% By multiplying this function with the phase space volume element $\dd[3]{\vect x} \dd[3]{\vect v}$, we obtain the number of particles within this phase space volume element at a given time $t$.
+The number density $n(\vect x, t)$ in physical space is obtained by integrating over the velocity:
 \begin{equation}
-...
+n(\vect x,t ) = \int f(\vect x, \vect v, t) \dd[3]{\vect v}.
 \end{equation}
+The spatial density is then simply $\rho(\vect x, t) = m\,n(\vect x, t)$.
+
+We assume that the number density in phase space is conserved, i.e. no particles are destroyed or created out of nothing.
+By carrying out the derivatives we obtain the Boltzmann equation (a.k.a. Vlasov equation):
+\begin{equation}
+\dv{f}{t}(\vect x, \vect v, t) = \pdv{f}{t} + \vect v \pdv{f}{\vect x} + \vect a \pdv{f}{\vect v} = 0,
+\end{equation}
+where $\displaystyle \vect a = \dv{\vect v}{t}$ is the acceleration.
+
 
 \section{N-Body systems}
 % It is interesting to note that in this description the particles have basically completely vanished and have been replaced with a continuum fluid description. Later, 
