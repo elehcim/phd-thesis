@@ -167,9 +167,10 @@ Recently, so called \emph{moving-mesh} methods have emerged. They combine both a
 Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
 which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
 Numerical solutions are always a trade-off between accuracy and practicality.
-It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution}.
+It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution} \citep{Borrow2019}.
 %But at the end of the day if we pay attention to the the trend is 
 
+\paragraph{Origin of SPH}
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
 A key concept is to relate \eqref{eq:df_average} to SPH formalism.
