@@ -28,9 +28,9 @@ On the other hand, as we shall see, gas is collisional and its behaviour at any 
 The Boltzmann Equation is the general equation which governs the behaviour of a fluid.
 From it, the equations of motions can be derived and solved to assess the evolution in time of the fluid.
 
-As we already mentioned, we use a statistical approach for treating a fluid.
+For simplicity, we assume in the following a single specie fluid, a generalization to multiple species being straightforward.
 For each point of the fluid we would like to know its position and velocity.
-At any given time $t$ we can write the distribution function
+Following a statistical approach, at any given time $t$ we can write the distribution function
 \begin{equation}
 f(\vect x, \vect v, t)
 \end{equation}
@@ -99,7 +99,7 @@ SPH has been originally developed as a \emph{probabilistic} particle method for 
 % The hydro differential equations become a set of ordinary differential equations and (t42:00) and a way to  timestepping is needed.
 % Try to construct your discretized equations in a way that it contains the conservation properties of the continuum.
 
-\section{Density Estimation from particles ensemble}
+\subsection{Density Estimation from particles ensemble}
 A possible choice for the kernel is a Gaussian.
 % TODO kernel
 It's much more practical to use a finite support approximation of a Gaussian.
@@ -133,8 +133,9 @@ It is somehow striking that the normalization term is not the default in current
 ...
 
 \section{Dwarf galaxies models}
-We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-body/SPH simulations of late-type isolated dwarf galaxies \citep{Verbeke2017}.
-MoRIA dwarfs are cosmologically motivated models of galaxies ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$.
+\label{sec:dwarf_models}
+We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-body/SPH simulations of late-type isolated dwarf galaxies.
+They are \textasciitilde$30$ simulations cover the the dwarf galaxy regime (ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$) with different mass assembly histories in a cosmological setting with added \popiii{} feedback \citep{Verbeke2017}.
 Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \citep{Cloet-Osselaer2014}.
 
 MoRIA dwarfs are the sum of multiple researchers work, starting with the implemetation of models for star formation and chemical enrichment \citep{Valcke2008}. 
@@ -148,13 +149,11 @@ This has helped to shed light onto the ``Too big-too fail'' problem \citep{Verbe
 \paragraph{Physical characteristics} MoRIA dwarfs, have a virial mass at $z=0$ of $M_{200} \approx 10^{10} - 10^{11}$\Msun{}. The dark particle mass is $m_{\mathrm{dm}} = 2 \cdot 10^4$ \Msun{} whereas the baryonic particle mass $m_{\mathrm{b}}$ follows from the relation $\Omega_\mathrm{b}/\Omega_{\mathrm{dm}} = 0.2115$ \citep{Planck2015}.
 The typical number of particles is $n_\mathrm{b} = n_{\mathrm{dm}} = 5 \cdot 10^5 - 2 \cdot 10^6$ \Msun{}.
 
-\subsection{Gravity}
-
-\subsection{Hydrodynamics}
 \subsection{Sub-grid models}
 For a review see \citet{Verbeke2017, Vandenbroucke2016}.
 
 \paragraph{Star Formation}
+\label{sec:star_formation}
 Star particles are formed in converging, cold and dense regions of gas.
 The following three conditions must be true for a gas particle to be eligible to become a star particle.
 \begin{align*}
@@ -208,6 +207,7 @@ In simulation stellar wind is taken into account as a uniformly spread energy in
 % The stellar population in the star particle is modelled by an initial mass function which tells how many stars are formed with a certain amount of mass. 
 
 \subsection{Extended gas physics}
+\label{sec:extended_gas_physics}
 \paragraph{Radiative cooling}
 
 \paragraph{Ionization aware equation of state}
