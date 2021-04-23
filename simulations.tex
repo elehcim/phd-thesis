@@ -82,9 +82,9 @@ We also neglect diffusive terms (heat conduction and viscous stress tensor) whic
 The hydrodynamical equations (a.k.a. Euler equations) are therefore: 
 \begin{align}
 \label{eq:euler}
- \dv{\rho}{t} &= \pdv{\rho}{t} + \vect v \vdot \grad \rho = - \rho \,\div \vect v \nonumber\\
- \dv{\vect v}{t} &= \pdv{\vect v}{t} + \left(\vect v \vdot \grad\right) \vect v  = \vect a - \frac{\grad p}{\rho}\\
- \dv{\energy}{t} &= \pdv{\energy}{t} + \vect v \vdot \grad \energy = - \frac{p}{\rho} \div \vect v \nonumber%\frac{\Gamma - \Lambda}{\rho}
+ \dv{\rho}{t} &= \pdv{\rho}{t} + \vect v \vdot \grad \rho = - \rho \,\div \vect v, \nonumber\\
+ \dv{\vect v}{t} &= \pdv{\vect v}{t} + \left(\vect v \vdot \grad\right) \vect v  = \vect a - \frac{\grad p}{\rho},\\
+ \dv{\energy}{t} &= \pdv{\energy}{t} + \vect v \vdot \grad \energy = - \frac{p}{\rho} \div \vect v. \nonumber%\frac{\Gamma - \Lambda}{\rho}
 \end{align}
 % \begin{equation}
 %   \begin{split}
@@ -100,12 +100,16 @@ The hydrodynamical equations (a.k.a. Euler equations) are therefore:
 %   \end{split}
 % \end{equation}
 where we defined the pressure as $$p(\vect x, t) = \rho \dfrac 1 3 \trace{(\vect w \vect w^T)} = \rho \dfrac 1 3 \norm{\vect w}^2,$$ assuming an isotropic medium, and the specific internal energy (internal energy per unit mass) as $$\energy(\vect x, t)=\dfrac 1 2 \norm{\vect w}^2.$$ % FIXME Check if this is true
-These definitions implicitly fix an equation of state $p = \frac 2 3 \rho \energy$.
+These definitions implicitly fix an equation of state
+\begin{equation}
+\label{eq:simple_eos}
+p = \frac 2 3 \rho \energy. 
+\end{equation}
 Usually a more general equation of state is assumed $p = (\gamma - 1) \rho \energy$.
-For a monoatomic gas: $\gamma = \dfrac{5}{3}$, so the latter is returned.
+For a monoatomic gas: $\gamma = \dfrac{5}{3}$, so equation \eqref{eq:simple_eos} is returned.
 
 Also, the internal energy is related to the temperature via the Boltzmann constants $k_B$:
-\[ \energy = \frac {1}{\gamma - 1} \frac{k_B T}{m_p}\]
+\[ \energy = \frac {1}{\gamma - 1} \frac{k_B T}{m_p}.\]
 For a monoatomic gas $\displaystyle \energy = \frac 3 2 \frac{k_B T}{m_p}$.
 
 % $\Gamma$ and $\Lambda$...
@@ -141,10 +145,10 @@ Thus, in practice an $N$-body method is a tool for solving the Boltzmann equatio
 
 The equation of motion for particles, following equations \eqref{eq:poisson} can be written as follows:
 \begin{equation}
- \vect a_i = -\nabla_i \Phi(\vect x_i)
+ \vect a_i = -\nabla_i \Phi(\vect x_i),
 \end{equation}
 \begin{equation}
- \Phi(\vect x_i) = -G \sum^N_{j=1}\frac{m_j}{\sqrt{(\vect x_i-\vect x_j)^2 + \epsilon^2}}
+ \Phi(\vect x_i) = -G \sum^N_{j=1}\frac{m_j}{\sqrt{(\vect x_i-\vect x_j)^2 + \epsilon^2}}.
 \end{equation}
 
 where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle.
