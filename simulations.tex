@@ -51,11 +51,11 @@ From this we can define an average value in the position space of a generic quan
  \label{eq:df_average}
  \mean A (\vect x, t) = \int{A(\vect x, \vect v, t)\, m_p\, f(\vect x, \vect v, t) \dd[3] \vect v}
 \end{equation}
-It is useful to define the averaged velocity $\vect u$ as:
+It is useful to define the averaged (\emph{bulk}) velocity $\vect u$ as:
 \begin{equation}
   \vect u(\vect x, t) \equiv \mean{\vect v}(\vect x, t) = \int{\vect v(\vect x, \vect v, t)\, m_p\, f(\vect x, \vect v, t) \dd[3] \vect v}
 \end{equation}
-For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect v = \vect u + \vect w$, where $\vect u$ is the average particle velocity (\emph{bulk} velocity) and $\vect w$ a term corresponding to the random movement of the particle with respect to this average flow velocity.
+For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect v = \vect u + \vect w$, where $\vect u$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to this average flow velocity.
 
 In the absence of external forces and assuming the microscopic particles do not collide, the number density in phase space is conserved in time, i.e. no particles are destroyed or created out of nothing in phase space.
 This gives immediately the collisionless Boltzmann equation (a.k.a. Vlasov equation):
@@ -258,7 +258,7 @@ The following three conditions must be true for a gas particle to be eligible to
 \begin{align*}
  T_g &< 15000 \text{~K},\\
  \rho_g &> 100 \text{~amu/cm}^{3},\\
- \nabla \cdot \vect v & < 0.
+ \div \vect v & < 0.
 \end{align*}
 
 The conversion into star particles of gas particles which meet the above conditions is governed by a Schmidt relation \citep{Schmidt1959}
@@ -436,7 +436,7 @@ and its norm as:
 
 From eqs. \eqref{eq:hamilton_quaternion} and \eqref{eq:hamilton_quaternion_mixed} in particular we can write the general formula for the non commutative quaternion multiplication, i.e. given two quaternions $\vect q$ and $\vect p$:
 \begin{equation}
- \vect q \vect p = (q_0 p_0 - \vec q \cdot \vec p, \, q_0 \vec p + p_0 \vec q + \vec q \times \vec p).
+ \vect q \vect p = (q_0 p_0 - \vec q \vdot \vec p, \, q_0 \vec p + p_0 \vec q + \vec q \cross \vec p).
  \label{eq:quaternion_multiplication}
 \end{equation}
 From \eqref{eq:conjugate} it follows that $\vect q \conj{\vect q} = \norm{\vect q}^2 \equiv (\norm{\vect q}^2, \vec 0)$. For unit quaternions ($\norm{\vect q} = 1$), we can write $\conj{\vect q} = \vect q^{-1}$.% because $\vect 1 \equiv (0$.
