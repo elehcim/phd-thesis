@@ -32,48 +32,48 @@ For simplicity, in this section we assume a single-specie fluid, a generalizatio
 For each point of the fluid we would like to know its position and velocity.
 Following a statistical approach, at any given time $t$ we can write the distribution function
 \begin{equation}
-f(\vect x, \vect v, t)
+f(\vect x, \vect u, t)
 \end{equation}
-which describes the number of molecules lying withing a spatial volume $\dd[3]{\vect x}$ about $\vect x$ and with velocity lying in a velocity-space volume $\dd[3]{\vect v}$ about $\vect v$.
-These elementary volumes $\dd[3]{\vect x}$ and $\dd[3]{\vect v}$ are finite volume elements which are large enough to contain a very large number of molecules and still small enough to be considered as points when compared to macroscopic dimensions \citep{Huang1987}.
-% The distribution function has We can therefore introduce the concept of elementary volume in the 6D phase space $(\vect x, \vect v)$.
+which describes the number of molecules lying withing a spatial volume $\dd[3]{\vect x}$ about $\vect x$ and with velocity lying in a velocity-space volume $\dd[3]{\vect u}$ about $\vect u$.
+These elementary volumes $\dd[3]{\vect x}$ and $\dd[3]{\vect u}$ are finite volume elements which are large enough to contain a very large number of molecules and still small enough to be considered as points when compared to macroscopic dimensions \citep{Huang1987}.
+% The distribution function has We can therefore introduce the concept of elementary volume in the 6D phase space $(\vect x, \vect u)$.
 
 % in the elementary volume distribution of the position and velocity of a typical particle
-% by its distribution function $f(\vect x, \vect v, t)$ which represents the number density of fluid molecules in the 6D phase space $(\vect x, \vect v)$.
-% By multiplying this function with the phase space volume element $\dd[3]{\vect x} \dd[3]{\vect v}$, we obtain the number of particles within this phase space volume element at a given time $t$.
+% by its distribution function $f(\vect x, \vect u, t)$ which represents the number density of fluid molecules in the 6D phase space $(\vect x, \vect u)$.
+% By multiplying this function with the phase space volume element $\dd[3]{\vect x} \dd[3]{\vect u}$, we obtain the number of particles within this phase space volume element at a given time $t$.
 The number density $n(\vect x, t)$ in physical space is obtained by integrating over the velocity:
 \begin{equation}
-n(\vect x, t ) = \int f(\vect x, \vect v, t) \dd[3]{\vect v}.
+n(\vect x, t ) = \int f(\vect x, \vect u, t) \dd[3]{\vect u}.
 \end{equation}
 The spatial density is then simply $\rho(\vect x, t) = m_p\,n(\vect x, t)$, where $m_p$ is the mass of the elementary molecule of the fluid.
-From this we can define an average value in the position space of a generic quantity $A(\vect x, \vect v, t)$:
+From this we can define an average value in the position space of a generic quantity $A(\vect x, \vect u, t)$:
 \begin{equation}
  \label{eq:df_average}
- \mean A (\vect x, t) = \int{A(\vect x, \vect v, t)\, m_p\, f(\vect x, \vect v, t) \dd[3] \vect v}
+ \mean A (\vect x, t) = \int{A(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
 \end{equation}
-It is useful to define the averaged (\emph{bulk}) velocity $\vect u$ as:
+It is useful to define the averaged (\emph{bulk}) velocity $\vect v$ as:
 \begin{equation}
-  \vect u(\vect x, t) \equiv \mean{\vect v}(\vect x, t) = \int{\vect v(\vect x, \vect v, t)\, m_p\, f(\vect x, \vect v, t) \dd[3] \vect v}
+  \vect v(\vect x, t) \equiv \mean{\vect u}(\vect x, t) = \int{\vect u(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
 \end{equation}
-For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect v = \vect u + \vect w$, where $\vect u$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to this average flow velocity.
+For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect u = \vect v + \vect w$, where $\vect v$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to this average flow velocity.
 
 In the absence of external forces and assuming the microscopic particles do not collide, the number density in phase space is conserved in time, i.e. no particles are destroyed or created out of nothing in phase space.
 This gives immediately the collisionless Boltzmann equation (a.k.a. Vlasov equation):
 \begin{equation}
 \label{eq:vlasov}
-\dv{f}{t}(\vect x, \vect v, t) = \pdv{f}{t} + \vect v \pdv{f}{\vect x} + \vect a \pdv{f}{\vect v} = 0,
+\dv{f}{t}(\vect x, \vect u, t) = \pdv{f}{t} + \vect u \pdv{f}{\vect x} + \vect a \pdv{f}{\vect u} = 0,
 \end{equation}
-where $\displaystyle \vect a = \dv{\vect v}{t}$ is the acceleration.
+where $\displaystyle \vect a = \dv{\vect u}{t}$ is the acceleration.
 
 In the case of collisions, the Boltzmann equation is modified to:
 \begin{equation}
 \label{eq:boltzmann}
-\dv{f}{t}(\vect x, \vect v, t) = \left.\dv{f}{t}\right|_c,
+\dv{f}{t}(\vect x, \vect u, t) = \left.\dv{f}{t}\right|_c,
 \end{equation}
 where the right term represents discontinuous motion of molecules through phase space because of collisions.
 
 \subsubsection{Euler's equations}
-After computing the zeroth, first and second velocity moments of equation \eqref{eq:boltzmann} --by multiplying by $m_p$, $m_p\vect v$ and $m_p\norm{\vect v}^2$ and by integrating over the entire velocity space-- it is possible to retrieve the equations of hydrodynamics (continuity, momentum and energy) \citep[][and \cite{Vandenbroucke2016} for an extended derivation]{Huang1987}.
+After computing the zeroth, first and second velocity moments of equation \eqref{eq:boltzmann} --by multiplying by $m_p$, $m_p\vect u$ and $m_p\norm{\vect u}^2$ and by integrating over the entire velocity space-- it is possible to retrieve the equations of hydrodynamics (continuity, momentum and energy) \citep[][and \cite{Vandenbroucke2016} for an extended derivation]{Huang1987}.
 
 In the following we do the assumption that collisions do not create or destroy molecules at a fixed position (they only shift them in velocity space), they conserve momentum and energy.
 Consequently in the case of the continuity, momentum and energy equations the right-hand side of equation \eqref{eq:boltzmann} vanishes.
@@ -82,9 +82,9 @@ We also neglect diffusive terms (heat conduction and viscous stress tensor) whic
 The hydrodynamical equations (a.k.a. Euler equations) are therefore: 
 \begin{align}
 \label{eq:euler}
- \dv{\rho}{t} &= \pdv{\rho}{t} + \vect u \vdot \grad \rho = - \rho \,\div \vect u \nonumber\\
- \dv{\vect u}{t} &= \pdv{\vect u}{t} + \left(\vect u \vdot \grad\right) \vect u  = \vect a - \frac{\grad p}{\rho}\\
- \dv{\energy}{t} &= \pdv{\energy}{t} + \vect u \vdot \grad \energy = - \frac{p}{\rho} \div \vect u \nonumber%\frac{\Gamma - \Lambda}{\rho}
+ \dv{\rho}{t} &= \pdv{\rho}{t} + \vect v \vdot \grad \rho = - \rho \,\div \vect v \nonumber\\
+ \dv{\vect v}{t} &= \pdv{\vect v}{t} + \left(\vect v \vdot \grad\right) \vect v  = \vect a - \frac{\grad p}{\rho}\\
+ \dv{\energy}{t} &= \pdv{\energy}{t} + \vect v \vdot \grad \energy = - \frac{p}{\rho} \div \vect v \nonumber%\frac{\Gamma - \Lambda}{\rho}
 \end{align}
 % \begin{equation}
 %   \begin{split}
