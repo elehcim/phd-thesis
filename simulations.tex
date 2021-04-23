@@ -49,13 +49,13 @@ The spatial density is then simply $\rho(\vect x, t) = m_p\,n(\vect x, t)$, wher
 From this we can define an average value in the position space of a generic quantity $A(\vect x, \vect u, t)$:
 \begin{equation}
  \label{eq:df_average}
- \mean A (\vect x, t) = \int{A(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
+ \mean A (\vect x, t) = \frac{1}{\rho(\vect x, t)}\int{A(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
 \end{equation}
 It is useful to define the averaged (\emph{bulk}) velocity $\vect v$ as:
 \begin{equation}
-  \vect v(\vect x, t) \equiv \mean{\vect u}(\vect x, t) = \int{\vect u(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
+  \vect v(\vect x, t) \equiv \mean{\vect u}(\vect x, t) = \frac{1}{\rho(\vect x, t)}\int{\vect u(\vect x, \vect u, t)\, m_p\, f(\vect x, \vect u, t) \dd[3] \vect u}
 \end{equation}
-For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect u = \vect v + \vect w$, where $\vect v$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to this average flow velocity.
+For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect u = \vect v + \vect w$, where $\vect v$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to the bulk flow velocity.
 
 In the absence of external forces and assuming the microscopic particles do not collide, the number density in phase space is conserved in time, i.e. no particles are destroyed or created out of nothing in phase space.
 This gives immediately the collisionless Boltzmann equation (a.k.a. Vlasov equation):
