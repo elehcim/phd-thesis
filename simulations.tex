@@ -295,7 +295,8 @@ The first type of feedback comes from supernovae events. Two main supernovae typ
 This type of feedback lasts from the death of the most massive stars of the sampled by the particle's SSP, until the death of the least massive stars which are still capable of going supernova ($>8$ \Msun ): $0.005 - 0.043$ Gyr.
 For less massive stars, Type~Ia supernova occurs in a binary star system made by a red giant and a white dwarf.
 The gas from a red giant overflows onto a white dwarf and when a critical mass is reached, the white dwarf can no longer be supported and collapses, then rebounds. Neutrinos are thought to play an important role in this expansion \citep{Wongwathanarat2017}.
-Because it involves less massive stars and demands a period of steady accretion the feedback of \snia{} is returned $1.54 − 1.87$~Gyr after the birth of the star particle. Energy injection of \snia{} is delayed by a normally distributed offset-time following \citet{Strolger2004}.
+Because it involves less massive stars and demands a period of steady accretion the feedback of \snia{} is returned $1.54 − 1.87$~Gyr after the birth of the star particle.
+Energy injection of \snia{} is delayed by a normally distributed offset-time following \citet{Strolger2004}.
 Feedback from supernovae events of type Ia (\snia) and II (\snii) inject $10^{51}$~erg into the surrounding ISM. For more details, the reader is referred to \cite{Valcke2008}.
 
 % Adapted from Simon Driver
@@ -403,10 +404,18 @@ Also, additional fictitious forces on the particles are included to take into ac
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
 % A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
 
-\paragraph{Reference frames} In a moving box simulation, reference frames have an important roles.
+\paragraph{Reference frames} 
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{moving_box_nichols.png}
+ \caption{From \citet{Nichols2015}. On the left it is shown the the moving box trajectory. The blue arrow represents the instantaneous box (and therefore dwarf galaxy) velocity.
+ On the right, gaseous particles are injected from the bottom side of the box. In red, dark matter density contours, and arrows indicate the wind particles velocity.}
+ \label{fig:mb_nichols}
+\end{figure}
+In a moving box simulation, reference frames have an important roles.
 We define the inertial reference frame where the cluster is at the origin.
-Relative to that the box moves and rotates.
-To represent the correct rotations, the moving box is 
+Relative to that the box moves and rotates, as shown in Figure \ref{fig:mb_nichols}.
+To represent the correct rotations, at each moment the quaternion is the moving box is computed.
 
 \subsection{Quaternions}
 For completeness, we briefly introduce quaternions algebra.
@@ -491,7 +500,7 @@ Let $\vect \Omega$ be the angular velocity of the box in the inertial frame, and
 A vector $\vect X$ in the inertial frame, corresponds to $\vect x = \mathbf q^{-1}\, \vect X \,\mathbf q $ in the rotating frame.
 
 The velocity of the box is measured using a fixed point inside the box, called \emph{pivot}, whose coordinates relative to the box are $\mathbf{x}_{\mathrm p}$ and its velocity and acceleration in the inertial frame relative to the cluster are denoted with $\Vp$ and $\Ap$, respectively.
-The \emph{pivot} represents the position in the box of minimal specific energy at the start of the simulation \citep{Hausammann2019}.
+The \emph{pivot} represents the position in the box of minimal specific energy at the start of the simulation.
 From this, $\vect \Omega$ can be computed as 
 \begin{equation}
  \vect{\Omega} = {(\Vp\times\Ap)}/{\Vp^2}
@@ -507,7 +516,8 @@ We can then transform from rotating to inertial coordinates by applying this tra
 where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in the rotating frame, respectively, and $\mathbf V$ its velocity in the inertial frame. % For simplicity in the following we don't take into account $\Vp$ since its contribution to the line of sight velocity is negligible.
 
 
-\section{Simulating the Fornax cluster environment}\label{sec:fornax_sim}
+\section{Simulating the Fornax cluster environment}
+\label{sec:fornax_sim}
 
 \subsection{Cluster model}
 
@@ -555,7 +565,8 @@ The starting point of the infall is always at a radial distance of 600~kpc.
 We chose a lower radial distance of the starting position w.r.t. the virial radius given the very low cluster density in that region and the low orbital velocity of the dwarf near apocentre.
 In this way, simulations could be concentrated on the infall and the pericenter passages of the simulated dwarfs.
 We evolved the galaxies for $5.5$~Gyrs up to $z=0$.
-The initial stellar masses are reported in Table \ref{tbl:sim}. All simulations presented in this paper, at time of injection have exponentially declining SB profiles with Sersic index around 1.0.
+The initial stellar masses are reported in Table \ref{tbl:sim}.
+All simulations presented in this paper, at time of injection have exponentially declining SB profiles with Sersic index around 1.0.
 Every $10$~Myr a snapshot is saved, yielding around 560 snapshots for each simulation.
 This high snapshot cadence has proven to be important for the following analysis (see Section \ref{sec:morphological_quest}).
 Adhering to the simulation goal of following the evolution of a gas-rich late-type dwarf in a Fornax-like cluster, the initial snapshot of the most massive dwarf (ID 41) has been taken at $z=0.4$ because at $z=0.5$ it was still undergoing a major merger event.
@@ -564,8 +575,8 @@ No sizeable effect has been noted in simulations results highlighting a differen
 This has had the only implication of a lower number of snapshots used in the technique explained in Section \ref{sec:morphological_quest}, but, as we shall see in the following, given that first pericenter passage turns out to be the most significant orbital phase, no notable bias is expected.
 
 \begin{table}
-	\centering
-	\footnotesize
+\centering
+\footnotesize
 \begin{tabular}{cx{1.3cm}x{0.5cm}x{0.8cm}x{0.7cm}x{0.4cm}x{1.4cm}}
 \toprule
 Sim ID & $\log_{10}$(M$_\star$)\newline(M$_\odot$) & $R_e$ \newline (kpc) & $\sigma_\star$ \newline (km/s)\\
@@ -577,6 +588,6 @@ Sim ID & $\log_{10}$(M$_\star$)\newline(M$_\odot$) & $R_e$ \newline (kpc) & $\si
   41 &  8.78 &  1.7 &  30.4 \\
 \bottomrule
 \end{tabular}
-	\caption{Features at time of infall ($z=0.5$) of the selected MoRIA dwarf models used in this work}
+\caption{Features at time of infall ($z=0.5$) of the selected MoRIA dwarf models used in this work}
 \label{tbl:sim}
 \end{table}
