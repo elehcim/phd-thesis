@@ -5,6 +5,15 @@
 
 \section{Introduction}
 
+
+\begin{sidewaystable}
+ \centering
+ \footnotesize
+ \include{tbl_redshift_0}
+ \caption{Features of the selected MoRIA Galaxies at $z=0$} \label{tbl:galaxies}
+\end{sidewaystable}
+
+
 \paragraph*{Radial period}
 Pericenter passages, as explained in the following, are important moments for the life of the simulated dwarf.
 In order to compare different orbits, we normalise the simulation time by the orbital radial period $T_r$, i.e. the time between two pericenter passages, \citep{BinneyTremaine2008}:
@@ -13,11 +22,17 @@ In order to compare different orbits, we normalise the simulation time by the or
     T_r = 2 \int^{r_a}_{r_p} \frac{\d r}{\sqrt{2\left[E-\Phi(r) \right] - J^2/r^2}}
     \label{eq:radial_period}
 \end{equation}
-where $r_p, r_a$ are the pericenter and apocentre distance respectively, $E$ and $J$ the orbital energy and angular momentum per unit mass, $\Phi(r)$ the potential at radius $r$ of the NFW halo around which the galaxy is orbiting. 
-We also define $t_p: r(t_p)=r_p$ (time of pericenter passage), so that $\tau = (t-t_p)/T_r$ is~0 or 1 for first or second pericenters respectively,~and~0.5 for apocentre passages.
+where $r_p, r_a$ are the pericenter and apocentre distance respectively, $E$ and $J$ the orbital energy and angular momentum per unit mass, $\Phi(r)$ the potential at radius $r$ of the NFW halo around which the galaxy is orbiting.
+
+By defining the time of pericenter passage as $t_p: r(t_p) = r_p$, we can introduce the normalized time:
+\begin{equation}
+\tau = \frac{t-t_p}{T_r},
+\end{equation}
+which is~$0$ or $1$ for first or second pericenters respectively,~and~$0.5$ for apocentre passages.
 
 % We begin with following one galaxy in its journey around the cluster.
 In the following we will compare the effects of orbit and initial mass using the set of 25 simulations we have carried out.
+
 
 \paragraph*{Tidal radius}
 As we shall see, the cluster gravitational potential is able to strip material from the galaxy. Some of the simulations, depending on the orbit they are on, will become gravitationally unbound dominated by the cluster potential.
