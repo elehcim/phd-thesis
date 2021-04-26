@@ -516,7 +516,7 @@ We start by noting empirically that for our typical galaxy size a sufficient acc
 Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
 A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
 
-\begin{figure}
+\begin{figure} % TODO include adhoc figure
 \centering
 %  \includegraphics[width=0.8\textwidth]{adhoc.png}
 \caption{Adhoc acceleration relative to the total gravitational acceleration of the simulation ID 68 with pericenter 150 kpc.}
@@ -593,11 +593,11 @@ We evolved the galaxies for $5.5$~Gyrs up to $z=0$.
 The initial stellar masses are reported in Table \ref{tbl:sim}.
 All simulations presented in this paper, at time of injection have exponentially declining SB profiles with Sersic index around 1.0.
 Every $10$~Myr a snapshot is saved, yielding around 560 snapshots for each simulation.
-This high snapshot cadence has proven to be important for the following analysis (see Section \ref{sec:morphological_quest}).
+This high snapshot cadence has proven to be important for the following analysis (see \refsec{sec:morphological_quest}).
 Adhering to the simulation goal of following the evolution of a gas-rich late-type dwarf in a Fornax-like cluster, the initial snapshot of the most massive dwarf (ID 41) has been taken at $z=0.4$ because at $z=0.5$ it was still undergoing a major merger event.
 This is equivalent to having this galaxy falling into the cluster more recently.
 No sizeable effect has been noted in simulations results highlighting a different behaviour with respect to the other galaxies \citep[which underwent their last merger before infalling to the cluster at $z=0.5$, see e.g.][]{Cloet-Osselaer2014}.
-This has had the only implication of a lower number of snapshots used in the technique explained in Section \ref{sec:morphological_quest}, but, as we shall see in the following, given that first pericenter passage turns out to be the most significant orbital phase, no notable bias is expected.
+This has had the only implication of a lower number of snapshots used in the technique explained in \refsec{sec:morphological_quest}, but, as we shall see in the following, given that first pericenter passage turns out to be the most significant orbital phase, no notable bias is expected.
 
 \begin{table}
 \centering
@@ -616,3 +616,17 @@ Sim ID & $\log_{10}$(M$_\star$)\newline(M$_\odot$) & $R_e$ \newline (kpc) & $\si
 \caption{Features at time of infall ($z=0.5$) of the selected MoRIA dwarf models used in this work}
 \label{tbl:sim}
 \end{table}
+
+
+\section{Only tides simulations}
+In order to isolate the effects of the tides and of the ram pressure, we performed some representative simulations without the cluster gas.
+% These hypothethical simulations show...
+
+In Figure~\ref{fig:gas_no_gas}, are shown the typical tidal tails due to tides.
+
+\begin{figure} % TODO add figure
+ \centering
+%  \includegraphics[width=0.8\textwidth]{gas_no_gas.png}
+ \caption{Projected density map of a galaxy orbiting a Fornax-like cluster.
+ On the left a snapshot without cluster gas: two tidal tail are shown; on the right, the gas interacting with the dwarf creates a wake and a single tidal tail is formed.}
+\end{figure}
