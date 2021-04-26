@@ -177,7 +177,7 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
 A key concept is to relate \eqref{eq:df_average} to SPH formalism.
-... Similarity of SPH with eq. \eqref{eq:df_average}...
+... Similarity of SPH with eq. \eqref{eq:df_average}... % TODO density estimation
 
 % In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
 % \begin{equation}
@@ -204,7 +204,6 @@ A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 
 \subsection{Density Estimation from particles ensemble}
 A possible choice for the kernel is a Gaussian.
-% TODO kernel
 It's much more practical to use a finite support approximation of a Gaussian.
 The most used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1946}, generated as the Fourier transform \citep{Price2012}:
 \begin{equation}
@@ -500,6 +499,7 @@ The dwarf galaxy experiences also a low intensity drag due to the gas impinging 
 In our simulations, this drag is always $<5\%$ than the gravitational acceleration.
 In order to keep the galaxy at the center of the box, an \emph{ad~hoc} corrective acceleration $\Ap^{hoc}$ is added to the particles in the box.
 This translates in adding an acceleration term to the one of the pivot $\Ap = −\grad \Phi(\vect X_\mathrm p) + \Ap^{hoc}$.
+
 In \citet{Nichols2015}, the correction term is intended to become zero when not needed.
 In practice, the $64$ particles with lower total energy (kinetic plus potential) are tracked at each timestep and their average position ($\vect X_{64}$) is taken as the center of the galaxy.
 The goal of the ad hoc acceleration is to move the box to follow the center of the galaxy and so compensate the drift of these particles from the pivot.
@@ -511,6 +511,7 @@ A slight improvement in our implementation of the moving-box method is the use o
  \Ap^{hoc} = 2\,\zeta\omega_0 \Vp + \omega_0^2 \vect X_\mathrm p,
 \end{equation}
 where $\omega_0$ is the undamped angular frequency of the oscillator, and $\zeta$ the damping ratio.
+
 We start by noting empirically that for our typical galaxy size a sufficient acceleration requires that $\omega_n^2\approx 10$ Gyr$^{-2}$.
 Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
 A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
