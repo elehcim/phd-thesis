@@ -139,7 +139,7 @@ Around pericentre the main elongation direction of the ellipsoid ($\vect w_2$) i
 Around the second pericenter passage the galaxy ends up being dispersed and not anymore gravitationally bound.
 
 
-\subsection{Star formation}
+\section{Star formation}
 Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
 In particular, tidal tails around pericenter can create grooves in the potential well which enhance the squeezing of cold gas ready to create stars.
 The total content of star forming gas is shown in Figure~\ref{fig:cold_gas}.
@@ -170,7 +170,7 @@ In stripped tails of the jellyfish, gas is able to cool and create stars. \citet
 
 % TODO compute cluster gas pressure corresponding to SFR peaks.
 
-\subsubsection{Where do stars form?}
+\subsection{Where do stars form?}
 \begin{figure*}
 \centering
 \begin{subfigure}[t]{0.7\textwidth}
@@ -196,7 +196,7 @@ An intermediate mass dwarf, ID 68, on orbit of 50 and 100 kpc is completely stri
 This enforces the idea of the \emph{Jellyfish} phenomenon as a relatively short transitory phase of the galaxy. 
 
 
-\subsubsection{Central stellar velocity dispersion}
+\subsection{Central stellar velocity dispersion}
 To start with, we measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on orbit, as shown in Figure~\ref{fig:sigma}.
 %Tidal interactions stir the particles in the centre of the galaxies. % FIXME  
 %TODO There seems to be a bump
@@ -212,7 +212,7 @@ To start with, we measured the central (within $250$ pc) stellar velocity disper
 % \subsection{Stellar metallicity gradients}
 
 %% DERIVED PROPERTIES
-\subsection{Colour Magnitude}
+\section{Colour Magnitude}
 In Figure \ref{fig:g-r} we show the behaviour of the colour magnitude.
 In particular the lightest galaxy (ID 62) does not survive the first infall yet ending its life in the early-type galaxy realm, independently of the orbit.
 As shown in Figures \ref{fig:cold_gas} and \ref{fig:sfr}, the most massive one (ID 41) retains most of its cold gas except for the most radial orbit. This allows for star formation to occur almost  steadily and to move multiple times between early- and late-type realms.
@@ -232,7 +232,7 @@ The tracks are limited to bound galaxies (i.e. they are drawn with snapshots for
 \label{fig:g-r}
 \end{sidewaysfigure}
 
-\subsection{HI size mass relation during infall}
+\section{HI size mass relation during infall}
 \citet{Stevens2019} show how inevitable is the size-mass relation of neutral hydrogen, even during stripping phases.
 Our simulations can be checked on the size-mass plane.
 As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$. The radius on the other hand is the major axis of the best fit ellipse on the $1$~\Msun{}~pc$^{-2}$ contour.
@@ -240,11 +240,11 @@ As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} c
 %In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of a representative dwarf.
 % We see that our dwarfs stay on the \Hi{} size-mass relation.
 
-\subsection{Kinematics}
+\section{Kinematics}
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
 The details on how to recover the correct in our setup are shown in \refsec{sec:corret_kinematics}.
 
-\subsubsection{Angular momentum and specific angular momentum}
+\subsection{Angular momentum and specific angular momentum}
 We compute the specific stellar angular momentum $\lambda_R$ starting from SPH-weighted velocity and velocity dispersion maps as defined in e.g. \citet{Toloba2015}:
 \begin{equation}
     \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
@@ -264,7 +264,7 @@ with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel fro
 
 % \citep{Bidaran2020}
 
-\subsubsection{Relation with physical angular momentum}
+\subsection{Relation with physical angular momentum}
 We compute the specific angular momentum ($j_s = J_s/M_g$ where $J_s$ is the total angular momentum and $M_g$ the total mass of the galaxy) of star particles within 10~kpc from the densest stellar region (centre of the galaxy).
 We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}. We notice that $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
