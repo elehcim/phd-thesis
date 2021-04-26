@@ -242,7 +242,7 @@ We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-bod
 They are \textasciitilde$30$ simulations cover the the dwarf galaxy regime (ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$) with different mass assembly histories in a cosmological setting with added \popiii{} feedback \citep{Verbeke2017}.
 Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \citep{Cloet-Osselaer2014}.
 
-MoRIA dwarfs are the sum of multiple researchers work, starting with the implemetation of models for star formation and chemical enrichment \citep{Valcke2008}. 
+MoRIA dwarfs are the sum of multiple researchers work, starting with the implementation of models for star formation and chemical enrichment \citep{Valcke2008}. 
 Then, in addition to the mass, rotation has been found to have a significant influence on the evolution and appearance of dwarf galaxies and their star formation \citep{Schroyen2011}.
 Later, the addition of advanced prescriptions for cooling has allowed to increase the resolution when simulating the formation of cold, neutral, high-density clouds suitable for star formation \citep{DeRijcke2013}. %\citep{Verbeke2015}.
 MoRIA models could then be used to investigate and reproduce a whole range of observational properties of dwarfs in the field.
@@ -404,19 +404,6 @@ Also, additional fictitious forces on the particles are included to take into ac
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
 % A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
 
-\paragraph{Reference frames} 
-\begin{figure}[H]
- \centering
- \includegraphics[width=\textwidth]{moving_box_nichols.png}
- \caption{From \citet{Nichols2015}. On the left it is shown the the moving box trajectory. The blue arrow represents the instantaneous box (and therefore dwarf galaxy) velocity.
- On the right, gaseous particles are injected from the bottom side of the box. In red, dark matter density contours, and arrows indicate the wind particles velocity.}
- \label{fig:mb_nichols}
-\end{figure}
-In a moving box simulation, reference frames have an important roles.
-We define the inertial reference frame where the cluster is at the origin.
-Relative to that the box moves and rotates, as shown in Figure \ref{fig:mb_nichols}.
-To represent the correct rotations, at each moment the quaternion is the moving box is computed.
-
 \subsection{Quaternions}
 For completeness, we briefly introduce quaternions algebra.
 Following \citet{Graf2008}, a quaternion is a set of four parameters, a real value $q_0$ and three imaginary values $q_1\vect{i},q_2\vect{j},q_3\vect{k}$ with $q_1,q_2,q_3 \in \mathbb{R}$ usually represented as:
@@ -450,10 +437,10 @@ and its norm as:
 
 From eqs. \eqref{eq:hamilton_quaternion} and \eqref{eq:hamilton_quaternion_mixed} in particular we can write the general formula for the non commutative quaternion multiplication, i.e. given two quaternions $\vect q$ and $\vect p$:
 \begin{equation}
- \vect q \vect p = (q_0 p_0 - \vec q \vdot \vec p, \, q_0 \vec p + p_0 \vec q + \vec q \cross \vec p).
+ \vect q \,\vect p = (q_0 p_0 - \vec q \vdot \vec p, \, q_0 \vec p + p_0 \vec q + \vec q \cross \vec p).
  \label{eq:quaternion_multiplication}
 \end{equation}
-From \eqref{eq:conjugate} it follows that $\vect q \conj{\vect q} = \norm{\vect q}^2 \equiv (\norm{\vect q}^2, \vec 0)$. For unit quaternions ($\norm{\vect q} = 1$), we can write $\conj{\vect q} = \vect q^{-1}$.% because $\vect 1 \equiv (0$.
+From \eqref{eq:conjugate} it follows that $\vect q \,\conj{\vect q} = \norm{\vect q}^2 \equiv (\norm{\vect q}^2, \vec 0)$. For unit quaternions ($\norm{\vect q} = 1$), we can write $\conj{\vect q} = \vect q^{-1}$.% because $\vect 1 \equiv (0$.
 
 \paragraph{Quaternions and rotations} Unit quaternions are also called \emph{rotation quaternions}.
 They can be used to completely describe a rotation of an angle $\varphi$ around the axis $\vec q$.
@@ -475,15 +462,59 @@ where $\vect x' = (0, \vec x')$ \citep[for a proof, see e.g.][sec. 1.4]{Graf2008
 In the following sections we'll write equations that involve the rotation a quaternion by a vector.
 With a slight abuse of notation we will write directly $\vect x' = \conj{\vect q}\, \vect x \, \vect q$, considering that the vector indicated in boldface $\vect x$ should be understood to be the pure quaternion $(0, \vec x)$.% given that it will be clear from the context what is a quaternion (mainly just $\vect q$).
 
-\subsection{Critically damped oscillator}
-A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration to keep the galaxy close to the centre of the box.
-\begin{equation}
- ...
-\end{equation}
-We started by noting empirically that for our typical galaxy size a sufficient acceleration is around ...
-We want to dump the oscillation as fast as possible, so using a critically damped oscillator with $\zeta... $
 
-A typical behaviour of the \emph{adhoc acceleration} is shown in figure \ref{fig:adhoc}
+
+\subsection{Velocity and acceleration of the particles in the moving box}
+\paragraph{Reference frames}
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=\textwidth]{moving_box_nichols.png}
+ \caption{From \citet{Nichols2015}. On the left it is shown the the moving box trajectory. The blue arrow represents the instantaneous box (and therefore dwarf galaxy) velocity.
+ On the right, gaseous particles are injected from the bottom side of the box. In red, dark matter density contours, and arrows indicate the wind particles velocity.}
+ \label{fig:mb_nichols}
+\end{figure}
+In a moving box simulation we define the inertial reference frame where the cluster is at the origin.
+Relative to that, the box moves and rotates, as shown in Figure \ref{fig:mb_nichols}.
+Following the convention in \citet{Nichols2015}, capital letters are used for vectors in the inertial frame whereas small letters for vectors in the moving box (rotating frame).
+
+Let $\quat q$ be the quaternion which at each point in time maps the~$-y$ axis of the rotating reference frame to the direction of the velocity of the box in the inertial frame, $\Vp$.
+Therefore, a vector $\vect X$ in the inertial frame, corresponds to $\vect x = \conj{\quat q}\, \vect X \,\quat q $ in the rotating frame.
+% To represent the correct rotations, at each moment the quaternion  the moving box is computed.
+A fixed point inside the moving box is taken as a reference point, the so called \emph{pivot}, whose coordinates relative to the box are $\xp$ and its velocity and acceleration in the inertial frame relative to the cluster are denoted with $\Vp$ and $\Ap$, respectively.
+The \emph{pivot} represents the position in the box of minimum specific energy (the average position of the 64 particles with minimum total potential and kinetic energy) at the start of the simulation and is used to track the velocity and the acceleration of the box.
+
+For a generic particle, the velocity in the moving box reference frame is:
+\begin{equation}
+ \label{eq:mb_velocity}
+ \vect{v} = \quat q \,\Vp\, \conj{\quat q} - \vect \omega\cross(\vect x -\xp),
+\end{equation}
+and its acceleration:
+\begin{equation}
+ \label{eq:mb_acceleration}
+ \vect{a} = \quat q \,\Ap\, \conj{\quat q} - 2\,\vect \omega \cross \vect v - \vect\omega \cross ( \vect \omega \cross (\vect x-\xp)) - \dot{\vect \omega}\cross(\vect x -\xp).
+\end{equation}
+
+
+\subsection{Critically damped oscillator}
+The acceleration of the pivot point is due mainly to the gravitational attraction of the cluster.
+The dwarf galaxy experiences also a low intensity drag due to the gas impinging the galaxy.
+In our simulations, this drag is always $<5\%$ than the gravitational acceleration.
+In order to keep the galaxy at the center of the box, an \emph{ad~hoc} corrective acceleration $\Ap^{hoc}$ is added to the particles in the box.
+This translates in adding an acceleration term to the one of the pivot $\Ap = −\grad \Phi(\vect X_\mathrm p) + \Ap^{hoc}$.
+In \citet{Nichols2015}, the correction term is intended to become zero when not needed.
+In practice, the $64$ particles with lower total energy (kinetic plus potential) are tracked at each timestep and their average position ($\vect X_{64}$) is taken as the center of the galaxy.
+The goal of the ad hoc acceleration is to move the box to follow the center of the galaxy and so compensate the drift of these particles from the pivot.
+In the original implementation, $\Ap^{hoc}$ is put to zero as soon as the velocity of the central low energy particles is again directed towards the pivot point (i.e. $(\vect X_{64}-\vect X_\mathrm p) \vdot (\vect V_{64} - \Vp) < 0$).
+This understandably is done to minimize the total impulse due to the ad hoc term.
+But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because the particle acceleration in equation \eqref{eq:mb_acceleration}.
+A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
+\begin{equation}
+ \Ap^{hoc} = 2\,\zeta\omega_0 \Vp + \omega_0^2 \vect X_\mathrm p,
+\end{equation}
+where $\omega_0$ is the undamped angular frequency of the oscillator, and $\zeta$ the damping ratio.
+We start by noting empirically that for our typical galaxy size a sufficient acceleration requires that $\omega_n^2\approx 10$ Gyr$^{-2}$.
+Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
+A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
 
 \begin{figure}
 \centering
@@ -495,23 +526,17 @@ A typical behaviour of the \emph{adhoc acceleration} is shown in figure \ref{fig
 
 \subsection{Recovering the correct kinematics from a moving box simulation}
 \label{sec:corret_kinematics}
-Following the convention in \citet{Nichols2015}, capital letters are used for vectors in the inertial frame whereas small letters for vectors in the moving box (rotating frame).
-Let $\vect \Omega$ be the angular velocity of the box in the inertial frame, and $\vect q$ the quaternion which at each point in time maps the~$-y$ axis of the rotating reference frame to the direction of the velocity of the box in the inertial frame, $\Vp$.
-A vector $\vect X$ in the inertial frame, corresponds to $\vect x = \mathbf q^{-1}\, \vect X \,\mathbf q $ in the rotating frame.
-
-The velocity of the box is measured using a fixed point inside the box, called \emph{pivot}, whose coordinates relative to the box are $\mathbf{x}_{\mathrm p}$ and its velocity and acceleration in the inertial frame relative to the cluster are denoted with $\Vp$ and $\Ap$, respectively.
-The \emph{pivot} represents the position in the box of minimal specific energy at the start of the simulation.
-From this, $\vect \Omega$ can be computed as 
+Let $\vect \Omega$ be the angular velocity of the box in the inertial frame which can be computed as:
 \begin{equation}
- \vect{\Omega} = {(\Vp\times\Ap)}/{\Vp^2}
+ \vect{\Omega} = {(\Vp\cross\Ap)}/{\Vp^2}.
 \end{equation}
-and the angular velocity of the box w.r.t. the rotating frame simply as:
+From this, the angular velocity of the box w.r.t. the rotating frame is simply:
 \begin{equation}
-\vect \omega = \mathbf q^{-1}\, \vect \Omega\, \mathbf q.
+\vect \omega = \conj{\quat q}\, \vect \Omega\, \quat q.
 \end{equation}
 We can then transform from rotating to inertial coordinates by applying this transformation:
 \begin{equation}
-\vect V = \Vp + \mathbf q \left(\mathbf v + \vect \omega \times (\mathbf x-\mathbf x_{\mathrm p})\right) \mathbf q^{-1}
+\vect V = \Vp + \quat q \, \left(\vect v + \vect \omega \cross (\vect x-\xp)\right) \,\conj{\quat q}
 \end{equation}
 where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in the rotating frame, respectively, and $\mathbf V$ its velocity in the inertial frame. % For simplicity in the following we don't take into account $\Vp$ since its contribution to the line of sight velocity is negligible.
 
