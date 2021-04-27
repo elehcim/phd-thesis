@@ -4,18 +4,18 @@
 \label{ch:simulations}
 
 Numerical simulations have emerged as a new tool to investigate nature, alongside theory and experiments.
-This is particularly valid for astronomy where, unlike other laboratory-based disciplines, astronomers may not exert full control over their experiments \citep{Heng2014}.
+This is particularly valid for astronomy where, unlike laboratory-based disciplines, astronomers may not exert full control over their study objects\citep{Heng2014}.
 
 Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2015}.
-This allows an unprecedented detailed exploration of the consequences of assumed models for physical systems.
+This allows an unprecedentedly detailed exploration of the consequences of assumed models for physical systems.
 In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
-In fact, we are not interested in the motion of each molecule in detail, rather we will use a statistical approach . 
-In the following we will be dealing with hydrodynamics of fluids, given that the main components of galaxies are successfully described in terms of fluids.
+In fact, we are not interested in the motion of each molecule in detail, rather we will use a statistical approach. 
+In the following we will be dealing with hydrodynamics, given that the main components of galaxies are successfully described in terms of fluids.
 
 \section{General assumptions}
 We will assume the Cold Dark Matter (CMD) paradigm (in a $\Lambda$CDM cosmology), which has gained consensus among the scientific community throughout the years even if up to now, there has been no detection of it \citep[see e.g.][for an extensive and historical overview]{Einasto2010}.
-In a dwarf galaxy simulation three kind of fluids are generally taken into account each following different models: dark matter, gas and star. The latter two are so called \emph{baryonic} matter.
+In a dwarf galaxy simulation three kind of fluids are generally taken into account, each following different models: dark matter, gas and star. The latter two are so called \emph{baryonic} matter.
 
 Dark matter is hypothesized to consist of small particles that are orders of magnitude smaller than the typical distance scales in our galaxies, so that they constitute a collisionless fluid.
 Similarly, the cross section of stars is small compared to galactic scales, and makes them collisionless as well.
@@ -26,22 +26,22 @@ On the other hand, as we shall see, gas is collisional and its behaviour at any 
 
 \subsection{Boltzmann Equation - Equations of motion}
 The Boltzmann Equation is the general equation which governs the behaviour of a fluid.
-From it, the equations of motions can be derived and solved to assess the evolution in time of the fluid.
+From it, the equations of motions can be derived and solved to assess the evolution through time of the fluid.
 
-For simplicity, in this section we assume a single-specie fluid, a generalization to multiple species being straightforward.
+For simplicity, in this section we assume a single-species fluid, a generalization to multiple species being straightforward.
 For each point of the fluid we would like to know its position and velocity.
 Following a statistical approach, at any given time $t$ we can write the distribution function
 \begin{equation}
 f(\vect x, \vect u, t)
 \end{equation}
 which describes the number of molecules lying withing a spatial volume $\dd[3]{\vect x}$ about $\vect x$ and with velocity lying in a velocity-space volume $\dd[3]{\vect u}$ about $\vect u$.
-These elementary volumes $\dd[3]{\vect x}$ and $\dd[3]{\vect u}$ are finite volume elements which are large enough to contain a very large number of molecules and still small enough to be considered as points when compared to macroscopic dimensions \citep{Huang1987}.
+These elementary volumes $\dd[3]{\vect x}$ and $\dd[3]{\vect u}$ are finite volume elements which are large enough to contain a very large number of molecules and still small enough to be considered as infinitesimal when compared to macroscopic dimensions \citep{Huang1987}.
 % The distribution function has We can therefore introduce the concept of elementary volume in the 6D phase space $(\vect x, \vect u)$.
 
 % in the elementary volume distribution of the position and velocity of a typical particle
 % by its distribution function $f(\vect x, \vect u, t)$ which represents the number density of fluid molecules in the 6D phase space $(\vect x, \vect u)$.
 % By multiplying this function with the phase space volume element $\dd[3]{\vect x} \dd[3]{\vect u}$, we obtain the number of particles within this phase space volume element at a given time $t$.
-The number density $n(\vect x, t)$ in physical space is obtained by integrating over the velocity:
+The number density $n(\vect x, t)$ in physical space is obtained by integrating over all possible velocities at a position $\vect x$:
 \begin{equation}
 n(\vect x, t ) = \int f(\vect x, \vect u, t) \dd[3]{\vect u}.
 \end{equation}
@@ -75,9 +75,9 @@ where the right term represents discontinuous motion of molecules through phase 
 \subsubsection{Euler's equations}
 After computing the zeroth, first and second velocity moments of equation \eqref{eq:boltzmann} ---by multiplying by $m_p$, $m_p\vect u$ and $m_p\norm{\vect u}^2$ and by integrating over the entire velocity space--- it is possible to retrieve the equations of hydrodynamics (continuity, momentum and energy) \citep[][and \cite{Vandenbroucke2016} for an extended derivation]{Huang1987}.
 
-In the following we do the assumption that collisions do not create or destroy molecules at a fixed position (they only shift them in velocity space), they conserve momentum and energy.
+In the following we make the assumption that collisions do not create or destroy molecules at a fixed position (they only shift them in velocity space), they conserve momentum and energy.
 Consequently in the case of the continuity, momentum and energy equations the right-hand side of equation \eqref{eq:boltzmann} vanishes.
-We also neglect diffusive terms (heat conduction and viscous stress tensor) which are often small compared to dynamical effects (an important exception though are shocks for example).
+We also neglect diffusive terms (heat conduction and viscous stress tensor) which are often small compared to dynamical effects (an important exception though are shocks, for example).
 
 The hydrodynamical equations (a.k.a. Euler equations) are therefore: 
 \begin{align}
@@ -122,24 +122,24 @@ Acceleration in each phase-space position is due to the gravitational field.
 
 In case of self-gravity the source of the acceleration field is the mass density $\rho(\vect x, t)$:
 \begin{equation}
- \div \vect a = 4 \pi \,G \, \rho(\vect x, t).
+ \div \vect a = - 4 \pi \,G \, \rho(\vect x, t).
 \end{equation}
 
-The gravitational potential $\vect a = \grad \Phi$ can therefore be found through the Poisson's equation:
+The gravitational potential $\vect a = - \grad \Phi$ can therefore be found through the Poisson's equation:
 \begin{equation}
  \label{eq:poisson}
  \laplacian \Phi(\vect x,t) = 4 \pi \,G \, \rho(\vect x, t).
 \end{equation}
 
-% For a collisional fluid, a number of approximations are necessary to convert the Boltzmann equation to the Euler equations, but it's still possible.
+% It is evident how important is to obtain an accurate estimate of the density. We will show a possible technique in the following. %TODO add this.
 
 \section{N-Body systems}
 The direct numerical solution of the Boltzmann equation, a non-linear PDE in seven dimensions, is not feasible.
 It is interesting to note that in this description the particles have basically completely vanished and have been replaced with a continuum fluid description.
-In order to solve the Boltzmann equation (o equivalently the Euler's equations), we represent the fluid by $N$ mass elements (particles), that are conceptually different from the microscopic particles (molecules) constituting the fluid.
+In order to solve the Boltzmann equation (or equivalently the Euler's equations), we represent the fluid by $N$ mass elements (particles), that are conceptually different from the microscopic particles (molecules) constituting the fluid.
 The main idea is to discretize the equations above introducing particles.
 These are therefore fiducial macro particles that sample the phase-space in a Monte-Carlo fashion \citep{Springel2015}.
-Thus, in practice an $N$-body method is a tool for solving the Boltzmann equations.
+Thus, in practice an $N$-body method is a tool for solving the Boltzmann equation.
 % In this way then it reduces to solving the gravitational interactions for this $N$-body system \citep{Dehnem2011}.
 
 The equation of motion for particles, following equations \eqref{eq:poisson} can be written as follows:
@@ -150,21 +150,23 @@ The equation of motion for particles, following equations \eqref{eq:poisson} can
  \Phi(\vect x_i) = -G \sum^N_{j=1}\frac{m_j}{\sqrt{(\vect x_i-\vect x_j)^2 + \epsilon^2}}.
 \end{equation}
 
-where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle.
-The purpose of the force softening is to avoid the numerical expense that would be needed to integrate the orbits with sufficient accuracy around singularity in the potential.
-% Also, we would like to prevent the possibility of the formation of bound particle pairs—they would obviously be highly correlated and hence strongly violate collisionless behavior.
+where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle. It's worthwhile to note, though, that the interaction between particles is still that between a point mass and a Plummer potential, not the one between two Plummer spheres with each other.
 
-In our simulations we use a softening length of $\epsilon=30$~pc. An estimate of this smoothing length is obtained by requiring that in the gas clouds with the highest density $\epsilon$ is about equal to the average distance between the gas particles. % Mail Sven 24/11/2017
-Given that, as we shall see, the in the densest gas clouds star formation occurs at a density of $n\approx100$~amu/cm$^{3}$ (see Section \ref{sec:star_formation}).
-When a galaxy is simulated with gas particles of $4000$~\Msun{}, the average distance between the particles in that gas cloud will be of the order of $11$ pc.
-So the collapse of the cloud will be followed correctly by the simulation if the softening length is of that order.
+The purpose of the force softening is to avoid the numerical expense that would be needed to integrate the orbits with sufficient accuracy around the singularity in the $\sim 1/r$ potential.
+Also, if two particles get very close naturally their gravitational attraction will explode, leading to the possibility of the formation of bound particle pairs, strongly violating the collisionless behavior.
+The softening length is also called gravitational resolution because we cannot resolve gravitational forces below that distance.
+The value of the gravitational resolution is important when trying to follow the collapse of dense gas clouds where star formation is about to occur, as we shall see in Section~\ref{sec:star_formation}.
+In our simulations we use a softening length of $\epsilon=30$~pc.
+An estimate of this smoothing length is obtained by requiring that in the gas clouds with the highest density $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
+Given that in the densest gas clouds star formation occurs at a density of $n\approx100$~amu/cm$^{3}$, when a galaxy is simulated with gas particles of $4000$~\Msun{}, the average distance between the particles in that gas cloud will be of the order of $11$ pc.
+So the collapse of the cloud will be followed correctly by the simulation if the softening length is of that order. % TODO still don't understand
 
 \subsection{Smoothed Particles Hydrodynamics}
 Smoothed Particles Hydrodynamics (SPH) is a finite volume, Lagrangian particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
 It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
 % It is finite volume because it.
 
-A different approach to discretize the fluid domain is to use Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
+A different approach to discretize the fluid domain is to use an Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
 Recently, so called \emph{moving-mesh} methods have emerged. They combine both approaches and are more flexible but come with their own difficulties \citep{Springel2010, Shadowfax, Arepo}.
 % Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming. 
 Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
@@ -174,7 +176,7 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 %But at the end of the day if we pay attention to the the trend is 
 
 \paragraph{Origin of SPH}
-SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Joe Monaghan retrace the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
+SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
 A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 ... Similarity of SPH with eq. \eqref{eq:df_average}... % TODO density estimation
@@ -205,7 +207,7 @@ A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 \subsection{Density Estimation from particles ensemble}
 A possible choice for the kernel is a Gaussian.
 It's much more practical to use a finite support approximation of a Gaussian.
-The most used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1946}, generated as the Fourier transform \citep{Price2012}:
+The most often used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1946}, generated as the Fourier transform \citep{Monaghan1985, Monaghan2005, Price2012}:
 \begin{equation}
 M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
 \end{equation}
@@ -237,7 +239,7 @@ It is somehow striking that the normalization term is not the default in current
 \section{Dwarf galaxies models}
 \label{sec:dwarf_models}
 We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-body/SPH simulations of late-type isolated dwarf galaxies.
-They are \textasciitilde$30$ simulations cover the the dwarf galaxy regime (ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$) with different mass assembly histories in a cosmological setting with added \popiii{} feedback \citep{Verbeke2017}.
+They are \textasciitilde$30$ simulations that cover the dwarf galaxy regime (ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$) with different mass assembly histories in a cosmological setting with added \popiii{} feedback \citep{Verbeke2017}.
 Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \citep{Cloet-Osselaer2014}.
 
 MoRIA dwarfs are the sum of multiple researchers work, starting with the implementation of models for star formation and chemical enrichment \citep{Valcke2008}. 
@@ -269,7 +271,7 @@ The conversion into star particles of gas particles which meet the above conditi
 \dot{\rho}_\star = -\dot{\rho}_g = c_\star \frac{\rho}{t_g}.
 \label{eq:schmidt_relation}
 \end{equation}
-Following \citep{Stinson2006} we assume the characteristic time of formation as the dynamical time $t_g = (4 \pi G \rho_g)^{-1/2}$, whereas $c_\star$ is the star formation efficiency which can be adjusted to match observations.
+Following \citet{Stinson2006} we assume the characteristic time of formation as the dynamical time $t_g = (4 \pi G \rho_g)^{-1/2}$, whereas $c_\star$ is the star formation efficiency which can be adjusted to match observations.
 
 From this, we can solve the simple differential equation: 
 \begin{equation}
@@ -287,24 +289,25 @@ The new star particle inherits the position, velocity and metallicity of its gas
 In all effects, star particles represent a stellar population with single age and metallicity (SSP, Single Stellar Population) with a Chabrier initial-mass function, \citet{Chabrier2003}.
 
 \paragraph{Stellar feedback}
-By \emph{feedback mechanism} it is meant any process that allows to exchange energy, matter and/or momentum between galaxy components. Stars have a huge influence on the interstellar medium (ISM), they pump energy and matter in the surrounding gas mainly enriching ISM with newly formed metals.
+A \emph{feedback mechanism} is any process that allows to exchange energy, matter and/or momentum between galaxy components. Stars have a huge influence on the interstellar medium (ISM). They pump energy and matter in the surrounding gas and enrich the ISM with newly formed metals.
 
-The first type of feedback comes from supernovae events. Two main supernovae type are important in simulations. For massive stars, when all the fusion fuel is consumed, gravitation overcome the internal hydrodynamic pressure. The core of the star collapses generating a shock wave which blows away most of the star's outer atmosphere in a massive explosion, leaving behind only a small fraction of its mass, locked up in a remnant (a neutron star or a black hole). This type of core-collapse supernova is called \snii{} (type II supernova).
-This type of feedback lasts from the death of the most massive stars of the sampled by the particle's SSP, until the death of the least massive stars which are still capable of going supernova ($>8$ \Msun ): $0.005 - 0.043$ Gyr.
-For less massive stars, Type~Ia supernova occurs in a binary star system made by a red giant and a white dwarf.
+The first type of feedback comes from supernova events. Two main supernova types are important in simulations. For massive stars, when all the fusion fuel is consumed, gravitation overcome the internal hydrodynamic pressure. The core of the star collapses, generating a shock wave which blows away most of the star's outer atmosphere in a massive explosion, leaving behind only a small fraction of its mass, locked up in a remnant (a neutron star or a black hole). This type of core-collapse supernova is called \snii{} (type II supernova).
+After an event of this kind happens, the feedback originates from the death of the most massive stars of the ones sampled by the particle's SSP, until the death of the least massive stars which are still capable of going supernova ($>8$ \Msun ): $0.005 - 0.043$ Gyr.
+
+For less massive stars, a Type~Ia supernova occurs in a binary star system made by a red giant and a white dwarf.
 The gas from a red giant overflows onto a white dwarf and when a critical mass is reached, the white dwarf can no longer be supported and collapses, then rebounds. Neutrinos are thought to play an important role in this expansion \citep{Wongwathanarat2017}.
-Because it involves less massive stars and demands a period of steady accretion the feedback of \snia{} is returned $1.54 − 1.87$~Gyr after the birth of the star particle.
+Because it involves less massive stars and demands a period of steady accretion, the feedback of \snia{} is returned $1.54 − 1.87$~Gyr after the birth of the star particle.
 Energy injection of \snia{} is delayed by a normally distributed offset-time following \citet{Strolger2004}.
-Feedback from supernovae events of type Ia (\snia) and II (\snii) inject $10^{51}$~erg into the surrounding ISM. For more details, the reader is referred to \cite{Valcke2008}.
+Feedback from supernova events of type Ia (\snia) and II (\snii) inject $10^{51}$~erg into the surrounding ISM. For more details, the reader is referred to \cite{Valcke2008}.
 
 % Adapted from Simon Driver
 %Ia vs Ib depends on if the companion has hydrogen in the atmosphere.
 
 Supernovae events increase the metal content of the ISM. %tracked by Fe and Mg element abundances in gas particles.
-In simulations these effects are taken into account by keeping track of two independent metallicities:\feh, \mgfe, corresponding to a fast contribution by the supernova explosions of massive stars, and a slow contribution by the supernova explosions of less massive stars \citep{DeRijcke2013, Vandenbroucke2016}.
+In simulations these effects are taken into account by keeping track of two independent abundances:\feh, \mgfe, corresponding to a fast contribution by the supernova explosions of massive stars, and a slow contribution by the supernova explosions of less massive stars \citep{DeRijcke2013, Vandenbroucke2016}.
 
-A second type type of feedback is stellar wind from young O and B stars.
-In simulation stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
+A second type type of feedback is the stellar wind from young O and B stars.
+Stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
 
 
 % The stellar population in the star particle is modelled by an initial mass function which tells how many stars are formed with a certain amount of mass. 
@@ -312,7 +315,7 @@ In simulation stellar wind is taken into account as a uniformly spread energy in
 \subsection{Extended gas physics}
 \label{sec:extended_gas_physics}
 \paragraph{Radiative cooling}
-
+\citep{DeRijcke2013}
 \paragraph{Ionization aware equation of state}
 In an ideal gas with a single type of constituents, the pressure is given by the equation of state:
 \begin{equation}
@@ -374,9 +377,9 @@ This process can alter the effects of thermal energy injection by supernovae exp
 % This process can alter the effects of thermal feedback and should not be neglected in simulations of galaxies, where supernovae explosions play an important role.
 
 \paragraph{Ultraviolet background}
-UV background (UVB) is a photoionizing radiation due to young UV bright stars or e.g. to QSO whose spectra gets filtered by the Gunn-Peterson effect. It is responsible for preventing gas from cooling in low-mass halos at high redshift \citep{Efstathiou1992, Navarro1997}.
-In our simulations, UVB is taken into account in the look-up-tables for gas cooling/heating, for the ionization equilibrium and the mean molecular mass. Its dependence on redshift is implemented following the model by \citet{Faucher-Giguere2009}.
-Since in dense neutral region of gas the UVB's photons will be absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of UVB is modeled with an exponential decay for neutral hydrogen regions with number density $n_{\text{H}\textsc i} \geq 0.007$~amu~cm$^{-3}$.
+The cosmic UV background (UVB) is a photoionizing radiation field due to young UV bright stars or e.g. to QSO whose spectra gets filtered by the Gunn-Peterson effect. It is responsible for preventing gas from cooling in low-mass halos at high redshift \citep{Efstathiou1992, Navarro1997}.
+In our simulations, the UVB is taken into account in the look-up-tables for gas cooling/heating, for the ionization equilibrium and the mean molecular mass. Its dependence on redshift is implemented following the model by \citet{Faucher-Giguere2009}.
+Since in dense neutral regions of gas the UVB's photons are absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of the UVB is modeled with an exponential decay for neutral hydrogen regions with number density $n_{\text{H}\textsc i} \geq 0.007$~amu~cm$^{-3}$.
 
 
 \section{Moving box}
@@ -403,7 +406,7 @@ This allows us to simulate the combined effects of tidal forces and ram-pressure
 % A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
 
 \subsection{Quaternions}
-For completeness, we briefly introduce quaternions algebra.
+For completeness, we briefly introduce quaternion algebra.
 Following \citet{Graf2008}, a quaternion is a set of four parameters, a real value $q_0$ and three imaginary values $q_1\vect{i},q_2\vect{j},q_3\vect{k}$ with $q_1,q_2,q_3 \in \mathbb{R}$ usually represented as:
 \begin{equation}
  \quat q = q_0 + q_1\vect{i} + q_2\vect{j} + q_3\vect{k}.
@@ -421,7 +424,7 @@ In fact, noting for example that by left multiplying the last equality in eq. \e
  \label{eq:hamilton_quaternion_mixed}
 \end{equation}
 
-Another useful representation of a quaternion is as a pair $\quat q = (q_0, \vec q)$ of a scalar part $q_0\in \mathbb{R}$ and a vector part $\vec q \in \mathbb{R}^3$ (called also real and imaginary parts, respectively).
+Another useful representation of a quaternion is as a pair $\quat q = (q_0, \vec q)$ of a scalar part $q_0\in \mathbb{R}$ and a vector part $\vec q \in \mathbb{R}^3$ (also called real and imaginary parts, respectively).
 \footnote{Only in this section, to distinguish between quaternions and three dimensional-space vectors, we'll use boldface $\quat q$ for quaternions and $\vec q$ for $\mathbb{R}^3$ vectors. In the other sections the difference among the two will be clear from the context.}
 Its conjugate~$\conj{\quat q}$ is defined as:
 \begin{equation}
@@ -497,8 +500,8 @@ and its acceleration:
 The acceleration of the pivot point is due mainly to the gravitational attraction of the cluster.
 The dwarf galaxy experiences also a low intensity drag due to the gas impinging the galaxy.
 In our simulations, this drag is always $<5\%$ than the gravitational acceleration.
-In order to keep the galaxy at the center of the box, an \emph{ad~hoc} corrective acceleration $\Ap^{hoc}$ is added to the particles in the box.
-This translates in adding an acceleration term to the one of the pivot $\Ap = −\grad \Phi(\vect X_\mathrm p) + \Ap^{hoc}$.
+In order to keep the galaxy at the center of the box, an \emph{ad~hoc} corrective acceleration $\Ap^{hoc}$ is added to it as it moves.
+This translates to adding an acceleration term to the pivot $\Ap = −\grad \Phi(\vect X_\mathrm p) + \Ap^{hoc}$.
 
 In \citet{Nichols2015}, the correction term is intended to become zero when not needed.
 In practice, the $64$ particles with lower total energy (kinetic plus potential) are tracked at each timestep and their average position ($\vect X_{64}$) is taken as the center of the galaxy.
@@ -506,7 +509,7 @@ The goal of the ad hoc acceleration is to move the box to follow the center of t
 In the original implementation, $\Ap^{hoc}$ is put to zero as soon as the velocity of the central low energy particles is again directed towards the pivot point (i.e. $(\vect X_{64}-\vect X_\mathrm p) \vdot (\vect V_{64} - \Vp) < 0$).
 This understandably is done to minimize the total impulse due to the ad hoc term.
 But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because the particle acceleration in equation \eqref{eq:mb_acceleration}.
-A slight improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
+An improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
 \begin{equation}
  \Ap^{hoc} = 2\,\zeta\omega_0 \Vp + \omega_0^2 \vect X_\mathrm p,
 \end{equation}
