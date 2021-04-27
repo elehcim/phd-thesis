@@ -58,7 +58,7 @@ first occurs.
 \section{Becoming an Ultra Diffuse Galaxy (UDG)}
 \label{sec:UDG}
 
-Faint Low Surface Brightness (LSB) galaxies with $R_e > 1$ kpc have been detected in galaxy clusters since the 1980s \citep[e.g.]{Sandage1984}.
+Faint Low Surface Brightness (LSB) galaxies with $R_e > 1$ kpc have been detected in galaxy clusters since the 1980s \citep[e.g.][]{Sandage1984}.
 % In 2015 \citet{VanDokkum2015}... %TODO cite vandokkum
 % See Wittmann  https://www2.mpia-hd.mpg.de/homes/galClusters_2017/slides/Ringberg2017_presentation_Wittmann.pdf
 
@@ -113,6 +113,8 @@ Dark matter instead is pulled out by tidal forces who elongate the halo, effecti
 This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the centre of the dwarf with the whole dark matter present inside the moving box.
 As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % TODO dark matter profile around pericenter?
 For very radial orbits, around first infall, central halo mass increases more than the stellar mass created by the starburst, Figure~\ref{fig:m_halo_m_star}.
+
+% TODO This is linked to the velocity dispersion which is essentially tracing the amount of mass loss.
 
 \begin{figure}
 \centering
@@ -182,13 +184,16 @@ In stripped tails of the jellyfish, gas is able to cool and create stars. \citet
 \includegraphics[width=\textwidth]{StarFormationLocation41002.pdf}
 \caption{Simulation ID 41}
 \end{subfigure}
-\caption{Star formation location around first pericenter passage for simulation ID 68 and 41. Each subpanel corresponds to a different pericenter. For each simulation snapshot the number of new stars w.r.t. to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted. Galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity) around pericenter.
+\caption{Star formation location around first pericenter passage for simulation ID 68 and 41. Each subpanel corresponds to a different pericenter.
 The size of the marker is proportional to the number of stars born in that time interval.
 Markers are colored using the time from pericenter normalized with the radial period.
 In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail.}
 \label{fig:sf_location}
 \end{figure*}
-In Figure \ref{fig:sf_location} we show the average position of the star forming particles for each simulation snapshot. There is a significant star formation activity in the tail (in Figure \ref{fig:sf_location})
+In Figure \ref{fig:sf_location} we show the average position of the star forming particles for each simulation snapshot.
+For each simulation snapshot the number of new stars w.r.t. to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted.
+Galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity, see \refsec{sec:MovingBox}) around pericenter.
+There is a significant star formation activity in the tail (in Figure~\ref{fig:sf_location}).
 
 An intermediate mass dwarf, ID 68, on orbit of 50 and 100 kpc is completely stripped from the reservoir of cold gas as also shown in the corresponding panel in Figure \ref{fig:cold_gas}. For this, after a burst, star formation stops.
 
@@ -204,7 +209,9 @@ To start with, we measured the central (within $250$ pc) stellar velocity disper
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{fig_sigma_time.pdf}
-\caption{Velocity dispersion evolution with time normalised with the radial period of the orbit.}
+\caption{Velocity dispersion evolution with time normalised with the radial period of the orbit.
+% TODO ADD 150 orbit
+}
 \label{fig:sigma}
 \end{figure}
 
@@ -214,13 +221,13 @@ To start with, we measured the central (within $250$ pc) stellar velocity disper
 \section{Colour Magnitude}
 In Figure \ref{fig:g-r} we show the behaviour of the colour magnitude.
 In particular the lightest galaxy (ID 62) does not survive the first infall yet ending its life in the early-type galaxy realm, independently of the orbit.
-As shown in Figures \ref{fig:cold_gas} and \ref{fig:sfr}, the most massive one (ID 41) retains most of its cold gas except for the most radial orbit. This allows for star formation to occur almost  steadily and to move multiple times between early- and late-type realms.
-
+As shown in Figure \ref{fig:cold_gas}, the most massive one (ID 41) retains most of its cold gas except for the most radial orbit.
+This is confirmed by its final location on the C-M diagram, among the early-type galaxies.
+This allows for star formation to occur almost steadily and to move multiple times between early- and late-type realms.
 
 
 \begin{sidewaysfigure}
 \centering
-% \includegraphics[width=0.85\textwidth]{{04.}1_color_magnitude_Aku_g-r_rt_criterion.pdf}
 \includegraphics[width=\textwidth]{04.2_color_magnitude_Aku_g-r_rt_criterion_r.pdf}
 \caption{SDSS bands colour magnitude diagram of galaxies on different orbits compared to Fornax dwarf catalogue of \citet{Venhola2019}.
 % TODO ask permission for the overlay or use catalogue datapoints.
@@ -244,11 +251,13 @@ To correctly compute galaxy kinematics we have to take into account the rotation
 The details on how to recover the correct in our setup are shown in \refsec{sec:corret_kinematics}.
 
 \subsection{Angular momentum and specific angular momentum}
-We compute the specific stellar angular momentum $\lambda_R$ starting from SPH-weighted velocity and velocity dispersion maps as defined in e.g. \citet{Toloba2015}:
+We compute the specific stellar angular momentum $\lambda_R$ starting from SPH-weighted velocity and velocity dispersion maps as defined in e.g. \citet{Toloba2015}: %TODO add emsellem
 \begin{equation}
     \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
 \end{equation}
 with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy centre.
+
+% TODO Why this specific form has been chosen. This is what observers like and 
 
 % A typical evolution of $\lambda_R$ through time is shown in Figure~\ref{fig:lambda_R}.
 \begin{figure}
@@ -265,9 +274,11 @@ with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel fro
 
 \subsection{Relation with physical angular momentum}
 We compute the specific angular momentum ($j_s = J_s/M_g$ where $J_s$ is the total angular momentum and $M_g$ the total mass of the galaxy) of star particles within 10~kpc from the densest stellar region (centre of the galaxy).
-We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}. We notice that $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
+We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
+We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
 For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
+% TODO 41 69 71
 
 \begin{figure}
 \centering
@@ -276,7 +287,9 @@ For these reasons in the case of dwarf irregulars it is not a good indicator of 
 \label{fig:lambda_R}
 \end{figure}
 
- 
+\section{Conclusion}
+
+
 % \subsection{Magnitude conversion}
 % \pynbody{} can be programmed to compute luminosities of stellar particles using 
 % The built in libraries are from Marico... Padova... %TODO
