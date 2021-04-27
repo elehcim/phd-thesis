@@ -22,13 +22,13 @@ In order to compare different orbits, we normalise the simulation time by the or
     T_r = 2 \int^{r_a}_{r_p} \frac{\d r}{\sqrt{2\left[E-\Phi(r) \right] - J^2/r^2}}
     \label{eq:radial_period}
 \end{equation}
-where $r_p, r_a$ are the pericenter and apocentre distance respectively, $E$ and $J$ the orbital energy and angular momentum per unit mass, $\Phi(r)$ the potential at radius $r$ of the NFW halo around which the galaxy is orbiting.
+where $r_p, r_a$ are the pericenter and apocenter distance respectively, $E$ and $J$ the orbital energy and angular momentum per unit mass, $\Phi(r)$ the potential at radius $r$ of the NFW halo around which the galaxy is orbiting.
 
 By defining the time of pericenter passage as $t_p: r(t_p) = r_p$, we can introduce the normalized time:
 \begin{equation}
 \tau = \frac{t-t_p}{T_r},
 \end{equation}
-which is~$0$ or $1$ for first or second pericenters respectively,~and~$0.5$ for apocentre passages.
+which is~$0$ or $1$ for first or second pericenters respectively,~and~$0.5$ for apocenter passages.
 
 % We begin with following one galaxy in its journey around the cluster.
 In the following we will compare the effects of orbit and initial mass using the set of 25 simulations we have carried out.
@@ -43,8 +43,8 @@ Tidal radius $r_t$ is computed as following.
 r_t = r \sqrt[3]{\frac{M_g}{M_c(r) (3+e)}}
 \label{eq:tidal_radius}
 \end{equation}
-where $e = (r_a - r_p) / (r_a + r_p)$ is the eccentricity of the orbit computed, $r_a$, $r_p$ the apocenter and pericentre radii respectively; $M_c(r)$ is the enclosed cluster mass at radius $r$, and $M_g$ the instantaneous total mass of the galaxy.
-As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within 10~kpc from the centre of the galaxy.
+where $e = (r_a - r_p) / (r_a + r_p)$ is the eccentricity of the orbit computed, $r_a$, $r_p$ the apocenter and pericenter radii respectively; $M_c(r)$ is the enclosed cluster mass at radius $r$, and $M_g$ the instantaneous total mass of the galaxy.
+As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within 10~kpc from the center of the galaxy.
 
 In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit. %TODO Insert figure
 We define a galaxy to become unbound when the condition 
@@ -76,7 +76,7 @@ The majority of studies indicate have the properties of large dwarf galaxies \ci
 Three main mechanisms are hypothesised as possible formation scenarios for UDGs \citep{Rong2020}: dwarf galaxies which undergo strong tidal stripping \citep{Venhola2017, Carleton2018, Rong2020a}, gas outflows driven by stellar feedback with extended dark matter halo and faint and diffuse stellar component \citep{DiCintio2017, ManceraPina2019}, or failed $L^*$ galaxies in high mass dark halos with ceased star formation in the early universe.
 
 \subsubsection{Size and magnitudes}
-We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}. Tidal heating affects the size of the galaxies as they pass near the cluster centre, with low mass galaxies affected most (TODO Update figure \ref{fig:r_eff} with tidal radius condition).
+We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}. Tidal heating affects the size of the galaxies as they pass near the cluster center, with low mass galaxies affected most (TODO Update figure \ref{fig:r_eff} with tidal radius condition).
 % We compare the resulting effective radius in simulations with the ones not taking into account the gas inside the cluster, Figure~\ref{fig:r_eff_no_gas}.
 
 \begin{figure}
@@ -110,7 +110,7 @@ We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}. Tidal heatin
 \subsubsection{$M_h/M_\star$}
 We computed the amount of stellar mass is created and the amount of total dark matter. Star formation undergoes a burst in correspondence of the 
 Dark matter instead is pulled out by tidal forces who elongate the halo, effectively stripping dark matter particles out of the moving box of our simulation setup.
-This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the centre of the dwarf with the whole dark matter present inside the moving box.
+This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the center of the dwarf with the whole dark matter present inside the moving box.
 As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % TODO dark matter profile around pericenter?
 For very radial orbits, around first infall, central halo mass increases more than the stellar mass created by the starburst, Figure~\ref{fig:m_halo_m_star}.
 
@@ -136,7 +136,7 @@ We computed the 3D ellipticity of the stellar component of the galaxies using th
 To give some details: the first principal component $\vect w_2$ is the direction of highest elongation (largest variance of the N star particle points) computed via PCA\footnote{$\vect w_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
 % For now I took into account only the position of the star particles (which have negligible mass difference among them).
 
-Around pericentre the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster centre; then it undergoes a sort of ``slingshot effect" after pericentre and it aligns with the cluster centre also around apocentre before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
+Around pericenter the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster center; then it undergoes a sort of ``slingshot effect" after pericenter and it aligns with the cluster center also around apocenter before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
 Around the second pericenter passage the galaxy ends up being dispersed and not anymore gravitationally bound.
 
 
@@ -157,10 +157,8 @@ The specific star formation rate is shown in Figure~\ref{fig:sfr}.
 \begin{figure}
 \centering
 \includegraphics[height=\textheight]{{12.6_sfr_cold_gas}.pdf}
-% \includegraphics[width=0.8\columnwidth]{{12.6_sfr_cold_gas}.pdf}
 \caption{Specific star formation rate and cold gas (T<15000~K) evolution on different orbits.
 }
-% \caption{Specific star formation rate around first infall. }
 \label{fig:sfr}
 \label{fig:cold_gas}
 
@@ -202,7 +200,7 @@ This enforces the idea of the \emph{Jellyfish} phenomenon as a relatively short 
 
 \subsection{Central stellar velocity dispersion}
 To start with, we measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on orbit, as shown in Figure~\ref{fig:sigma}.
-%Tidal interactions stir the particles in the centre of the galaxies. % FIXME  
+%Tidal interactions stir the particles in the center of the galaxies. % FIXME  
 %TODO There seems to be a bump
 % The anisotropy parameter $\beta$ is shown %TODO
 
@@ -255,7 +253,7 @@ We compute the specific stellar angular momentum $\lambda_R$ starting from SPH-w
 \begin{equation}
     \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
 \end{equation}
-with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy centre.
+with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy center.
 
 % TODO Why this specific form has been chosen. This is what observers like and 
 
@@ -273,7 +271,7 @@ with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel fro
 % \citep{Bidaran2020}
 
 \subsection{Relation with physical angular momentum}
-We compute the specific angular momentum ($j_s = J_s/M_g$ where $J_s$ is the total angular momentum and $M_g$ the total mass of the galaxy) of star particles within 10~kpc from the densest stellar region (centre of the galaxy).
+We compute the specific angular momentum ($j_s = J_s/M_g$ where $J_s$ is the total angular momentum and $M_g$ the total mass of the galaxy) of star particles within 10~kpc from the densest stellar region (center of the galaxy).
 We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
 We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
