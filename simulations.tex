@@ -57,7 +57,7 @@ It is useful to define the averaged (\emph{bulk}) velocity $\vect{v}$ as:
 \end{equation}
 For each elementary spatial volume $\dd[3] \vect x$ we can write the local velocity as the sum: $\vect u = \vect{v} + \vect w$, where $\vect{v}$ is the average particle velocity and $\vect w$ a term corresponding to the random movement of the particle with respect to the bulk flow velocity.
 
-In the absence of external forces and assuming the microscopic particles do not collide, the number density in phase space is conserved in time, i.e. no particles are destroyed or created out of nothing in phase space.
+Assuming that the microscopic particles do not collide, the number density in phase space is conserved in time, i.e. no particles are destroyed or created out of nothing in phase space.
 This gives immediately the collisionless Boltzmann equation (a.k.a. Vlasov equation):
 \begin{equation}
 \label{eq:vlasov}
@@ -150,11 +150,11 @@ The equation of motion for particles, following equations \eqref{eq:poisson} can
  \Phi(\vect x_i) = -G \sum^N_{j=1}\frac{m_j}{\sqrt{(\vect x_i-\vect x_j)^2 + \epsilon^2}}.
 \end{equation}
 
-where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle. It's worthwhile to note, though, that the interaction between particles is still that between a point mass and a Plummer potential, not the one between two Plummer spheres with each other.
+where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle. It's worthwhile to note, though, that particles interact with each other as a point mass and a Plummer potential, not as Plummer spheres with each other.
 
 The purpose of the force softening is to avoid the numerical expense that would be needed to integrate the orbits with sufficient accuracy around the singularity in the $\sim 1/r$ potential.
-Also, if two particles get very close naturally their gravitational attraction will explode, leading to the possibility of the formation of bound particle pairs, strongly violating the collisionless behavior.
-The softening length is also called gravitational resolution because we cannot resolve gravitational forces below that distance.
+Also, if two particles get very close, their gravitational attraction will explode, leading to the possibility of the formation of bound particle pairs, strongly violating the collisionless behaviour.
+The softening length is also called force resolution because we cannot resolve gravitational forces below that distance.
 The value of the gravitational resolution is important when trying to follow the collapse of dense gas clouds where star formation is about to occur, as we shall see in Section~\ref{sec:star_formation}.
 In our simulations we use a softening length of $\epsilon=30$~pc.
 An estimate of this smoothing length is obtained by requiring that in the gas clouds with the highest density $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
@@ -212,7 +212,7 @@ The most often used for SPH are the Schoenberg  B-spline functions \citep{Schoen
 M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
 \end{equation}
 
-By increasing $n$ we obtain progressively better approximations of a Gaussian.
+By increasing $n$ we obtain progressively better approximations of a Gaussian \citep[see Section 13.3 of][]{Easton2010}.
 It is convenient to require continuity in at least the first and second derivatives.
 Accordingly, the most widely used B-spline for SPH is the lowest order B-spline with these features which is the cubic spline kernel $M_4$:
 \begin{equation}
