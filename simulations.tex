@@ -150,16 +150,19 @@ The equation of motion for particles, following equations \eqref{eq:poisson} can
  \Phi(\vect x_i) = -G \sum^N_{j=1}\frac{m_j}{\sqrt{(\vect x_i-\vect x_j)^2 + \epsilon^2}}.
 \end{equation}
 
-where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle. It's worthwhile to note, though, that particles interact with each other as a point mass and a Plummer potential, not as Plummer spheres with each other.
+where we introduced the softening length $\epsilon$, effectively using a Plummer sphere potential for each particle \citep{Plummer1911}.
+It's worthwhile to note, though, that particles interact with each other as a point mass and a Plummer potential, not as Plummer spheres with each other.
 
 The purpose of the force softening is to avoid the numerical expense that would be needed to integrate the orbits with sufficient accuracy around the singularity in the $\sim 1/r$ potential.
-Also, if two particles get very close, their gravitational attraction will explode, leading to the possibility of the formation of bound particle pairs, strongly violating the collisionless behaviour.
+Also, if two particles get very close their gravitational attraction will explode, leading to the possibility of the formation of bound particle pairs, strongly violating the collisionless behaviour.
 The softening length is also called force resolution because we cannot resolve gravitational forces below that distance.
 The value of the gravitational resolution is important when trying to follow the collapse of dense gas clouds where star formation is about to occur, as we shall see in Section~\ref{sec:star_formation}.
 In our simulations we use a softening length of $\epsilon=30$~pc.
-An estimate of this smoothing length is obtained by requiring that in the gas clouds with the highest density $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
-Given that in the densest gas clouds star formation occurs at a density of $n\approx100$~amu/cm$^{3}$, when a galaxy is simulated with gas particles of $4000$~\Msun{}, the average distance between the particles in that gas cloud will be of the order of $11$ pc.
-So the collapse of the cloud will be followed correctly by the simulation if the softening length is of that order. % TODO still don't understand
+An estimate of this smoothing length is obtained by requiring that in the simulated gas clouds with the highest density, $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
+Given that in the densest gas clouds star formation occurs at a density of $n\approx100$~amu/cm$^{3}$, when a galaxy is simulated with gas particles of $4000$~\Msun{}, the average distance between the particles in that gas cloud will be of the order of $11$~pc.
+
+As \citet{Bate1997} and \citet{Springel2005} discuss, in order for SPH to produce the correct results in problems involving self-gravity, the hydrodynamic smoothing length and gravitational softening length must always be less than the local \emph{Jeans length} (see \refsec{sec:star_formation}). However, a gravitational softening much smaller than the SPH smoothing length can lead to artificial convergence of SPH particles.
+This can be avoided if the force resolution is greater than the hydrodynamical resolution at the scale of high density clumps.
 
 \subsection{Smoothed Particles Hydrodynamics}
 Smoothed Particles Hydrodynamics (SPH) is a finite volume, Lagrangian particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
@@ -176,7 +179,7 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 %But at the end of the day if we pay attention to the the trend is 
 
 \paragraph{Origin of SPH}
-SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
+SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977, Monaghan2005}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
 A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 ... Similarity of SPH with eq. \eqref{eq:df_average}... % TODO density estimation
@@ -287,6 +290,21 @@ Given a random number $X \in \mathcal{U}(0,1)$ a star can form if $X < P_\star$.
 Several authors \citep{Stinson2006, Revaz2009, Cloet-Osselaer2012} have pointed out that since the star formation is a self-regulating process the star formation rate is weakly dependent on the the choice of $c_\star$ above $0.1$. In our case we use $c_\star = 0.25$.
 The new star particle inherits the position, velocity and metallicity of its gas particle progenitor.
 In all effects, star particles represent a stellar population with single age and metallicity (SSP, Single Stellar Population) with a Chabrier initial-mass function, \citet{Chabrier2003}.
+
+In a self gravitating gas sphere with a diameter greater than the Jeans length, pressure cannot counteract the gravitational collapse and dense regions start to fragment into smaller clumps at the core of which stars may form.
+The Jeans length is defined as \citep{Jeans1902}:
+\begin{equation}
+ \lambda_J = c_s\sqrt{\frac{\pi}{G \rho}},
+\end{equation}
+where $c_s$ is the local sound speed $c_s=\sqrt{k_BT/\mean{\mu}}$ and $\mean{\mu}$ is the mean molecular mass and $\rho$ and $T$ the local density and temperature respectively.
+
+Following Jeans criterion, smaller scales are stable but given that is Jeans stable, but given that cooling by radiation scales quadratically with the density, while the pressure only scales linearly, the cloud will effectively become unstable.
+The contraction won't give rise to enough pressure to counteract the gravitational collapse, thus the fragmentation.
+This highlight the importance of having cooling curves which can be used at high density, and low temperature \citep{DeRijcke2013}.
+
+Also, \citet{Bate1997} show that SPH produces in problems involving self-gravity, numerical results are only trustworthy so long as the minimum resolvable mass is always less than a Jeans mass (which is just the mass contained in a sphere of diameter $\lambda_J$).
+Previous versions of the code used directly the Jeans length as a criterion for dynamical instability.
+But since this requires the comparison between the dynamical time (or free-fall time) of collapse and the local sound crossing time ($t_s = h/c_s$ where $h$ is the smoothing length), the criterion introduced a dependency on the number of particles in the simulations, becoming not practical \citep{Valcke2008, Stinson2006}. That's why a fixed high density threshold has been used.
 
 \paragraph{Stellar feedback}
 A \emph{feedback mechanism} is any process that allows to exchange energy, matter and/or momentum between galaxy components. Stars have a huge influence on the interstellar medium (ISM). They pump energy and matter in the surrounding gas and enrich the ISM with newly formed metals.
