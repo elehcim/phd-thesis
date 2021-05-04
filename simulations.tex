@@ -322,7 +322,13 @@ Feedback from supernova events of type Ia (\snia) and II (\snii) inject $10^{51}
 %Ia vs Ib depends on if the companion has hydrogen in the atmosphere.
 
 Supernovae events increase the metal content of the ISM. %tracked by Fe and Mg element abundances in gas particles.
-In simulations these effects are taken into account by keeping track of two independent abundances:\feh, \mgfe, corresponding to a fast contribution by the supernova explosions of massive stars, and a slow contribution by the supernova explosions of less massive stars \citep{DeRijcke2013, Vandenbroucke2016}.
+In our simulations these effects are taken into account by keeping track of two independent abundances as properties of the gas particles: \mgfe{} and \feh{}.
+\mgfe{} corresponds to a fast contribution by the supernova explosions of massive stars (\snii{}), whereas \feh{} to a slow contribution by  intermediate mass binary systems with mass transfer (\snia{}) \citep{DeRijcke2013}.
+The ratio of $\alpha$-elements to iron, [$\alpha$/Fe] (in our case we use magnesium Mg as $\alpha$-element tracer), can be used to trace the star formation timescale because it is directly linked to the ratio of \snii{} to \snia{} events that have occurred up to the current time \citep{Tolstoy2009}.
+
+% : a ‘fast’ one (encompassing the contributions from SNII and massive IMS) and a ‘slow’ one (encompassing the contributions from SNIa and less massive IMS). The ratio of both contributions can be linked directly to the Fe and Mg abundances which provide us with two strong handles on all other element abundances DeRijcke2013
+
+% The ratio of alpha-elements to iron, [alpha/Fe], is commonly used to trace the star-formation timescale in a system, because it is sensitive to the ratio of SNII (massive stars) to SNIa (intermediate mass binary systems with mass transfer) that have occurred in the past. SNIa have a longer time scale than SNII and as soon as they start to contribute they dominate the iron enrichment and [alpha/Fe] inevitably decreases. After that, no SFH can ever again result in enhanced [alpha/Fe], unless coupled with galactic winds removing only the SNIa ejecta and not that of SNII. Tolstoy2009 
 
 A second type type of feedback is the stellar wind from young O and B stars.
 Stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
