@@ -561,6 +561,35 @@ We can then transform from rotating to inertial coordinates by applying this tra
 \end{equation}
 where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in the rotating frame, respectively, and $\mathbf V$ its velocity in the inertial frame. % For simplicity in the following we don't take into account $\Vp$ since its contribution to the line of sight velocity is negligible.
 
+\subsection{Injecting and removing particles in the moving box}
+The wind of the moving box is due to particles belonging to the cluster injected with correct velocity, density and temperature in the box.
+We assume the cluster gas to have the density and pressure of the Fornax cluster as described by \citet{Paolillo2002} and in \refsec{sec:ICM}. We also assumed zero metallicity and $\alpha-$abundance.
+
+The cluster gas is injected using a sort of ``cartridge'' of particles previously computed as a unit sized cubic glass structure of $\approx 18000$ particles.
+The glass has been generated from a random distribution of particles and let them evolve in a periodic box with negative gravitational attraction (effectively being a repulsive force) in order to get a low energy distribution of particles with the consequent low probability of injecting dense clumps of particles which would have high kinetic energy once released.
+
+At each timestep the correct amount of new particles to be injected is taken from the ``cartridge''.
+The number of particles belonging to the cluster $N_c$ would be the correct amount to fill up the entire box of size $L$ with the correct cluster density $\rho_c(r)$ at the instantaneous orbital radius $r$.
+Therefore they respect the relation:
+\begin{equation}
+ N_c m_g = \rho_c(r) L^3.
+\end{equation}
+
+The fraction of particles to be taken from the cartridge is then: $\xi=\dfrac{N_c}{N_{\text{glass}}}$. The number of particles in the glass should be chosen in order for $\xi\leq1$.
+A slice of the glass unit cube is then taken in such a way that its depth is 
+\begin{equation}
+\frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},
+\end{equation}
+and width and length are both $\sqrt[3]{\xi}$. The density and the temperature of the new particles are set according to the quantities instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state.
+By construction the new particles have velocity $\norm{\Vp}$ directed towards the local moving box axes $+y$.
+
+If a particle of any kind gets closer than $L/100$ from the rear edge of the box, it gets deleted.
+The lateral edges of the box are periodic for gas particles, to keep a constant flow around the galaxy, but dark matter or stellar particles are removed if closer than $L/500$ from any lateral edge of the box.
+This process has been fine tuned and extensively tested by \citet{Nichols2015} and \citet{Hausammann2019}.
+
+% It's worthwhile noting that the implementation the deletion or creation of particles in distributed code as the \textsc{Gadget-2} is not a trivial task.
+% The arrays representing the particles undergo this kind of algorithm.
+% In the end, a rolling 
 
 \section{Simulating the Fornax cluster environment}
 \label{sec:fornax_sim}
