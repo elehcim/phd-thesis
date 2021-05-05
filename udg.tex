@@ -10,7 +10,7 @@
  \centering
  \footnotesize
  \include{tbl_redshift_0}
- \caption{Features of the selected MoRIA Galaxies at $z=0$} \label{tbl:galaxies}
+ \caption{Features of the selected MoRIA galaxies at $z=0$.} \label{tbl:galaxies}
 \end{sidewaystable}
 
 
@@ -48,11 +48,17 @@ As a convention we measure the galaxy mass as the total mass (baryonic and dark 
 In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit. %TODO Insert figure
 We define a galaxy to become unbound when the condition 
 \begin{equation}
-    r_t<R_e
+    R_e > r_t
 \label{eq:tidal_radius_condition}
 \end{equation}
 first occurs.
 %Galaxies on a radial orbits will undergo disruption more easily.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{14.0_tidal_radius.pdf}
+\caption{Evolution of the tidal radius for the simulations ID 68.}
+\label{fig:tidal_radius}
+\end{figure}
 
 \section{Becoming an Ultra Diffuse Galaxy (UDG)}
 \label{sec:UDG}
@@ -74,16 +80,24 @@ LSB galaxies are defined as having \citep{Venhola2017}:
 The majority of studies indicate have the properties of large dwarf galaxies \citep{Sandage1984, Roman2017, Venhola2017, Saifollahi2021}.
 Three main mechanisms are hypothesised as possible formation scenarios for UDGs \citep{Rong2020}: dwarf galaxies which undergo strong tidal stripping \citep{Venhola2017, Carleton2018, Rong2020a}, gas outflows driven by stellar feedback with extended dark matter halo and faint and diffuse stellar component \citep{DiCintio2017, ManceraPina2019}, or failed $L^*$ galaxies in high mass dark halos with ceased star formation in the early universe.
 
-\subsubsection{Size and magnitudes}
-We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}. 
+\paragraph{UDGs in Fornax}
+\citet{Venhola2019} found ... % TODO
+
+\subsection{Size and magnitudes}
+According to the virial theorem %predicts that by adding energy to a galaxy, it will increase its radius: 
+once approaching the pericenter, energy is transferred to the galaxy: stars thus migrate to more energetic and hence wider orbits.
+In addition, mass is lost due to tides, making the gravitational well even more shallow and leading to potentially large increases in radius.
+We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}.
+%TODO explain tidal radius
 This radius is independent of the orientation of the galaxy, and it has been computed as the radius of the sphere which contains half the total luminosity of the galaxy.
-Tidal heating affects the size of the galaxies as they pass near the cluster center, with low mass galaxies affected most 
+Tidal heating affects the size of the galaxies as they pass near the cluster center, with low mass galaxies affected most.
+
 % We compare the resulting effective radius in simulations with the ones not taking into account the gas inside the cluster, Figure~\ref{fig:r_eff_no_gas}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\columnwidth]{{00.0_fig_3dreff_time}.pdf}
-\caption{3D effective radius evolution with time normalised with the radial period of the orbit. Curves are smoothed using a rolling average of 0.2 Gyr.}
+\includegraphics[width=\textwidth]{{00.0_fig_3dreff_time}.pdf}
+\caption{3D effective radius evolution with time normalised with the radial period of the orbit. Curves are smoothed using a rolling average of 0.2~Gyr.}
 \label{fig:r_eff}
 \end{figure}
 
@@ -108,7 +122,11 @@ Tidal heating affects the size of the galaxies as they pass near the cluster cen
 % \label{fig:dm_halo}
 % \end{figure}
 
-\subsubsection{$M_h/M_\star$}
+
+% \subsection{Stellar metallicity gradients}
+
+
+\subsection{$M_h/M_\star$}
 We computed the amount of stellar mass is created and the amount of total dark matter. Star formation undergoes a burst in correspondence of the 
 Dark matter instead is pulled out by tidal forces who elongate the halo, effectively stripping dark matter particles out of the moving box of our simulation setup.
 This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the center of the dwarf with the whole dark matter present inside the moving box.
@@ -131,6 +149,22 @@ For very radial orbits, around first infall, central halo mass increases more th
 \caption{$M_h/M_\star$ around first infall. Halo mass is computed in the $10$~kpc sphere around the galaxy.}
 \label{fig:m_halo_m_star}
 \end{figure}
+
+\subsection{Central stellar velocity dispersion}
+To start with, we measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on orbit, as shown in Figure~\ref{fig:sigma}.
+%Tidal interactions stir the particles in the center of the galaxies. % FIXME  
+%TODO There seems to be a bump
+% The anisotropy parameter $\beta$ is shown %TODO
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{01.0_fig_sigma_time.pdf}
+\caption{Velocity dispersion evolution with time normalised with the radial period of the orbit.
+}
+\label{fig:sigma}
+\end{figure}
+
+\citep{Danieli2019}
 
 \subsection{3D ellipticity}
 We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis (PCA). 
@@ -199,23 +233,6 @@ An intermediate mass dwarf, ID 68, on orbit of 50 and 100 kpc is completely stri
 This enforces the idea of the \emph{Jellyfish} phenomenon as a relatively short transitory phase of the galaxy. 
 
 
-\subsection{Central stellar velocity dispersion}
-To start with, we measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on orbit, as shown in Figure~\ref{fig:sigma}.
-%Tidal interactions stir the particles in the center of the galaxies. % FIXME  
-%TODO There seems to be a bump
-% The anisotropy parameter $\beta$ is shown %TODO
-
-\begin{figure}
-\centering
-\includegraphics[width=\columnwidth]{fig_sigma_time.pdf}
-\caption{Velocity dispersion evolution with time normalised with the radial period of the orbit.
-% TODO ADD 150 orbit
-}
-\label{fig:sigma}
-\end{figure}
-
-% \subsection{Stellar metallicity gradients}
-
 %% DERIVED PROPERTIES
 \section{Colour Magnitude}
 In Figure \ref{fig:g-r} we show the behaviour of the colour magnitude.
@@ -278,13 +295,13 @@ We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very os
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
 For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
 % TODO 41 69 71
-
-\begin{figure}
-\centering
-\includegraphics[width=.8\columnwidth]{03.0_fig_lambda_r_time.pdf}
-\caption{Specific stellar angular momentum for galaxy ID 71 on a $200$~kpc pericenter orbit.}
-\label{fig:lambda_R}
-\end{figure}
+% 
+% \begin{figure}
+% \centering
+% \includegraphics[width=.8\columnwidth]{03.0_fig_lambda_r_time.pdf}
+% \caption{Specific stellar angular momentum for galaxy ID 71 on a $200$~kpc pericenter orbit.}
+% \label{fig:lambda_R}
+% \end{figure}
 
 \section{Conclusion}
 
