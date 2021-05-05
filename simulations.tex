@@ -390,7 +390,7 @@ Assuming no temporal composition changes in the gas (i.e. assuming the gas in io
 \begin{equation}
 \dv{\energy}{t} = \dfrac{1}{ 1 + X_\text{ukin}} \dv{\energy_\text{kin}}{t}
 \end{equation}
-where we defined $X_\text{ukin} \equiv \frac{\chi_\text H}{m_\text H} \dv{x}{\energy_\text{kin}}$.\footnote{The term $X_\text{ukin}$ comes from the the convention of writing the internal energy as $u$. In this thesis we adopted another notation, using $\energy$ to represent the internal energy.}
+where we defined $X_\text{ukin} \equiv \dfrac{\chi_\text H}{m_\text H} \dv{x}{\energy_\text{kin}}$.\footnote{The term $X_\text{ukin}$ comes from the the convention of writing the internal energy as $u$. In this thesis we adopted another notation, using $\energy$ to represent the internal energy.}
 
 Instead of evolving the total thermal energy, we can hence evolve the kinetic thermal energy, and adapt the thermal energy equation by applying the correction term $X_\text{ukin}$.
 This can be precomputed and tabulated as a function of $(T, \feh, \mgfe, z, \rho)$.
@@ -403,7 +403,7 @@ This process can alter the effects of thermal energy injection by supernovae exp
 \paragraph{Ultraviolet background}
 The cosmic UV background (UVB) is a photoionizing radiation field due to young UV bright stars or e.g. to QSO whose spectra gets filtered by the Gunn-Peterson effect. It is responsible for preventing gas from cooling in low-mass halos at high redshift \citep{Efstathiou1992, Navarro1997}.
 In our simulations, the UVB is taken into account in the look-up-tables for gas cooling/heating, for the ionization equilibrium and the mean molecular mass. Its dependence on redshift is implemented following the model by \citet{Faucher-Giguere2009}.
-Since in dense neutral regions of gas the UVB's photons are absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of the UVB is modeled with an exponential decay for neutral hydrogen regions with number density $n_{\text{H}\textsc i} \geq 0.007$~amu~cm$^{-3}$.
+{Since in dense neutral regions of gas the UVB's photons are absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of the UVB is modeled with an exponential decay for neutral hydrogen regions with number density \[n_{\text{H}\textsc i} \geq 0.007 \text{~amu~cm}^{-3}.\]
 
 
 \section{Moving box}
