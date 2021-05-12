@@ -301,24 +301,24 @@ We noted that all the snapshots surviving the selection are found within 200 Myr
 
 We ascertain the robustness of this result by varying the tolerance~$\delta$ of the comparison of the angles $\alpha, \beta$ with the observed ones.
 Our orbital and morphological criteria are preferentially met by simulations with a stellar mass above $ \approx10^8 $ \Msun{}.
-Less massive galaxies and galaxies on radial orbits are completely stripped from their HI gas, see Figure \ref{fig:m_hi}.
-\begin{figure*}
+Less massive galaxies and galaxies on radial orbits are completely stripped from their HI gas, see Figure \ref{fig:m_hi}, because of the steep increase of ram pressure around pericenter as shown in Figure \ref{fig:r_rps}.
+\begin{figure}
 \centering
 \includegraphics[width=\textwidth]{m_hi-crop.png}
 \caption{Neutral gas mass as a function of normalised time $\tau$ as defined in Figure \ref{fig:r_rps}.
 Each panel is labelled with the simulation ID (cf. Table~\ref{tbl:sim}) and contains information for the simulated dwarf launched on orbits with different pericenter distances (50, 100, 150, 200, 300 kpc identified by the colour legend in the top-left panel). Gas is compressed when the isolated galaxy enters the cluster and as a consequence it cools down, thus increasing the neutral hydrogen mass. Obviously, around pericenter, ram pressure stripping is effective at driving down the gas mass (as shown also in Figure~\ref{fig:r_rps}).
 }
 \label{fig:m_hi}
-\end{figure*}
-As shown in Figure~\ref{fig:histo_peri}, especially for radial orbits, no oriented snapshot is found on orbits of 50 and 100 kpc after first pericenter passage, regardless of the tolerance~$\delta$ considered.
-For the most circular orbits, only snapshots undergoing second pericenter passage survive the selection. This is likely due to the first passage acting as 'preprocessing' and making the galaxy potential shallow with higher chances to create tidal tails.
+\end{figure}
+Especially for radial orbits, no oriented snapshot is found on orbits of 50 and 100 kpc after first pericenter passage, regardless of the tolerance~$\delta$ considered, as shown in Figure~\ref{fig:histo_peri}.
+For the most circular orbits, only snapshots undergoing second pericenter passage survive the selection. This is likely due to the first passage acting as `preprocessing' and making the galaxy potential shallow with higher chances to create tidal tails.
 % \todo{I'm currently having a look at the distribution of ellipticity of the fitted isophotes to see how circular, and hence not so tidal, they are. Update: See figure noperi_all_stacked-crop.png }
 In Figure~\ref{fig:histo_noperi} we performed the same analysis cumulatively counting all the oriented snapshots (without pericenter distance distinction) but using different isophotes.
 The diagrams, even if noisier when using fainter isophotes, convey the same message: there is an abundance of correctly oriented snapshots (with tails as NGC~1427A) around first pericenter passage.
 Indeed, tidal tails as those shown in Figure~\ref{fig:panel}, are present in low surface brightness regions of the dwarf, even if they are more difficult to measure.
 The counterpart in NGC~1427A would be the faint stellar South-West elongation visible especially in $r'$-band, see Figure~\ref{fig:r_band}.
 
-\begin{figure*}
+\begin{figure}
 \centering
 \includegraphics[width=\textwidth]{histo/histo_iso26.5_bins0.35-16.pdf}
 \caption{Histograms of oriented snapshots fulfilling the requirements (i)-(iv), selected to be around first (blue) or second (orange) pericenter and grouped by orbital pericenter distances (50, 100, 150, 200, 300 kpc).
@@ -326,9 +326,9 @@ The isophote used to compute the stellar tail inclination is $26.5$~mag/arcsec$^
 The distribution is peaked at around 150 Myr before pericenter passage, especially in more radial orbits. The result is robust enough to be visible on stricter angle tolerances $\delta = [20, 15, 10]$~deg.
 }
 \label{fig:histo_peri}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
 \centering
 \includegraphics[width=\textwidth]{histo/iso_comparison_tol15_asym0.0_bins0.35-16.pdf}
 \caption{Distribution in time relative to pericenter passage of oriented snapshots fulfilling the requirements (i)-(iv) with tolerance $\delta=15$ deg.
@@ -336,7 +336,7 @@ Histograms of selected snapshots are coloured relative to their orbital phase: a
 Each column corresponds to a different isophote used to compute the stellar tidal orientation.
 Irrespective of the isophote, the distribution remains peaked  around 150 Myr before pericenter passage.}
 \label{fig:histo_noperi}
-\end{figure*}
+\end{figure}
 
 \subsection{3D position of the galaxy in the Fornax context}
 
