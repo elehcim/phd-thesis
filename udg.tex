@@ -162,11 +162,7 @@ Colours indicate the pericenter distances of the different orbits.
 \end{figure}
 
 \subsection{Central stellar velocity dispersion}
-To start with, we measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on orbit, as shown in Figure~\ref{fig:sigma}.
-%Tidal interactions stir the particles in the center of the galaxies. % FIXME  
-%TODO There seems to be a bump
-% The anisotropy parameter $\beta$ is shown %TODO
-
+We measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on their orbits, as shown in Figure~\ref{fig:sigma}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\columnwidth]{01.0_fig_sigma_time.pdf}
@@ -174,6 +170,20 @@ To start with, we measured the central (within $250$ pc) stellar velocity disper
 }
 \label{fig:sigma}
 \end{figure}
+For simplicity we adopted a common point of view for all the orbits, and the line-of-sight velocity dispersion is computed assuming the view laying on the orbital plane.
+As tidal interactions stir the particles in the center of the galaxies, at the pericenter passages a bump in sigma can be seen.
+The temporary increase in sigma can be linked to the variations of $M_h/M_\star$.
+Tidal squeezing increase the velocity dispersion while subsequent mass loss can dramatically lower the sigma.
+We checked the dynamical mass estimation which can be computed from the velocity dispersion in using the \citet{Wolf2010} relation:
+\begin{equation*}
+M^{dyn}_{est} = \dfrac{3}{G} \sigma_e^2 R_e, 
+\end{equation*}
+where $\sigma_e$ is the luminosity-weighted line-of-sight velocity dispersion within an effective radius $R_e$,
+and $G$ the gravitational constant.
+
+
+
+%TODO The anisotropy parameter $\beta$ is shown
 
 % \citep{Danieli2019} Low dark matter galaxies.
 
