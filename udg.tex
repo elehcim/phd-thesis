@@ -45,7 +45,7 @@ r_t = r \sqrt[3]{\frac{M_g}{M_c(r) (3+e)}}
 where $e = (r_a - r_p) / (r_a + r_p)$ is the eccentricity of the orbit computed, $r_a$, $r_p$ the apocenter and pericenter radii respectively; $M_c(r)$ is the enclosed cluster mass at radius $r$, and $M_g$ the instantaneous total mass of the galaxy.
 As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within 10~kpc from the center of the galaxy.
 
-In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit. %TODO Insert figure
+In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit.
 We define a galaxy to become unbound when the condition 
 \begin{equation}
     R_e > r_t
@@ -64,7 +64,6 @@ first occurs.
 \label{sec:UDG}
 
 Faint Low Surface Brightness (LSB) galaxies with $R_e > 1$ kpc have been detected in galaxy clusters since the 1980s \citep[e.g.][]{Sandage1984}.
-% In 2015 \citet{VanDokkum2015}... %TODO cite vandokkum
 % See Wittmann  https://www2.mpia-hd.mpg.de/homes/galClusters_2017/slides/Ringberg2017_presentation_Wittmann.pdf
 
 % Wittmann2017 studies LSB in Perseus
@@ -97,7 +96,7 @@ Tidal heating affects the size of the galaxies as they pass near the cluster cen
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{{00.0_fig_3dreff_time}.pdf}
-\caption{3D effective radius evolution with time normalised with the radial period of the orbit. Curves are smoothed using a rolling average of 0.2~Gyr.}
+\caption{3d effective radius evolution with time normalised with the radial period of the orbit. Curves are smoothed using a rolling average of 0.2~Gyr.}
 \label{fig:r_eff}
 \end{figure}
 
@@ -178,25 +177,14 @@ Around the second pericenter passage the galaxy ends up being dispersed and not 
 \section{Star formation}
 Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
 In particular, tidal tails around pericenter can create grooves in the potential well which enhance the squeezing of cold gas ready to create stars.
-The total content of star forming gas is shown in Figure~\ref{fig:cold_gas}.
-
-The specific star formation rate is shown in Figure~\ref{fig:sfr}.
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=0.9\columnwidth]{{12.3_cold_gas}.pdf}
-% \caption{Cold gas (T<15000~K) evolution.}
-% \label{fig:cold_gas}
-% \end{figure}
+The total content of star forming gas is shown in cyan in Figure~\ref{fig:cold_gas} alongside with the specific star formation rate.
 
 \begin{figure}
 \centering
 \includegraphics[height=\textheight]{{12.6_sfr_cold_gas}.pdf}
 \caption{Specific star formation rate and cold gas (T<15000~K) evolution on different orbits.
 }
-\label{fig:sfr}
 \label{fig:cold_gas}
-
 \end{figure}
 
 In stripped tails of the jellyfish, gas is able to cool and create stars. \citet{Tonnesen2012} argue that pressure in the cluster has a primary role in regulating SF as opposed to the strength of ram pressure.
@@ -289,7 +277,7 @@ with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel fro
 % \citep{Bidaran2020}
 
 \subsection{Relation with physical angular momentum}
-We compute the specific angular momentum ($j_s = J_s/M_g$ where $J_s$ is the total angular momentum and $M_g$ the total mass of the galaxy) of star particles within 10~kpc from the densest stellar region (center of the galaxy).
+We compute the specific angular momentum ($j_s = J_s/M_\star$ where $J_s$ is the total angular momentum and $M_\star$ the stellar mass of the galaxy) of star particles within 10~kpc from the densest stellar region (center of the galaxy).
 We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
 We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
