@@ -166,13 +166,41 @@ To start with, we measured the central (within $250$ pc) stellar velocity disper
 \citep{Danieli2019}
 
 \subsection{3D ellipticity}
-We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis (PCA). 
-To give some details: the first principal component $\vect w_2$ is the direction of highest elongation (largest variance of the N star particle points) computed via PCA\footnote{$\vect w_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
+We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis (PCA).
+The first principal component $\vect w_2$ is the direction of highest elongation (largest variance of the N star particle points) computed via PCA\footnote{$\vect w_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
 % For now I took into account only the position of the star particles (which have negligible mass difference among them).
 
 Around pericenter the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster center; then it undergoes a sort of ``slingshot effect" after pericenter and it aligns with the cluster center also around apocenter before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
-Around the second pericenter passage the galaxy ends up being dispersed and not anymore gravitationally bound.
+Around the second pericenter passage, for radial orbits, the galaxy ends up being dispersed and not anymore gravitationally bound.
 
+In Figure~\ref{fig:pca_angle_r}, for simulation ID 69 it is shown quantitatively the relative orientation between $\vec{w}_2$ and the clustercentric direction.
+Around both pericenter passages the galaxy gets aligned with the cluster center.
+The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
+Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter. % ($t \in t_p \pm 0.25 T_r$).
+Except for the orbit with 100 kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center.
+
+Analogously we can compute the angle between the elongation direction and the instantaneous velocity along the orbit.
+This is shown in Figure~\ref{fig:pca_angle_v}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{3d_qualitative_69p200.pdf}
+\caption{Qualitative overview of the principal components ellipsoids for the stellar particle positions of the galaxy along the orbit. In red the orbit of the galaxy (ID 69 with pericenter of 200 kpc).}
+\label{fig:pca}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{69_r_angle.pdf}
+\caption{Angle between the largest principal component $\vec{w}_2$and the direction to the cluster center for simulation ID 69.}
+\label{fig:pca_angle_r}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{69_v_angle.pdf}
+\caption{Angle between the largest principal component $\vec{w}_2$and the instantaneous velocity for simulation ID 69.}
+\label{fig:pca_angle_v}
+\end{figure}
 
 \section{Star formation}
 Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
@@ -182,8 +210,7 @@ The total content of star forming gas is shown in cyan in Figure~\ref{fig:cold_g
 \begin{figure}
 \centering
 \includegraphics[height=\textheight]{{12.6_sfr_cold_gas}.pdf}
-\caption{Specific star formation rate and cold gas (T<15000~K) evolution on different orbits.
-}
+\caption{Specific star formation rate and cold gas (T<$15000$~K) evolution on different orbits.}
 \label{fig:cold_gas}
 \end{figure}
 
