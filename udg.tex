@@ -320,6 +320,17 @@ As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} c
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
 The details on how to recover the correct kinematics in our setup are shown in \refsec{sec:correct_kinematics}.
 
+\paragraph{Comparison with galaxy in the field}
+We compare the specific stellar angular momentum $j_s$ of particles within a sphere of 10~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
+We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in correspondence to pericenter passages.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{15.0_angmom_inertial_moria.pdf}
+\caption{Comparison between the norm of the specific angular momentum for the simulation ID 69 on a 200 kpc orbit and the correspondent isolated MoRIA run.}
+\label{fig:j_s_moria}
+\end{figure}
+
 \subsection{Angular momentum and specific angular momentum proxy $\lambda_R$}
 We compute the specific stellar angular momentum proxy $\lambda_R$ starting from SPH luminosity-weighted velocity and velocity dispersion maps as defined in \citet{Emsellem2007}: %\citet{Toloba2015}
 \begin{equation}
@@ -422,6 +433,12 @@ The relation between $\lambda_R$ and the is shown in Figure~\ref{fig:lambda_r_j_
 % \end{figure}
 
 \section{Conclusion}
+
+\begin{itemize}
+ \item $\lambda_R$ is very variable with time in the dwarf irregular regime.
+ \item It is sensitive to many things. % FIXME
+ \item There can be cases in which depending on the projection and the size of the galaxy, $\lambda_R$ correlates poorly with the physical specific angular momentum.
+\end{itemize}
 
 
 % \subsection{Magnitude conversion}
