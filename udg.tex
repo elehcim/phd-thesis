@@ -189,13 +189,13 @@ and $G$ the gravitational constant.
 
 \subsection{3D ellipticity}
 We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis (PCA).
-The first principal component $\vect w_2$ is the direction of highest elongation (largest variance of the N star particle points) computed via PCA\footnote{$\vect w_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
+The first principal component $\vect{w}_2$ is the direction of highest elongation (largest variance of the N star particle points) computed via PCA\footnote{$\vect{w}_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
 % For now I took into account only the position of the star particles (which have negligible mass difference among them).
 
 Around pericenter the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster center; then it undergoes a sort of ``slingshot effect" after pericenter and it aligns with the cluster center also around apocenter before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
 Around the second pericenter passage, for radial orbits, the galaxy ends up being dispersed and not anymore gravitationally bound.
 
-In Figure~\ref{fig:pca_angle_r}, for simulation ID 69 it is shown quantitatively the relative orientation between $\vec{w}_2$ and the clustercentric direction.
+In Figure~\ref{fig:pca_angle_r}, for simulation ID 69 it is shown quantitatively the relative orientation between $\vect{w}_2$ and the clustercentric direction.
 Around both pericenter passages the galaxy gets aligned with the cluster center.
 The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
 Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter. % ($t \in t_p \pm 0.25 T_r$).
@@ -214,13 +214,13 @@ This is shown in Figure~\ref{fig:pca_angle_v}.
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{69_r_angle.pdf}
-\caption{Angle between the largest principal component $\vec{w}_2$ and the direction to the cluster center for simulation ID 69.}
+\caption{Angle between the largest principal component $\vect{w}_2$ and the direction to the cluster center for simulation ID 69.}
 \label{fig:pca_angle_r}
 \end{figure}
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{69_v_angle.pdf}
-\caption{Angle between the largest principal component $\vec{w}_2$ and the instantaneous velocity for simulation ID 69.}
+\caption{Angle between the largest principal component $\vect{w}_2$ and the instantaneous velocity for simulation ID 69.}
 \label{fig:pca_angle_v}
 \end{figure}
 
@@ -254,7 +254,8 @@ In stripped tails of the jellyfish, gas is able to cool and create stars. \citet
 \includegraphics[width=\textwidth]{StarFormationLocation_new41_hollow.pdf}
 \caption{Simulation ID 41}
 \end{subfigure}
-\caption{Star formation location around first pericenter passage for simulation ID 68 and 41. Each subpanel corresponds to a different pericenter.
+\caption{Star formation location around first pericenter passage for simulation ID 69 and 41.
+Each subpanel corresponds to a different pericenter.
 The size of the marker is proportional to the number of stars born in that time interval.
 Markers are colored using the time from pericenter normalized with the radial period.
 In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail.}
@@ -284,9 +285,10 @@ This allows for star formation to occur almost steadily and to move multiple tim
 \includegraphics[width=\textwidth]{04.2_color_magnitude_Aku_g-r_rt_criterion_r.pdf}
 \caption{SDSS bands colour magnitude diagram of galaxies on different orbits compared to Fornax dwarf catalogue of \citet{Venhola2019}.
 % TODO ask permission for the overlay or use catalogue datapoints.
-Red and blue colour for the data points in the background represent dwarf elliptical (dE) and late type galaxy respectively, classified by eye on the base of morphology. Empty squares are nucleated dE.
+Red and blue colour for the data points in the background represent dwarf elliptical (dE) and late type galaxy respectively, classified by eye on the base of morphology.
+Empty squares are nucleated dE.
 Data tracks of simulated galaxies are shown overlaid colour coded by the clustercentric radius.
-The tracks are limited to bound galaxies (i.e. they are drawn with snapshots for which condition \eqref{eq:tidal_radius_condition} holds).
+The tracks are limited to bound galaxies i.e. they are drawn with snapshots for which condition \eqref{eq:tidal_radius_condition} holds.
 }
 \label{fig:g-r}
 \end{sidewaysfigure}
@@ -352,7 +354,7 @@ This scenario is confirmed by our simulations where dwarf irregulars are convert
 \centering
 \includegraphics[width=\textwidth]{lambda_r_j_s_69p150r100.png}
 \caption{Comparison between specific angular momentum and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.}
-\label{fig:lambda_r_j_s}
+\label{fig:lambda_r_j_s_sigma}
 \end{figure}
 
 
