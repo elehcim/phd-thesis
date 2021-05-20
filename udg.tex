@@ -229,10 +229,14 @@ In red the orbit of the galaxy (ID 69 with pericenter of 200 kpc).}
 \end{figure}
 
 \section{Star formation}
-Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
-In particular, tidal tails around pericenter can create grooves in the potential well which enhance the squeezing of cold gas ready to create stars.
+As shown in the previous section, elongation of material around low clustercentric distances may create grooves in the potential well which lead to angular-momentum transport.
+In turn this helps funneling gas towards the center of the galaxy which is squeezed and can cool to create stars.
+% TODO non gas run may isolate the role of star formation.
+% Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
 The total content of star forming gas is shown in cyan in Figure~\ref{fig:cold_gas} alongside with the specific star formation rate.
-
+It is interesting to note that for an intermediate mass dwarf, the stripping phenomenon is highly nonlinear.
+For example for simulation ID 68, as shown in the corresponding panel in Figure \ref{fig:cold_gas}, a slight change of orbit from 150~kpc pericenter to 100~kpc makes the dwarf completely stripped from the reservoir of cold gas.
+Due to the stripping, after a burst, star formation stops.
 \begin{figure}
 \centering
 \includegraphics[height=\textheight]{{12.6_sfr_cold_gas}.pdf}
@@ -240,7 +244,7 @@ The total content of star forming gas is shown in cyan in Figure~\ref{fig:cold_g
 \label{fig:cold_gas}
 \end{figure}
 
-In stripped tails of the jellyfish, gas is able to cool and create stars. \citet{Tonnesen2012} argue that pressure in the cluster has a primary role in regulating SF as opposed to the strength of ram pressure.
+\citet{Tonnesen2012} argue that pressure in the cluster has a primary role in regulating SF as opposed to the strength of ram pressure.
 % TODO Check: Also \citet{Hausammann2019} introduce the parameter $\beta$ defined as the ratio between the ram pressure and the thermal pressure as the
 
 % TODO compute cluster gas pressure corresponding to SFR peaks.
@@ -261,18 +265,16 @@ In stripped tails of the jellyfish, gas is able to cool and create stars. \citet
 \caption{Star formation location around first pericenter passage for simulation ID 69 and 41.
 Each subpanel corresponds to a different pericenter.
 The size of the marker is proportional to the number of stars born in that time interval.
-Markers are colored using the time from pericenter normalized with the radial period.
-In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail.}
+Markers are colored according to the time from pericenter normalized with the radial period.}
 \label{fig:sf_location}
 \end{figure*}
 In Figure \ref{fig:sf_location} we show the average position of the star forming particles for each simulation snapshot.
 For each simulation snapshot the number of new stars w.r.t. to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted.
-Galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity, see \refsec{sec:MovingBox}) around pericenter.
-There is a significant star formation activity in the tail (in Figure~\ref{fig:sf_location}).
+The galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity, see \refsec{sec:MovingBox}) around pericenter.
+In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail, see Figure~\ref{fig:sf_location}.
+These galaxies can therefore be defined \emph{jellyfish} galaxies, when they are close to pericenter. In stripped tails of the jellyfish, gas is able to cool and create stars.
 
-An intermediate mass dwarf, ID 68, on orbit of 50 and 100 kpc is completely stripped from the reservoir of cold gas as also shown in the corresponding panel in Figure \ref{fig:cold_gas}. For this, after a burst, star formation stops.
-
-This enforces the idea of the \emph{Jellyfish} phenomenon as a relatively short transitory phase of the galaxy. 
+This enforces the idea of the jellyfish phenomenon as a relatively short transitory phase of the galaxy along its orbit. 
 
 
 %% DERIVED PROPERTIES
