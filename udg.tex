@@ -386,12 +386,32 @@ This scenario is confirmed by our simulations where dwarf irregulars are convert
 
 % \citep{Bidaran2020}
 
-\subsection{Relation with physical angular momentum}
-We compute the specific angular momentum ($j_s = J_s/M_\star$ where $J_s$ is the total angular momentum and $M_\star$ the stellar mass of the galaxy) of star particles within 10~kpc from the densest stellar region (center of the galaxy).
-We compare this specific angular momentum with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
-We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating, quite prone to bursty star formation which can abruptly affect its value.
+\subsection{Relation between $\lambda_R$ and physical angular momentum}
+We compute the specific angular momentum $\vect{j}_{se}$ of star particles within an effective radius from the center of the galaxy (densest stellar region):
+\begin{equation}
+\vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\} 
+\end{equation}
+% We compute the specific angular momentum $\vect{j}_s$ of star particles within 10~kpc from the center of the galaxy (densest stellar region):
+% \begin{equation}
+% \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\} 
+% \end{equation}
+% ($\vect{j}_s = \vect{J}_s/M_\star$ where $J_s$ is the total angular momentum and $M_\star$ the stellar mass of the galaxy)
+We compare $\vect{j}_{se}$ with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
+We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating and quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
-For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
+
+In order to compare the proxy $\lambda_R$ with the measurable angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
+\begin{equation}
+ j_s^* = \lambda_R \cdot R_e \cdot \sigma_e 
+\end{equation}
+where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within into an aperture.
+
+For simplicity this 
+
+The relation between $\lambda_R$ and the is shown in Figure~\ref{fig:lambda_r_j_s_sigma}
+
+%As also found by, ... we confirm that it is very sensitive to recent episode of star formation, especially the ones due to gas stripping, where young stars are 
+% For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
 % TODO 41 69 71
 % 
 % \begin{figure}
