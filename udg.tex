@@ -320,9 +320,12 @@ As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} c
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
 The details on how to recover the correct kinematics in our setup are shown in \refsec{sec:correct_kinematics}.
 
-\paragraph{Comparison with galaxy in the field}
+\paragraph{Comparison with simulated galaxies in the field}
 We compare the specific stellar angular momentum $j_s$ of particles within a sphere of 10~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
 We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in correspondence to pericenter passages.
+
+The combination of high velocity new stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy w.r.t. its evolution in the field.
+% TODO metallicity gradient?
 
 \begin{figure}
 \centering
@@ -334,38 +337,24 @@ We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in corre
 \subsection{Angular momentum and specific angular momentum proxy $\lambda_R$}
 We compute the specific stellar angular momentum proxy $\lambda_R$ starting from SPH luminosity-weighted velocity and velocity dispersion maps as defined in \citet{Emsellem2007}: %\citet{Toloba2015}
 \begin{equation}
-    \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
+ \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
 \end{equation}
 with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy center.
 This parameter has been introduced to better captures the spatial information included in the kinematic maps.
-As opposed to the classical $\frac{v}{\sigma}$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC).
+As opposed to the classical $\frac{v}{\sigma}$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC), which in some cases expose very similar $\frac{v}{\sigma}$.
 
-An example of the maps from which $\lambda_R$ is computed are shown in Figure~\ref{fig:maps_lambda_r}.
+An example of the maps from which $\lambda_R$ is computed for our simulation setup are shown in Figure~\ref{fig:maps_lambda_r}.
 The $V_{LOS}$ and $\sigma$ map are computed with SPH interpolation, using the luminosity in $v$-band to weight the contribution of particles along the line of sight.
-Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation, even if what is observed are luminosity-weighted quantities.
+Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation.%, even if what is observed are luminosity-weighted measures.
 This approach makes the comparison with observations more difficult since all the information that we get is luminosity weighted \citep{Walo-Martin2020}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{mu_v_sigma_69p150s60_sideon.png}
-\caption{$\mu_v$ surface brightness map and SPH v-band luminosity weighted maps of line of sight velocity and velocity dispersion $\sigma$ for a snapshot of the simulation ID 69 around first pericenter passage.
+\caption{$\mu_v$ surface brightness map and SPH v-band luminosity weighted maps of line of sight velocity and velocity dispersion $\sigma$ for a snapshot of the simulation ID 69 around first pericenter passagethatthat.
 The galaxy is projected edge-on, with the angular momentum vector lying on the $xy$ plane.}
 \label{fig:maps_lambda_r}
 \end{figure}
-
-It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\ref{fig:lambda_r_profile}.
-
-The value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
-\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' whereas the one with $\lambda_R>0.1$ as ``fast rotators''.
-As shown in figure \ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast rotators profile to slow rotator \citep[cf.][]{Emsellem2011}.
-
-% Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
-
-It has been shown in the \textsc{SMAKCED} survey of 39 early-type galaxies in the Virgo cluster \citep{Toloba2014, Toloba2015} that the so classified fast-rotator galaxies in the outer region of the cluster rotate faster than the fast rotators in the center of the cluster.
-The specific angular momentum $\lambda_R$ is correlated with clustercentric distance.
-It is indeed hypothesized, that after pericenter passages and a long time in the cluster, galaxies are heated up and transformed into slow rotating dEs.
-This scenario is confirmed by our simulations where dwarf irregulars are converted to early-type galaxies and their kinematics is transformed into the one of slow rotators.
-
 
 \begin{figure}
 \centering
@@ -374,31 +363,46 @@ This scenario is confirmed by our simulations where dwarf irregulars are convert
 \label{fig:lambda_r_profile}
 \end{figure}
 
+It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\ref{fig:lambda_r_profile}.
+The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
+\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' whereas the one with $\lambda_R>0.1$ as ``fast rotators''.
+As shown in Figure~\ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast rotators profile to slow rotator \citep[cf.][]{Emsellem2011}.
 
+% Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
+
+It has been shown in the \textsc{SMAKCED} survey of 39 early-type galaxies in the Virgo cluster \citep{Toloba2014, Toloba2015} that the so classified fast-rotator galaxies in the outer region of the cluster rotate faster than the fast rotators in the center of the cluster.
+The observed specific angular momentum $\lambda_R$ is correlated with clustercentric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
+It is indeed hypothesized, that after pericenter passages and a long time in the cluster, galaxies are heated up and transformed into slow rotating dEs.
+This scenario is confirmed by our simulations where dwarf irregulars are converted to early-type galaxies and as time (normalize with radial period $\tau$, as in Figure~\ref{fig:lambda_r_profile}) their kinematics is transformed into the one of slow rotators.
+
+In our case, however, the correlation of $\lambda_R$ with clustercentric distance is mild and affected by the very noisy and time-dependent nature of the angular momentum proxy.
+For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillating and quite prone to bursty star formation which can abruptly affect its value.
+In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
 
 \begin{figure}
 \centering
 \includegraphics[height=0.42\textheight]{lambda_r_j_s_69p150r100.png}
-\caption{Comparison between specific angular momentum and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.}
+\caption{Comparison between specific angular momentum and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.
+$\lambda_R$ is computed viewing the galaxy side-on.
+Curves are smoothed using a rolling average of 0.2~Gyr.}
 \label{fig:lambda_r_j_s_sigma}
 \end{figure}
 
-
-% A typical evolution of $\lambda_R$ through time is shown in Figure~\ref{fig:lambda_R}.
 \begin{figure}
 \centering
 \includegraphics[height=\textheight]{{02.1_lambda_r_vs_js}.pdf}
-\caption{Stellar specific angular momentum $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits.}
+\caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.}
 \label{fig:lambda_r_j_s}
 \end{figure}
 
 % TODO The relative increase of $\lambda_R$ at first pericenter passage is shown for each orbit and mass in figure \ref{fig:ssam_relative}.
 % Around pericenter passages an increase of $\lambda_R$ by a factor of $\approx 2$ is observed.
 
-% \citep{Bidaran2020}
+% 
 
-\subsection{Relation between $\lambda_R$ and physical angular momentum}
-We compute the specific angular momentum $\vect{j}_{se}$ of star particles within an effective radius from the center of the galaxy (densest stellar region):
+\subsection{Relation between $\lambda_R$ and physical angular momentum TO BE FINISHED}
+% We wanted to 
+First we compute the specific angular momentum $\vect{j}_{s}$ of star particles within 10~kpc from the center of the galaxy.
 \begin{equation}
 \vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\} 
 \end{equation}
@@ -407,19 +411,21 @@ We compute the specific angular momentum $\vect{j}_{se}$ of star particles withi
 % \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\} 
 % \end{equation}
 % ($\vect{j}_s = \vect{J}_s/M_\star$ where $J_s$ is the total angular momentum and $M_\star$ the stellar mass of the galaxy)
-We compare $\vect{j}_{se}$ with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
-We notice that for example in simulation ID 69, $\lambda_R$ behaviour is very oscillating and quite prone to bursty star formation which can abruptly affect its value.
-In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
+% We compare $\vect{j}_{s}$ with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
 
-In order to compare the proxy $\lambda_R$ with the measurable angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
+
+\paragraph{Comparing $j_{se}$ with observables} We tried to retrieve the In order to compare the proxy $\lambda_R$ with the angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
 \begin{equation}
  j_s^* = \lambda_R \cdot R_e \cdot \sigma_e 
 \end{equation}
-where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within into an aperture.
+where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
+% This formula reasonably reintroduces physical dependency.
 
-For simplicity this 
+% We shall see that.
+% Another effect is at play: maps as those in Figure~\ref{fig:maps_lambda_r} show
+% For simplicity this 
 
-The relation between $\lambda_R$ and the is shown in Figure~\ref{fig:lambda_r_j_s_sigma}
+The relation between $\lambda_R$ and $j_s^*$ is shown in Figure~\ref{fig:lambda_r_j_s_sigma}
 
 %As also found by, ... we confirm that it is very sensitive to recent episode of star formation, especially the ones due to gas stripping, where young stars are 
 % For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
