@@ -43,7 +43,7 @@ r_t = r \sqrt[3]{\frac{M_g}{M_c(r) (3+e)}}
 \label{eq:tidal_radius}
 \end{equation}
 where $e = (r_a - r_p) / (r_a + r_p)$ is the eccentricity of the orbit computed, $r_a$, $r_p$ the apocenter and pericenter radii respectively; $M_c(r)$ is the enclosed cluster mass at radius $r$, and $M_g$ the instantaneous total mass of the galaxy.
-As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within 10~kpc from the center of the galaxy.
+As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within $10$~kpc from the center of the galaxy.
 
 In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit.
 We define a galaxy to become unbound when the condition 
@@ -100,13 +100,12 @@ According to the virial theorem %predicts that by adding energy to a galaxy, it 
 once approaching the pericenter, energy is transferred to the galaxy: stars thus migrate to more energetic and hence wider orbits.
 In addition, mass is lost due to tides, making the gravitational well even more shallow and leading to potentially large increases in radius.
 We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}.
-%TODO explain tidal radius
 This radius is independent of the orientation of the galaxy, and it has been computed as the radius of the sphere which contains half the total luminosity of the galaxy.
 Tidal heating affects the size of the galaxies as they pass near the cluster center, with low mass galaxies affected most.
 
 % We compare the resulting effective radius in simulations with the ones not taking into account the gas inside the cluster, Figure~\ref{fig:r_eff_no_gas}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{{00.0_fig_3dreff_time}.pdf}
 \caption{3d effective radius evolution with time normalised with the radial period of the orbit. Curves are smoothed using a rolling average of 0.2~Gyr and are truncated as soon as condition \eqref{eq:tidal_radius_condition} is verified.}
@@ -155,7 +154,7 @@ Colours indicate the pericenter distances of the different orbits.
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[height=\textheight]{{12.1_m_halo_m_star}.pdf}
+\includegraphics[height=0.95\textheight]{{12.1_m_halo_m_star}.pdf}
 % \includegraphics[width=0.75\columnwidth]{{12.1_m_halo_m_star}.pdf}
 \caption{$M_h/M_\star$ around first infall. Halo mass is computed in the $10$~kpc sphere around the galaxy.}
 \label{fig:m_halo_m_star}
@@ -163,7 +162,7 @@ Colours indicate the pericenter distances of the different orbits.
 
 \subsection{Central stellar velocity dispersion}
 We measured the central (within $250$ pc) stellar velocity dispersion for all the simulations on their orbits, as shown in Figure~\ref{fig:sigma}.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\columnwidth]{01.0_fig_sigma_time.pdf}
 \caption{Velocity dispersion evolution with time normalised with the radial period of the orbit.
@@ -239,7 +238,7 @@ For example for simulation ID 68, as shown in the corresponding panel in Figure 
 Due to the stripping, after a burst, star formation stops.
 \begin{figure}
 \centering
-\includegraphics[height=\textheight]{{12.6_sfr_cold_gas}.pdf}
+\includegraphics[height=0.95\textheight]{{12.6_sfr_cold_gas}.pdf}
 \caption{Specific star formation rate and cold gas (T<$15000$~K) evolution on different orbits.}
 \label{fig:cold_gas}
 \end{figure}
@@ -262,7 +261,7 @@ Due to the stripping, after a burst, star formation stops.
 \includegraphics[width=\textwidth]{StarFormationLocation_new41_hollow.pdf}
 \caption{Simulation ID 41}
 \end{subfigure}
-\caption{Star formation location around first pericenter passage for simulation ID 69 and 41.
+\caption{Star formation location around first pericenter passage for simulation ID 69 and~41.
 Each subpanel corresponds to a different pericenter.
 The size of the marker is proportional to the number of stars born in that time interval.
 Markers are colored according to the time from pericenter normalized with the radial period.}
@@ -330,7 +329,7 @@ To correctly compute galaxy kinematics we have to take into account the rotation
 The details on how to recover the correct kinematics in our setup are shown in \refsec{sec:correct_kinematics}.
 
 \paragraph{Comparison with simulated galaxies in the field}
-We compare the specific stellar angular momentum $j_s$ of particles within a sphere of 10~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
+We compare the specific stellar angular momentum $j_s$ of particles within a sphere of $10$~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
 We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in correspondence to pericenter passages.
 
 The combination of high velocity new stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy w.r.t. its evolution in the field.
@@ -399,7 +398,7 @@ Curves are smoothed using a rolling average of 0.2~Gyr.}
 
 \begin{figure}
 \centering
-\includegraphics[height=\textheight]{{02.1_lambda_r_vs_js}.pdf}
+\includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
 \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.}
 \label{fig:lambda_r_j_s}
 \end{figure}
@@ -411,7 +410,7 @@ Curves are smoothed using a rolling average of 0.2~Gyr.}
 
 \subsection{Relation between $\lambda_R$ and physical angular momentum TO BE FINISHED}
 % We wanted to 
-First we compute the specific angular momentum $\vect{j}_{s}$ of star particles within 10~kpc from the center of the galaxy.
+First we compute the specific angular momentum $\vect{j}_{s}$ of star particles within $10$~kpc from the center of the galaxy.
 \begin{equation}
 \vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\} 
 \end{equation}
