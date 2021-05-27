@@ -30,26 +30,54 @@ Detailed analysis of the recovered 1D and 2D manifolds can help us to understand
 \section{Introduction}
 
 
-Dimensionality reduction and Density Estimation of raw data, are commonly used tools to extract information from complex and noisy data sets. Due to dependencies among measured attributes of real world data, the data is often distributed along low-dimensional structures in a higher dimensional measurement space. This realisation has driven the development of a variety of Manifold Learning algorithms. Principal Component Analysis (PCA) \cite{doi:10.1080/14786440109462720} is a well understood and widely used linear dimensionality reduction scheme. 
+Dimensionality reduction and Density Estimation of raw data, are commonly used tools to extract information from complex and noisy data sets.
+Due to dependencies among measured attributes of real world data,
+the data is often distributed along low-dimensional structures in a higher dimensional measurement space.
+This realisation has driven the development of a variety of Manifold Learning algorithms.
+Principal Component Analysis \citep[PCA, ][]{Pearson1901} is a well understood and widely used linear dimensionality reduction scheme. 
 %\Marco{It can be considered the progenitor of Manifold Learning, where the data is assumed to lie on a multivariate Gaussian and the recovered principal components capture the variance of the data along orthogonal directions.}
-However, by design, PCA cannot appropriately capture non-linear low-dimensional structures. This lack of flexibility has been addressed by non-linear dimensionality reduction algorithms such as Isomap \cite{Tenenbaum2319} and Locally Linear Embedding (LLE, \cite{Roweis00nonlineardimensionality}), where the manifold is approximated by a neighbourhood graph and a neighbouring preserving map respectively. Both methods take advantage of the definition of a manifold as a locally linear low dimensional structure of dimension $j$.
-Many other Manifold Learning algorithms aiming to provide suitable approximations to low-dimensional data manifold have been proposed. Examples include Laplacian eigenmaps \cite{Belkin01laplacianeigenmaps}, Hessian eigenmaps \cite{Donoho5591}, Local Space Tangent Alignment (LSTA, \cite{Zhang02principalmanifolds}), C-Isomap \cite{Silva:2002:GVL:2968618.2968708} (an extension of Isomap to conformal embeddings), NMDS (non-metric formulation of
-Multidimensional Scaling (MDS) \cite{doi:10.1002/bs.3830040308},\cite{Cox2008}
-\cite{Kruskal1964}), Riemannian Manifold Learning (RML \cite{10.1109/TPAMI.2007.70735}).
+However, by design, PCA cannot appropriately capture non-linear low-dimensional structures.
+This lack of flexibility has been addressed by non-linear dimensionality reduction algorithms such as Isomap \cite{Tenenbaum2319}
+and Locally Linear Embedding \citep[LLE][]{Roweis00nonlineardimensionality},
+where the manifold is approximated by a neighbourhood graph and a neighbouring preserving map respectively.
+Both methods take advantage of the definition of a manifold as a locally linear low dimensional structure of dimension $j$.
 
-In \cite{boissonnat:hal-01615863} (and bibliographic references therein), a different angle, based on computational geometry, has been proposed in order to extract low-dimensional manifolds from data samples. Here, simplicial complexes (such as Delaunay triangulations, $\alpha$-complexes and filtrations) are used for manifold reconstruction. With these techniques it is possible to infer geometrical and topological properties of data points that uniformly sample a single manifold embedded in a higher dimensional space.
+Many other Manifold Learning algorithms aiming to provide suitable approximations to low-dimensional data manifold have been proposed.
+Examples include Laplacian eigenmaps \citep{Belkin01laplacianeigenmaps},
+Hessian eigenmaps \citep{Donoho5591},
+Local Space Tangent Alignment \citep[LSTA, ][]{Zhang02principalmanifolds},
+C-Isomap \citep[an extension of Isomap to conformal embeddings][]{Silva:2002:GVL:2968618.2968708},
+NMDS \citep[non-metric formulation of Multidimensional Scaling (MDS)][]{doi:10.1002/bs.3830040308, Cox2008, Kruskal1964},
+Riemannian Manifold Learning \citep[RML, ][]{10.1109/TPAMI.2007.70735}.
 
-While such techniques are potentially powerful and theoretically well grounded, their capability to naturally handle high-dimensional noise aligned along low-dimensional manifolds is limited. Besides the sensitivity to the noise issues, it is often required that the intrinsic data dimensionality is known a priori. 
+In \cite{boissonnat:hal-01615863} (and bibliographic references therein) a different angle, based on computational geometry, 
+has been proposed in order to extract low-dimensional manifolds from data samples.
+Here, simplicial complexes (such as Delaunay triangulations, $\alpha$-complexes and filtrations)
+are used for manifold reconstruction.
+With these techniques it is possible to infer geometrical and topological properties of data points 
+that uniformly sample a single manifold embedded in a higher dimensional space.
 
-Generative Topographic Mapping (GTM) \cite{Bishop1998GTMTG} was proposed as a probabilistic formulation of the Self-Organizing Map \cite{Kohonen1982}. Its main advantage is that instead of treating noisy manifold as a core low-dimensional manifold to be discovered, plus some "noise" around it that somehow needs to be dealt with, it formulates a consistent manifold-aligned density model in the form of a constrained mixture of Gaussians\footnote{Location parameters (means) of the Gaussian components are constrained to lie on a smooth manifold - most commonly a smooth image in the data space of a two-dimensional interval (latent space).}. 
-The original GTM formulation is trained in the maximum likelihood framework using the E-M algorithm \cite{10.2307/2984875}. Because of the sensitivity to initialization, a suitable initialization is required (e.g, using PCA). Bayesian formulations of GTM have also been proposed
+While such techniques are potentially powerful and theoretically well grounded,
+their capability to naturally handle high-dimensional noise aligned along low-dimensional manifolds is limited.
+Besides the sensitivity to the noise issues, it is often required that the intrinsic data dimensionality is known a priori. 
+
+Generative Topographic Mapping \cite[GTM, ][]{Bishop1998GTMTG} was proposed as a probabilistic formulation of the Self-Organizing Map \citep{Kohonen1982}.
+Its main advantage is that instead of treating noisy manifold as a core low-dimensional manifold to be discovered,
+plus some ``noise" around it that somehow needs to be dealt with, 
+it formulates a consistent manifold-aligned density model in the form of a constrained mixture of Gaussians.
+The location parameters (means) of the Gaussian components are constrained to lie on a smooth manifold 
+-- most commonly a smooth image in the data space of a two-dimensional interval (latent space). 
+The original GTM formulation is trained in the maximum likelihood framework using the the Expectation-Maximization (E-M) algorithm \citep{10.2307/2984875}.
+Because of the sensitivity to initialization, a suitable initialization is required (e.g, using PCA).
+Bayesian formulations of GTM have also been proposed
 \cite{Olier2008VariationalBG}.
 
 Other global density estimators, whether non-parametric, e.g. Parzen windows \cite{parzen1962estimation} (and its extensions such as
 Manifold Parzen Windows \cite{NIPS2002_2203}, Fast-Parzen Windows \cite{5178637}), or semi-parametric, e.g. Infinite Gaussian Mixture model\cite{10.5555/3009657.3009736}, are not designed to extract a representation of the embedded low-dimensional structures.
 They also may be computationally expensive to train and/or evaluate. 
 
-To deal with complex data sets, where several manifolds of different dimensionalities can co-exist, generalizations of the previous methods have been developed: Multi-Manifold Discriminant Analysis (MMDA, \cite{Yang:2011:MDA:1963661.1963809}), Sparse-Manifold 
+To deal with complex data sets, where several manifolds of different dimensionalities can co-exist,
+generalizations of the previous methods have been developed: Multi-Manifold Discriminant Analysis (MMDA, \cite{Yang:2011:MDA:1963661.1963809}), Sparse-Manifold 
 Clustering and Embedding (SMCE,\cite{NIPS2011_4246}), Multi-Manifold Isomap (M-ISOMAP\cite{Fan2012IsometricML}), Multi-manifold Proximity Embedding  (MPE,\cite{Fan:2016:EIM:2903049.2903101}), Multi-Manifold LLE 
 (MM-LLE,\cite{Hettiarachchi:2015:MLL:2791619.2792198}), S-Isomap++ 
 \cite{2017arXiv171006462M}, Hierarchical GTM \cite{Tino_PAMI_2002}. However, based on the same assumptions as their predecessors, the methods still need to be informed about the dimensionalities of the different manifolds {and struggle when dealing with topologically complex, noisy structures}.
