@@ -553,15 +553,16 @@ A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fi
 
 \subsection{Recovering the correct kinematics from a moving box simulation}
 \label{sec:correct_kinematics}
+We are interested in finding the expression of the velocity $\vect{V}$ in the inertial frame at a certain position $\vect{x}$ in the moving box, knowing its velocity in the rotating frame $\vect{v}$. 
 Let $\vect{\Omega}$ be the angular velocity of the box in the inertial frame which can be computed as:
 \begin{equation}
  \vect{\Omega} = {(\Vp\cross\Ap)}/{\Vp^2}.
 \end{equation}
-From this, the angular velocity of the box w.r.t. the rotating frame is simply:
+In the rotating frame the angular velocity of the box can be expressed as:
 \begin{equation}
 \vect \omega = \conj{\quat{q}}\, \vect{\Omega}\, \quat{q}.
 \end{equation}
-We can then transform from rotating to inertial coordinates by applying this transformation:
+We can then transform back from rotating to inertial coordinates by applying this transformation:
 \begin{equation}
 \vect{V} = \Vp + \quat{q} \, \left(\vect{v} + \vect{\omega} \cross (\vect{x}-\xp)\right) \,\conj{\quat{q}}
 \end{equation}
@@ -644,7 +645,7 @@ That indicates that the conversion of late-type to early-type dwarfs (and hence 
 
 We selected dwarfs models covering the stellar mass range of $10^{7.5}-10^{9}$ and we injected each of them on 5 different orbits with pericenter distances of $50, 100, 150, 200,$ and $300$~kpc and with a fixed apocenter of 800 kpc.
 The starting point of the infall is always at a radial distance of 600~kpc.
-We chose a lower radial distance of the starting position w.r.t. the virial radius given the very low cluster density in that region and the low orbital velocity of the dwarf near apocentre.
+We chose a lower radial distance of the starting position with respect to the virial radius given the very low cluster density in that region and the low orbital velocity of the dwarf near apocentre.
 In this way, simulations could be concentrated on the infall and the pericenter passages of the simulated dwarfs.
 We evolved the galaxies for $5.5$~Gyrs up to $z=0$.
 The initial stellar masses are reported in Table \ref{tbl:sim}.
