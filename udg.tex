@@ -184,6 +184,16 @@ As tidal interactions stir the particles in the center of the galaxies, at the p
 The following temporary decrease in central velocity dispersion can be linked to the variations of~$M_h/M_\star$.
 Tidal squeezing increase~$\sigma$ while subsequent mass loss can dramatically lower it.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{wolf_m_est_ratio69p200.png}
+\caption{In blue the estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
+for simulation ID 69 on an orbit with 200~kpc pericenter.
+In black the local rolling average with a window of 30 snapshots.
+}
+\label{fig:wolf}
+\end{figure}
+
 We checked the dynamical mass estimation which can be computed from the velocity dispersion using the \citet{Wolf2010} relation:
 \begin{equation}
 \label{eq:wolf}
@@ -192,16 +202,10 @@ M^{dyn}_{est} = \dfrac{3}{G} \sigma_e^2 R_e,
 where $\sigma_e$ is the luminosity-weighted line-of-sight velocity dispersion within an effective radius~$R_e$,
 and $G$ the gravitational constant.
 The result for one simulation is shown in Figure~\ref{fig:wolf}.
+% Despite its simplicity and despite many conditions not being met (sphericity, equilibrium) it still works rather well. 
 The estimation with equation \eqref{eq:wolf} overestimates the mass by $\approx20-50\%$.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{wolf_m_est_ratio69p200.png}
-\caption{In blue the estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
-for simulation ID 69 on an orbit with 200 kpc pericenter.
-In black the local rolling average with a window of 30 snapshots.
-}
-\label{fig:wolf}
-\end{figure}
+From this, we can learn that despite the lack of some conditions required by the application of the method ---~such as equilibrium and sphericity~--- the dark matter content estimates with this method are reliable within an acceptable relative range.
+
 %TODO The anisotropy parameter $\beta$ is shown
 
 % \citep{Danieli2019} Low dark matter galaxies.
