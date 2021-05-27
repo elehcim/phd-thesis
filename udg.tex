@@ -36,8 +36,8 @@ In the following we will compare the effects of orbit and initial mass using the
 \paragraph*{Tidal radius}
 As we shall see, the cluster gravitational potential is able to strip material from the galaxy. Some of the simulations, depending on the orbit they are on, will become gravitationally unbound dominated by the cluster potential.
 We chose to define the event of becoming unbound using the condition on the tidal radius \cite{King1962}: namely when it becomes greater than the effective radius.
-This physically implies that orbits of the stars in the outskirt of the galaxy are influenced by the cluster potential more than the galactic halo potential. 
-Tidal radius $r_t$ is computed as following.
+This physically implies that orbits of the stars in the outskirts of the galaxy are influenced by the cluster potential more than the galactic halo potential. 
+The tidal radius $r_t$ is computed as follows:
 \begin{equation}
 r_t = r \sqrt[3]{\frac{M_g}{M_c(r) (3+e)}}
 \label{eq:tidal_radius}
@@ -137,7 +137,7 @@ Tidal heating affects the size of the galaxies as they pass near the cluster cen
 \subsection{$M_h/M_\star$}
 We computed the amount of stellar mass is created and the amount of total dark matter. Star formation undergoes a burst in correspondence of the 
 Dark matter instead is pulled out by tidal forces who elongate the halo, effectively stripping dark matter particles out of the moving box of our simulation setup.
-This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the center of the dwarf with the whole dark matter present inside the moving box.
+This is confirmed, for example, by comparing the amount of dark matter inside the $10$~kpc region around the center of the dwarf with the whole dark matter present inside the moving box.
 As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % TODO dark matter profile around pericenter?
 For very radial orbits, around first infall, central halo mass increases more than the stellar mass created by the starburst, Figure~\ref{fig:m_halo_m_star}.
 
@@ -173,7 +173,7 @@ We measured the central (within $250$ pc) stellar velocity dispersion for all th
 For simplicity we adopted a common point of view for all the orbits, and the line-of-sight velocity dispersion is computed assuming the view laying on the orbital plane.
 As tidal interactions stir the particles in the center of the galaxies, at the pericenter passages a bump in sigma can be seen.
 The temporary increase in sigma can be linked to the variations of $M_h/M_\star$.
-Tidal squeezing increase the velocity dispersion while subsequent mass loss can dramatically lower the sigma.
+Tidal squeezing increases the velocity dispersion while subsequent mass loss can dramatically lower the sigma.
 We checked the dynamical mass estimation which can be computed from the velocity dispersion in using the \citet{Wolf2010} relation:
 \begin{equation*}
 M^{dyn}_{est} = \dfrac{3}{G} \sigma_e^2 R_e, 
@@ -198,7 +198,7 @@ Around the second pericenter passage, for radial orbits, the galaxy ends up bein
 In Figure~\ref{fig:pca_angle_r}, for simulation ID 69 it is shown quantitatively the relative orientation between $\vect{w}_2$ and the clustercentric direction.
 Around both pericenter passages the galaxy gets aligned with the cluster center.
 The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
-Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter. % ($t \in t_p \pm 0.25 T_r$).
+Also, for all the orbits, the galaxy shows an alignment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter. % ($t \in t_p \pm 0.25 T_r$).
 Except for the orbit with 100 kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between 
 
 Analogously, we can compute the angle between the elongation direction and the instantaneous velocity along the orbit.
