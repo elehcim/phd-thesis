@@ -5,18 +5,20 @@
 \noindent \small{Based on: \emph{Probabilistic modelling of general noisy multi-manifold data sets}, Canducci~M., Ti\v{n}o~P., Mastropietro~M. Submitted to \emph{Artificial Intelligence} \citet{Canducci2021}
 }
 \chapter{Low-dimensional manifolds}
-\label{ch:low_dim_manifolds}
+\label{ch:manifolds}
 }
 
 \abstract{
 The intrinsic nature of noisy and complex data sets is often concealed in low-dimensional structures embedded in a higher dimensional space.
-%Number of methodologies have been developed to extract and represent such structures in the form of manifolds (i.e. geometric structures that locally resemble continuously deformable intervals of $\RR^j$ \footnote{$j$ is the manifold dimensionality.
+%Number of methodologies have been developed to extract and represent such structures in the form of manifolds (i.e. geometric structures that locally resemble continuously deformable intervals of $\mathbb{R}^j$ \footnote{$j$ is the manifold dimensionality.
 %Mathematically, continuous deformation corresponds to homehomorphism: one-to-one continuous mapping with continuous inverse.}).
 % Usually a-priori knowledge of the manifold's intrinsic dimensionality is required.
 % Additionally, their performance can often be hampered by the presence of a significant high-dimensional noise aligned along the low-dimensional core manifold. 
 In real-world applications, the data can contain several low-dimensional structures of different dimensionalities.
 We propose a framework for dimensionality estimation and reconstruction of multiple noisy manifolds embedded in a noisy environment.
-To the best of our knowledge, this work represents the first attempt at detection and modelling of a set of coexisting general noisy manifolds by uniting two aspects of multi-manifold learning: the recovery and approximation of core noiseless manifolds and the construction of their probabilistic models.
+To the best of our knowledge, this work represents the first attempt at detection and modelling
+of a set of coexisting general noisy manifolds by uniting two aspects of multi-manifold learning: 
+the recovery and approximation of core noiseless manifolds and the construction of their probabilistic models.
 The easy-to-understand hyper-parameters can be manipulated to obtain an emerging picture of the multi-manifold structure of the data.
 % We demonstrate the workings of the framework on two synthetic data sets, presenting challenging features for state-of-the-art techniques in Multi-Manifold learning.
 % The first data set consists of multiple sampled noisy manifolds of different intrinsic dimensionalities, such as M\"{o}bius strip, toroid and spiral arm. The second one is a topologically complex set of three interlocked toroids. 
@@ -24,9 +26,6 @@ The easy-to-understand hyper-parameters can be manipulated to obtain an emerging
 The framework is then applied to a complex data set containing simulated gas volume particles from a particle simulation of a dwarf galaxy interacting with its host galaxy cluster.
 Detailed analysis of the recovered 1D and 2D manifolds can help us to understand the nature of Star Formation in such complex systems.
 }
-\chapter{Low-dimensional manifolds}
-\label{ch:manifolds}
-
 \section{Introduction}
 
 
@@ -83,7 +82,7 @@ Clustering and Embedding (SMCE,\cite{NIPS2011_4246}), Multi-Manifold Isomap (M-I
 \cite{2017arXiv171006462M}, Hierarchical GTM \cite{Tino_PAMI_2002}. However, based on the same assumptions as their predecessors, the methods still need to be informed about the dimensionalities of the different manifolds {and struggle when dealing with topologically complex, noisy structures}.
 
 We propose a framework for automated dimensionality estimation and reconstruction of multiple noisy manifolds embedded in a noisy environment. We generalize the GTM model so that densities aligned along arbitrary manifolds (even non-orientable ones - such as M\"{o}bius strip) can be captured.
-This is achieved by replacing the simple Euclidean latent space (generally parametrized as a discretized interval of $\RR^j$) with an abstract graph reflecting the topology of the data manifold that, when embedded in the data space, provides a manifold skeleton around which the noise models can be organized.
+This is achieved by replacing the simple Euclidean latent space (generally parametrized as a discretized interval of $\mathbb{R}^j$) with an abstract graph reflecting the topology of the data manifold that, when embedded in the data space, provides a manifold skeleton around which the noise models can be organized.
 This work is inspired by \cite{10.1007/978-3-540-87481-2_37}, but extends and generalizes it threefold: 
 \begin{itemize}
  \item it proposes a new robust dimensionality index estimation for data points,
@@ -106,8 +105,7 @@ Our main contributions can be summarized as follows:
 \begin{itemize}
     \item Formulation of a new dimensionality index assigned to individual points based on which point cloud can be partitioned into background points and sets representing cloud points organised along noisy low-dimensional manifold structures;
     \item Development of a recursive crawling algorithm for the extraction of multiple low-dimensional, noisy manifolds embedded in a higher dimensional space: Multi-Manifold crawling;
-    \item Extension of GTM's applicability to a broad class of manifolds (e.g. non-orientable or closed manifolds) by reformulating the latent space as an abstract graph and introducing a manifold-aligned noise attached to the embedded nodes of the latent graph: Abstract GTM. The abstract latent space and its embedding allows us to {\em understand the important global structural features of the underlying manifolds} - an important aspect of our methodology bringing manifold learning under the umbrella of Artificial Intelligence.
-
+    \item Extension of GTM's applicability to a broad class of manifolds (\eg{} non-orientable or closed manifolds) by reformulating the latent space as an abstract graph and introducing a manifold-aligned noise attached to the embedded nodes of the latent graph: Abstract GTM. The abstract latent space and its embedding allows us to {\em understand the important global structural features of the underlying manifolds} - an important aspect of our methodology bringing manifold learning under the umbrella of Artificial Intelligence.
 \end{itemize}
 
 The methodology is applied in section \ref{sec:Ex_JellyFish} to an astrophysical data set resulting from a {mixed \emph{N-body/Smoothed Particle Hydrodynamics}} numerical simulation of a dwarf galaxy falling into the gaseous halo of a galaxy cluster. {The point cloud generated by the simulation presents non linear, noisy, low dimensional structures, providing for an ideal test bed for our methodology.} We extract and model two of the most significant manifolds, suggesting a possible scenario for formation of new stars in such a disrupted dwarf galaxy.
@@ -170,9 +168,10 @@ In the 1-D case, the manifold is located at the outskirts of the Jellyfish (fig.
 The graphs' nodes are colored based on the value of [CII] of the surrounding particles lying not further than $\mathrm{1~kpc}$ from the local tangent space of the manifold, weighted by the nodes' responsibilities.}
 \label{fig:Man2D}
 \end{figure}
+
 The 2-D structure shows an overall constant [CII] intensity whereas the region at $5 < x < 9$ presents sharply higher values.
 The shape of this region is particularly interesting. It is, in fact, a hole with an almost spherical section. This structure detected with AGTM and Manifold Crawling, with potent [CII] emission at its boundary, is the remnant of a supernova explosion. Due to their high mass, young stars burn efficiently and relatively fast all their gas reservoir, terminating their life as supernovae and injecting energy and debris in the surroundings.
-This process is modeled in the simulation via an injection of $10^{51}~\mathrm{erg}$ of energy for a short amount of time and a transfer of metallic elements (in the case of our simulation, the model tracks iron and magnesium, \cite{DeRijcke2013}) to the neighbouring gas particles. The metal-enriched gas particles (like in the surrounding of a supernova explosion) are then able to cool down more efficiently and show strong [CII] emission line. 
+This process is modeled in the simulation via an injection of $10^{51}$~erg of energy for a short amount of time and a transfer of metallic elements (in the case of our simulation, the model tracks iron and magnesium, \cite{DeRijcke2013}) to the neighbouring gas particles. The metal-enriched gas particles (like in the surrounding of a supernova explosion) are then able to cool down more efficiently and show strong [CII] emission line. 
 
 Our methodology provides a strong tool for extracting such an information from the morphology of gas particles and can be used to effectively calibrate feedback models \footnote{By feedback mechanisms, we mean any process that allows to exchange energy, matter and/or momentum among galaxy components.} in simulations.
 
