@@ -16,3 +16,4 @@ thesis.pdf
 library.bib
 *.aux
 /thesis-diff*
+/math_definitions.tex
