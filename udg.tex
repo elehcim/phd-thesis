@@ -251,7 +251,7 @@ In red the orbit of the galaxy (ID 69 with pericenter of 200 kpc).}
 \label{fig:pca_angle_v}
 \end{figure}
 
-\section{Star formation}
+\section{Star formation} \label{star_formation}
 As shown in the previous section, elongation of material around low clustercentric distances may create grooves in the potential well which lead to angular-momentum transport.
 In turn this helps funneling gas towards the center of the galaxy which is squeezed and can cool to create stars.
 % TODO non gas run may isolate the role of star formation.
@@ -262,7 +262,7 @@ For example for simulation ID 68, as shown in the corresponding panel in Figure 
 Due to the stripping, after a burst, star formation stops.
 \begin{figure}
 \centering
-\includegraphics[height=0.95\textheight]{{12.6_sfr_cold_gas}.pdf}
+\includegraphics[height=0.98\textheight]{{12.6_sfr_cold_gas}.pdf}
 \caption{Specific star formation rate and cold gas (T<$15000$~K) evolution on different orbits.}
 \label{fig:cold_gas}
 \end{figure}
@@ -273,24 +273,33 @@ Due to the stripping, after a burst, star formation stops.
 % TODO compute cluster gas pressure corresponding to SFR peaks.
 
 \subsection{Where do stars form?}
-\begin{figure*}
+\begin{figure}
 \centering
-\begin{subfigure}[t]{0.74\textwidth}
+\begin{subfigure}[t]{0.83\textwidth}
 \centering
-\includegraphics[width=\textwidth]{StarFormationLocation_new69_hollow.pdf}
+\caption{Simulation ID 71}
+\includegraphics[width=\textwidth]{StarFormationLocation_new71_hollow.pdf}
+\end{subfigure}\\%[1.5ex]
+\begin{subfigure}[t]{0.83\textwidth}
+\centering
 \caption{Simulation ID 69}
-\end{subfigure}\\[1.5ex]
-\begin{subfigure}[t]{0.74\textwidth}
-\centering
-\includegraphics[width=\textwidth]{StarFormationLocation_new41_hollow.pdf}
-\caption{Simulation ID 41}
+\includegraphics[width=\textwidth]{StarFormationLocation_new69_hollow.pdf}
 \end{subfigure}
-\caption{Star formation location around first pericenter passage for simulation ID 69 and~41.
-Each subpanel corresponds to a different pericenter.
-The size of the marker is proportional to the number of stars born in that time interval.
-Markers are colored according to the time from pericenter normalized with the radial period.}
+\phantomcaption
 \label{fig:sf_location}
-\end{figure*}
+\end{figure}
+\begin{figure}[h]
+\centering
+\ContinuedFloat % continue from previous page
+\begin{subfigure}{0.83\textwidth}
+\caption{Simulation ID 41}
+\includegraphics[width=\textwidth]{StarFormationLocation_new41_hollow.pdf}
+\end{subfigure}
+\caption{Star formation location around first pericenter passage for simulation ID 71, 69 and~41.
+Each subpanel corresponds to a different pericenter.
+The markers corresponds to the barycenter of the positions of the newly formed stars in each snapshot and are colored according to the distance in time from pericenter normalized with the radial period.
+The size of the markers is proportional to the number of stars born between the current snapshot and the previous one.}
+\end{figure}
 In Figure \ref{fig:sf_location} we show the average position of the star forming particles for each simulation snapshot.
 The galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity, see \refsec{sec:MovingBox}) around pericenter.
 For each simulation snapshot the number of new stars w.r.t. to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted.
@@ -304,14 +313,25 @@ However, the large amount of star particles lost during the orbit, leads to a la
 The method of counting individual star particles newly born is therefore employed.
 The choice of a high frequency snapshot cadence plays a fundamental role to this end.
 }
+In this projection the instantaneous velocity of the galaxy is always directed towards the $-y$ axis.
+Wind is therefore blowing from that direction upwards, allowing gas to be stripped and stars to be formed in the upper part of the diagrams.
 
-In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail, see Figure~\ref{fig:sf_location}.
+In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail.
 These galaxies can therefore be defined \emph{jellyfish} galaxies \citep{Ebeling2013}:
 the term applies, in fact, to galaxies with star formation activity within the stripped gaseous tails.
 Jellyfish galaxies exhibit tentacles of material that appear to be stripped from the galaxy body \citep{Poggianti2017a, Poggianti2019b, Ramatsoku2020}.
 Signatures of the newly born stars within those gaseous tails are easily found observationally in UV or blue images \citep{Cortese2007,Smith2010a}.
-Star formation flickers on and off inside the gaseous tails as gas clumps are able to cool and create stars.
+Star formation flickers on and off inside the gaseous tails as gas clumps are able to cool, condense and create stars.
 This result supports the idea that the jellyfish phenomenon is a relatively short transitory phase of the galaxy along its orbit.
+
+In the three panels of Figure~\ref{fig:sf_location}, three representative galaxies are shown in increasing order of mass.
+For the least massive galaxy (simulation ID 71), as confirmed in Figure~\ref{fig:cold_gas}, no stars are formed after pericenter (red markers) because the cold gas is completely stripped by ram-pressure.
+However, during the stripping phase new star particles appear in the gaseous tail.
+For the intermediate mass galaxy (simulation ID 69), in the radial orbits, the behaviour is similar to simulation ID 71.
+Also, a front of newly born star is formed in the center (see panel $69$p$50$) as the gas is compressed and pushed upwards.
+For the more circular orbits, stars are continuously formed in the center.
+This is a behaviour similar to the most massive galaxy, simulation ID 41, where clumps of gas are detached only in radial orbits.
+For the 200 kpc orbit ($41$p$200$) stars are even born in front of the galaxy meaning that for a galaxy so massive a layer of star forming gas is not displaced by ram-pressure even at the leading edge of the galaxy.
 
 \section{Colour Magnitude} \label{sec:CM}
 The catalogue of dwarf galaxies in the Fornax cluster, prepared by \citet{Venhola2019}, can be used to directly compare our results with observations.
