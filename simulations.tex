@@ -403,7 +403,7 @@ This process can alter the effects of thermal energy injection by supernovae exp
 \paragraph{Ultraviolet background}
 The cosmic UV background (UVB) is a photoionizing radiation field due to young UV bright stars or e.g. to QSO whose spectra gets filtered by the Gunn-Peterson effect. It is responsible for preventing gas from cooling in low-mass halos at high redshift \citep{Efstathiou1992, Navarro1997}.
 In our simulations, the UVB is taken into account in the look-up-tables for gas cooling/heating, for the ionization equilibrium and the mean molecular mass. Its dependence on redshift is implemented following the model by \citet{Faucher-Giguere2009}.
-{Since in dense neutral regions of gas the UVB's photons are absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of the UVB is modeled with an exponential decay for neutral hydrogen regions with number density \[n_{\text{H}\textsc i} \geq 0.007 \text{~amu~cm}^{-3}.\]
+Since in dense neutral regions of gas the UVB's photons are absorbed by outer layers of gas, the gas is self shielding. To capture this effect, in \citet{DeRijcke2013}, the intensity of the UVB is modeled with an exponential decay for neutral hydrogen regions with number density \[n_{\text{H}\textsc i} \geq 0.007 \text{~amu~cm}^{-3}.\]
 
 
 \section{Moving box}
@@ -532,7 +532,7 @@ In practice, the $64$ particles with lower total energy (kinetic plus potential)
 The goal of the ad hoc acceleration is to move the box to follow the center of the galaxy and so compensate the drift of these particles from the pivot.
 In the original implementation, $\Ap^{hoc}$ is put to zero as soon as the velocity of the central low energy particles is again directed towards the pivot point (i.e. $(\vect X_{64}-\vect X_\mathrm p) \vdot (\vect{V}_{64} - \Vp) < 0$).
 This understandably is done to minimize the total impulse due to the ad hoc term.
-But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because the particle acceleration in equation \eqref{eq:mb_acceleration}.
+But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because of the particle acceleration in equation \eqref{eq:mb_acceleration}.
 An improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
 \begin{equation}
  \Ap^{hoc} = 2\,\zeta\omega_0 \Vp + \omega_0^2 \vect X_\mathrm p,
