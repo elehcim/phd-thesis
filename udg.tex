@@ -36,7 +36,7 @@ In the following we will compare the effects of orbit and initial mass using the
 \paragraph*{Tidal radius}
 As we shall see, the cluster gravitational potential is able to strip material from the galaxy. Some of the simulations, depending on the orbit they are on, will become gravitationally unbound dominated by the cluster potential.
 We chose to define the event of becoming unbound using the condition on the tidal radius \cite{King1962}: namely when it becomes smaller than the effective radius.
-This criterion tests whether the stellar body of the galaxy will be dissolved or not which is the criterion on which an observer would base the detection of a "galaxy''.
+This criterion tests whether the stellar body of the galaxy would become unbound and dissolved, which is what an observer would consider for the detection of a ``galaxy''.
 Physically, also this implies that orbits of the stars in the outskirts of the galaxy are influenced by the cluster potential more than they are by the galactic halo potential. 
 Tidal radius $r_t$ is computed as following.
 \begin{equation}
@@ -84,7 +84,10 @@ The majority of studies indicate that they have the properties of large dwarf ga
 Three main mechanisms are hypothesised as possible formation scenarios for UDGs \citep{Rong2020}:
 dwarf galaxies which undergo strong tidal stripping \citep{Venhola2017, Carleton2018, Rong2020a},
 gas outflows driven by stellar feedback with extended dark matter halo and faint and diffuse stellar component \citep{DiCintio2017, ManceraPina2019},
-or failed $L_\star$ galaxies\footnote{with $L_\star$ galaxies it is meant a galaxy with luminosity around the characteristic luminosity scale in the Schechter luminosity function \citep{Press1974}, and it can be approximated to be $L_\star \approx 3\times10^{11}L_\odot$, \cf{}  \citet{Cooray2005}.} in high mass dark halos with ceased star formation in the early universe.
+or failed $L_\star$ galaxies
+\footnote{An $L_\star$ galaxy has a luminosity equal to the characteristic luminosity of the Schechter luminosity function \citep{Press1974}.
+Its value is about $L_\star \approx 3\times10^{11}L_\odot$, \cf{}  \citet{Cooray2005}.}
+in high mass dark halos with ceased star formation in the early universe.
 
 Some UDGs have earlier been identified as disrupted early-type galaxies.
 \citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDGs HCC-087 in the Hydra I cluster. 
@@ -95,7 +98,7 @@ On the other hand at least two of the detected UDGs show sign of elongation towa
 
 \paragraph{UDGs in Fornax}
 \citet{Venhola2017} found nine UDGs candidates within an area of 4~deg$^2$ centered in NGC1399.
-The relative number of UDGs w.r.t. dwarf galaxies in Fornax is consistent with the same value in the Coma and Virgo clusters.
+The ratio of UDGs to dwarf galaxies in Fornax is consistent with that in the Coma and Virgo clusters.
 Also, the number of UDGs within the virial radius are correlated with the virial mass of the cluster.
 In the size-magnitude parameter space, UDGs in Coma form a continuous distribution, whereas in Fornax two of them are  remarkably luminous, and can be considered as outliers.
 Also, UDGs in Fornax are among the more luminous galaxies and their colour correlates with surface brightness, becoming redder with increasing surface brightness.
@@ -105,8 +108,10 @@ As opposed to the ones in the Coma cluster, their alignment with respect to the 
 It is interesting to note that larger UDGs are more elongated as opposed to UDGs in Coma.
 
 \subsection{Size and magnitudes}
-According to the virial theorem %predicts that by adding energy to a galaxy, it will increase its radius: 
-once approaching the pericenter, energy is transferred to the galaxy: stars thus migrate to more energetic and hence wider orbits.
+Once approaching the pericenter, energy is transferred to the galaxy, according to the virial theorem.
+%According to the virial theorem %predicts that by adding energy to a galaxy, it will increase its radius: 
+%once approaching the pericenter, energy is transferred to the galaxy:
+Stars thus migrate to more energetic and hence wider orbits.
 In addition, mass is lost due to tides, making the gravitational well even more shallow and leading to potentially large increases in radius.
 We compute the 3D effective radius shown in Figure~\ref{fig:r_eff}.
 This radius is independent of the orientation of the galaxy, and it has been computed as the radius of the sphere which contains half the total luminosity of the galaxy.
@@ -143,7 +148,7 @@ Tidal heating affects the size of the galaxies as they pass near the cluster cen
 % \subsection{Stellar metallicity gradients}
 
 \subsection{$M_h/M_\star$}
-We computed the amount of stellar and dark matter mass inside a sphere of radius $10$~kpc centered on the dwarf and the masses inside the entire moving box.
+We computed the stellar and dark matter mass inside a sphere of radius $10$~kpc centered on the dwarf and the masses inside the entire moving box.
 While stars gets formed around pericenter passages, dark matter instead is pulled out by tidal forces who elongate the halo, effectively stripping dark matter particles out of the moving box of our simulation setup.
 This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the dwarf with the whole dark matter present inside the moving box.
 As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % TODO dark matter profile around pericenter?
@@ -161,9 +166,9 @@ Colours indicate the pericenter distances of the different orbits.
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[height=0.925\textheight]{{12.1_m_halo_m_star}.pdf}
+\includegraphics[height=0.95\textheight]{{12.1_m_halo_m_star}.pdf}
 % \includegraphics[width=0.75\columnwidth]{{12.1_m_halo_m_star}.pdf}
-\caption{$M_h/M_\star$ around first infall. Halo and stellar mass are computed in the $10$~kpc sphere around the galaxy.
+\caption{$M_h/M_\star$ around first infall. Halo and stellar mass are computed in a $10$~kpc sphere around the galaxy.
 The different orbits with the respective pericenters are color coded as shown in the legend.}
 \label{fig:m_halo_m_star}
 \end{figure}
@@ -173,11 +178,13 @@ We measured the central (within $250$ pc) stellar velocity dispersion for all th
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{01.0_fig_sigma_time.pdf}
-\caption{Velocity dispersion evolution as a function of time normalized with the radial period of the orbit.
+\caption{The evolution as a function of time (normalized with orbital radial period) of the 
+line-of-sight velocity dispersion of star particles within a $250$~pc from the galactic center.
+Curves are smoothed using a rolling average of 0.2~Gyr.
 }
 \label{fig:sigma}
 \end{figure}
-For simplicity we adopted a common point of view for all the orbits, and the line-of-sight velocity dispersion is computed assuming the observer laying on the orbital plane.
+For simplicity we adopted a common point of view for all the orbits, and the line-of-sight velocity dispersion is computed assuming the observer laying in the orbital plane.
 As tidal interactions stir the particles in the center of the galaxies, at the pericenter passages a bump in the central velocity dispersion (denoted by~$\sigma$) can be seen.
 The following temporary decrease in central velocity dispersion can be linked to the variations of~$M_h/M_\star$.
 Tidal squeezing increase~$\sigma$ while subsequent mass loss can dramatically lower it.
@@ -202,7 +209,8 @@ and $G$ the gravitational constant.
 The result for one simulation is shown in Figure~\ref{fig:wolf}.
 % Despite its simplicity and despite many conditions not being met (sphericity, equilibrium) it still works rather well. 
 The estimation with equation \eqref{eq:wolf} overestimates the mass by $\approx20-50\%$.
-From this, we can learn that despite the lack of some conditions required by the application of the method ---~such as equilibrium and sphericity~--- the dark matter content estimates with this method are reliable within an acceptable relative range.
+From this, we can learn that despite some conditions required for the application of the method ---~such as equilibrium and sphericity~--- not being fulfilled, the dark matter content estimates with this method are reliable within an acceptable relative range.
+%TODO I would add that this is quire a remarkable success given the simplicity of the method!
 
 %TODO The anisotropy parameter $\beta$ is shown
 
@@ -210,7 +218,8 @@ From this, we can learn that despite the lack of some conditions required by the
 
 \subsection{3D ellipticity}
 We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis (PCA).
-The first principal component $\vect{w}_2$ is the direction of highest elongation (largest variance of the N star particle positions) computed via PCA\footnote{$\vect{w}_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars.}.
+The first principal component $\vect{w}_2$ is the direction of highest elongation (largest variance of the star particle positions) computed via PCA\footnote{
+$\vect{w}_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars, and $N$ the number of particles.}.
 % For now I took into account only the position of the star particles (which have negligible mass difference among them).
 
 Around pericenter the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster center; then it undergoes a ``slingshot effect" after pericenter and it aligns with the cluster center also around apocenter before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
@@ -219,14 +228,15 @@ Around the second pericenter passage, for radial orbits, the galaxy ends up bein
 In Figure~\ref{fig:pca_angle_r}, we show quantitatively the relative orientation between $\vect{w}_2$ and the clustercentric direction for simulation ID 69.
 Around both pericenter passages the galaxy becomes aligned with the cluster center.
 The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
-Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter. % ($t \in t_p \pm 0.25 T_r$).
-Except for the orbit with 100 kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between 
+Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter, \ie{} $\tau \in [-0.25, 0.25] \cup{} [0.75, 1.25]$.
+% This translates in a time interval of , , depending on the orbit.
+Except for the orbit with 100~kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between 
 
 Analogously, we can compute the angle between the elongation direction and the instantaneous velocity along the orbit.
 As shown in Figure~\ref{fig:pca_angle_v}, because of the high relative speed and the delay in the formation of tidal tails, around pericenter passages the angle beteen $\vect{w}_2$ varies significantly.
 Interestingly, just before the pericenters, velocity is almost perpendicular to the direction of elongation.
 At the same time, stripping intensity is at its peak (see Figure~\ref{fig:r_rps}) creating a gaseous tail aligned with the instantaneous velocity of the galaxy.
-This misalignement between the tails is shown in details in Chapter~\ref{ch:ngc1427a} and can be used to infer orbital properties of observed galaxies in cluster.
+This misalignement between the tails is shown in detail in Chapter~\ref{ch:ngc1427a} and can be used to infer orbital properties of observed galaxies in cluster.
 
 \begin{figure}
 \centering
@@ -256,12 +266,13 @@ In turn this helps funneling gas towards the center of the galaxy which is squee
 % Ram pressure stripping and tidal interaction can funnel gas into the inner part of the galaxy.
 The total content of star forming gas is shown in cyan in Figure~\ref{fig:cold_gas} alongside with the specific star formation rate.
 It is interesting to note that for an intermediate mass dwarf, the stripping phenomenon is highly nonlinear.
-For example for simulation ID 68, as shown in the corresponding panel in Figure \ref{fig:cold_gas}, a slight change of orbit from 150~kpc pericenter to 100~kpc makes the dwarf completely stripped from the reservoir of cold gas.
+For example for simulation ID 68, as shown in the corresponding panel in Figure \ref{fig:cold_gas}, the relatively small change of orbit from 150~kpc pericenter to 100~kpc makes the dwarf completely stripped of its reservoir of cold gas.
 Due to the stripping, after a burst, star formation stops.
 \begin{figure}
 \centering
 \includegraphics[height=0.95\textheight]{{12.6_sfr_cold_gas}.pdf}
-\caption{Specific star formation rate and cold gas (T<$15000$~K) evolution on different orbits.}
+\caption{Specific Star Formation Rate (sSFR) and cold gas (T<$15000$~K) evolution on different orbits.
+Different orbits for each galaxy are indicated with shades of brown for the sSFR, and with shades of cyan for the cold gas.}
 \label{fig:cold_gas}
 \end{figure}
 
@@ -312,7 +323,7 @@ The method of counting individual star particles newly born is therefore employe
 The choice of a high frequency snapshot cadence plays a fundamental role to this end.
 }
 In this projection the instantaneous velocity of the galaxy is always directed towards the $-y$ axis.
-Wind is therefore blowing from that direction upwards, allowing gas to be stripped and stars to be formed in the upper part of the diagrams.
+The ram pressure is therefore pushing in the vertically upwards direction in these diagrams, causing gas to be stripped and stars to be formed in the upper part of the panels.
 
 In correspondence of pericenter passage an intense star formation activity is registered in the gaseous tail.
 These galaxies can therefore be defined \emph{jellyfish} galaxies \citep{Ebeling2013}:
@@ -339,9 +350,9 @@ In Fornax, the slopes of the C-M relations are different between the morphologic
 The relation for the former is rather flat, meaning that the color is not correlated with magnitude, whereas the early-types become redder with increasing total luminosity.
 
 In our simulations, the simulated dwarf galaxies tend to be blue and star-forming when they are near to the cluster center.
-Tidal forces and ram-pressure boosts star formation, enhancing blue luminosities.
+Tidal forces and ram-pressure boosts star formation, implying blue luminosities.
 The initial mass of the galaxy plays an important role in defining how many times and for how long the galaxy moves between the late-type and early-type regimes.
-In fact, if the galaxy gets stripped, it settles up on the early-type branch; if instead it can keep its gas, it turns blue again when falling into the cluster.
+In fact, if the galaxy gets stripped, it settles on the early-type branch; if instead it can keep its gas, it turns blue again when falling into the cluster.
 In particular the lightest galaxy (ID 62) does not survive the first infall yet ending its life in the early-type galaxy realm, independently of the orbit.
 On the opposite end of the mass range, the most massive one (ID 41) retains most of its cold gas and, accordingly, its star formation occurs almost steadily, except for the most radial orbit.
 Only for the 50~kpc orbit its final location on the C-M diagram is among the early-type galaxies.
@@ -349,7 +360,7 @@ Dwarfs on wide orbits, as shown in the 300~kpc pericenter panel of Figure~\ref{f
 Figure~\ref{fig:g-r_sfr} confirms that dwarfs rapidly turn red after quenching.
 
 It is interesting to note that, for instance in the 50~kpc pericenter panel, dwarfs jump across the gap between the blue and red branches in between temporally equidistant snapshots.
-Given that their color evolve rapidly, the gap between the two branches can be explained: an abundance of dwarfs is not expected in the color interval where their evolution is so quick.
+Given that their color evolves rapidly, the gap between the two branches can be explained: an abundance of dwarfs is not expected in the color interval where their evolution is so quick.
 
 % For the most massive galaxy instead star formation occurs almost steadily (\cf{} Figures~\ref{fig:g-r_sfr} and \ref{fig:cold_gas}).
 
@@ -391,13 +402,13 @@ The details on how to recover the correct kinematics in our setup are shown in \
 We compare the specific stellar angular momentum $j_s$ of particles within a sphere of $10$~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
 We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in correspondence to pericenter passages.
 
-The combination of high velocity new stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy w.r.t. its evolution in the field.
+The combination of high velocity new stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy with respect to its evolution in the field.
 % TODO metallicity gradient?
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{15.0_angmom_inertial_moria.pdf}
-\caption{Comparison between the norm of the specific angular momentum for the simulation ID 69 on a 200 kpc orbit and the correspondent isolated MoRIA run.}
+\caption{Comparison between the norm of the specific angular momentum $j_s$for the simulation ID 69 on a 200 kpc orbit and the correspondent isolated MoRIA run.}
 \label{fig:j_s_moria}
 \end{figure}
 
@@ -407,18 +418,18 @@ We compute the specific stellar angular momentum proxy $\lambda_R$ starting from
  \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
 \end{equation}
 with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy center.
-This parameter has been introduced to better captures the spatial information included in the kinematic maps.
-As opposed to the classical $\frac{v}{\sigma}$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC), which in some cases expose very similar $\frac{v}{\sigma}$.
+This parameter has been introduced to better capture the spatial information included in the kinematic maps.
+As opposed to the classical $v/\sigma$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC), which in some cases expose very similar $v/\sigma$.
 
 An example of the maps from which $\lambda_R$ is computed for our simulation setup are shown in Figure~\ref{fig:maps_lambda_r}.
-The $V_{LOS}$ and $\sigma$ map are computed with SPH interpolation, using the luminosity in $v$-band to weight the contribution of particles along the line of sight.
+The $V_{LOS}$ and $\sigma$ map are computed with SPH interpolation, using the luminosity in $\mathrm{v}$-band to weight the contribution of particles along the line of sight.
 Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation.%, even if what is observed are luminosity-weighted measures.
 This approach makes the comparison with observations more difficult since all the information that we get is luminosity weighted \citep{Walo-Martin2020}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{mu_v_sigma_69p150s60_sideon.png}
-\caption{$\mu_v$ surface brightness map and SPH v-band luminosity weighted maps of line of sight velocity and velocity dispersion $\sigma$ for a snapshot of the simulation ID 69 around first pericenter passagethatthat.
+\caption{$\mu_v$ surface brightness map and SPH v-band luminosity weighted maps of line of sight velocity and velocity dispersion $\sigma$ for a snapshot of the simulation ID 69 around first pericenter passage.
 The galaxy is projected edge-on, with the angular momentum vector lying on the $xy$ plane.}
 \label{fig:maps_lambda_r}
 \end{figure}
@@ -426,30 +437,31 @@ The galaxy is projected edge-on, with the angular momentum vector lying on the $
 \begin{figure}
 \centering
 \includegraphics[height=0.42\textheight]{lambda_r_profile_69p150_each20_up_to_r_e.png}
-\caption{$\lambda_R$ profiles for ID 69 on a 150 kpc orbit color coded with time normalized by radial period. The $\lambda_R$ profile is show up to the corresponding $R_e$.}
+\caption{$\lambda_R$ profiles for ID 69 on a 150 kpc orbit color coded with time normalized by radial period.
+The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 \label{fig:lambda_r_profile}
 \end{figure}
 
 It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\ref{fig:lambda_r_profile}.
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
-\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' whereas the one with $\lambda_R>0.1$ as ``fast rotators''.
-As shown in Figure~\ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast rotators profile to slow rotator \citep[cf.][]{Emsellem2011}.
+\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''.
+As shown in Figure~\ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast-rotator profile to slow rotator \citep[cf.][]{Emsellem2011}.
 
 % Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
 
 It has been shown in the \textsc{SMAKCED} survey of 39 early-type galaxies in the Virgo cluster \citep{Toloba2014, Toloba2015} that the so classified fast-rotator galaxies in the outer region of the cluster rotate faster than the fast rotators in the center of the cluster.
 The observed specific angular momentum $\lambda_R$ is correlated with clustercentric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
 It is indeed hypothesized, that after pericenter passages and a long time in the cluster, galaxies are heated up and transformed into slow rotating dEs.
-This scenario is confirmed by our simulations where dwarf irregulars are converted to early-type galaxies and as time (normalize with radial period $\tau$, as in Figure~\ref{fig:lambda_r_profile}) their kinematics is transformed into the one of slow rotators.
+This scenario is confirmed by our simulations where dwarf irregulars are converted to early-type galaxies, and with time their kinematics is transformed into the one of slow rotators.
 
 In our case, however, the correlation of $\lambda_R$ with clustercentric distance is mild and affected by the very noisy and time-dependent nature of the angular momentum proxy.
-For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillating and quite prone to bursty star formation which can abruptly affect its value.
+For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillatory and quite prone to bursty star formation which can abruptly affect its value.
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
 
 \begin{figure}
 \centering
 \includegraphics[height=0.42\textheight]{lambda_r_j_s_69p150r100.png}
-\caption{Comparison between specific angular momentum and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.
+\caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.
 $\lambda_R$ is computed viewing the galaxy side-on.
 Curves are smoothed using a rolling average of 0.2~Gyr.}
 \label{fig:lambda_r_j_s_sigma}
@@ -483,7 +495,7 @@ First we compute the specific angular momentum $\vect{j}_{s}$ of star particles 
 
 \paragraph{Comparing $j_{se}$ with observables} We tried to retrieve the In order to compare the proxy $\lambda_R$ with the angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
 \begin{equation}
- j_s^* = \lambda_R \cdot R_e \cdot \sigma_e 
+ j_s^* = \lambda_R\, R_e\, \sigma_e 
 \end{equation}
 where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
 % This formula reasonably reintroduces physical dependency.
