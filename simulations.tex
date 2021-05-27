@@ -571,8 +571,9 @@ where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in t
 The wind of the moving box is due to particles belonging to the cluster injected with correct velocity, density and temperature in the box.
 We assume the cluster gas to have the density and pressure of the Fornax cluster as described by \citet{Paolillo2002} and in \refsec{sec:ICM}. We also assumed zero metallicity and $\alpha-$abundance.
 
-The cluster gas is injected using a sort of ``cartridge'' of particles previously computed as a unit sized cubic glass structure of $\approx 18000$ particles.
-The glass has been generated from a random distribution of particles and let them evolve in a periodic box with negative gravitational attraction (effectively being a repulsive force) in order to get a low energy distribution of particles with the consequent low probability of injecting dense clumps of particles which would have high kinetic energy once released.
+The cluster gas is injected using a sort of ``cartridge'' of particles previously computed as a unit sized cubic glass structure of $N_{\text{glass}} \approx 18000$ particles.
+The glass is generated from a random distribution of particles letting them evolve in a periodic box with negative gravitational attraction (effectively being a repulsive force).
+The resulting low energy distribution of particles guarantees a low probability of injecting dense clumps of particles which would have high kinetic energy once released.
 
 At each timestep the correct amount of new particles to be injected is taken from the ``cartridge''.
 The number of particles belonging to the cluster $N_c$ would be the correct amount to fill up the entire box of size $L$ with the correct cluster density $\rho_c(r)$ at the instantaneous orbital radius $r$.
