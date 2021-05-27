@@ -343,12 +343,12 @@ Stellar wind is taken into account as a uniformly spread energy injection of $10
 \paragraph{Ionization aware equation of state}
 In an ideal gas with a single type of constituents, the pressure is given by the equation of state:
 \begin{equation}
-p = n k_B T
+p = n k_B T.
 \end{equation}
 
 From \citep[p. 161]{Vandenbroucke2016}, in a multiphase, multicomponent gas with species $S$, this becomes:
 \begin{equation}
-p = \left(\sum_S n_s + n_e(T)\right) k_BT =\frac{\rho k_B T}{\mean\mu}
+p = \left(\sum_S n_s + n_e(T)\right) k_BT =\frac{\rho k_B T}{\mean\mu},
 \end{equation}
 where we introduced the mean constituent mass $\mean\mu$.
 This quantity depends on the chemical composition of the gas, its ionization state and the temperature.
@@ -360,7 +360,7 @@ We assume a gas of ${}^1$H with an ionization fraction $x$.
 We consider the internal energy to be composed by a (thermal) kinetic part and a ionization part:
 \begin{equation}
 \label{eq:energy}
-\energy = \energy_\text{kin} + \energy_\text{ion}
+\energy = \energy_\text{kin} + \energy_\text{ion}.
 \end{equation}
 The kinetic term (directly linked with the temperature) is defined as
 \begin{equation}
@@ -388,7 +388,7 @@ Assuming no temporal composition changes in the gas (i.e. assuming the gas in io
 % \end{equation}
 
 \begin{equation}
-\dv{\energy}{t} = \dfrac{1}{ 1 + X_\text{ukin}} \dv{\energy_\text{kin}}{t}
+\dv{\energy}{t} = \dfrac{1}{ 1 + X_\text{ukin}} \dv{\energy_\text{kin}}{t},
 \end{equation}
 where we defined $X_\text{ukin} \equiv \dfrac{\chi_\text H}{m_\text H} \dv{x}{\energy_\text{kin}}$.\footnote{The term $X_\text{ukin}$ comes from the the convention of writing the internal energy as $u$. In this thesis we adopted another notation, using $\energy$ to represent the internal energy.}
 
