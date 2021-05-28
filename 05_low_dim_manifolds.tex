@@ -2,7 +2,8 @@
 {
 \cleardoublepage% Move to first page of new chapter
 \let\cleardoublepage\relax% Don't allow page break
-\noindent \small{Based on: \emph{Probabilistic modelling of general noisy multi-manifold data sets}, Canducci~M., Ti\v{n}o~P., Mastropietro~M. Submitted to \emph{Artificial Intelligence} \citet{Canducci2021}
+\noindent \small{Based on: \emph{Probabilistic modelling of general noisy multi-manifold data sets}, Canducci~M., Ti\v{n}o~P., Mastropietro~M. Submitted to \emph{Artificial Intelligence} \citet{Canducci2021}.
+This work has been carried out during the planned SUNDIAL secondment at the Computer Science Department of the University of Birmingham.
 }
 \chapter{Low-dimensional manifolds}
 \label{ch:manifolds}
@@ -189,33 +190,30 @@ On the other hand, distribution of 2-D points was more localized in the main bod
 
 \section{A Multi Manifold analysis of a dwarf Jellyfish galaxy}\label{sec:manifold_jellyfish}
 
-We evaluate the performance of AGTM with both its initializations and compare it with the probabilistic modelling methods introduced above
-using 5-fold cross-validation scheme on the $1-$ and $2-$dimensional gas particles.
-The average out-of-sample log-likelihood per point and computational times are reported in figure \ref{fig:JF_Norm_logL} for all methods and their parameter settings. From the probabilistic modelling standpoint, all methods perform similarly, with FPW providing for the best score. Both initializations of AGTM are comparable to the results obtained by the method described in \cite{990138}, with lower computational effort.
-Initialization by crawling also shows a high stability of the results when compared to both its alternative initialization and the competing methodology. The $\epsilon-$graph initialization, despite its larger sensitivity to the randomness of the sampling process, reaches higher values of the average log-likelihood than the initialization obtained via crawling. This behaviour is explained by the tendency of the former to break manifolds into sub-structures. Having more structures to cover the same spatial region, leads to a better performance of the probabilistic modelling algorithm. However, the information about low-dimensional structures retained by the sub-structures, gradually deteriorates as this phenomenon occurs more frequently. The limiting case of this information loss is represented by FPW, where the distribution of the data set is globally captured with a high efficiency, but no additional information on the low-dimensional local structures can be inferred.
-% \begin{figure}[h!]
-% \centering
-% \includegraphics[width = \textwidth,trim = 25 0 50 0,clip = true]{Figures_png/JellyFish_Norm_T_Comp2.png}\caption{Average log-likelihood (top row) and log computational time of the probabilistic modelling techniques described in section \ref{subsec:PModelling} applied to the jellyfish data set.}\label{fig:JF_Norm_logL}
-% \end{figure}
-Having obtained the multi-manifold probabilistic profile of the gas particles in the tail of the jellyfish galaxy, it is possible to perform various kinds of detailed analysis of how physical properties vary along the manifolds.
-Here we concentrate on the curvature (figure \ref{fig:curvatureJF}), as defined in section \ref{subsec:curvature}, and the star formation potential by analysing the behaviour of emission line [CII] over the 1-D and 2-D structures in the jellyfish tail shown as black dots in fig. \ref{fig:JF_Res} (left) and (right), respectively - the gaseous stream of gas particles departing from the head and reaching half way through the tail and the predominant 2-D structure in the tail.
+Having obtained the multi-manifold probabilistic profile of the gas particles in the tail of the jellyfish galaxy, 
+it is possible to perform various kinds of detailed analysis of how physical properties vary along the manifolds.
+Here we concentrate on the curvature (figure \ref{fig:curvatureJF}), as defined in section \ref{subsec:curvature} and on the star formation potential.
+The latter is analysed by studying the the behaviour of emission line [CII] over the 1-D and 2-D structures
+in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and (right), respectively
+- the gaseous stream of gas particles departing from the head and reaching half way through the tail and the predominant 2-D structure in the tail.
 \begin{figure}[ht]
 \centering
-\begin{subfigure}[t]{0.48\textwidth}
- \label{subfig:CurvJF}
+\begin{subfigure}[t]{0.49\textwidth}
  \caption{}
+ \label{subfig:CurvJF}
  \includegraphics[width=\textwidth,trim = 100 0 150 0 ,clip = true]{Figures_png/Curvature_2DMan1_2.png}
 \end{subfigure}
 \begin{subfigure}[t]{0.49\textwidth}
- \label{subfig:CurvJF_Plane}
  \caption{}
+ \label{subfig:CurvJF_Plane}
  \includegraphics[width=\textwidth,trim = 50 0 75 0,clip=true]{Figures_png/Curvature_2DMan1_OnPlane.png}
 \end{subfigure}
-\caption{Embedded graph (\ref{subfig:CurvJF}) and planar representation (\ref{subfig:CurvJF_Plane}) of a 2-dimensional manifold extracted from the jellyfish data set, and its on-edge curvature distribution.}
+\caption{Embedded graph (a) and planar representation (b) of a 2-dimensional manifold extracted from the jellyfish data set, and its on-edge curvature distribution.}
 \label{fig:curvatureJF}
 \end{figure}
 
-Figure \ref{subfig:CurvJF} shows two regions of high curvature, for the 2-dimensional manifold presented in figure \ref{fig:JF_Res}, right panel. The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of figure \ref{subfig:CurvJF_Plane}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants. 
+Figure \ref{subfig:CurvJF} shows two regions of high curvature, for the 2-dimensional manifold presented in figure \ref{fig:JF_Res}, right panel.
+The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of figure \ref{subfig:CurvJF_Plane}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants. 
 
 Taking advantage of the probabilistic nature of the AGTM model, we show in figure \ref{subfig:1dManGraph} the embedded vertices
 $\bar{\vect{v}}_j$ of the graph $\bar{\cal G}$
@@ -229,13 +227,13 @@ In the 1-D case, the manifold is located at the outskirts of the Jellyfish (fig.
 \begin{figure}[ht]
 \centering
 \begin{subfigure}[t]{0.48\textwidth}
- \label{subfig:1dManGraph}
  \caption{}
+ \label{subfig:1dManGraph}
  \includegraphics[width=\textwidth]{Figures_png/Manifold1D_AGTM2_cii_Shading}
 \end{subfigure}
 \begin{subfigure}[t]{0.49\textwidth}
- \label{subfig:2dManGraph}
  \caption{}
+ \label{subfig:2dManGraph}
  \includegraphics[width=\textwidth]{Figures_png/Manifold2D_AGTM2_cii_Shading}
 \end{subfigure}
 \caption{1D (a) and 2D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
