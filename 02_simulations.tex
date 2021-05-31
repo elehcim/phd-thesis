@@ -10,7 +10,7 @@ Computer simulations are essentially a tools to solve complex systems of equatio
 This allows an unprecedentedly detailed exploration of the consequences of assumed models for physical systems.
 In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
-In fact, we are not interested in the motion of each molecule in detail, rather we will use a statistical approach. 
+In fact, we are not interested in the motion of each molecule in detail, rather we will use a statistical approach.
 In the following we will be dealing with hydrodynamics, given that the main components of galaxies are successfully described in terms of fluids.
 
 \section{General assumptions}
@@ -79,7 +79,7 @@ In the following we make the assumption that collisions do not create or destroy
 Consequently in the case of the continuity, momentum and energy equations the right-hand side of equation \eqref{eq:boltzmann} vanishes.
 We also neglect diffusive terms (heat conduction and viscous stress tensor) which are often small compared to dynamical effects (an important exception though are shocks, for example).
 
-The hydrodynamical equations (a.k.a. Euler equations) are therefore: 
+The hydrodynamical equations (a.k.a. Euler equations) are therefore:
 \begin{align}
 \label{eq:euler}
  \dv{\rho}{t} &= \pdv{\rho}{t} + \vect{v} \vdot \grad \rho = - \rho \,\div \vect{v}, \nonumber\\
@@ -96,14 +96,14 @@ The hydrodynamical equations (a.k.a. Euler equations) are therefore:
 %   \begin{split}
 %     &\pdv{\rho}{t} + \grad(\rho \vect{v}) = 0\\
 %     &\pdv{t}(\rho \vect{v}) + \grad(\rho\vect{v} \vect{v}^T + p) = 0\\
-% 	&\pdv{t}(\rho e) + \grad (\rho e \vect{v} + p\vect{v}) = 0    
+% 	&\pdv{t}(\rho e) + \grad (\rho e \vect{v} + p\vect{v}) = 0
 %   \end{split}
 % \end{equation}
 where we defined the pressure as $$p(\vect x, t) = \rho \dfrac 1 3 \trace{(\vect w \vect w^T)} = \rho \dfrac 1 3 \norm{\vect w}^2,$$ assuming an isotropic medium, and the specific internal energy (internal energy per unit mass) as $$\energy(\vect x, t)=\dfrac 1 2 \norm{\vect w}^2.$$ % FIXME Check if this is true
 These definitions implicitly fix an equation of state
 \begin{equation}
 \label{eq:simple_eos}
-p = \frac 2 3 \rho \energy. 
+p = \frac 2 3 \rho \energy.
 \end{equation}
 Usually a more general equation of state is assumed $p = (\gamma - 1) \rho \energy$.
 For a monoatomic gas: $\gamma = \dfrac{5}{3}$, so equation \eqref{eq:simple_eos} is returned.
@@ -164,19 +164,19 @@ Given that in the densest gas clouds star formation occurs at a density of $n\ap
 As \citet{Bate1997} and \citet{Springel2005} discuss, in order for SPH to produce the correct results in problems involving self-gravity, the hydrodynamic smoothing length and gravitational softening length must always be less than the local \emph{Jeans length} (see \refsec{sec:star_formation}). However, a gravitational softening much smaller than the SPH smoothing length can lead to artificial convergence of SPH particles.
 This can be avoided if the force resolution is greater than the hydrodynamical resolution at the scale of high density clumps.
 
-\subsection{Smoothed Particles Hydrodynamics}
+\subsection{Smoothed Particles Hydrodynamics}\label{sec:SPH}
 Smoothed Particles Hydrodynamics (SPH) is a finite volume, Lagrangian particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
 It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
 % It is finite volume because it.
 
 A different approach to discretize the fluid domain is to use an Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
 Recently, so called \emph{moving-mesh} methods have emerged. They combine both approaches and are more flexible but come with their own difficulties \citep{Springel2010, Shadowfax, Arepo}.
-% Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming. 
+% Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming.
 Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
 which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
 Numerical solutions are always a trade-off between accuracy and practicality.
 It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution} \citep{Borrow2019}.
-%But at the end of the day if we pay attention to the the trend is 
+%But at the end of the day if we pay attention to the the trend is
 
 \paragraph{Origin of SPH}
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977, Monaghan2005}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
@@ -207,12 +207,12 @@ A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 % The hydro differential equations become a set of ordinary differential equations and (t42:00) and a way to  timestepping is needed.
 % Try to construct your discretized equations in a way that it contains the conservation properties of the continuum.
 
-\subsection{Density Estimation from particles ensemble}
+\subsection{Density Estimation from particles ensemble}\label{sec:density_estimation}
 A possible choice for the kernel is a Gaussian.
 It's much more practical to use a finite support approximation of a Gaussian.
 The most often used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1946}, generated as the Fourier transform \citep{Monaghan1985, Monaghan2005, Price2012}:
 \begin{equation}
-M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\d k}.
+M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\dd{k}}.
 \end{equation}
 
 By increasing $n$ we obtain progressively better approximations of a Gaussian \citep[see Section 13.3 of][]{Easton2010}.
@@ -245,7 +245,7 @@ We make use of the MoRIA (Models of Realistic dwarfs In Action) suite of $N$-bod
 They are \textasciitilde$30$ simulations that cover the dwarf galaxy regime (ranging from $10^{6.5}$~\Msun{} to $10^9$~\Msun{} in stellar mass at $z=0$) with different mass assembly histories in a cosmological setting with added \popiii{} feedback \citep{Verbeke2017}.
 Isolated proto-galaxies, starting at $z = 13.5$, merge over time along a cosmologically motivated merger tree \citep{Cloet-Osselaer2014}.
 
-MoRIA dwarfs are the sum of multiple researchers work, starting with the implementation of models for star formation and chemical enrichment \citep{Valcke2008}. 
+MoRIA dwarfs are the sum of multiple researchers work, starting with the implementation of models for star formation and chemical enrichment \citep{Valcke2008}.
 Then, in addition to the mass, rotation has been found to have a significant influence on the evolution and appearance of dwarf galaxies and their star formation \citep{Schroyen2011}.
 Later, the addition of advanced prescriptions for cooling has allowed to increase the resolution when simulating the formation of cold, neutral, high-density clouds suitable for star formation \citep{DeRijcke2013}. %\citep{Verbeke2015}.
 MoRIA models could then be used to investigate and reproduce a whole range of observational properties of dwarfs in the field.
@@ -270,13 +270,13 @@ The following three conditions must be true for a gas particle to be eligible to
 \end{align*}
 
 The conversion into star particles of gas particles which meet the above conditions is governed by a Schmidt relation \citep{Schmidt1959}
-\begin{equation}                                                                              
+\begin{equation}
 \dot{\rho}_\star = -\dot{\rho}_g = c_\star \frac{\rho}{t_g}.
 \label{eq:schmidt_relation}
 \end{equation}
 Following \citet{Stinson2006} we assume the characteristic time of formation as the dynamical time $t_g = (4 \pi G \rho_g)^{-1/2}$, whereas $c_\star$ is the star formation efficiency which can be adjusted to match observations.
 
-From this, we can solve the simple differential equation: 
+From this, we can solve the simple differential equation:
 \begin{equation}
 \rho_\star = 1 - e^{c_\star \frac{t}{t_g}}.
 \end{equation}
@@ -328,13 +328,13 @@ The ratio of $\alpha$-elements to iron, [$\alpha$/Fe] (in our case we use magnes
 
 % : a ‘fast’ one (encompassing the contributions from SNII and massive IMS) and a ‘slow’ one (encompassing the contributions from SNIa and less massive IMS). The ratio of both contributions can be linked directly to the Fe and Mg abundances which provide us with two strong handles on all other element abundances DeRijcke2013
 
-% The ratio of alpha-elements to iron, [alpha/Fe], is commonly used to trace the star-formation timescale in a system, because it is sensitive to the ratio of SNII (massive stars) to SNIa (intermediate mass binary systems with mass transfer) that have occurred in the past. SNIa have a longer time scale than SNII and as soon as they start to contribute they dominate the iron enrichment and [alpha/Fe] inevitably decreases. After that, no SFH can ever again result in enhanced [alpha/Fe], unless coupled with galactic winds removing only the SNIa ejecta and not that of SNII. Tolstoy2009 
+% The ratio of alpha-elements to iron, [alpha/Fe], is commonly used to trace the star-formation timescale in a system, because it is sensitive to the ratio of SNII (massive stars) to SNIa (intermediate mass binary systems with mass transfer) that have occurred in the past. SNIa have a longer time scale than SNII and as soon as they start to contribute they dominate the iron enrichment and [alpha/Fe] inevitably decreases. After that, no SFH can ever again result in enhanced [alpha/Fe], unless coupled with galactic winds removing only the SNIa ejecta and not that of SNII. Tolstoy2009
 
 A second type type of feedback is the stellar wind from young O and B stars.
 Stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
 
 
-% The stellar population in the star particle is modelled by an initial mass function which tells how many stars are formed with a certain amount of mass. 
+% The stellar population in the star particle is modelled by an initial mass function which tells how many stars are formed with a certain amount of mass.
 
 \subsection{Extended gas physics}
 \label{sec:extended_gas_physics}
@@ -364,7 +364,7 @@ We consider the internal energy to be composed by a (thermal) kinetic part and a
 \end{equation}
 The kinetic term (directly linked with the temperature) is defined as
 \begin{equation}
-\energy_\text{kin} = \frac 3 2 k_B T/ \mean \mu, 
+\energy_\text{kin} = \frac 3 2 k_B T/ \mean \mu,
 \end{equation}
 whereas the ionization energy is
 \begin{equation}
@@ -376,7 +376,7 @@ with $\chi_\text H$ and $m_H$ the ionization energy and atomic mass of ${}^1$H.
 Assuming no temporal composition changes in the gas (i.e. assuming the gas in ionization equilibrium), the ionization fraction is a function only of the temperature (i.e. the internal kinetic energy) $x = x(T) = x(\energy_\text{kin})$, which allows the temporal derivative of equation \eqref{eq:energy} to be written as:
 % \begin{equation}
 % \label{eq:du_ion}
-% \dv{u_\text{ion}}{t} = 
+% \dv{u_\text{ion}}{t} =
 % \frac{\chi_\text H}{m_\text H} \dv{x}{u_\text{kin}} \dv{u_\text{kin}}{t}
 % \end{equation}
 % From equations \eqref{eq:u} and \eqref{eq:du_ion}:
@@ -413,7 +413,7 @@ Using SPH it is computationally challenging to simulate an entire cluster of hot
 \begin{figure}[ht]
  \centering
  \includegraphics[width=\textwidth]{MovingBox.pdf}
- \caption{An illustration, top panel, of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster. 
+ \caption{An illustration, top panel, of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster.
  Colors show the gas density \citep[using the \texttt{glnemo2} software][]{Lambert2012}.
  Note the number of particles involved, almost 2 millions.
  The moving box technique, represented in the boxy inset, allows to concentrate resources on the interesting part of the simulation.
@@ -480,7 +480,7 @@ A vector in three-dimensional space $\vec x \in \mathbb R^3$ can be expressed as
 
 The vector $\vec x'$ resulting from the rotation of $\vec x$ of an angle $\varphi$ around the axis $\vec q$ is given by the conjugation operation:
 \begin{equation}
-\vect x' = \conj{\quat{q}}\, \vect x \, \quat{q} 
+\vect x' = \conj{\quat{q}}\, \vect x \, \quat{q}
 \end{equation}
 where $\vect x' = (0, \vec x')$ \citep[for a proof, see e.g.][sec. 1.4]{Graf2008}.
 
@@ -553,7 +553,7 @@ A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fi
 
 \subsection{Recovering the correct kinematics from a moving box simulation}
 \label{sec:correct_kinematics}
-We are interested in finding the expression of the velocity $\vect{V}$ in the inertial frame at a certain position $\vect{x}$ in the moving box, knowing its velocity in the rotating frame $\vect{v}$. 
+We are interested in finding the expression of the velocity $\vect{V}$ in the inertial frame at a certain position $\vect{x}$ in the moving box, knowing its velocity in the rotating frame $\vect{v}$.
 Let $\vect{\Omega}$ be the angular velocity of the box in the inertial frame which can be computed as:
 \begin{equation}
  \vect{\Omega} = {(\Vp\cross\Ap)}/{\Vp^2}.
@@ -584,7 +584,7 @@ Therefore they respect the relation:
 \end{equation}
 
 The fraction of particles to be taken from the cartridge is then: $\xi=\dfrac{N_c}{N_{\text{glass}}}$. The number of particles in the glass should be chosen in order for $\xi\leq1$.
-A slice of the glass unit cube is then taken in such a way that its depth is 
+A slice of the glass unit cube is then taken in such a way that its depth is
 \begin{equation}
 \frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},
 \end{equation}
@@ -597,7 +597,7 @@ This process has been fine tuned and extensively tested by \citet{Nichols2015} a
 
 % It's worthwhile noting that the implementation the deletion or creation of particles in distributed code as the \textsc{Gadget-2} is not a trivial task.
 % The arrays representing the particles undergo this kind of algorithm.
-% In the end, a rolling 
+% In the end, a rolling
 
 \section{Simulating the Fornax cluster environment}
 \label{sec:fornax_sim}
@@ -623,7 +623,7 @@ Following \citet{Paolillo2002}, we use the superposition of three spherically sy
 They identify three contributions to the hot gas distributions: a central component (dominating for $r<5''$), coincident with the optical galaxy NGC1399; a less dense and more extended galactic component ($50''<r<400''$); and a cluster component ($r>400''$).
 We assume the gas to be in hydrostatic equilibrium with temperature $T(r)$ computed as:
 \begin{equation}
-   T(r) = \frac {m_p}{k_B \rho(r)} \int_r^\infty \rho(r') \frac{GM(r')}{r'^2} \mathrm{d} r'
+   T(r) = \frac {m_p}{k_B \rho(r)} \int_r^\infty \rho(r') \frac{GM(r')}{r'^2} \dd{r'}
 \end{equation}
 where $M(r)$ is the mass of the gas, stars and dark matter beyond radius $r$, $m_p$ is the proton mass, $G$ and $k_B$ the gravitational and Boltzmann constants.
 

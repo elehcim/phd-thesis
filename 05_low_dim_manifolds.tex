@@ -316,11 +316,11 @@ From the derivative along the edges $e_{ij}$ of the mapping $\f$ it is possible 
 %This graph is then embedded in the data space along through the embedding $\f$.
 
 %The latent space grid structure can be represented by an abstract undirected graph $\cG = (\cV,\cE)$, where each grid point corresponds to a vertex $v_i \in \cV$ and edges $e_{ij} \in \cE$ are connecting vertices corresponding to neighbouring grid points.
-%The structure of $\cG$ is directly reflected in the latent grid shown in fig. \ref{subfig:MGraph_Emb}.
+%The structure of $\cG$ is directly reflected in the latent grid shown in Figure \ref{subfig:MGraph_Emb}.
 
 %Through the embedding $\f$, we can compute the images $\bar{\vect{v}}_i=\f(v_i)\in \RR^d$ of the nodes of $\cG$.
 %A spherical Gaussian noise model is then positioned at each skeleton node
-%$\f(\vect{v}_i)$, thus representing the noisy manifold as a mixture of $K$ Gaussians centered at $\f(\vect{v}_i)$ (see fig. \ref{subfig:MGraph}).
+%$\f(\vect{v}_i)$, thus representing the noisy manifold as a mixture of $K$ Gaussians centered at $\f(\vect{v}_i)$ (see Figure \ref{subfig:MGraph}).
 
 %The manifold skeleton will then be formed by the embedded graph
 %$\overline{\cG} = (\overline{\cV},\overline{\cE})$, where
@@ -336,7 +336,7 @@ We will demonstrate our methodology on analysis of formation of a peculiar astro
 Even though the characteristic feature of these objects is their gaseous tail, little is known about its detailed structure and physical properties, including the rate at which new stars are formed.
 
 Analyzing in detail the SFR of these tails can provide useful insights on the formation scenario of galaxies infalling in a cluster \cite{Ebeling2013}.
-As an example, dwarf galaxy NGC~1427A in the Fornax cluster, described in detail in Chapter \ref{ch:NGC1427A} provides an interesting case of still unclear formation scenario.
+As an example, dwarf galaxy NGC~1427A in the Fornax cluster, described in detail in Chapter \ref{ch:ngc1427a} provides an interesting case of still unclear formation scenario.
 %It has been observed multiple times, but a generally accepted common interpretation is still lacking \cite{Lee-Waddell2018, Mora2015}.
 \begin{figure}
     \centering
@@ -355,7 +355,7 @@ We want to investigate the geometry of the star forming regions in the tails.
     \centering
     \includegraphics[width=\textwidth]{Figures_png/JF_SAF_Index_Man_v3}
     \caption{1-D (left) and 2-D (right) distributions of the diffused particles in the tail of the jellyfish structure.
-    Highlighted in black are the points belonging to two distinct 1-D and 2-D structures discussed in section \ref{subsec:NGC1427A}.}
+    Highlighted in black are the points belonging to two distinct 1-D and 2-D structures discussed in section \ref{sec:manifold_jellyfish}.}
     \label{fig:JF_Res}
 \end{figure}
 %We disregard DM and stellar particles (needed for evolution of the object, but not relevant for our analysis) and concentrate on the distribution of gas particles.
@@ -368,11 +368,11 @@ The outermost electron of the ionized atom gets excited on a higher energy level
 The excited electron, under extremely low density environment conditions, is able to re-emit radiation at a specific wavelength ($158 ~ \mathrm{\mu m}$) while jumping to a lower energy level.
 These types of emission lines are called ``forbidden" due to their impossibility to be seen in normal terrestrial environments.
 %They are, however, commonly observed in astronomy ([HII], O[III], etc.).
-Recent observations with the Herschel Space Observatory showed a tight correlation between the intensity of \cii{} and other well known tracers of Star Formation Rate (SFR) \cite{DeLooze2011, Herrera_Camus_2015}.
+Recent observations with the Herschel Space Observatory showed a tight correlation between the intensity of \cii{} and other well known tracers of Star Formation Rate (SFR) \cite{DeLooze2011, Herrera-Camus2015}.
 \cii{} emission in this kind of simulations is obtained by using evolved quantities of the gas (metallicity, density and temperature) as inputs of chemical evolution models of the radiating gas, taking into account its ionization equilibrium and ion level occupation model \cite{Maio2007, DeRijcke2013}.
 
-The resulting gas particle data set is presented in fig. \ref{fig:JF_Dataset}. Several low dimensional structures are clearly visible, for example the long 1-dimensional manifold departing from the head and elongating along the $x$-axis of the simulation box.
-Visually inspecting the data set, we chose a radius $r~=~1~\mathrm{kpc}$ as the characteristic scale parameter for the manifolds (shown as the small sphere in fig. \ref{fig:JF_Dataset}).
+The resulting gas particle data set is presented in Figure \ref{fig:JF_Dataset}. Several low dimensional structures are clearly visible, for example the long 1-dimensional manifold departing from the head and elongating along the $x$-axis of the simulation box.
+Visually inspecting the data set, we chose a radius $r~=~1~\mathrm{kpc}$ as the characteristic scale parameter for the manifolds (shown as the small sphere in Figure \ref{fig:JF_Dataset}).
 %This observation is reassuring, given that it is in agreement with the spatial resolution of recent observations.
 The parameter $r$ is fixed for preprocessing through diffusion and filtering (section \ref{sec:SAF}), local dimensionality estimation (section \ref{sec:D_Index}) and manifold crawling (section \ref{sec:Crawling}).
 % The other parameters are set as in the synthetic data experiments of section \ref{subsec:MulitCrawl}: $\epsilon=1$, $\eta=0.75$ and $\beta=0.4$.
@@ -388,7 +388,7 @@ On the other hand, distribution of 2-D points was more localized in the main bod
 
 Having obtained the multi-manifold probabilistic profile of the gas particles in the tail of the jellyfish galaxy,
 it is possible to perform various kinds of detailed analysis of how physical properties vary along the manifolds.
-Here we concentrate on the curvature (figure \ref{fig:curvatureJF}), computed through the embedding (details in \citet{Canducci2021} and on the star formation potential.
+Here we concentrate on the curvature (Figure \ref{fig:curvatureJF}), computed through the embedding (details in \citet{Canducci2021} and on the star formation potential.
 The latter is analysed by studying the the behaviour of emission line \cii{} over the 1-D and 2-D structures
 in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and (right), respectively
 - the gaseous stream of gas particles departing from the head and reaching half way through the tail and the predominant 2-D structure in the tail.
@@ -409,21 +409,21 @@ in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and 
 \end{figure}
 
 Figure \ref{subfig:CurvJF} shows two regions of high curvature, for the 2-dimensional manifold presented in Figure \ref{fig:JF_Res}, right panel.
-The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of figure \ref{subfig:CurvJF_Plane}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants.
+The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of Figure \ref{subfig:CurvJF_Plane}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants.
 
-We performed the SAF filtering dimensionality analysis and manifold crawling, and for an identified manifold we show in figure \ref{subfig:1dManGraph} the embedded vertices
+We performed the SAF filtering dimensionality analysis and manifold crawling, and for an identified manifold we show in Figure \ref{subfig:1dManGraph} the embedded vertices
 $\bar{\vect{v}}_j$ of the graph $\bar{\cal G}$
 for the stream model.
-The color codes are the intensity modulated by the weighted mean of \cii{} values $\mathcal{I}^{\text{\cii{}}}_i$ of particles $\vect{t}_i$ in the manifold, using the SPH smoothing kernel $W$:
+The color codes are the intensity modulated by the weighted mean of \cii{} values $\mathcal{I}^{\text{\cii{}}}_i$ of particles $\vect{t}_i$ in the manifold, using the SPH smoothing kernel $W$ defined in equation \eqref{eq:cubicspline} in Section \ref{sec:density_estimation}:
 %\begin{equation}\label{eq:WeightedVar}
 %    \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_i,\zeta_j\Sigma_j,\vect{W}_j) ~ \mathcal{I}^{\mathrm{[CII]}}_i}{\sum_{k=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_k,\zeta_j\Sigma_j,\vect{W}_j)}
 %\end{equation}
 \begin{equation}\label{eq:WeightedVar}
   \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (r_i - \bar{\vect{v}}_j, h_i) m_i/\rho_i }{\sum_{k=1}^{N} W (r_i - \bar{\vect{v}}_j, h_i) m_i/ \rho_i}
 \end{equation}
-Analogous figure for the 2-D structure is presented in fig. \ref{subfig:2dManGraph}.
+Analogous diagram for the 2-D structure is presented in Figure \ref{subfig:2dManGraph}.
 
-In the 1-D case, the manifold is located at the outskirts of the Jellyfish (fig. \ref{fig:JF_Dataset}, left panel),
+In the 1-D case, the manifold is located at the outskirts of the Jellyfish (Figure~\ref{fig:JF_Dataset}, left panel),
 meaning that it is more exposed during the evolution to the surrounding gas of the galaxy cluster.
 This implies that the manifold is subject to a higher ram pressure than the tail, leading to a higher density and lower temperature of the gas - necessary conditions for the formation of new stars.
 These conditions are reflected in an increase of the \cii{} emission line over the middle section of the manifold, $3 < x < 6$, thus informing us of an enhanced star formation rate, compared to the rest of the manifold.
