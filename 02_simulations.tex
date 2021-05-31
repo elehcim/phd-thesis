@@ -172,7 +172,7 @@ It is a Lagrangian method because the elements carrying information about the fl
 A different approach to discretize the fluid domain is to use an Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
 Recently, so called \emph{moving-mesh} methods have emerged. They combine both approaches and are more flexible but come with their own difficulties \citep{Springel2010, Shadowfax, Arepo}.
 % Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming.
-Usually simple test problems (Sod tube (1D,2D), Sedov blast, Kelvin-Helmholtz instabilities, Noh test, Gresho vortex \citet{Gresho1990}), %TODO fix test
+Usually simple test problems (Sod tube (1D,2D), Sedov blast-wave \citep{Sedov1946}, Kelvin-Helmholtz instabilities, Noh test \citep{Noh1987}, Gresho vortex \citep{Gresho1990}),
 which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
 Numerical solutions are always a trade-off between accuracy and practicality.
 It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution} \citep{Borrow2019}.
