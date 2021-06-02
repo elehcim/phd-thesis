@@ -404,7 +404,8 @@ in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and 
  \label{subfig:CurvJF_Plane}
  \includegraphics[width=\textwidth,trim = 50 0 75 0,clip=true]{Figures_png/Curvature_2DMan1_OnPlane.png}
 \end{subfigure}
-\caption{Embedded graph (a) and planar representation (b) of a 2-dimensional manifold extracted from the jellyfish data set. Colorcode is its local curvature distribution.}
+\caption{Embedded graph (a) and planar representation (b) of a 2-dimensional manifold extracted from the jellyfish data set.
+  The local curvature for each vertex is shown in color.}
 \label{fig:curvatureJF}
 \end{figure}
 
@@ -474,7 +475,7 @@ Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly
 To do so, let us now consider a point cloud $\cC$ containing points $\vect{p}$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\textwidth]{Cylinder.jpg}
+  \includegraphics[width=0.6\textwidth]{CylinderAnnotated.pdf}
   \caption{Schematic of the partition of the space around the manifold in concentric shells of uniformly distributed sample points $\vect{p}_i$ constituted by segmented cylinders build from one center to another (in black)}
   \label{fig:cylinder}
 \end{figure}
@@ -512,6 +513,23 @@ Any point $\vect{p} \in \cC$ is then mapped to $\vect{p}' \in \cC'$ under the co
 
 Having obtained a point cloud $\cC'$ uniformly sampling a thick cylindrical volume with axis tangential to the tangent subspace of manifold $\cM$ on point $\ti_\ell$,
 we can now compute the SPH weighted mean of any quantity contained in the data set, over the volume sampled by $\cC'$.
+%Note that the families of indices $\cI_1,\dots,\cI_{N^r}$, when applied to $\cC'$, they contain all indices of points in cylindrical shells concentric w.r.t. point $\ti_\ell$ and vector $\vect{v}_{\ell}$, radially partitioning the cylindrical volume sampled by $\cC'$.\\
+
+Consider now a point $\vect{p}' \in \cC'$, we need to compute the weighted mean, under the SPH formalism, of a quantity $V$ summing through all the particles $\vect{t}_j \in \vect{Q}$.
+As usual we use the the M-4 spline kernel $W$ defined in equation \eqref{eq:cubicspline} in Section~\ref{sec:density_estimation}.
+the exact weighted mean of quantity $V$ at point $\vect{p}'$ is:
+\begin{equation}\label{eq:WeightedMean}
+  \langle V(\vect{p}') \rangle = \dfrac{\sum\limits_{\vect{t}_j \in \vect{Q}} \dfrac{m_j}{\rho_j} V(\vect{t}_j) W(q_j,h_j)}{\sum\limits_{i =1}^{|\vect{Q}|} \dfrac{m_j}{\rho_j} W(q_i,h_i)}
+\end{equation}
+where $q_j = \norm{\vect{p}' - \vect{t}_j}/h_j$.
+The terms in the denominator are generally considered to be approximating unity when the particles in a data set are distributed uniformly; however, this is not often the case in practice.
+As mentioned in Section~\ref{sec:SPH}, each particle at position $\vect{t}_j$ of an SPH data set samples a spherical volume of radius $h_j$.
+However, all particles are evolved following the equations of motion defined by the Lagrangian formulation of fluids.
+Thus, the distribution of particles in a data set at a given evolutionary stage is far from uniform, making the initial assumption incorrect.
+The role of the normalization term
+%\[\sum_{i =1}^{|\vect{Q}|} \frac{m_j}{\rho_j}W(q_i,h_i)\]
+in the denominator of equation \ref{eq:WeightedMean} is to eliminate the dependence of the interpolation to the particle's distribution.
+As such, it can not be disregarded when computing the interpolation of quantity $V_m$ on any point in the volume. \\
 \begin{sidewaysfigure}
   \centering
   \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold4_MeanSubplots_long.png}
