@@ -493,6 +493,7 @@ It is interesting to note that given two unit vectors $\hat{v}_1, \hat{v}_2$, th
 \end{equation}
 In fact, $\hat{v}_1 \vdot \hat{v}_2 = \cos{\varphi}$ (with $\varphi$ the angle between  $\hat{v}_1$ and $\hat{v}_2$) is double the angle of the rotation required by equation \eqref{eq:quaternion_with_angle}.
 To get the correct rotation we summed the ``no rotation" quaternion $(1, \vec 0)$ to it and normalized the result.
+In the special case that $\hat{v}_1 = -\hat{v}_2$, the resulting quaternion is $(0, \hat{v}_1^\perp)$ with $\hat{v}_1^\perp$ any unit vector perpendicular to $\hat{v}_1$ (\ie{} a rotation of $\pi$ around any orthogonal vector).
 
 In the following sections we'll write equations that involve the rotation a quaternion by a vector.
 With a slight abuse of notation we will write directly $\vect x' = \conj{\quat{q}}\, \vect x \, \quat{q}$, considering that the vector indicated in boldface $\vect x$ should be understood to be the pure quaternion $(0, \vec x)$.% given that it will be clear from the context what is a quaternion (mainly just $\quat{q}$).
