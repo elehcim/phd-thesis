@@ -4,7 +4,9 @@
 \label{ch:sim_results}
 
 \section{Introduction}
-
+We show in this Chapter the results of the simulations performed using the technique presented in the previous chapter.
+We highlight that each simulation required $\approx 25$ days on average of wall clock runtime on dedicated computing nodes with 32 cores.
+%Intel VTune has been
 
 \begin{sidewaystable}
  \centering
@@ -151,7 +153,7 @@ Tidal heating affects the size of the galaxies as they pass near the cluster cen
 We computed the stellar and dark-matter mass inside a sphere of radius $10$~kpc centered on the dwarf and the masses inside the entire moving box.
 While stars gets formed around pericenter passages, dark matter instead is pulled out by tidal forces who elongate the halo, effectively stripping dark-matter particles out of the moving box of our simulation setup.
 This is confirmed for example by comparing the amount of dark matter inside the $10$~kpc region around the dwarf with the whole dark matter present inside the moving box.
-As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % TODO dark matter profile around pericenter?
+As shown in Figure \ref{fig:dm_center_inflow}, there is an inflow of dark matter towards the dwarf galaxy due to tidal squeezing and compression, soon followed by an expansion, resulting in a dearth of dark matter after the first pericenter passage. % NOTE possibly do dark matter profile around pericenter?
 For very radial orbits, around first infall, central halo mass increases more than the stellar mass created by the starburst, Figure~\ref{fig:m_halo_m_star}.
 
 \begin{figure}
@@ -216,7 +218,7 @@ The estimation with equation \eqref{eq:wolf} overestimates the mass by $\approx2
 From this, we can learn that despite some conditions required for the application of the method ---~such as equilibrium and sphericity~--- not being fulfilled, the dark-matter content estimates with this method are reliable within an acceptable relative range.
 %TODO I would add that this is quite a remarkable success given the simplicity of the method!
 
-%TODO The anisotropy parameter $\beta$ is shown
+% NOTE The anisotropy parameter $\beta$ can be taken into account
 
 % \citep{Danieli2019} Low dark matter galaxies.
 
@@ -232,7 +234,7 @@ Around the second pericenter passage, for radial orbits, the galaxy ends up bein
 In Figure~\ref{fig:pca_angle_r}, we show quantitatively the relative orientation between $\vect{w}_2$ and the clustercentric direction for simulation ID 69.
 Around both pericenter passages the galaxy becomes aligned with the cluster center.
 The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
-Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter, \ie{} $\tau \in [-0.25, 0.25] \cup{} [0.75, 1.25]$.
+Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period soon after pericenter, \ie{} $\tau \in [0, 0.25] \cup{} [1, 1.25]$.
 % This translates in a time interval of , , depending on the orbit.
 Except for the orbit with 100~kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between
 
@@ -253,7 +255,7 @@ In red the orbit of the galaxy (ID 69 with pericenter of 200 kpc).}
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{69_r_angle.pdf}
-\caption{Angle between the largest principal component $\vect{w}_2$ and the direction to the cluster center for simulation ID 69.}
+\caption{Angle between the largest principal component $\vect{w}_2$ and the direction to the cluster center for simulation ID 69. The galaxy shows an aligment of an angle $<30$~deg soon after pericenter passages \ie{} if the orbital phase $\tau \in [0, 0.25] \cup{} [1, 1.25]$.}
 \label{fig:pca_angle_r}
 \end{figure}
 \begin{figure}
@@ -280,9 +282,10 @@ Different orbits for each galaxy are indicated with shades of brown for the sSFR
 \label{fig:cold_gas}
 \end{figure}
 
-% \citet{Tonnesen2012} argue that pressure in the cluster has a primary role in regulating SF as opposed to the strength of ram pressure. % TODO compute cluster gas pressure corresponding to SFR peaks.
+% \citet{Tonnesen2012} argue that pressure in the cluster has a primary role in regulating SF as opposed to the strength of ram pressure.
+% NOTE compute cluster gas pressure corresponding to SFR peaks.
 
-% TODO Check: Also \citet{Hausammann2019} introduce the parameter $\beta$ defined as the ratio between the ram pressure and the thermal pressure as the
+% NOTE \citet{Hausammann2019} introduce the parameter $\beta$ defined as the ratio between the ram pressure and the thermal pressure as factor influencing the SF
 
 
 \subsection{Where do stars form?}
@@ -450,6 +453,10 @@ It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\re
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
 \citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''.
 As shown in Figure~\ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast-rotator profile to slow rotator \citep[cf.][]{Emsellem2011}.
+There is a complex interplay between $R_e$, $\sigma$ and the rotational velocity while the galaxy is on its orbit.
+$R_e$ increases with time whereas velocity dispersion tends to decline as well as the rotation velocity at a fixed radius.
+No single phenomenon can be called to explain the $\lambda_R$ profile behaviour.
+The result of this joint evolution is $\lambda_{R_e}$ decreasing with time.
 
 % Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
 
