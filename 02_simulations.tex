@@ -472,6 +472,7 @@ They can be used to completely describe a rotation of an angle $\varphi$ around 
 
 Let's consider a unit quaternion $\quat{q}$. It can be always written as:
 \begin{equation}
+  \label{eq:quaternion_with_angle}
  \quat{q} = (q_0, \vec q) = (\cos \frac \varphi 2, \sin \frac \varphi 2\, \hat n), \quad \text{with } \norm{\hat n}=1,
 \end{equation}
 where $\hat n \equiv \vec q/\norm{\vec q}$ is the versor of $\vec q$.\\
@@ -483,6 +484,15 @@ The vector $\vec x'$ resulting from the rotation of $\vec x$ of an angle $\varph
 \vect x' = \conj{\quat{q}}\, \vect x \, \quat{q}
 \end{equation}
 where $\vect x' = (0, \vec x')$ \citep[for a proof, see e.g.][sec. 1.4]{Graf2008}.
+
+It is interesting to note that given two unit vectors $\hat{v}_1, \hat{v}_2$, the inverse operation of finding a quaternion $\quat{q}$ which rotate $\hat{v}_1$ into $\hat{v}_2$ can be found as:
+\begin{equation}
+  \label{eq:quaternion_from_two_versors}
+  \quat{q} = \frac{\quat{q^*}}{\norm{\quat{q^*}}}   \qquad \text{with }
+  \quat{q^*} = (\hat{v}_1 \vdot \hat{v}_2 + 1, \hat{v}_1 \cross \hat{v}_2).
+\end{equation}
+In fact, $\hat{v}_1 \vdot \hat{v}_2 = \cos{\varphi}$ (with $\varphi$ the angle between  $\hat{v}_1$ and $\hat{v}_2$) is double the angle of the rotation required by equation \eqref{eq:quaternion_with_angle}.
+To get the correct rotation we summed the ``no rotation" quaternion $(1, \vec 0)$ to it and normalized the result.
 
 In the following sections we'll write equations that involve the rotation a quaternion by a vector.
 With a slight abuse of notation we will write directly $\vect x' = \conj{\quat{q}}\, \vect x \, \quat{q}$, considering that the vector indicated in boldface $\vect x$ should be understood to be the pure quaternion $(0, \vec x)$.% given that it will be clear from the context what is a quaternion (mainly just $\quat{q}$).

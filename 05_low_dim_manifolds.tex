@@ -459,7 +459,52 @@ As an example we show an application in the next section.
 
 \section{Evolution of quantities along the jellyfish tails}
 
+%simulation ID 69 snapshot 180.
+
+%After optimization of the parameters of SGTM through the E-M algorithm, every manifold $\cM_k$ is represented as a gaussian mixture with manifold aligned noise, whose updated centers $\{\ti_{\ell}; \ell = 1,\dots,L^k\}$ are constrained to lie on a 1-dimensional subspace of $\RR^3$.
 We now describe a methodology that, taking full advantage of the manifold extraction technique and SPH density formulation, simultaneously recovers the behaviour of simulated properties along the manifold's elongation and its thickness within the simulated volume.
+
+We start from the centers found by the crawling which are lying on the identified manifold. These center are points $\ti_{\ell} \in \tilde{\mathcal{Q}}$ belonging to the diffused dataset.
+From each pair of adjacent centers we can compute the tangent bundle on the 1D manifold:
+\begin{equation}
+  \hat{\vect{v}}_{\ell} =  \frac{\ti_{\ell + 1} - \ti_{\ell}}{|| \ti_{\ell + 1} - \ti_{\ell}||},
+\end{equation}
+The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance between the two adjacent centers.
+Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
+To do so, let us now consider a point cloud $\cC$ containing points $\vect{p}$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
+We radially partition into concentric cylindrical shells and for each point we compute its distance to the projected origin.
+It is always possible to scale, translate and rotate the point cloud so that the cylindrical axis is oriented as vector $\vect{v}_{\ell}$, the origin over-posed to center $\ti_{\ell}$ and the axis length equal to $d_{\ell}$.
+\footnote{\textbf{Scaling:} In matrix notation, the scaling operator is:
+\[
+S =
+\begin{pmatrix}
+  1 & 0 & 0\\
+  0 & 1 & 0\\
+  0 & 0 & d_{\ell}
+\end{pmatrix}
+\]
+\textbf{Rotation}
+We can compute the quaternion $\quat{q}$ to rotate the $z$ versor $\hat{\vect{k}}$ into $\hat{\vect{v}}_{\ell}$. From equation \eqref{eq:quaternion_from_two_versors}
+\[\quat{q} = (\hat{\vect{v}}_{\ell} \vdot \hat{\vect{k}} + 1, \hat{\vect{v}}_{\ell} \cross \hat{\vect{k}})\]
+%Its matrix representation is given by R:
+%\[
+%R =
+%\begin{pmatrix}
+%  1 - 2q_2^2 - 2q_3^2  &    2q_1q_2 - 2q_3q_4  &   2q_1q_3 + 2q_2q_4\\
+%  2q_1q_2 + 2q_3q_4   &    1 - 2q_1^2 - 2q_3^2	&   2q_2q_3 - 2q_1q_4 \\
+%  2q_1q_3 - 2q_2q_4	&   2q_2q_3 + 2q_1q_4   &	1 - 2q_1^2 - 2q_2^2
+%\end{pmatrix}
+%\]
+\textbf{Shift} We can then shift the scaled and rotated point cloud so that its origin is on center $\ti_{\ell}$.\\
+Any point $\vect{p} \in \cC$ is then mapped to $\vect{p}' \in \cC'$ under the combined operator as:
+\begin{equation}\label{eq:cylOperator}
+%  \vect{p}' = (\vect{p} ~ S) ~ R + \ti_\ell
+  \vect{p}' = \conj{\quat{q}}(S\,\vect{p})\quat{q} + \ti_\ell
+\end{equation}
+}
+
+Having obtained a point cloud $\cC'$ uniformly sampling a thick cylindrical volume with axis tangential to the tangent subspace of manifold $\cM$ on point $\ti_\ell$,
+we can now compute the SPH weighted mean of any quantity contained in the data set, over the volume sampled by $\cC'$.
 \begin{sidewaysfigure}
   \centering
   \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold4_MeanSubplots_long.png}
