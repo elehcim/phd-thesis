@@ -420,7 +420,7 @@ The color codes are the intensity modulated by the weighted mean of \cii{} value
 %    \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_i,\zeta_j\Sigma_j,\vect{W}_j) ~ \mathcal{I}^{\mathrm{[CII]}}_i}{\sum_{k=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_k,\zeta_j\Sigma_j,\vect{W}_j)}
 %\end{equation}
 \begin{equation}\label{eq:WeightedVar}
-  \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (r_i - \bar{\vect{v}}_j, h_i) m_i/\rho_i }{\sum_{k=1}^{N} W (r_i - \bar{\vect{v}}_j, h_i) m_i/ \rho_i}
+  \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (\norm{\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/\rho_i }{\sum_{k=1}^{N} W ({\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/ \rho_i}
 \end{equation}
 Analogous diagram for the 2-D structure is presented in Figure \ref{subfig:2dManGraph}.
 
@@ -475,9 +475,17 @@ The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance betw
 \subsection{Computing a point cloud around each manifold segment}
 Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
 To do so, let us now consider a point cloud $\cC$ containing points $\vect{p} \in \cC$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
+As a first step we partition the point cloud into concentric cylindrical shells $\cS^i: \bigcup_i \cS^i \equiv \cC$.
+For every point $\vect{p} \in \cC$ we compute its distance to the cylinder $z-$ axis, versor $\hat k$.
+We can now group points in $\cC$ so that:
+\begin{equation}
+  \cS^i =
+  \left\{ \vect{p}_j:  r_{i-1} \leq \norm{\vect{p}_j-\hat{k}} < r_i \right\},\, \forall \vect{p}_j \in \cC.
+\end{equation}
+
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\textwidth]{CylinderAnnotated.pdf}
+  \includegraphics[width=0.8\textwidth]{CylinderAnnotated.pdf}
   \caption{Schematic of the partition of the space around the manifold in two concentric shells of uniformly distributed sample points $\vect{p}_i$ constituted by segmented cylinders (only one is shown on the left) build from one center to another of the manifold $\cM$ (in black).}
   \label{fig:cylinder}
 \end{figure}
@@ -541,9 +549,9 @@ As such, it can not be disregarded when computing the interpolation of quantity 
 
 After computing $\langle V(\vect{p}')\rangle$ for every $\vect{p}' \in \cC'$ we can now evaluate the mean value of $V$ over the concentric cylindrical shells built in the original manifold.% defined by the index families $\cI_1,\dots,\cI_{N^r}$ as:
 \begin{equation}
-  \overline{V}_{i} = \langle V(d^r_{i-1},d^r_i)\rangle = \frac 1 N \sum_{j\in\cI_i} \langle V_m(p'_j)\rangle,
+  \overline{V}_{i} = \langle V(r_{i-1},r_i)\rangle = \frac{1}{|\cS'^i|} \sum_{\vect{p}'_j \in \cS'^i} \langle V(\vect{p}'_j)\rangle,
 \end{equation}
-obtaining the mean of $V$ over the cylindrical shell between $()d^r_{i-1},d^r_i)$ for every $i=1,\dots,N^r$.
+obtaining the mean of $V$ over the cylindrical shell between $(r_{i-1},r_i)$ for every.
 
 \begin{sidewaysfigure}
   \centering
@@ -558,3 +566,20 @@ obtaining the mean of $V$ over the cylindrical shell between $()d^r_{i-1},d^r_i)
   \caption{}
   \label{fig:ManifoldExists}
 \end{sidewaysfigure}
+
+%
+% Bi-dimensional profiles for manifolds $\cM_1$ (top row) and $\cM_2$ (bottom row)
+%  with and without the normalization term in equation $\ref{eq:WeightedMean}$ (left and right columns respectively), for variables $\overline \rho_i, \overline V_{1i}, \overline V_{2i},$
+%  and $\overline m_i$ (top to bottom respectively on each panel).
+%  Particularly interesting is the difference in the distribution of the constant scalar value of variable $m$ with and without normalization.
+
+We can iterate the whole process for every center the manifold, obtaining for each linear segment, the distribution of $V$ in concentric cylindrical shells centered on the current center.
+By considering both longitudinal profiles (defined along the tangent bundle of the manifold $\cM$, see Figure~\ref{fig:segmented_manifold}) and radial profiles (obtained by the linear operator defined in eq. \ref{eq:cylOperator} on point cloud $\cC$), we obtain the plots shown in Figures~\ref{fig:ManifoldLong} and \ref{fig:ManifoldExists}.
+They represents two 1-D manifolds detected with the crawling.
+In both panels, the vertical axis of each plot contains the radius of the cylindrical shells $r$
+and the horizontal axis the approximated geodesic distance (computed by summation of the lengths of the individual linear segments) from the head of the manifold.
+
+%The bottom plot in each panel presents the mass distribution over the radial and longitudinal dimensions of the manifolds.
+%As expected, the mass is constant throughout the sampled volumes and it is everywhere $\overline m_i = 1$.\\
+%In order to check the influence of the normalization term we show in Figures \ref{fig:M1_MeanPlots} and \ref{fig:M2_MeanPlots} the corresponding behaviours of $\overline{\rho}_i, \overline{\vect{V}}_{1,i}, \overline{\vect{V}}_{2,i}$ and $\overline m_i$ when the normalization term is omitted in equation \eqref{eq:WeightedMean}.
+%While the ranges of the first three variables exceed their true respective values, it is striking the difference of the mass distribution with respect to the normalized versions (Figures \ref{fig:M1_MeanPlotsNorm} and \ref{fig:M2_MeanPlotsNorm}).
