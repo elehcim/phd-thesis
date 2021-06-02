@@ -201,6 +201,7 @@ Tidal squeezing increase~$\sigma$ while subsequent mass loss can dramatically lo
 \includegraphics[width=\textwidth]{mass_sigma_multi_sim.pdf}
 \caption{The estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
 for simulation ID 69, 71, 41 on an orbit with 200~kpc pericenter.
+Dashed line is for unbound snapshots (the condition \eqref{eq:tidal_radius_condition} is not verified anymore).
 }
 \label{fig:wolf}
 \end{figure}
@@ -212,11 +213,11 @@ M^{dyn}_{est} = \dfrac{3}{G} \sigma_e^2 R_e,
 \end{equation}
 where $\sigma_e$ is the luminosity-weighted line-of-sight velocity dispersion within an effective radius~$R_e$,
 and $G$ the gravitational constant.
-The result for one simulation is shown in Figure~\ref{fig:wolf}.
-% Despite its simplicity and despite many conditions not being met (sphericity, equilibrium) it still works rather well.
-The estimation with equation \eqref{eq:wolf} overestimates the mass by $\approx20-50\%$.
+The result three representative simulations is shown in Figure~\ref{fig:wolf}.
+For the low mass galaxy (simulation ID 71), the estimation is not reliable anymore as soon as the galaxy becomes unbound (dashed line in Figure~\ref{fig:wolf}), \ie{} the condition \eqref{eq:tidal_radius_condition} does not hold anymore.
+The method of equation \eqref{eq:wolf} overestimates the mass by $\approx20-50\%$ depending on the orbital phase.
+Given the simplicity of the method, this relation between the estimated value and the ground truth mass is quite remarkable.
 From this, we can learn that despite some conditions required for the application of the method ---~such as equilibrium and sphericity~--- not being fulfilled, the dark-matter content estimates with this method are reliable within an acceptable relative range.
-%TODO I would add that this is quite a remarkable success given the simplicity of the method!
 
 % NOTE The anisotropy parameter $\beta$ can be taken into account
 
@@ -226,7 +227,6 @@ From this, we can learn that despite some conditions required for the applicatio
 We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis \citep[PCA, ][]{Pearson1901}.
 The first principal component $\vect{w}_2$ is the direction of highest elongation (largest variance of the star particle positions) computed via PCA\footnote{
 $\vect{w}_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars, and $N$ the number of particles.}.
-% For now I took into account only the position of the star particles (which have negligible mass difference among them).
 
 Around pericenter the main elongation direction of the ellipsoid ($\vect w_2$) is aligned with the cluster center; then it undergoes a ``slingshot effect" after pericenter and it aligns with the cluster center also around apocenter before falling back in. This behaviour is shown in Figure~\ref{fig:pca}.
 Around the second pericenter passage, for radial orbits, the galaxy ends up being dispersed and not anymore gravitationally bound.
