@@ -25,7 +25,7 @@ The easy-to-understand hyper-parameters can be manipulated to obtain an emerging
 % The first data set consists of multiple sampled noisy manifolds of different intrinsic dimensionalities, such as M\"{o}bius strip, toroid and spiral arm. The second one is a topologically complex set of three interlocked toroids.
 % Given the absence of such unified methodologies in the literature, the comparison with existing techniques is organized along the two separate aspects of our approach mentioned above, namely manifold approximation and probabilistic modelling.
 The framework is then applied to a complex data set containing simulated gas volume particles from a particle simulation of a dwarf galaxy interacting with its host galaxy cluster.
-Detailed analysis of the recovered 1D and 2D manifolds can help us to understand the nature of star formation in such complex systems.
+Detailed analysis of the recovered 1-D and 2-D manifolds can help us to understand the nature of star formation in such complex systems.
 % TODO mention the evolution along the manifold.
 }
 \section{Introduction}
@@ -440,7 +440,7 @@ These conditions are reflected in an increase of the \cii{} emission line over t
  \label{subfig:2dManGraph}
  \includegraphics[width=\textwidth]{Figures_png/Manifold2D_AGTM2_cii_Shading}
 \end{subfigure}
-\caption{1D (a) and 2D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
+\caption{1-D (a) and 2-D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
 The graphs' nodes are colored based on the value of \cii{} of the surrounding particles lying not further than $\mathrm{1~kpc}$ from the local tangent space of the manifold, weighted by the nodes' responsibilities.}
 \label{fig:Man2D}
 \end{figure}
@@ -466,7 +466,7 @@ As an example we show an application in the next section.
 We now describe a methodology that, taking full advantage of the manifold extraction technique and SPH density formulation, simultaneously recovers the behaviour of simulated properties along the manifold's elongation and its thickness within the simulated volume.
 
 We start from the centers found by the crawling which are lying on the identified manifold. These center are points $\ti_{\ell} \in \tilde{\mathcal{Q}}$ belonging to the diffused dataset.
-From each pair of adjacent centers we can compute the tangent bundle on the 1D manifold:
+From each pair of adjacent centers we can compute the tangent bundle on the 1-D manifold:
 \begin{equation}
   \hat{\vect{v}}_{\ell} =  \frac{\ti_{\ell + 1} - \ti_{\ell}}{|| \ti_{\ell + 1} - \ti_{\ell}||},
 \end{equation}
