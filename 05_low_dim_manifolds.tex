@@ -529,7 +529,11 @@ Thus, the distribution of particles in a data set at a given evolutionary stage 
 The role of the normalization term
 %\[\sum_{i =1}^{|\vect{Q}|} \frac{m_j}{\rho_j}W(q_i,h_i)\]
 in the denominator of equation \ref{eq:WeightedMean} is to eliminate the dependence of the interpolation to the particle's distribution.
-As such, it can not be disregarded when computing the interpolation of quantity $V_m$ on any point in the volume. \\
+As such, it can not be disregarded when computing the interpolation of quantity $V$ on any point in the volume.
+% TODO  Consider to put here the normalization factor now in the SPH section
+
+Computing $\langle V(\vect{p}')\rangle$ for every $\vect{p}' \in \cC'$ we can now evaluate the mean value of $V$ over the concentric cylindrical shells built in the original manifold defined by the index families $\cI_1,\dots,\cI_{N^r}$ as:
+
 \begin{sidewaysfigure}
   \centering
   \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold4_MeanSubplots_long.png}
