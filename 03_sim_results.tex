@@ -37,7 +37,7 @@ In the following we will compare the effects of orbit and initial mass using the
 As we shall see, the cluster gravitational potential is able to strip material from the galaxy. Some of the simulations, depending on the orbit they are on, will become gravitationally unbound dominated by the cluster potential.
 We chose to define the event of becoming unbound using the condition on the tidal radius \cite{King1962}: namely when it becomes smaller than the effective radius.
 This criterion tests whether the stellar body of the galaxy would become unbound and dissolved, which is what an observer would consider for the detection of a ``galaxy''.
-Physically, also this implies that orbits of the stars in the outskirts of the galaxy are influenced by the cluster potential more than they are by the galactic halo potential. 
+Physically, also this implies that orbits of the stars in the outskirts of the galaxy are influenced by the cluster potential more than they are by the galactic halo potential.
 Tidal radius $r_t$ is computed as following.
 \begin{equation}
 r_t = r \sqrt[3]{\frac{M_g}{M_c(r) (3+e)}}
@@ -47,7 +47,7 @@ where $e = (r_a - r_p) / (r_a + r_p)$ is the eccentricity of the orbit computed,
 As a convention we measure the galaxy mass as the total mass (baryonic and dark matter) within $10$~kpc from the center of the galaxy.
 
 In Figure \ref{fig:tidal_radius} we show an example of $r_t$ evolution along the orbit.
-We define a galaxy to become unbound when the condition 
+We define a galaxy to become unbound when the condition
 \begin{equation}
     R_e > r_t
 \label{eq:tidal_radius_condition}
@@ -90,7 +90,7 @@ Its value is about $L_\star \approx 3\times10^{11}L_\odot$, \cf{}  \citet{Cooray
 in high mass dark halos with ceased star formation in the early universe.
 
 Some UDGs have earlier been identified as disrupted early-type galaxies.
-\citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDGs HCC-087 in the Hydra I cluster. 
+\citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDGs HCC-087 in the Hydra I cluster.
 In the Coma and Abell 1314 clusters \citep{Yagi2016, ManceraPina2019} UDGs are preferably aligned towards the cluster center.
 
 In the Fornax cluster, the low statistics do not allow for a conclusive analysis.
@@ -103,13 +103,13 @@ Also, the number of UDGs within the virial radius are correlated with the virial
 In the size-magnitude parameter space, UDGs in Coma form a continuous distribution, whereas in Fornax two of them are  remarkably luminous, and can be considered as outliers.
 Also, UDGs in Fornax are among the more luminous galaxies and their colour correlates with surface brightness, becoming redder with increasing surface brightness.
 They follow the same color-magnitude relation as dwarfs, which suggests a link between UDGs and dwarf galaxies  (\cf{} Section~\ref{sec:CM}).
-% As expected, Sérsic index is around $1$ 
+% As expected, Sérsic index is around $1$
 As opposed to the ones in the Coma cluster, their alignment with respect to the cluster potential is not evident: in Coma UDGs are oriented towards the cluster center, whereas in Fornax, as mentioned above, there's no correlation.
 It is interesting to note that larger UDGs are more elongated as opposed to UDGs in Coma.
 
 \subsection{Size and magnitudes}
 Once approaching the pericenter, energy is transferred to the galaxy, according to the virial theorem.
-%According to the virial theorem %predicts that by adding energy to a galaxy, it will increase its radius: 
+%According to the virial theorem %predicts that by adding energy to a galaxy, it will increase its radius:
 %once approaching the pericenter, energy is transferred to the galaxy:
 Stars thus migrate to more energetic and hence wider orbits.
 In addition, mass is lost due to tides, making the gravitational well even more shallow and leading to potentially large increases in radius.
@@ -178,7 +178,7 @@ We measured the central (within $250$ pc) stellar velocity dispersion for all th
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{01.0_fig_sigma_time.pdf}
-\caption{The evolution as a function of time (normalized with orbital radial period) of the 
+\caption{The evolution as a function of time (normalized with orbital radial period) of the
 line-of-sight velocity dispersion of star particles within a $250$~pc from the galactic center.
 Curves are smoothed using a rolling average of 0.2~Gyr.
 }
@@ -191,10 +191,14 @@ Tidal squeezing increase~$\sigma$ while subsequent mass loss can dramatically lo
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{wolf_m_est_ratio69p200.png}
-\caption{In blue the estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
-for simulation ID 69 on an orbit with 200~kpc pericenter.
-In black the local rolling average with a window of 30 snapshots.
+%\includegraphics[width=\textwidth]{wolf_m_est_ratio69p200.png}
+%\caption{In blue the estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
+%for simulation ID 69 on an orbit with 200~kpc pericenter.
+%In black the local rolling average with a window of 30 snapshots.
+%}
+\includegraphics[width=\textwidth]{mass_sigma_multi_sim.pdf}
+\caption{The estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
+for simulation ID 69, 71, 41 on an orbit with 200~kpc pericenter.
 }
 \label{fig:wolf}
 \end{figure}
@@ -207,7 +211,7 @@ M^{dyn}_{est} = \dfrac{3}{G} \sigma_e^2 R_e,
 where $\sigma_e$ is the luminosity-weighted line-of-sight velocity dispersion within an effective radius~$R_e$,
 and $G$ the gravitational constant.
 The result for one simulation is shown in Figure~\ref{fig:wolf}.
-% Despite its simplicity and despite many conditions not being met (sphericity, equilibrium) it still works rather well. 
+% Despite its simplicity and despite many conditions not being met (sphericity, equilibrium) it still works rather well.
 The estimation with equation \eqref{eq:wolf} overestimates the mass by $\approx20-50\%$.
 From this, we can learn that despite some conditions required for the application of the method ---~such as equilibrium and sphericity~--- not being fulfilled, the dark-matter content estimates with this method are reliable within an acceptable relative range.
 %TODO I would add that this is quire a remarkable success given the simplicity of the method!
@@ -230,7 +234,7 @@ Around both pericenter passages the galaxy becomes aligned with the cluster cent
 The maximum alignment is obtained at a delayed time depending on the radiality of the orbit.
 Also, for all the orbits, the galaxy shows an aligment of an angle $<30$~deg if the orbital phase lays within a quarter of the radial period from pericenter, \ie{} $\tau \in [-0.25, 0.25] \cup{} [0.75, 1.25]$.
 % This translates in a time interval of , , depending on the orbit.
-Except for the orbit with 100~kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between 
+Except for the orbit with 100~kpc pericenter, it is possible to see how at apocenter the main elongation is perpendicular to the cluster center. % For this orbit it is likely that due to a swap between
 
 Analogously, we can compute the angle between the elongation direction and the instantaneous velocity along the orbit.
 As shown in Figure~\ref{fig:pca_angle_v}, because of the high relative speed and the delay in the formation of tidal tails, around pericenter passages the angle beteen $\vect{w}_2$ varies significantly.
@@ -477,17 +481,17 @@ Curves are smoothed using a rolling average of 0.2~Gyr.}
 % TODO The relative increase of $\lambda_R$ at first pericenter passage is shown for each orbit and mass in figure \ref{fig:ssam_relative}.
 % Around pericenter passages an increase of $\lambda_R$ by a factor of $\approx 2$ is observed.
 
-% 
+%
 
 \subsection{Relation between $\lambda_R$ and physical angular momentum TO BE FINISHED}
-% We wanted to 
+% We wanted to
 First we compute the specific angular momentum $\vect{j}_{s}$ of star particles within $10$~kpc from the center of the galaxy.
 \begin{equation}
-\vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\} 
+\vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\}
 \end{equation}
 % We compute the specific angular momentum $\vect{j}_s$ of star particles within 10~kpc from the center of the galaxy (densest stellar region):
 % \begin{equation}
-% \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\} 
+% \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\}
 % \end{equation}
 % ($\vect{j}_s = \vect{J}_s/M_\star$ where $J_s$ is the total angular momentum and $M_\star$ the stellar mass of the galaxy)
 % We compare $\vect{j}_{s}$ with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
@@ -495,21 +499,21 @@ First we compute the specific angular momentum $\vect{j}_{s}$ of star particles 
 
 \paragraph{Comparing $j_{se}$ with observables} We tried to retrieve the In order to compare the proxy $\lambda_R$ with the angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
 \begin{equation}
- j_s^* = \lambda_R\, R_e\, \sigma_e 
+ j_s^* = \lambda_R\, R_e\, \sigma_e
 \end{equation}
 where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
 % This formula reasonably reintroduces physical dependency.
 
 % We shall see that.
 % Another effect is at play: maps as those in Figure~\ref{fig:maps_lambda_r} show
-% For simplicity this 
+% For simplicity this
 
 The relation between $\lambda_R$ and $j_s^*$ is shown in Figure~\ref{fig:lambda_r_j_s_sigma}
 
-%As also found by, ... we confirm that it is very sensitive to recent episode of star formation, especially the ones due to gas stripping, where young stars are 
+%As also found by, ... we confirm that it is very sensitive to recent episode of star formation, especially the ones due to gas stripping, where young stars are
 % For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
 % TODO 41 69 71
-% 
+%
 % \begin{figure}
 % \centering
 % \includegraphics[width=.8\columnwidth]{03.0_fig_lambda_r_time.pdf}
@@ -527,9 +531,9 @@ The relation between $\lambda_R$ and $j_s^*$ is shown in Figure~\ref{fig:lambda_
 
 
 % \subsection{Magnitude conversion}
-% \pynbody{} can be programmed to compute luminosities of stellar particles using 
+% \pynbody{} can be programmed to compute luminosities of stellar particles using
 % The built in libraries are from Marico... Padova... %TODO
 % To obtain SDSS bands we ued conversion formulas from here, after having computed the magnitudes in Johnson bands.
-% 
+%
 % In particular:
 
