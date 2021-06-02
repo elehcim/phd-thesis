@@ -472,7 +472,14 @@ From each pair of adjacent centers we can compute the tangent bundle on the 1D m
 The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance between the two adjacent centers.
 Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
 To do so, let us now consider a point cloud $\cC$ containing points $\vect{p}$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
-We radially partition into concentric cylindrical shells and for each point we compute its distance to the projected origin.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{Cylinder.jpg}
+  \caption{Schematic of the partition of the space around the manifold in concentric shells of uniformly distributed sample points $\vect{p}_i$ constituted by segmented cylinders build from one center to another (in black)}
+  \label{fig:cylinder}
+\end{figure}
+We radially partition into concentric cylindrical shells and for each point we compute its distance to the projected origin, as show in Figure~\ref{fig:cylinder}.
+
 It is always possible to scale, translate and rotate the point cloud so that the cylindrical axis is oriented as vector $\vect{v}_{\ell}$, the origin over-posed to center $\ti_{\ell}$ and the axis length equal to $d_{\ell}$.
 \footnote{\textbf{Scaling:} In matrix notation, the scaling operator is:
 \[
