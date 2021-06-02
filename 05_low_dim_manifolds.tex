@@ -471,29 +471,35 @@ From each pair of adjacent centers we can compute the tangent bundle on the 1D m
   \hat{\vect{v}}_{\ell} =  \frac{\ti_{\ell + 1} - \ti_{\ell}}{|| \ti_{\ell + 1} - \ti_{\ell}||},
 \end{equation}
 The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance between the two adjacent centers.
+
+\subsection{Computing a point cloud around each manifold segment}
 Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
-To do so, let us now consider a point cloud $\cC$ containing points $\vect{p}$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
+To do so, let us now consider a point cloud $\cC$ containing points $\vect{p} \in \cC$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
 \begin{figure}
   \centering
   \includegraphics[width=0.6\textwidth]{CylinderAnnotated.pdf}
-  \caption{Schematic of the partition of the space around the manifold in concentric shells of uniformly distributed sample points $\vect{p}_i$ constituted by segmented cylinders build from one center to another (in black)}
+  \caption{Schematic of the partition of the space around the manifold in two concentric shells of uniformly distributed sample points $\vect{p}_i$ constituted by segmented cylinders (only one is shown on the left) build from one center to another of the manifold $\cM$ (in black).}
   \label{fig:cylinder}
 \end{figure}
 We radially partition into concentric cylindrical shells and for each point we compute its distance to the projected origin, as show in Figure~\ref{fig:cylinder}.
 
 It is always possible to scale, translate and rotate the point cloud so that the cylindrical axis is oriented as vector $\vect{v}_{\ell}$, the origin over-posed to center $\ti_{\ell}$ and the axis length equal to $d_{\ell}$.
-\footnote{\textbf{Scaling:} In matrix notation, the scaling operator is:
-\[
-S =
-\begin{pmatrix}
-  1 & 0 & 0\\
-  0 & 1 & 0\\
-  0 & 0 & d_{\ell}
-\end{pmatrix}
-\]
-\textbf{Rotation}
-We can compute the quaternion $\quat{q}$ to rotate the $z$ versor $\hat{\vect{k}}$ into $\hat{\vect{v}}_{\ell}$. From equation \eqref{eq:quaternion_from_two_versors}
-\[\quat{q} = (\hat{\vect{v}}_{\ell} \vdot \hat{\vect{k}} + 1, \hat{\vect{v}}_{\ell} \cross \hat{\vect{k}})\]
+%\paragraph{Scaling}
+The scaling operator is the diagonal matrix $S = \tr(1, 1,  d_{\ell})$.
+%\[
+%S =
+%\begin{pmatrix}
+%  1 & 0 & 0\\
+%  0 & 1 & 0\\
+%  0 & 0 & d_{\ell}
+%\end{pmatrix}
+%\]
+%\paragraph{Rotation}
+To rotate the cylinder we compute the quaternion $\quat{q}$ which rotates the $z-$axis versor $\hat{\vect{k}}$ into $\hat{\vect{v}}_{\ell}$. From equation \eqref{eq:quaternion_from_two_versors}
+\begin{equation}
+  \quat{q} = \frac{\quat{q^*}}{\norm{\quat{q^*}}} \quad \text{with }
+  \quat{q^*} = (\hat{\vect{v}}_{\ell} \vdot \hat{\vect{k}} + 1, \hat{\vect{v}}_{\ell} \cross \hat{\vect{k}}).
+\end{equation}
 %Its matrix representation is given by R:
 %\[
 %R =
@@ -503,13 +509,14 @@ We can compute the quaternion $\quat{q}$ to rotate the $z$ versor $\hat{\vect{k}
 %  2q_1q_3 - 2q_2q_4	&   2q_2q_3 + 2q_1q_4   &	1 - 2q_1^2 - 2q_2^2
 %\end{pmatrix}
 %\]
-\textbf{Shift} We can then shift the scaled and rotated point cloud so that its origin is on center $\ti_{\ell}$.\\
+%\paragraph{Shift}
+We can then shift the scaled and rotated point cloud so that its origin is on center $\ti_{\ell}$.
 Any point $\vect{p} \in \cC$ is then mapped to $\vect{p}' \in \cC'$ under the combined operator as:
 \begin{equation}\label{eq:cylOperator}
 %  \vect{p}' = (\vect{p} ~ S) ~ R + \ti_\ell
   \vect{p}' = \conj{\quat{q}}(S\,\vect{p})\quat{q} + \ti_\ell
 \end{equation}
-}
+%}
 
 Having obtained a point cloud $\cC'$ uniformly sampling a thick cylindrical volume with axis tangential to the tangent subspace of manifold $\cM$ on point $\ti_\ell$,
 we can now compute the SPH weighted mean of any quantity contained in the data set, over the volume sampled by $\cC'$.
@@ -519,7 +526,7 @@ Consider now a point $\vect{p}' \in \cC'$, we need to compute the weighted mean,
 As usual we use the the M-4 spline kernel $W$ defined in equation \eqref{eq:cubicspline} in Section~\ref{sec:density_estimation}.
 the exact weighted mean of quantity $V$ at point $\vect{p}'$ is:
 \begin{equation}\label{eq:WeightedMean}
-  \langle V(\vect{p}') \rangle = \dfrac{\sum\limits_{\vect{t}_j \in \vect{Q}} \dfrac{m_j}{\rho_j} V(\vect{t}_j) W(q_j,h_j)}{\sum\limits_{i =1}^{|\vect{Q}|} \dfrac{m_j}{\rho_j} W(q_i,h_i)}
+  \langle V(\vect{p}') \rangle = \dfrac{\sum\limits_{\vect{t}_j \in \vect{Q}} \dfrac{m_j}{\rho_j} V(\vect{t}_j) W(q_j,h_j)}{\sum\limits_{j=1}^{|\vect{Q}|} \dfrac{m_j}{\rho_j} W(q_j,h_j)}
 \end{equation}
 where $q_j = \norm{\vect{p}' - \vect{t}_j}/h_j$.
 The terms in the denominator are generally considered to be approximating unity when the particles in a data set are distributed uniformly; however, this is not often the case in practice.
@@ -532,7 +539,11 @@ in the denominator of equation \ref{eq:WeightedMean} is to eliminate the depende
 As such, it can not be disregarded when computing the interpolation of quantity $V$ on any point in the volume.
 % TODO  Consider to put here the normalization factor now in the SPH section
 
-Computing $\langle V(\vect{p}')\rangle$ for every $\vect{p}' \in \cC'$ we can now evaluate the mean value of $V$ over the concentric cylindrical shells built in the original manifold defined by the index families $\cI_1,\dots,\cI_{N^r}$ as:
+After computing $\langle V(\vect{p}')\rangle$ for every $\vect{p}' \in \cC'$ we can now evaluate the mean value of $V$ over the concentric cylindrical shells built in the original manifold.% defined by the index families $\cI_1,\dots,\cI_{N^r}$ as:
+\begin{equation}
+  \overline{V}_{i} = \langle V(d^r_{i-1},d^r_i)\rangle = \frac 1 N \sum_{j\in\cI_i} \langle V_m(p'_j)\rangle,
+\end{equation}
+obtaining the mean of $V$ over the cylindrical shell between $()d^r_{i-1},d^r_i)$ for every $i=1,\dots,N^r$.
 
 \begin{sidewaysfigure}
   \centering
