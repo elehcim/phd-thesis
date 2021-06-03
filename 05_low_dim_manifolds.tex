@@ -25,8 +25,8 @@ The easy-to-understand hyper-parameters can be manipulated to obtain an emerging
 % The first data set consists of multiple sampled noisy manifolds of different intrinsic dimensionalities, such as M\"{o}bius strip, toroid and spiral arm. The second one is a topologically complex set of three interlocked toroids.
 % Given the absence of such unified methodologies in the literature, the comparison with existing techniques is organized along the two separate aspects of our approach mentioned above, namely manifold approximation and probabilistic modelling.
 The framework is then applied to a complex data set containing simulated gas volume particles from a particle simulation of a dwarf galaxy interacting with its host galaxy cluster.
-Detailed analysis of the recovered 1-D and 2-D manifolds can help us to understand the nature of star formation in such complex systems.
-% TODO mention the evolution along the manifold.
+Detailed analysis of the recovered 1-D and 2-D manifolds can help us to understand the distribution of various physical quantities in such complex systems.
+The technique allows to isolate the evolution of quantities around tails of a simulated jellyfish galaxy, so that of star formation regions and the mixing of galaxy gas and cluster gas can be studied.
 }
 \section{Introduction}
 
@@ -564,16 +564,18 @@ obtaining the mean of $V$ over the cylindrical shell between $(r_{i-1},r_i)$.
 \begin{sidewaysfigure}
   \centering
   \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold4_MeanSubplots_long.png}
-  \caption{}
+  \caption{Longitudinal and radial profiles of different quantities for a long manifold constituting a tentacle of the tail of the jellyfish.
+  In the top left corner, the position of the manifold in the diffused dataset is shown in red.
+  In the top right corner a detailed view of the non diffused gaseous particle belonging to the manifold.}
   \label{fig:ManifoldLong}
 \end{sidewaysfigure}
 
-\begin{sidewaysfigure}
-  \centering
-  \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold1_MeanSubplots.png}
-  \caption{}
-  \label{fig:ManifoldExists}
-\end{sidewaysfigure}
+%\begin{sidewaysfigure}
+%  \centering
+%  \includegraphics[width=\textwidth]{Figures_png/Manifolds/Manifold1_MeanSubplots.png}
+%  \caption{}
+%  \label{fig:ManifoldExists}
+%\end{sidewaysfigure}
 
 %
 % Bi-dimensional profiles for manifolds $\cM_1$ (top row) and $\cM_2$ (bottom row)
@@ -582,10 +584,23 @@ obtaining the mean of $V$ over the cylindrical shell between $(r_{i-1},r_i)$.
 %  Particularly interesting is the difference in the distribution of the constant scalar value of variable $m$ with and without normalization.
 
 We can iterate the whole process for every center the manifold, obtaining for each linear segment, the distribution of $V$ in concentric cylindrical shells centered on the current center.
-By considering both longitudinal profiles (defined along the tangent bundle of the manifold $\cM$, see Figure~\ref{fig:segmented_manifold}) and radial profiles (obtained by the linear operator defined in eq. \ref{eq:cylOperator} on point cloud $\cC$), we obtain the plots shown in Figures~\ref{fig:ManifoldLong} and \ref{fig:ManifoldExists}.
-They represents two 1-D manifolds detected with the crawling.
-In both panels, the vertical axis of each plot contains the radius of the cylindrical shells $r$
+
+\subsection{How do quantities vary along the tail manifold?}
+By considering both longitudinal profiles (defined along the tangent bundle of the manifold $\cM$, see Figure~\ref{fig:segmented_manifold}) and radial profiles (obtained by the linear operator defined in eq. \ref{eq:cylOperator} on point cloud $\cC$), we obtain the plots shown in Figure~\ref{fig:ManifoldLong}.% and \ref{fig:ManifoldExists}.
+They represents a 1-D manifold detected with the crawling.
+In each panel, the vertical axis of the plot contains the radius of the cylindrical shells $r$
 and the horizontal axis the approximated geodesic distance (computed by summation of the lengths of the individual linear segments) from the head of the manifold.
+The longitudinal axis in the figure goes from the jellyfish head ($0$~kpc) to the tail.
+
+In Figure~\ref{fig:ManifoldLong} we show the evolution of volumetric density $\rho$, neutral fraction, iron abundance \feh{} and temperature $T$.
+We notice how the central part of the manifold is denser as expected.
+The density is high enough to self-shied from the UV background keeping the gas neutral as shown in the second panel.
+Towards the head (left-most part of the plot), density and neutral fraction are larger with respect to the end of the tail.
+The iron abundance distribution is instead characterized with locations of high metallicity, roughly corresponding to high density regions.
+They corresponds to regions of recent star formation where supernova feedback has taken place.
+This is in line with the hypothesis of galactic tails beaded with knots of star formation in the tail.
+Moreover, there is no strong gradient of \feh{} along the tail suggesting a poor mixing of gas between the galactic tail and the cluster gas.
+This is confirmed by the almost uniform distribution of temperature in the tail, where the only high temperature region is a possible infiltration of cluster gas in a region of the tail.
 
 %The bottom plot in each panel presents the mass distribution over the radial and longitudinal dimensions of the manifolds.
 %As expected, the mass is constant throughout the sampled volumes and it is everywhere $\overline m_i = 1$.\\
