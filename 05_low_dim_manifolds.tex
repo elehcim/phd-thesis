@@ -17,10 +17,10 @@ The intrinsic nature of noisy and complex data sets is often concealed in low-di
 % Additionally, their performance can often be hampered by the presence of a significant high-dimensional noise aligned along the low-dimensional core manifold.
 In real-world applications, the data can contain several low-dimensional structures of different dimensionalities.
 We propose a framework for dimensionality estimation and reconstruction of multiple noisy manifolds embedded in a noisy environment.
-To the best of our knowledge, this work represents the first attempt at detection and modelling
-of a set of coexisting general noisy manifolds by uniting two aspects of multi-manifold learning:
-the recovery and approximation of core noiseless manifolds and the construction of their probabilistic models.
-The easy-to-understand hyper-parameters can be manipulated to obtain an emerging picture of the multi-manifold structure of the data.
+%To the best of our knowledge, this work represents the first attempt at detection and modelling
+%of a set of coexisting general noisy manifolds by uniting two aspects of multi-manifold learning:
+%the recovery and approximation of core noiseless manifolds and the construction of their probabilistic models.
+%The easy-to-understand hyper-parameters can be manipulated to obtain an emerging picture of the multi-manifold structure of the data.
 % We demonstrate the workings of the framework on two synthetic data sets, presenting challenging features for state-of-the-art techniques in Multi-Manifold learning.
 % The first data set consists of multiple sampled noisy manifolds of different intrinsic dimensionalities, such as M\"{o}bius strip, toroid and spiral arm. The second one is a topologically complex set of three interlocked toroids.
 % Given the absence of such unified methodologies in the literature, the comparison with existing techniques is organized along the two separate aspects of our approach mentioned above, namely manifold approximation and probabilistic modelling.
@@ -474,7 +474,7 @@ The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance betw
 
 \subsection{Computing a point cloud around each manifold segment}
 Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
-To do so, let us now consider a point cloud $\cC$ containing points $\vect{p} \in \cC$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
+To do so, let us now consider a point cloud $\cC$ containing randomly distributed points $\vect{p} \in \cC$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
 As a first step we partition the point cloud into concentric cylindrical shells $\cS^i: \bigcup_i \cS^i \equiv \cC$.
 For every point $\vect{p} \in \cC$ we compute its distance to the cylinder $z-$ axis, versor $\hat k$.
 We can now group points in $\cC$ so that:
