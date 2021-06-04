@@ -97,8 +97,9 @@ in high mass dark halos with ceased star formation in the early universe.
 \end{itemize}
 Some UDGs have earlier been identified as disrupted early-type galaxies.
 \citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDG HCC-087 in the Hydra I cluster via simulations considering only the cluster potential.
+It is worth noting that in their simulations they find an orientation of the tidal tails perpendicular to the orbit, which will be important in Chapter~\ref{ch:ngc1427a}.
 
-The cluster alignment is also a quantity which in various cluster has been measured.
+The cluster alignment of UDGs is also a quantity which in various cluster has been measured.
 The signs of elongation, which will be discussed further in~Section \ref{sec:3d_ellipticity}, have been used to infer the origin of UDGs.
 In the Coma and Abell 1314 clusters \citep{Yagi2016, ManceraPina2019} UDGs are preferably aligned towards the cluster center.
 This suggesting that they may be the products of strong tidal interaction with the cluster.
@@ -412,17 +413,17 @@ As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} c
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
 The details on how to recover the correct kinematics in our setup are shown in \refsec{sec:correct_kinematics}.
 
-\paragraph{Comparison with simulated galaxies in the field}
+\subsection{Comparison with simulated galaxies in the field}
 We compare the specific stellar angular momentum $j_s$ of particles within a sphere of $10$~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
-We notice in Figure \ref{fig:j_s_moria} an increase in angular momentum in correspondence to pericenter passages.
+We notice in Figure \ref{fig:j_s_moria} an increase of $j_s$ in correspondence to pericenter passages.
 
-The combination of high velocity new stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy with respect to its evolution in the field.
+The combination of high velocity newly born stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy with respect to its evolution in the field.
 % TODO metallicity gradient?
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{15.0_angmom_inertial_moria.pdf}
-\caption{Comparison between the norm of the specific angular momentum $j_s$for the simulation ID 69 on a 200 kpc orbit and the correspondent isolated MoRIA run.}
+\caption{Comparison between the norm of the specific angular momentum $j_s$ for the simulation ID 69 on a 200 kpc orbit and the correspondent isolated MoRIA run.}
 \label{fig:j_s_moria}
 \end{figure}
 
@@ -437,7 +438,7 @@ As opposed to the classical $v/\sigma$ indicator, $\lambda_R$ has been designed 
 
 An example of the maps from which $\lambda_R$ is computed for our simulation setup are shown in Figure~\ref{fig:maps_lambda_r}.
 The $V_{LOS}$ and $\sigma$ map are computed with SPH interpolation, using the luminosity in $\mathrm{v}$-band to weight the contribution of particles along the line of sight.
-Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation.%, even if what is observed are luminosity-weighted measures.
+Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation. %, even if what is observed are luminosity-weighted measures.
 This approach makes the comparison with observations more difficult since all the information that we get is luminosity weighted \citep{Walo-Martin2020}.
 
 \begin{figure}[t]
@@ -459,7 +460,7 @@ The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\ref{fig:lambda_r_profile}.
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
 \citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''.
-As shown in Figure~\ref{fig:lambda_r_profile}, galaxies while falling into the cluster, evolve from being classified as having a fast-rotator profile to slow rotator \citep[cf.][]{Emsellem2011}.
+As shown in Figure~\ref{fig:lambda_r_profile}, while falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
 There is a complex interplay between $R_e$, $\sigma$ and the rotational velocity while the galaxy is on its orbit.
 $R_e$ increases with time whereas velocity dispersion and the rotation velocity at a fixed radius tends to decline.
 No single phenomenon can be called to explain the $\lambda_R$ profile behaviour.
@@ -468,9 +469,9 @@ The result of this joint evolution is $\lambda_{R_e}$ decreasing with time.
 % Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
 
 It has been shown in the \textsc{SMAKCED} survey of 39 early-type galaxies in the Virgo cluster \citep{Toloba2014, Toloba2015} that the so classified fast-rotator galaxies in the outer region of the cluster rotate faster than the fast rotators in the center of the cluster.
-The observed specific angular momentum $\lambda_R$ is correlated with clustercentric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
+Therefore, in this case, observed specific angular momentum $\lambda_R$ is correlated with clustercentric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
 It is indeed hypothesized, that after pericenter passages and a long time in the cluster, galaxies are heated up and transformed into slow rotating dEs.
-This scenario is confirmed by our simulations where dwarf irregulars are converted to early-type galaxies, and with time their kinematics is transformed into the one of slow rotators.
+This scenario is confirmed by our simulations where dwarf irregulars are converted into early-type galaxies, and with time their kinematics is transformed into the one of slow rotators.
 
 In our case, however, the correlation of $\lambda_R$ with clustercentric distance is mild and affected by the very noisy and time-dependent nature of the angular momentum proxy.
 For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillatory and quite prone to bursty star formation which can abruptly affect its value.

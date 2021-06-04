@@ -159,7 +159,7 @@ In the following we give a brief outline of our methodology to robustly detect t
 \subsection{Diffusion filtering} \label{sec:SAF}
 Consider a point cloud
 \[\mathcal{Q} =\{\vect{t}_1, \vect{t}_2,...,\vect{t}_L\},\quad \vect{t}_i \in \mathbb{R}^d\]
-containing points sampled from an unknown number of noisy lower-dimensional manifolds embedded in a noisy environment (e.g., points generated from a broad $d$-dimensional distribution).
+containing points sampled from an unknown number of noisy lower-dimensional manifolds embedded in a noisy environment (\eg{} points generated from a broad $d$-dimensional distribution).
 We first apply a physics-based diffusion method, Structure-Aware Filtering Technique \citep[SAF,][]{Wu2018}, that collapses points in close vicinity of dense structures onto them, resulting in a diffused data set:
 \[\tilde{\mathcal{Q}} =\{\tilde{\vect{t}}_1, \tilde{\vect{t}}_2,...,\tilde{\vect{t}}_L\},\quad \tilde{\vect{t}}_i \in \mathbb{R}^d.\]
 % NOTE how SAF works?
@@ -465,6 +465,9 @@ As an example we show an application in the next section.
 
 %After optimization of the parameters of SGTM through the E-M algorithm, every manifold $\cM_k$ is represented as a gaussian mixture with manifold aligned noise, whose updated centers $\{\ti_{\ell}; \ell = 1,\dots,L^k\}$ are constrained to lie on a 1-dimensional subspace of $\RR^3$.
 We now describe a methodology that, taking full advantage of the manifold extraction technique and SPH density formulation, simultaneously recovers the behaviour of simulated properties along the manifold's elongation and its thickness within the simulated volume.
+In this section we consider only the 1-D case.
+It's possible to carry out a similar analysis for the 2-D case, but
+the result is not of easy interpretation and not appropriate in this context.
 
 We start from the centers found by the crawling which are lying on the identified manifold. These center are points $\ti_{\ell} \in \tilde{\mathcal{Q}}$ belonging to the diffused dataset.
 From each pair of adjacent centers we can compute the tangent bundle on the 1-D manifold:
@@ -477,7 +480,7 @@ The norm $d_{\ell} = || \ti_{\ell + 1} - \ti_{\ell}||$ is also the distance betw
 Around each segment of length $d_{\ell}$ we want to build a cylinder or randomly distributed points which will be used to compute tangential and radial average along the manifold of the quantity.
 To do so, let us now consider a point cloud $\cC$ containing randomly distributed points $\vect{p} \in \cC$, uniformly sampling a cylindrical volume of radius $1$, aligned along the $z-$axis and centered at the origin $\cO$.
 As a first step we partition the point cloud into concentric cylindrical shells $\cS^i: \bigcup_i \cS^i \equiv \cC$.
-For every point $\vect{p} \in \cC$ we compute its distance to the cylinder $z-$ axis, versor $\hat k$.
+For every point $\vect{p} \in \cC$ we compute its distance to the cylinder $z-$axis, versor $\hat k$.
 We can now group points in $\cC$ so that:
 \begin{equation}
   \cS^i =
@@ -500,7 +503,7 @@ We can now group points in $\cC$ so that:
 
 We radially partition into concentric cylindrical shells and for each point we compute its distance to the projected origin, as show in Figure~\ref{fig:cylinder}.
 
-It is always possible to scale, translate and rotate the point cloud so that the cylindrical axis is oriented as vector $\vect{v}_{\ell}$, the origin over-posed to center $\ti_{\ell}$ and the axis length equal to $d_{\ell}$.
+It is always possible to scale, translate and rotate the point cloud so that the cylindrical axis is oriented as the vector $\vect{v}_{\ell}$, the origin over-posed to center $\ti_{\ell}$ and the axis length equal to $d_{\ell}$.
 %\paragraph{Scaling}
 The scaling operator is the diagonal matrix $S = \diag(1, 1, d_{\ell})$.
 %\[
@@ -560,7 +563,7 @@ As such, it can not be disregarded when computing the interpolation of quantity 
 
 After computing $\langle V(\vect{p}')\rangle$ for every $\vect{p}' \in \cC'$ we can now evaluate the mean value of $V$ over the concentric cylindrical shells built in the original manifold.% defined by the index families $\cI_1,\dots,\cI_{N^r}$ as:
 \begin{equation}
-  \overline{V}_{i} = \langle V(r_{i-1},r_i)\rangle = \frac{1}{|\cS'^i|} \sum_{\vect{p}'_j \in \cS'^i} \langle V(\vect{p}'_j)\rangle,
+  \langle V(r_{i-1},r_i)\rangle = \frac{1}{|\cS'^i|} \sum_{\vect{p}'_j \in \cS'^i} \langle V(\vect{p}'_j)\rangle,
 \end{equation}
 obtaining the mean of $V$ over the cylindrical shell between $(r_{i-1},r_i)$.
 
@@ -586,7 +589,7 @@ obtaining the mean of $V$ over the cylindrical shell between $(r_{i-1},r_i)$.
 %  and $\overline m_i$ (top to bottom respectively on each panel).
 %  Particularly interesting is the difference in the distribution of the constant scalar value of variable $m$ with and without normalization.
 
-We can iterate the whole process for every center the manifold, obtaining for each linear segment, the distribution of $V$ in concentric cylindrical shells centered on the current center.
+We can iterate the whole process for every center the manifold, obtaining for each linear segment the distribution of $V$ in concentric cylindrical shells.
 
 \subsection{How do quantities vary along the tail manifold?}
 By considering both longitudinal profiles (defined along the tangent bundle of the manifold $\cM$, see Figure~\ref{fig:segmented_manifold})
