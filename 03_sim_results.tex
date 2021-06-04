@@ -70,7 +70,7 @@ first occurs.
 \section{Becoming an Ultra Diffuse Galaxy (UDG)}
 \label{sec:UDG}
 
-Faint Low Surface Brightness (LSB) galaxies with $R_e > 1$ kpc have been detected in galaxy clusters since the 1980s \citep[e.g.][]{Sandage1984}.
+Faint Low Surface Brightness (LSB) galaxies have been detected in galaxy clusters since the 1980s \citep[e.g.][]{Sandage1984}.
 % See Wittmann  https://www2.mpia-hd.mpg.de/homes/galClusters_2017/slides/Ringberg2017_presentation_Wittmann.pdf
 
 % Wittmann2017 studies LSB in Perseus
@@ -82,24 +82,30 @@ LSB galaxies are defined as having \citep{Venhola2017}:
 \end{cases}
 \end{equation}
 
-In 2015 \citet{VanDokkum2015} introduced a size criterion to distinguish between LSB and more compact 'normal' dwarfs \citep{Sales2021}:
+In 2015 \citet{VanDokkum2015} introduced a size criterion to distinguish between LSB galaxies and more compact `normal' dwarfs \citep{Sales2021}:
 UDG are therefore defined as large ($R_e > 1.5$~kpc) low surface brightness galaxies.
 %($\bar\mu_{r',e} > 24$~mag/arcsec$^2$).
 
 The majority of studies indicate that they have the properties of large dwarf galaxies \citep{Sandage1984, Roman2017, Venhola2017, Saifollahi2021}.
-Three main mechanisms are hypothesised as possible formation scenarios for UDGs \citep{Rong2020}:
-dwarf galaxies which undergo strong tidal stripping \citep{Venhola2017, Carleton2018, Rong2020a},
-gas outflows driven by stellar feedback with extended dark-matter halo and faint and diffuse stellar component \citep{DiCintio2017, ManceraPina2019},
-or failed $L_\star$ galaxies\footnote{An $L_\star$ galaxy has a luminosity equal to the characteristic luminosity of the Schechter luminosity function \citep{Press1974}.
-Its value is about $L_\star \approx 3\times10^{11}L_\odot$, \cf{}  \citet{Cooray2005}.}
+Three main mechanisms are hypothesized as possible formation scenarios for UDGs:
+\begin{itemize}
+  \item dwarf galaxies which undergo strong tidal stripping \citep{Venhola2017, Carleton2018, Rong2020a};
+  \item gas outflows driven by stellar feedback with extended dark-matter halo and faint and diffuse stellar component \citep{DiCintio2017, ManceraPina2019},
+  \item or failed $L_\star$ galaxies\footnote{An $L_\star$ galaxy has a luminosity equal to the characteristic luminosity of the Schechter luminosity function \citep{Press1974}.
+  Its value is about $L_\star \approx 3\times10^{11}L_\odot$, \cf{}  \citet{Cooray2005}.}
 in high mass dark halos with ceased star formation in the early universe.
-
+\end{itemize}
 Some UDGs have earlier been identified as disrupted early-type galaxies.
-\citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDGs HCC-087 in the Hydra I cluster.
-In the Coma and Abell 1314 clusters \citep{Yagi2016, ManceraPina2019} UDGs are preferably aligned towards the cluster center.
+\citet{Koch2012} is indeed able to reproduce a typical S-shape tidal tailed UDG HCC-087 in the Hydra I cluster via simulations considering only the cluster potential.
 
-In the Fornax cluster, the low statistics do not allow for a conclusive analysis.
-On the other hand at least two of the detected UDGs show sign of elongation towards a nearby dwarf galaxy \citep[with $M_{r'} > -19$~mag, see][]{Venhola2017}.
+The cluster alignment is also a quantity which in various cluster has been measured.
+The signs of elongation, which will be discussed further in~Section \ref{sec:3d_ellipticity}, have been used to infer the origin of UDGs.
+In the Coma and Abell 1314 clusters \citep{Yagi2016, ManceraPina2019} UDGs are preferably aligned towards the cluster center.
+This suggesting that they may be the products of strong tidal interaction with the cluster.
+In the Fornax cluster, however, the low statistics do not allow for a conclusive analysis.
+On the other hand at least two of the detected UDGs in Fornax show sign of elongation towards a nearby dwarf galaxy \citep[with $M_{r'} > -19$~mag, see][]{Venhola2017}.
+As shown by \citet{Rong2020}, for the Abell 2634 cluster, the minor axes of UDGs tend to be aligned with the major axis of the central dominant galaxy.
+It is implied therefore that, in this case, UDGs are possibly very recent infallers, still retaining signs of their primordial alignment in the closest large-scale filament they came from.
 
 \paragraph{UDGs in Fornax}
 \citet{Venhola2017} found nine UDGs candidates within an area of $4$~deg$^2$ centered in NGC1399.
@@ -226,7 +232,7 @@ From this, we can learn that despite some conditions required for the applicatio
 
 % \citep{Danieli2019} Low dark matter galaxies.
 
-\subsection{3D ellipticity}
+\subsection{3D ellipticity} \label{sec:3d_ellipticity}
 We computed the 3D ellipticity of the stellar component of the galaxies using the Principal Components Analysis \citep[PCA, ][]{Pearson1901}.
 The first principal component $\vect{w}_2$ is the direction of highest elongation (largest variance of the star particle positions) computed via PCA\footnote{
 $\vect{w}_2$ is defined as the eigenvector corresponding to the largest eigenvalue of the covariance matrix $C = \frac 1 {(N-1)} AA^T$, where $A$ is the matrix of the position of the star particles centered on the barycenter of the stars, and $N$ the number of particles.}.
