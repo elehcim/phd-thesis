@@ -3,10 +3,10 @@
 \chapter{Simulation results}
 \label{ch:sim_results}
 
-\section{Introduction}
 We show in this Chapter the results of the simulations performed using the technique presented in the previous chapter.
-We highlight that each simulation required $\approx 25$ days on average of wall clock runtime on dedicated computing nodes with 32 cores.
-%Intel VTune has been
+We will concentrate on following the journey of the galaxy into the cluster and characterize its evolution depending on the initial mass at the time of injection and its orbit.
+Generally, galaxies will undergo some ``phase transitions" which will happen mainly at pericenter passages.
+Some of the galaxy will effectively be transformed into Ultra Diffuse Galaxies (as shown in Section~\ref{sec:UDG}), some other will be allowed to briefly be identified as ``jellyfish" (Section~\ref{sec:where_star_formation}).
 
 \begin{sidewaystable}
  \centering
@@ -15,6 +15,9 @@ We highlight that each simulation required $\approx 25$ days on average of wall 
  \caption{Features of the selected MoRIA galaxies at $z=0$.} \label{tbl:galaxies}
 \end{sidewaystable}
 
+In Table \ref{tbl:galaxies} we present the final value of some physical values at the end of the simulations which were performed from $8.5$~Gyr to $\approx 14$~Gyr\footnote{We highlight that each simulation required $\approx 25$ days on average of wall clock runtime on dedicated computing nodes with 32 cores.
+}.
+Before starting the exposition, we have to introduce a couple of concepts which revealed particularly useful in the analysis and allowed for better comparison among the different MoRIA galaxies and the orbits introduced above.
 
 \paragraph*{Radial period}
 Pericenter passages, as explained in the following, are important moments for the life of the simulated dwarf.
@@ -266,7 +269,7 @@ In red the orbit of the galaxy (ID 69 with pericenter of 200 kpc).}
 \label{fig:pca_angle_v}
 \end{figure}
 
-\section{Star formation} \label{star_formation}
+\section{Star formation} \label{sec:where_star_formation}
 As shown in the previous section, elongation of material around low clustercentric distances may create grooves in the potential well which lead to angular-momentum transport.
 In turn this helps funneling gas towards the center of the galaxy which is squeezed and can cool to create stars.
 % TODO non gas run may isolate the role of star formation.
@@ -398,7 +401,7 @@ Black points are snapshots with no star formation.
 \citet{Stevens2019} show how inevitable is the size-mass relation of neutral hydrogen, even during stripping phases.
 Our simulations can be checked on the size-mass plane.
 As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$. The radius on the other hand is the major axis of the best fit ellipse on the $1$~\Msun{}~pc$^{-2}$ contour.
-
+%TODO size mass relation
 %In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of a representative dwarf.
 % We see that our dwarfs stay on the \Hi{} size-mass relation.
 
