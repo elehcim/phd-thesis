@@ -449,9 +449,9 @@ The galaxy is projected edge-on, with the angular momentum vector lying on the $
 \label{fig:maps_lambda_r}
 \end{figure}
 
-\begin{figure}[b]
+\begin{figure}[h!]
 \centering
-\includegraphics[height=0.42\textheight]{lambda_r_profile_69p100_each20_up_to_r_e_15bin}
+\includegraphics[width=0.8\textwidth]{lambda_r_profile_69p100_each20_up_to_r_e_15bin}
 \caption{$\lambda_R$ profiles for ID 69 on a 100 kpc orbit color coded with time normalized by radial period.
 The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 \label{fig:lambda_r_profile}
@@ -478,28 +478,20 @@ For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\la
 In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
 
 \begin{figure}
-\centering
-\includegraphics[height=0.42\textheight]{lambda_r_j_s_69p150r100.png}
-\caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.
-$\lambda_R$ is computed viewing the galaxy side-on.
-Curves are smoothed using a rolling average of 0.2~Gyr.}
-\label{fig:lambda_r_j_s_sigma}
+  \centering
+  \includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
+  \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.}
+  \label{fig:lambda_r_j_s}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
-\caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.}
-\label{fig:lambda_r_j_s}
-\end{figure}
+\subsection{Relation between $\lambda_R$ and physical angular momentum}
+In Figure~\ref{fig:lambda_r_j_s}, in order to compare $\lambda_R$ and the angular momentum of the galaxies in an observationally motivated way, we chose to observe the galaxy from the plane of the orbit, not changing its point of view along its evolution.
+Given the spin of the galaxy in correspondence of the pericenter (as shown in the previous section), from this point of view the pericenter passage should be visible in $\lambda_R$ at the highest extent.
 
-\subsection{Relation between $\lambda_R$ and physical angular momentum TO BE FINISHED}
-% We wanted to
 First we compute the specific angular momentum $\vect{j}_{s}$ of star particles within $10$~kpc from the center of the galaxy.
 \begin{equation}
 \vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < R_e.\}
 \end{equation}
-% We compute the specific angular momentum $\vect{j}_s$ of star particles within 10~kpc from the center of the galaxy (densest stellar region):
 % \begin{equation}
 % \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\}
 % \end{equation}
@@ -507,29 +499,26 @@ First we compute the specific angular momentum $\vect{j}_{s}$ of star particles 
 % We compare $\vect{j}_{s}$ with $\lambda_R$ in Figure \ref{fig:lambda_r_j_s}.
 
 
-\paragraph{Comparing $j_{se}$ with observables} We tried to retrieve the In order to compare the proxy $\lambda_R$ with the angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
+\subsubsection{Comparing $j_{se}$ with observables} In order to compare the proxy $\lambda_R$ with the angular momentum, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
 \begin{equation}
  j_s^* = \lambda_R\, R_e\, \sigma_e
 \end{equation}
 where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
 % This formula reasonably reintroduces physical dependency.
 
-% We shall see that.
-% Another effect is at play: maps as those in Figure~\ref{fig:maps_lambda_r} show
-% For simplicity this
+\begin{figure}
+  \centering
+  \includegraphics[height=0.42\textheight]{lambda_r_j_s_69p150r100.png}
+  \caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for ID 69 on a 150 kpc orbit.
+    $\lambda_R$ is computed viewing the galaxy side-on.
+    Curves are smoothed using a rolling average of 0.2~Gyr.}
+  \label{fig:lambda_r_j_s_sigma}
+\end{figure}
 
 The relation between $\lambda_R$ and $j_s^*$ is shown in Figure~\ref{fig:lambda_r_j_s_sigma}
 
 %As also found by, ... we confirm that it is very sensitive to recent episode of star formation, especially the ones due to gas stripping, where young stars are
 % For these reasons in the case of dwarf irregulars it is not a good indicator of the real rotation of the galaxy.
-
-%
-% \begin{figure}
-% \centering
-% \includegraphics[width=.8\columnwidth]{03.0_fig_lambda_r_time.pdf}
-% \caption{Specific stellar angular momentum for galaxy ID 71 on a $200$~kpc pericenter orbit.}
-% \label{fig:lambda_R}
-% \end{figure}
 
 \section{Conclusion}
 
