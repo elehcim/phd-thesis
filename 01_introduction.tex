@@ -3,5 +3,71 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-% \section{Scope of this thesis}
-% \label{se:objective}
+The current ``standard model" of cosmology is \lcdm{}, a model which is able to satisfactorily reproduce at the moment the observations of the Big Bang cosmological model.
+In particular it agrees with the current observations of the large scale structure of the Universe, of the Cosmic Microwave Background (CMB) and of supernovae indicating an accelerating expansion of the Universe \citep{Riess1998}.
+According to \lcdm{}, the Universe was formed $13.8$~Gyr ago, through the so called Big Bang, when the Universe was a hot plasma.
+After a phase of sudden expansion, the consequent cooling allowed the radiation to decouple from the baryonic matter.
+The last radiation scattered by before the Universe became transparent is called the Cosmic Microwave Background and it is observable now in the microwave range as an uniformly distributed radiation of a black body of $2.7$~K.
+Since black body spectra are produced by opaque objects CMB brings the information that the early universe was opaque \citep{Ryden2003}.
+
+
+
+However, at the beginning of the XX century, various measurements found that the amount of visible (baryonic) matter was not enough to justify observations of galaxy motion and their rotation.
+\citet{Zwicky1933} first recognized the discrepancy and the missing matter by observing the rotation velocity of the galaxies in the outskirts of the Coma cluster \citep{Zwicky1937}.
+He therefore hypothesized the existence of dark matter, a kind of matter which does not interact with the electromagnetic forces but only with gravity.
+Later observations confirmed that the missing mass could be accounted for from the rotation curves from galaxies %TODO(Babcock, 1939; Rubin & Ford, 1970; Bosma, 1978; Rubin et al., 1980).
+All these observations showed that in the Universe, the amount of dark matter is around five to six times more than baryonic matter.
+The \lcdm{} model also assumes that the dark matter is ``cold", \ie{} it has negligible thermal velocity and does not suppress structure formation on any scale relevant for galaxy formation \citep{Bullock2017}.
+
+\section{Dwarf galaxies}
+Dwarf galaxies are the most numerous type of stellar systems in the universe.
+Due to their low mass, dwarf galaxies are very sensitive to the environment in which they evolve and they can be used as probes to characterize, study and isolate the different physical processes affecting galaxies observables.
+%Using high definition hydrodynamical simulations, we investigate the evolution of dwarf galaxies falling into the Fornax cluster starting from a selection of the MoRIA suite of simulations.
+
+%We have carried out a representative set of simulations putting MoRIA dwarfs with stellar masses in the range of 4e6 - 1e9 Msol on infalling trajectories with different pericenter distances. We find that the combined effect of tidal interactions and ram-pressure for late-type dwarf galaxies can produce strong star burst episodes during pericenter passages followed by quenched star formation. Also, star forming galaxy tails (jellyfish galaxies) are observed. We find that dwarfs within this mass range that are on very radial orbits do not survive up to z=0. We also show the results of the analysis of the simulations following the dwarfs' journey
+
+\subsection{Falling into the Fornax cluster}
+As already noted by many authors \citep{Mayer2001, Mayer2007, Mastropietro2005} %FIXME maybe also somebody more recent?
+ram pressure stripping \citep{GunnGott1972, Roediger2008, Roediger2015} and tidal interaction can cooperate to change the morphology of the galaxy.
+Recent studies using cosmological simulations deal with dwarf galaxies infalling into a galaxy cluster.
+\citet{Smith2015} evolve a large population of early type galaxies and take into account tidal interactions and harassment effects but with no gas physics.
+%We argue that this can have a non negligible effects when trying to follow the evolution of observables like effective radius, gas distribution, stellar kinematics, age and metallicity gradients.
+
+
+Using the cosmological simulation TNG100, \citet{Yun2018} visually inspect infalling galaxies in simulated clusters to characterise jellyfish galaxies.
+%but the galaxies considered start from $10^9.5$ \Msun{} which is our upper limit of the dwarfs we simulate.
+Interestingly, they also found a dearth of jellyfish galaxies within one fourth of the cluster virial radius.
+This is consistent with current catalogues of cluster galaxies \citep{Lisker2006, Venhola2019}.
+
+% \section{Late-type to early-type conversion??}
+Dwarfs falling into a hot dense halo undergo ram pressure stripping which remove the cold gas reservoir and their possibility to form stars.
+In addition, tidal interactions make their potential shallower and, in turn, removal of the gas is enhanced.
+This results in the well-known morphology-density relation, according to which early-type galaxies are mostly found in high-density environments \citep{Dressler1980, Dressler1997}. The relation is even more noticeable in dwarf galaxies \citep{McConnachie2012}.
+\citet{DeRijcke2010}, from dynamical models of the cluster as a whole, could explain the radially increasing late-to-early-type dwarf ratio in the Fornax Cluster.
+In the Virgo cluster, \citet{Boselli2008} highlights that low mass galaxy at the first infall lose most of their \Hi{} and are quenched.
+After, these objects become red and quiescent.
+\citet{Ruggiero2017}, using \textsc{Ramses} simulations constrain how much of the gas disc of a Milky Way like galaxy will be converted into stars and how much of it will be lost, after a single cluster crossing.
+They find star formation bursts on infall and remark that the survival of the galaxy is independent on the galaxy orbit and cluster mass if the cluster has a cool core.
+The removal of the gas has been studied for example by \cite{Calura2020} who follow the evolution of a massive pressure-confined, star-forming neutral gas cloud moving through a hot intracluster medium (ICM).
+They find that generally cold clouds survive with a final cold gas fractions generally greater than 0.75 on time-scales of the order of 1 Gyr.
+But while the removal of cold gas is a quick process (a time scale $\leq$1 Gyr), a few Gyr are required to quench the galaxy and reach the red sequence \citep{Cortese2009}.
+
+% \citet{Hausammann2019}
+
+\citet{Venhola2018} show that number density of dwarfs in the Fornax cluster decreases going towards the centre of the cluster. A possible scenario suggests that some infalling galaxies do not survive in the passage around the centre of the cluster.
+Further investigation is needed to assess  whether the disrupted galaxies then contribute to the Intra-Cluster Light (ICL) or become Ultra Diffuse Galaxies (UDG).
+Trying to shed light on how easily dwarfs are being dissolved around cluster centre and comparing the simulation output with surveys like FDS is one of the motivations for this work.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{Gas_Tails}
+  \caption{On the left the gaseous component of a simulated dwarf galaxy, color coded with projected density.
+    On the right the stellar particles of the same galaxy.
+   Different physical processes (of ram pressure stripping and tidal interactions) affecting the galaxy can lead to the creation of the curious effect of gaseous and stellar tails oriented in almost opposite directions.}
+  \label{fig:tails}
+\end{figure}
+
+
+\section{This work}
+Our work is to the best of our knowledge the first to apply the MovingBox technique to a galaxy cluster setup, using high definition simulations.
+In comparison to earlier work our simulations take into account gas-rich realistic late type galaxies. To our knowledge none of them include such a high definition simulation with late type dwarfs.
