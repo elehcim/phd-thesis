@@ -493,7 +493,7 @@ We can now group points in $\cC$ so that:
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{manifold_partitioned.jpg}
-  \caption{Points $\tilde{\vect{t}}_i$ around the identified manifold, coloured differently depending on the longitudinal partition they belong to.}
+  \caption{Points $\vect{t}_j$ around the identified manifold, coloured differently depending on the longitudinal partition they belong to.}
   \label{fig:segmented_manifold}
 \end{figure}
 
@@ -545,6 +545,8 @@ the exact weighted mean of quantity $V$ at point $\vect{p}'$ is:
   \langle V(\vect{p}') \rangle = \dfrac{\sum\limits_{\vect{t}_j \in \vect{Q}} \dfrac{m_j}{\rho_j} V(\vect{t}_j) W(q_j,h_j)}{\sum\limits_{j=1}^{|\vect{Q}|} \dfrac{m_j}{\rho_j} W(q_j,h_j)}
 \end{equation}
 where $q_j = \norm{\vect{p}' - \vect{t}_j}/h_j$.
+We highlight that the summation is carried out on the whole dataset $\vect{t}_i$.
+Given the finite support of the kernel $W$, practically only particles close to the manifold will contribute to $\langle V \rangle$.
 The terms in the denominator are generally considered to be approximating unity when the particles in a data set are distributed uniformly; however, this is not often the case in practice.
 As mentioned in Section~\ref{sec:SPH}, each particle at position $\vect{t}_j$ of an SPH data set samples a spherical volume of radius $h_j$.
 However, all particles are evolved following the equations of motion defined by the Lagrangian formulation of fluids.
