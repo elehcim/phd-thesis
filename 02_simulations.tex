@@ -339,7 +339,19 @@ Stellar wind is taken into account as a uniformly spread energy injection of $10
 \subsection{Extended gas physics}
 \label{sec:extended_gas_physics}
 \paragraph{Radiative cooling}
-% TODO \citep{DeRijcke2013}
+The gas in the inter-stellar medium is a plasma of ionized elements and free-electrons.
+It can therefore emit photons when for example a free electron is captured by a ion of hydrogen.
+Such photons, if the surrounding is not dense, can escape from the gas cloud, effectively removing energy from the gas.
+Also, radiative energy losses can be due to other processes like bremsstrahlung, \ie{} when an electron is decelerated by other charges.
+This implies a cooling of the gas with a decrease of temperature.
+%Obviously the absorption of straying photons leads to heating the gas.
+It is possible to compute the cooling rate of the gas depending on its ionization state and chemical constitution.
+As described in the previous section, in simulations it is assumed that gas particles can be enriched in their metallicity content only in two ways: \mgfe{} and \feh{}.
+They are tracers of the particle overall chemical composition.
+We tabulate a small number of possible chemical compositions covering the range that can occur in a simulation \citep{DeRijcke2013}.
+The cooling and heating rates can then be interpolated for each gas particle.
+Also, an approximated scheme for exponentially suppressing the UV background in regions with $n_{\text{\Hi}}\geq 0.007$~cm$^{-3}$ is taken into account, implementing a \emph{self-shielding} from UV background in dense clouds of gas.
+
 \paragraph{Ionization aware equation of state}
 In an ideal gas with a single type of constituents, the pressure is given by the equation of state:
 \begin{equation}
