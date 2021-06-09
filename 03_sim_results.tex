@@ -414,10 +414,10 @@ To correctly compute galaxy kinematics we have to take into account the rotation
 The details on how to recover the correct kinematics in our setup are shown in \refsec{sec:correct_kinematics}.
 
 \subsection{Comparison with simulated galaxies in the field}
-We compare the specific stellar angular momentum $j_s$ of particles within a sphere of $10$~kpc from the center of the galaxy both for a simulation in the moving box and for a run in isolation.
+We compare the specific stellar angular momentum $j_s$ of particles within a sphere of radius $10$~kpc from the center of the galaxy for both a simulation in the moving box as well as for a run in isolation.
 We notice in Figure \ref{fig:j_s_moria} an increase of $j_s$ in correspondence to pericenter passages.
 
-The combination of high velocity newly born stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy with respect to its evolution in the field.
+The combination of high-velocity newly born stars and the gravitational energy injection given by the cluster at pericenter, result in a spin-up of the galaxy with respect to its evolution in the field.
 % TODO metallicity gradient?
 
 \begin{figure}
@@ -431,19 +431,21 @@ The combination of high velocity newly born stars and the gravitational energy i
 We compute the specific stellar angular momentum proxy $\lambda_R$ starting from SPH luminosity-weighted velocity and velocity dispersion maps as defined in \citet{Emsellem2007}: %\citet{Toloba2015}
 \begin{equation}
  \lambda_R = \dfrac{\sum_i F_i R_i |V_i|}{\sum_i F_i R_i \sqrt{V_i^2 + \sigma_i^2}}
+ \label{eq:lambda_r}
 \end{equation}
 with $i$ the pixel index, $F_i$ its flux and $R_i$ the distance of the pixel from the galaxy center.
 This parameter has been introduced to better capture the spatial information included in the kinematic maps.
-As opposed to the classical $v/\sigma$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC), which in some cases expose very similar $v/\sigma$.
+As opposed to the classical $v/\sigma$ indicator, $\lambda_R$ has been designed to distinguish between galaxies with kinematically decoupled components (KDC),
+which in some cases exhibit large $v/\sigma$ typical of rotation-supported galaxies, despite their rotation being confined to the central regions.
 
 An example of the maps from which $\lambda_R$ is computed for our simulation setup are shown in Figure~\ref{fig:maps_lambda_r}.
 The $V_{LOS}$ and $\sigma$ map are computed with SPH interpolation, using the luminosity in $\mathrm{v}$-band to weight the contribution of particles along the line of sight.
-Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observation. %, even if what is observed are luminosity-weighted measures.
+Some authors \citep[e.g.][]{Schulze2018,Pillepich2019} use non-weighted quantities taken directly from the particles to compare simulations and observations. %, even if what is observed are luminosity-weighted measures.
 This approach makes the comparison with observations more difficult since all the information that we get is luminosity weighted \citep{Walo-Martin2020}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{mu_v_sigma_69p150s60_sideon.png}
+\includegraphics[width=\textwidth]{mu_v_sigma_69p200s60_sideon.png}
 \caption{$\mu_\mathrm{v}$ surface brightness map and SPH v-band luminosity weighted maps of line of sight velocity and velocity dispersion $\sigma$ for a snapshot of the simulation ID 69 around first pericenter passage.
 The galaxy is projected edge-on, with the angular momentum vector lying on the $xy$ plane.
 A dotted circle of radius $R_e$ is shown.}
@@ -458,10 +460,14 @@ The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 \label{fig:lambda_r_profile}
 \end{figure}
 
-It is possible to compute the radial profile of $\lambda_R(r)$, as in Figure~\ref{fig:lambda_r_profile}.
+It is possible to compute the radial profile of $\lambda_R(r)$ including in the summation of eq. \ref{eq:lambda_r} pixels which have distance from the center lower than $r$.
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
-\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''.
-As shown in Figure~\ref{fig:lambda_r_profile}, while falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
+\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''. While falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
+We show an example of the profile in Figure~\ref{fig:lambda_r_profile}, for simulation ID 69 as a function of time.
+It is clear that, in a time-frame that is short compared to the lifetime of the galaxy, $\lambda_R$ undergoes significant changes, both locally as a function of radius as well as averaged over the whole galaxy.
+In particular, the changes are large enough to cause the galaxy to cross the slow/fast rotator classification threshold.
+Also, it is worthwhile to note that the value of $r$ adopted affects whether a galaxy is classified or not as a slow rotator.
+
 There is a complex interplay between $R_e$, $\sigma$ and the rotational velocity while the galaxy is on its orbit.
 $R_e$ increases with time whereas velocity dispersion and the rotation velocity at a fixed radius tends to decline.
 No single phenomenon can be called to explain the $\lambda_R$ profile behaviour.
@@ -470,18 +476,20 @@ The result of this joint evolution is $\lambda_{R_e}$ decreasing with time.
 % Obviously this distinction depends on the real inclination of the galaxy, as it appears in the sky. % TODO possible to include inclination in a plot?
 
 It has been shown in the \textsc{SMAKCED} survey of 39 early-type galaxies in the Virgo cluster \citep{Toloba2014, Toloba2015} that the so classified fast-rotator galaxies in the outer region of the cluster rotate faster than the fast rotators in the center of the cluster.
-Therefore, in this case, observed specific angular momentum $\lambda_R$ is correlated with clustercentric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
+Therefore, in this case, observed specific angular momentum $\lambda_R$ is correlated with cluster-centric distance. % FIXME \citep{Bidaran2020}. citep DEugenio2015
 It is indeed hypothesized, that after pericenter passages and a long time in the cluster, galaxies are heated up and transformed into slow rotating dEs.
 This scenario is confirmed by our simulations where dwarf irregulars are converted into early-type galaxies, and with time their kinematics is transformed into the one of slow rotators.
 
 In our case, however, the correlation of $\lambda_R$ with clustercentric distance is mild and affected by the very noisy and time-dependent nature of the angular momentum proxy.
-For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillatory and quite prone to bursty star formation which can abruptly affect its value.
-In our measurements, $\lambda_R$ fails to distinguish pericenter passages unequivocally.
+For example in simulation ID 69, as shown in Figure~\ref{fig:lambda_r_j_s}, $\lambda_R$ behaviour is very oscillatory %and quite prone to bursty star formation which can abruptly affect its value.
+%In our measurements, $\lambda_R$
+and fails to distinguish pericenter passages unequivocally.
 
 \begin{figure}
   \centering
   \includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
-  \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.}
+  \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.
+  Note the relatively stable values of $j_s$ (a conserved quantity) compared to the oscillatory nature of $\lambda_R$, which oscillates by more than $50$\%.}
   \label{fig:lambda_r_j_s}
 \end{figure}
 
@@ -491,7 +499,9 @@ Given the spin of the galaxy in correspondence of the pericenter (as shown in th
 In Figure~\ref{fig:lambda_r_j_s}, $j_s$ is the component of the angular momentum perpendicular to the orbital plane.
 It is in fact affected by pericenter passages.
 
-It is striking how $\lambda_R$ oscillates along the orbit (\eg{} see panel $69p150$) and this highlight how inherently variable $\lambda_R$ is.
+It is striking how $\lambda_R$ oscillates along the orbit (\eg{} see panel $69$p$150$) and this highlights how inherently variable $\lambda_R$ is.
+It is thus clear that - at least for the class of galaxies we consider - the snapshots in ~\ref{fig:lambda_r_profile} are not representative of the mean value of $\lambda_R$,
+and an instantaneous measurement of $\lambda_R$ cannot be used to classify a galaxy as slow/fast, because of the large time-dependent variation.
 
 % \begin{equation}
 % \vect{j}_s = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{k: \norm{\vect{r}_k} < 10 \text{~kpc.}\}
@@ -539,7 +549,7 @@ To simplify the treatment, as a first approximation, the snapshot have been rota
 \end{figure}
 
 It is interesting to see how for the case of simulation ID 69 in Figure~\ref{fig:lambda_r_j_s_sigma_69} the order of magnitude of $j_s^*$ is strikingly in accord with the measured $j_{se}$ from the particles.
-For simulation ID 41, on the other hand, there is no correlation.
+In contrast, for simulation ID 41, there is no correlation.
 Given that ID 41 is more massive, we inspected the possibility that by computing both $j_{se}$ and $j_s^*$ within $2 R_e$ a tighter relation between them would emerge.
 Figure~\ref{fig:lambda_2r_j_s_sigma} does not support this theory, and the gap between $j_{se}$ and $j_s^*$ increases for the doubled radial limit.
 
