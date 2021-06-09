@@ -164,7 +164,7 @@ Given that in the densest gas clouds star formation occurs at a density of $n\ap
 As \citet{Bate1997} and \citet{Springel2005} discuss, in order for SPH to produce the correct results in problems involving self-gravity, the hydrodynamic smoothing length and gravitational softening length must always be less than the local \emph{Jeans length} (see \refsec{sec:star_formation}). However, a gravitational softening much smaller than the SPH smoothing length can lead to artificial convergence of SPH particles.
 This can be avoided if the force resolution is greater than the hydrodynamical resolution at the scale of high density clumps.
 
-\subsection{Smoothed Particles Hydrodynamics}\label{sec:SPH}
+\section{Smoothed Particles Hydrodynamics}\label{sec:SPH}
 Smoothed Particles Hydrodynamics (SPH) is a finite volume, Lagrangian particle based numerical method to solve the Navier-Stokes equation of motions for a fluid.
 It is a Lagrangian method because the elements carrying information about the fluid move along the fluid itself.
 % It is finite volume because it.
@@ -172,17 +172,36 @@ It is a Lagrangian method because the elements carrying information about the fl
 A different approach to discretize the fluid domain is to use an Eulerian approach, like grid based Adaptive Mesh Refinement (AMR).
 Recently, so called \emph{moving-mesh} methods have emerged. They combine both approaches and are more flexible but come with their own difficulties \citep{Springel2010, Shadowfax, Arepo}.
 % Several research groups are pushing forward different techniques, sometimes following their own tradition and claiming.
-Usually simple test problems (Sod tube (1D,2D), Sedov blast-wave \citep{Sedov1946}, Kelvin-Helmholtz instabilities, Noh test \citep{Noh1987}, Gresho vortex \citep{Gresho1990}),
+Usually simple test problems (Sod tube, Sedov blast-wave \citep{Sedov1946}, Kelvin-Helmholtz instabilities, Noh test \citep{Noh1987}, Gresho vortex \citep{Gresho1990}),
 which can be solved analytically, serve as a benchmark for the accuracy of the numerical solution, \citep[e.g. by measuring the distance of the two solution with an L2-norm in the whole domain, ][]{BorrowSphenix}.
 Numerical solutions are always a trade-off between accuracy and practicality.
 It is interesting to see how a certain gain in accuracy is translated in an increase of \emph{time-to-solution} \citep{Borrow2019}.
 %But at the end of the day if we pay attention to the the trend is
 
-\paragraph{Origin of SPH}
+\subsection{Density Estimation from particles ensemble}\label{sec:density_estimation}
+%\paragraph{Origin of SPH}
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977, Monaghan2005}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
-A key concept is to relate \eqref{eq:df_average} to SPH formalism.
-... Similarity of SPH with eq. \eqref{eq:df_average}... % TODO density estimation
+The main idea of the SPH formalism is to write the equation of motion of the fluid for the sampling particles, solve them and then computed physical quantities in every point of the domain trough the so called \emph{SPH interpolation}.
+
+This kind of interpolation is the same as the one used for the calculation of probability distributions from samples \citep{parzen1962estimation, 5178637}.
+Given a kernel $W(x, h)$ function of the spatial coordinate $x$ with smoothing length $h$, the interpolation $A_I(\vect{r})$ of a quantity $A(\vect{r})$ is given by:
+\begin{equation}
+  A_I(\vect{r}) = \int A(\vect{r}') W(\norm{\vect{r} - \vect{r}'},h) \dd\vect{r}'.
+  \label{eq:sph_interpolation}
+\end{equation}
+Any function which follow these two assumptions can be used as the smoothing kernel:
+\begin{align*}
+  \lim_{h\rightarrow 0} W(x, h) &= \delta(x),\\
+  \int_{-\infty}^\infty W(x, h)\, \dd x &= 1
+\end{align*}
+
+%If we choose $W=\delta$, a delta function, then $A_I=A$.
+%In practice, the kernels tend to the delta function as the smoothing length $h$ goes to zero.
+An example of the kernel is a Gaussian:
+\begin{equation}
+  W(x, h) = \frac{1}{h\sqrt{\pi}} e^{-x^2/h^2}
+\end{equation}
 
 % In his original treatment \citet{Gingold1977} the probabilities of ... were defined as the expected value
 % \begin{equation}
@@ -200,16 +219,15 @@ A key concept is to relate \eqref{eq:df_average} to SPH formalism.
 % Instead, for $N$ samples they have the factor $\frac 1 N$.
 
 
-
 % Cambridge David Kendall professor of statistics they wanted to calculate probability distributions from samples. They use the same kind of interpolation.
 
 % Problems: Accessing particles (if you have gravity the tree that you build to compute distances and gravity interactions between all the particles can be used in hydrodinamics too.
 % The hydro differential equations become a set of ordinary differential equations and (t42:00) and a way to  timestepping is needed.
 % Try to construct your discretized equations in a way that it contains the conservation properties of the continuum.
 
-\subsection{Density Estimation from particles ensemble}\label{sec:density_estimation}
-A possible choice for the kernel is a Gaussian.
-It's much more practical to use a finite support approximation of a Gaussian.
+
+%A possible choice for the kernel is a Gaussian.
+In general, it's much more practical to use a finite support approximation of a Gaussian.
 The most often used for SPH are the Schoenberg  B-spline functions \citep{Schoenberg1946}, generated as the Fourier transform \citep{Monaghan1985, Monaghan2005, Price2012}:
 \begin{equation}
 M_n(r, h) = \frac{1}{2\pi}\int_{-\infty}^{\infty}{\left(\frac{\sin(kh/2)}{kh/2}\right)^n\cos(kr)\dd{k}}.
@@ -230,14 +248,33 @@ M_4(q) = \frac{1}{\pi h^3} \left\{
 \end{equation}
 where $q=r/h$ is the distance normalized by the smoothing length.
 
-\paragraph{Role of the normalization term}
-% TODO probabilistic treatment if it fits
-It is somehow striking that the normalization term is not the default in current visualization routines, the only reason being spurious effects when dealing with free surfaces \citep{Price2007}.
-
+To apply the interpolation \eqref{eq:sph_interpolation} to a fluid we proceed as follows:
 \begin{equation}
- A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}.
+A_I(\vect{r}) = \int \frac{A(\vect{r}')\rho(\vect{r}')}{\rho(\vect{r}')} W(\norm{\vect{r} - \vect{r}'},h)\, \dd\vect{r}' \approx
+\sum_i m_i\frac{A_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h)
+\label{eq:sph_approx}
 \end{equation}
-...
+where we used the approximation that an element of mass $m = \vect{r}' \dd\vect{r}'$.
+The summation is on all the particles in the domain.
+That's why a finite support kernel is useful, so that a limited amount of particle is needed to compute the interpolation.
+It's important to note that in eq. \eqref{eq:sph_approx}, two approximations are at play:
+the first is the fact that the result is $A_I(\vect{r}) \approx A(\vect{r})$ given that the kernel~$W$ only approximates a delta function; the second being that the integral has being substituted with a finite summation.
+
+In case of the density the interpolation simplifies:
+\begin{equation}
+  \rho_I(\vect{r}) = \sum_i m_i W(\norm{\vect{r} - \vect{r}_i},h).
+\end{equation}
+
+
+%\paragraph{Role of the normalization term}
+%% TODO probabilistic treatment if it fits
+%It is somehow striking that the normalization term is not the default in current visualization routines, the only reason being spurious effects when dealing with free surfaces \citep{Price2007}.
+%It is interesting to note the similarity of SPH interpolation with eq. \eqref{eq:df_average}.
+%
+%\begin{equation}
+% A(\vect r) = \dfrac{\sum_j \frac{m_j}{\rho_j} A_j W(|\vect r - \vect r_j|,h)}{\sum_j \frac{m_j}{\rho_j} W(|\vect r - \vect r_j|,h)}.
+%\end{equation}
+%...
 
 \section{Dwarf galaxies models}
 \label{sec:dwarf_models}
