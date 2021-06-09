@@ -511,7 +511,7 @@ To do so, we try to retrieve an approximate formula for the specific angular mom
 where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
 For a fair comparison we compute the specific angular momentum $\vect{j}_{se}$ of star particles within $R_e$.
 \begin{equation}
-  \vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{I: \norm{\vect{r}_I} < R_e.\}
+  \vect{j}_{se} = \sum_{i\in S} \vect{r}_i\cross\vect{v}_i,\quad \text{where } S\equiv\{i: \norm{\vect{r}_i} < R_e.\}
 \end{equation}
 % This formula reasonably reintroduces physical dependency.
 The relation between $j_{se} = \norm{\vect{j}_{se}}$ and $j_s^*$ is shown in Figure~\ref{fig:lambda_r_j_s_sigma}.
@@ -532,7 +532,7 @@ To simplify the treatment, as a first approximation, the snapshot have been rota
   \includegraphics[width=\textwidth]{lambda_r_j_s_41p200r100}
  \end{subfigure}
 %  \includegraphics[height=0.42\textheight]{lambda_r_j_s_69p200r100.png}
-  \caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for simulation ID 69 and ID 41 on a 200 kpc orbit.
+  \caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for simulation ID 69 and ID 41 on a 200~kpc orbit.
   $\lambda_R$ is computed viewing the galaxy side-on.
   Curves are smoothed using a rolling average of 0.2~Gyr.}
   \label{fig:lambda_r_j_s_sigma}
