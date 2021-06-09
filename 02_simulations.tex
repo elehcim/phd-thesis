@@ -461,7 +461,7 @@ Since in dense neutral regions of gas the UVB's photons are absorbed by outer la
 \label{sec:MovingBox}
 Using SPH it is computationally challenging to simulate an entire cluster of hot gas while at the same time having the resolution to properly treat the interactions at the interface between the interstellar and intra-cluster medium (or ICM) that cause ram pressure stripping.
 
-\begin{figure}[ht]
+\begin{figure}[H]
  \centering
  \includegraphics[width=\textwidth]{MovingBox.pdf}
  \caption{An illustration, top panel, of a full fledged simulation of a dwarf galaxy with a Fornax-like cluster.
@@ -585,7 +585,7 @@ and its acceleration:
 \subsection{Critically damped oscillator}
 The acceleration of the pivot point is due mainly to the gravitational attraction of the cluster.
 The dwarf galaxy experiences also a low intensity drag due to the gas impinging the galaxy.
-In our simulations, this drag is always $<5\%$ than the gravitational acceleration.
+%In our simulations, this drag is always $<5\%$ than the gravitational acceleration.
 In order to keep the galaxy at the center of the box, an \emph{ad~hoc} corrective acceleration $\Ap^{hoc}$ is added to it as it moves.
 This translates to adding an acceleration term to the pivot $\Ap = −\grad \Phi(\vect X_\mathrm p) + \Ap^{hoc}$.
 
@@ -605,10 +605,10 @@ We start by noting empirically that for our typical galaxy size a sufficient acc
 Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
 A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
 
-\begin{figure} % TODO include adhoc figure
+\begin{figure}
 \centering
-%  \includegraphics[width=0.8\textwidth]{adhoc.png}
-\caption{Adhoc acceleration relative to the total gravitational acceleration of the simulation ID 68 with pericenter 150 kpc.}
+  \includegraphics[width=0.8\textwidth]{adhoc69p200i.png}
+\caption{Adhoc acceleration relative to the total gravitational acceleration of the simulation ID 69 with pericenter 200 kpc.}
 \label{fig:adhoc}
 \end{figure}
 
@@ -689,9 +689,9 @@ We assume the gas to be in hydrostatic equilibrium with temperature $T(r)$ compu
 \end{equation}
 where $M(r)$ is the mass of the gas, stars and dark matter beyond radius $r$, $m_p$ is the proton mass, $G$ and $k_B$ the gravitational and Boltzmann constants.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{PaolilloRho.png}
+\includegraphics[width=0.65\textwidth]{PaolilloRho.png}
 \caption{Gas density profile $\rho(r)$ of the  Fornax Cluster model as a superposition of three beta models from measurements described in \citet{Paolillo2002}, from which we also adopt the nomenclature for the different beta models.
 }
 \label{fig:profiles}
@@ -743,6 +743,7 @@ In order to isolate the effects of the tides and of the ram pressure, we perform
 % These hypothethical simulations show...
 
 In Figure~\ref{fig:gas_no_gas}, are shown the typical tidal tails due to tides...
+% TODO
 
 \begin{figure}[ht]
  \centering
