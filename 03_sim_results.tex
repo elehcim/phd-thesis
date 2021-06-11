@@ -462,7 +462,7 @@ The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 
 It is possible to compute the radial profile of $\lambda_R(r)$ including in the summation of eq. \ref{eq:lambda_r} pixels which have distance from the center lower than $r$.
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
-\citet{Emsellem2007} defines galaxies with $\lambda_R < 0.1$ as ``slow rotators'' and those with $\lambda_R>0.1$ as ``fast rotators''. While falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
+\citet{Emsellem2007} defines galaxies with $\lambda_{R_e} < 0.1$ as ``slow rotators'' and those with $\lambda_{R_e}>0.1$ as ``fast rotators''. While falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
 We show an example of the profile in Figure~\ref{fig:lambda_r_profile}, for simulation ID 69 as a function of time.
 It is clear that, in a time-frame that is short compared to the lifetime of the galaxy, $\lambda_R$ undergoes significant changes, both locally as a function of radius as well as averaged over the whole galaxy.
 In particular, the changes are large enough to cause the galaxy to cross the slow/fast rotator classification threshold.
@@ -488,7 +488,7 @@ and fails to distinguish pericenter passages unequivocally.
 \begin{figure}
   \centering
   \includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
-  \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing he galaxy from the plane of the orbit, recreating the condition of a fixed observer.
+  \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing the galaxy from the plane of the orbit, recreating the condition of a fixed observer.
   Note the relatively stable values of $j_s$ (a conserved quantity) compared to the oscillatory nature of $\lambda_R$, which oscillates by more than $50$\%.}
   \label{fig:lambda_r_j_s}
 \end{figure}
@@ -512,10 +512,10 @@ and an instantaneous measurement of $\lambda_R$ cannot be used to classify a gal
 
 \subsubsection{Comparing $\lambda_R$ with observables}
 We would like to investigate more the oscillating behaviour $\lambda_R$ shown in Figure~\ref{fig:lambda_r_j_s}.
-We tried to use $\lambda_R$ as a starting point to compute the physical angular momentum.
+We tried to use $\lambda_{R_e}$ as a starting point to compute the physical angular momentum.
 To do so, we try to retrieve an approximate formula for the specific angular momentum which relies on observable quantities:
 \begin{equation}
- j_s^* = \lambda_R\, R_e\, \sigma_e
+ j_s^* = \lambda_{R_e}\, R_e\, \sigma_e
  \label{eq:js*}
 \end{equation}
 where $\sigma_e$ is the line-of-sight velocity dispersion of star particles measured within an aperture of $R_e$.
@@ -542,8 +542,8 @@ To simplify the treatment, as a first approximation, the snapshot have been rota
   \includegraphics[width=\textwidth]{lambda_r_j_s_41p200r100}
  \end{subfigure}
 %  \includegraphics[height=0.42\textheight]{lambda_r_j_s_69p200r100.png}
-  \caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_R$ at the effective radius for simulation ID 69 and ID 41 on a 200~kpc orbit.
-  $\lambda_R$ is computed viewing the galaxy side-on.
+  \caption{Comparison between specific angular momentum $j_{se}$ and $\lambda_{R_e}$ at the effective radius for simulation ID 69 and ID 41 on a 200~kpc orbit.
+  $\lambda_{R_e}$ is computed viewing the galaxy side-on.
   Curves are smoothed using a rolling average of 0.2~Gyr.}
   \label{fig:lambda_r_j_s_sigma}
 \end{figure}
