@@ -254,13 +254,14 @@ A_I(\vect{r}) = \int \frac{A(\vect{r}')\rho(\vect{r}')}{\rho(\vect{r}')} W(\norm
 \sum_i m_i\frac{A_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h)
 \label{eq:sph_approx}
 \end{equation}
-where we used the approximation that an element of mass $m = \vect{r}' \dd\vect{r}'$.
+where we used the approximation that an element of mass $m = \rho(\vect{r}') \dd\vect{r}'$.
 The summation is on all the particles in the domain.
 That's why a finite support kernel is useful, so that a limited amount of particle is needed to compute the interpolation.
 It's important to note that in eq. \eqref{eq:sph_approx}, two approximations are at play:
 the first is the fact that the result is $A_I(\vect{r}) \approx A(\vect{r})$ given that the kernel~$W$ only approximates a delta function; the second being that the integral has being substituted with a finite summation.
+%These approximations will be
 
-In case of the density the interpolation simplifies:
+In case of the density the interpolation simplifies to:
 \begin{equation}
   \rho_I(\vect{r}) = \sum_i m_i W(\norm{\vect{r} - \vect{r}_i},h).
 \end{equation}
