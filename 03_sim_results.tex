@@ -451,6 +451,12 @@ The galaxy is projected edge-on, with the angular momentum vector lying on the $
 A dotted circle of radius $R_e$ is shown.}
 \label{fig:maps_lambda_r}
 \end{figure}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{mu_v_sigma_41p200s60_sideon.png}
+  \caption{Same as Figure~\ref{fig:maps_lambda_r} for simulation ID 41. Note the peak in $V_{\mathrm{LOS}}$ outside of $R_e$.}
+  \label{fig:maps_lambda_r_41}
+\end{figure}
 
 \begin{figure}[h!]
 \centering
@@ -487,7 +493,7 @@ and fails to distinguish pericenter passages unequivocally.
 
 \begin{figure}
   \centering
-  \includegraphics[height=0.9\textheight]{{02.1_lambda_r_vs_js}.pdf}
+  \includegraphics[height=0.9\textheight]{02.2_lambda_re_vs_js}
   \caption{Stellar specific angular momentum proxy $\lambda_R$ and specific angular momentum of star particles $j_s$ for the simulation ID 69 on multiple orbits. The measurements have been taken by observing the galaxy from the plane of the orbit, recreating the condition of a fixed observer.
   Note the relatively stable values of $j_s$ (a conserved quantity) compared to the oscillatory nature of $\lambda_R$, which oscillates by more than $50$\%.}
   \label{fig:lambda_r_j_s}
@@ -550,7 +556,8 @@ To simplify the treatment, as a first approximation, the snapshots have been rot
 
 It is interesting to see how for the case of simulation ID 69 in Figure~\ref{fig:lambda_r_j_s_sigma_69} the order of magnitude of $j_s^*$ is strikingly in accord with the measured $j_{se}$ from the particles.
 In contrast, for simulation ID 41, there is no correlation.
-Given that ID 41 is more massive, we inspected the possibility that by computing both $j_{se}$ and $j_s^*$ within $2 R_e$ a tighter relation between them would emerge.
+Given that ID 41 shows an unusual velocity profile (the peaks of the line-of-sight velocity lay outside of $R_e$, as shown in Figure~\ref{fig:maps_lambda_r_41} we hypothesize that the limited radius used to compute $\lambda_{R_e}$ may cause the discrepancy.
+Accordingly, we inspected the possibility that by computing both $j_{se}$ and $j_s^*$ within $2 R_e$ a tighter relation between them would emerge.
 Figure~\ref{fig:lambda_2r_j_s_sigma} does not support this theory, and the gap between $j_{se}$ and $j_s^*$ increases for the doubled radial limit.
 
 We conclude that in the dwarf-irregular regime covered by our simulations the adapted proxy $j_s^*$ computed in equation \eqref{eq:js*} is not a good tracker of angular momentum.
