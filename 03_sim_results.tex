@@ -402,12 +402,59 @@ Black points are snapshots with no star formation.
 
 
 \section{HI size mass relation during infall}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.83\textwidth]{hi_ell_69p200s11}
+  \caption{\Hi{} map for a snapshot of simulation 41 at the beginning of the infall.
+    In white the contours [$0.1, 0.5, 1, 5, 10$]~M$_\odot\,$~pc$^{-2}$ of the projected \Hi{} density $\Sigma_{\text{\Hi{}}}$.
+    In blue the ellipse fit on the $1$~M$_\odot\,$~pc$^{-2}$ contour, shown in red.
+  }
+  \label{fig:hi_ellipse}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.83\textwidth}
+    \centering
+    \caption{Simulation ID 71}
+    \includegraphics[width=\textwidth]{05_HI_analysis_multiorbit_71.pdf}
+  \end{subfigure}\\%[1.5ex]
+  \begin{subfigure}[t]{0.83\textwidth}
+    \centering
+    \caption{Simulation ID 69}
+    \includegraphics[width=\textwidth]{05_HI_analysis_multiorbit_69.pdf}
+  \end{subfigure}
+  \phantomcaption
+  \label{fig:hi_size_mass}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+  \ContinuedFloat % continue from previous page
+  \begin{subfigure}{0.83\textwidth}
+    \caption{Simulation ID 41}
+    \includegraphics[width=\textwidth]{05_HI_analysis_multiorbit_41.pdf}
+  \end{subfigure}
+  \caption{\Hi{} size-mass relation for simulation ID 71, 69 and~41.
+    The relation of \citet{Wang2016} and data of \citet{Papastergis2016} are shown.
+    Each subpanel corresponds to a different pericenter.
+    }
+\end{figure}
+
 \citet{Stevens2019} show how inevitable is the size-mass relation of neutral hydrogen, even during stripping phases.
-Our simulations can be checked on the size-mass plane.
-As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$. The radius on the other hand is the major axis of the best fit ellipse on the $1$~\Msun{}~pc$^{-2}$ contour.
-%TODO size mass relation
-%In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of a representative dwarf.
-% We see that our dwarfs stay on the \Hi{} size-mass relation.
+Our simulations can be checked on the \Hi{} size-mass plane.
+As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$.
+To compute the \Hi{} radius, we fit an ellipse to the $1$~\Msun{}~pc$^{-2}$ contour of the \Hi{} map (as shown in Figure~\ref{fig:hi_ellipse}).
+$r_{\text{\Hi}}$ is thus defined as its major axis.
+
+In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of a representative dwarf.
+We see that our dwarfs stay on the \Hi{} size-mass relation as computed by \citet{Wang2016}
+\begin{equation*}
+  \log r_{\text{\Hi}} = (0.506 \pm 0.003) \log M_{\text{\Hi}} -(3.594 \pm 0.009)
+\end{equation*}
+Also, data from the ALFALFA blind survey \citep{Papastergis2016} is used for comparison.
+In case of the least massive galaxy on the most radial orbits, the relation is followed closely.
+Also, when there is no stripping, the snapshots lay within the scatter of the data.
+When there is stripping (for the simulation ID~41, only for the orbit on $50$~kpc pericenter) the snapshots move along the relation.
 
 \section{Kinematics}
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
