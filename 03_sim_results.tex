@@ -23,7 +23,7 @@ Before starting the exposition, we have to introduce a couple of concepts which 
 Pericenter passages, as explained in the following, are important moments for the life of the simulated dwarf.
 In order to compare different orbits, we normalise the simulation time by the orbital radial period $T_r$, \ie{} the time between two pericenter passages, \citep[p.~146]{BinneyTremaine2008}:
 \begin{equation}
-    T_r = 2 \int^{r_a}_{r_p} \frac{\d r}{\sqrt{2\left[E-\Phi(r) \right] - J^2/r^2}}
+    T_r = 2 \int^{r_a}_{r_p} \frac{\dd r}{\sqrt{2\left[E-\Phi(r) \right] - J^2/r^2}}
     \label{eq:radial_period}
 \end{equation}
 where $r_p, r_a$ are the pericenter and apocenter distance respectively, $E$ and $J$ the orbital energy and angular momentum per unit mass, $\Phi(r)$ the potential at radius $r$ of the NFW halo around which the galaxy is orbiting.
@@ -560,7 +560,7 @@ In Figure~\ref{fig:lambda_r_j_s}, $j_s$ is the component of the angular momentum
 It is in fact affected by pericenter passages.
 
 It is striking how $\lambda_R$ oscillates along the orbit (\eg{} see panel $69$p$150$) and this highlights how inherently variable $\lambda_R$ is.
-It is thus clear that - at least for the class of galaxies we consider - the snapshots in ~\ref{fig:lambda_r_profile} are not representative of the mean value of $\lambda_R$,
+It is thus clear that - at least for the class of galaxies we consider - the snapshots in Figure~\ref{fig:lambda_r_profile} are not representative of the mean value of $\lambda_R$,
 and an instantaneous measurement of $\lambda_R$ cannot be used to classify a galaxy as slow/fast, because of the large time-dependent variation.
 
 % \begin{equation}
@@ -571,13 +571,29 @@ and an instantaneous measurement of $\lambda_R$ cannot be used to classify a gal
 
 
 %We would like to investigate more the oscillating behaviour $\lambda_R$ shown in Figure~\ref{fig:lambda_r_j_s}.
-\citet{Emsellem2007} in their Appendix A, present a description of three main effects at play when trying to recover the apparent angular momentum.
-In their formal exposition, they describe the approximations made to relate $\lambda_R$ to the spin parameter $\lambda$ \citep{BinneyTremaine2008}:
+\citet{Emsellem2007} in their Appendix A, present a description of three main effects at play when trying to recover the apparent angular momentum: projection effects, luminous distribution and mass distribution of the galaxy.
+In their formal exposition, they describe the approximations made to relate $\lambda_R$ (which is obtained by the observed properties of the galaxy as measured from the Earth point of view) to the spin parameter~$\lambda$ \citep[p. 757]{BinneyTremaine2008}:
 \begin{equation}
   \lambda = \frac{J\sqrt{|E|}}{G M^{2.5}} = \frac{j\sqrt{|E|/M}}{G M},
+  \label{eq:spin_coefficient}
 \end{equation}
-where $J = jM$ is the total angular momentum, $M$ the galaxy of the mass and $E$ the total energy of the system.
-The approximations depend on the projection, luminous distribution and mass distribution of the galaxy.
+where $J = jM$ is the total angular momentum, $M$ the galaxy of the mass and $E = T + W$ the total energy of the system, where
+$T= 1/2\, M\, V^2_\mathrm{rms}$ and $W = -GM^2/r_g$ the kinetic and potential energy, respectively, which are linked by the scalar virial relation $T = -\frac 1 2 W$.
+
+The approximations of using the projected radius $R$ instead of both the gravitational radius $r_g$ and the distance from the spinning axis $r$, are taken into account through the coefficients $\kappa_R$ and $\kappa_J$;
+similarly, using the second order velocity moment $V^2+\sigma^2$ instead of the mean-square speed of the system $V^2_{\mathrm{rms}}$, is considered through the coefficients $(\kappa_V, \kappa_\sigma)$.
+All in all these four coefficients grasp the effects of projection and of the luminous and mass distributions:
+\begin{equation}
+  \left\{
+  \begin{array}{cl}
+    j &= \kappa_J \langle R|V| \rangle, \\ [1ex]
+    2E/M = V^2_{\mathrm{rms}} &= -\langle \kappa_V V^2 + \kappa_\sigma \sigma^2 \rangle, \\ [1ex]
+    GM &= \kappa_R \left\langle R\left( \kappa_V V^2 + \kappa_\sigma \sigma^2 \right) \right\rangle. \\
+  \end{array}
+  \right.
+  \label{eq:spin_vs_lambda_R}
+\end{equation}
+In the case of $\lambda_R$ the coefficients are set to: $\kappa_J/\kappa_R=\sqrt{2}$, $\kappa_V=\kappa_\sigma=1$.
 
 \subsubsection{Comparing $\lambda_R$ with observables}
 
