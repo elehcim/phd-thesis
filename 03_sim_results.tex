@@ -405,7 +405,7 @@ Black points are snapshots with no star formation.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.83\textwidth]{hi_ell_69p200s11}
-  \caption{\Hi{} map for a snapshot of simulation 41 at the beginning of the infall.
+  \caption{\Hi{} map for a snapshot of simulation 69 at the beginning of the infall.
     In white the contours [$0.1, 0.5, 1, 5, 10$]~M$_\odot\,$~pc$^{-2}$ of the projected \Hi{} density $\Sigma_{\text{\Hi{}}}$.
     In blue the ellipse fit on the $1$~M$_\odot\,$~pc$^{-2}$ contour, shown in red.
   }
@@ -436,25 +436,32 @@ Black points are snapshots with no star formation.
   \end{subfigure}
   \caption{\Hi{} size-mass relation for simulation ID 71, 69 and~41.
     The relation of \citet{Wang2016} and data of \citet{Papastergis2016} are shown.
-    Each subpanel corresponds to a different pericenter.
+    Each subpanel corresponds to a different pericenter distance.
     }
 \end{figure}
 
 \citet{Stevens2019} show how inevitable is the size-mass relation of neutral hydrogen, even during stripping phases.
 Our simulations can be checked on the \Hi{} size-mass plane.
+We post-processed our simulations to obtain the neutral hydrogen fraction, $\neutralfraction$, of each gas particle.
+This is done leveraging the models explained in Section~\ref{sec:extended_gas_physics}.
+In particular, the \Hi{} fraction of a gas particle is computed based on tabulated data from \citet{DeRijcke2013} as a function of:
+\[\neutralfraction = \neutralfraction(T, \feh, \mgfe, z, \rho),\]
+resulting in a \Hi{} mass consistent with the sub-grid model employed during the simulations.
 As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$.
-To compute the \Hi{} radius, we fit an ellipse to the $1$~\Msun{}~pc$^{-2}$ contour of the \Hi{} map (as shown in Figure~\ref{fig:hi_ellipse}).
-$r_{\text{\Hi}}$ is thus defined as its major axis.
+To compute the \Hi{} radius, we fit an ellipse to the $1$~\Msun{}~pc$^{-2}$ contour of the \Hi{} map (as shown in Figure~\ref{fig:hi_ellipse}) and $r_{\text{\Hi}}$ is thus defined as its major axis.
 
-In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of a representative dwarf.
+
+In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of three different simulations on four different orbits each.
+The snapshots have been oriented following the assumption that the line-of-sight lies on the plane of the orbit of the galaxy.
 We see that our dwarfs stay on the \Hi{} size-mass relation as computed by \citet{Wang2016}
 \begin{equation*}
-  \log r_{\text{\Hi}} = (0.506 \pm 0.003) \log M_{\text{\Hi}} -(3.594 \pm 0.009)
+  \log r_{\text{\Hi}} = (0.506 \pm 0.003) \log M_{\text{\Hi}} -(3.594 \pm 0.009).
 \end{equation*}
+The slope of $0.5$ implies that the \Hi{} mass is proportional to the surface area of the \Hi{} disk.
 Also, data from the ALFALFA blind survey \citep{Papastergis2016} is used for comparison.
-In case of the least massive galaxy on the most radial orbits, the relation is followed closely.
-Also, when there is no stripping, the snapshots lay within the scatter of the data.
-When there is stripping (for the simulation ID~41, only for the orbit on $50$~kpc pericenter) the snapshots move along the relation.
+For the least massive galaxy (simulation ID 71) on the most radial orbits, the relation is followed closely.
+In case of no stripping (high pericenter distances) the snapshots lay within the scatter of the data. On the other hand, when there is stripping (for the simulation ID~41, only for the orbit on $50$~kpc pericenter), the snapshots move along the relation on the mass-size plane.
+In other words, the surface density of \Hi{} is constant not only among different galaxies but also over time when the galaxy undergoes stripping.
 
 \section{Kinematics}
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
@@ -513,7 +520,7 @@ The $\lambda_R$ profile is shown up to the corresponding $R_e$.}
 \label{fig:lambda_r_profile}
 \end{figure}
 
-It is possible to compute the radial profile of $\lambda_R(r)$ including in the summation of eq. \ref{eq:lambda_r} only those pixels that have a galactocentric distance smaller than $r$.
+It is possible to compute the radial profile of $\lambda_R(r)$ including in the summation of eq. \eqref{eq:lambda_r} only those pixels that have a galactocentric distance smaller than $r$.
 The profile itself and the value $\lambda_R(R_e) = \lambda_{R_e}$ is used to distinguish between fast and slow rotators.
 \citet{Emsellem2007} defines galaxies with $\lambda_{R_e} < 0.1$ as ``slow rotators'' and those with $\lambda_{R_e}>0.1$ as ``fast rotators''. While falling into the cluster, galaxies evolve from being classified as having a fast-rotator profile to slow rotator \citep[\cf{} also][]{Emsellem2011}.
 We show an example of the profile in Figure~\ref{fig:lambda_r_profile}, for simulation ID 69 as a function of time.
