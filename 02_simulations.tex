@@ -182,7 +182,7 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 %\paragraph{Origin of SPH}
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977, Monaghan2005}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
-The main idea of the SPH formalism is to write the equation of motion of the fluid for the sampling particles, solve them and then computed physical quantities in every point of the domain trough the so called \emph{SPH interpolation}.
+The main idea of the SPH formalism is to write the equations of motion of the fluid for the sampling particles, solve them and then computed physical quantities in every point of the domain trough the so called \emph{SPH interpolation}.
 
 This kind of interpolation is the same as the one used for the calculation of probability distributions from samples \citep{parzen1962estimation, 5178637}.
 Given a kernel $W(x, h)$ function of the spatial coordinate $x$ with smoothing length $h$, the interpolation $A_I(\vect{r})$ of a quantity $A(\vect{r})$ is given by:
@@ -256,7 +256,7 @@ A_I(\vect{r}) = \int \frac{A(\vect{r}')\rho(\vect{r}')}{\rho(\vect{r}')} W(\norm
 \end{equation}
 where we used the approximation that an element of mass $m = \rho(\vect{r}') \dd\vect{r}'$.
 The summation is on all the particles in the domain.
-That's why a finite support kernel is useful, so that a limited amount of particle is needed to compute the interpolation.
+That's why a finite support kernel is useful, so that a limited amount of particles is needed to compute the interpolation.
 It's important to note that in eq. \eqref{eq:sph_approx}, two approximations are at play:
 the first is the fact that the result is $A_I(\vect{r}) \approx A(\vect{r})$ given that the kernel~$W$ only approximates a delta function; the second being that the integral has being substituted with a finite summation.
 %These approximations will be
@@ -475,9 +475,10 @@ Using SPH it is computationally challenging to simulate an entire cluster of hot
 
 We have opted to use the moving-box technique described by \citet{Nichols2015} and further developed by \citet{Hausammann2019}.
 As shown in Figure~\ref{fig:MovingBox}, we enclose the MoRIA dwarf in a $60$~kpc wide moving simulation box, as in a wind tunnel simulation.
-Gas is injected from the open ``front" side of the box, which always points in the dwarf's direction of motion. Its density and temperature vary with position, as discussed below in Section \ref{sec:fornax_sim}.
+The box rotates as the galaxy orbits the cluster, in a way that a side is always facing the dwarf's direction of motion.
+Gas is injected from the open ``bottom" side of the box (see inset in Figure \ref{fig:MovingBox}) and its density and temperature vary with position, as discussed below in Section~\ref{sec:fornax_sim}.
 This mimics the hot wind of the cluster halo gas as it streams past the orbiting dwarf galaxy.
-Also, additional fictitious forces on the particles are included to take into account the rotation and orbital motion of the moving box.
+Given the rotation and the orbital motion of the moving box, additional fictitious forces on the particles are included following a well defined system of reference frames and a consequent rewrite of the equations of motion, as explained more in details in the following Section~\ref{sec:moving_box_vel_acc}.
 This allows us to simulate the combined effects of tidal forces and ram-pressure stripping \citep[as studied by][]{Mayer2006} which are acting simultaneously on the dwarf without the necessity of simulating a galaxy cluster worth of intra-cluster gas.
 % A typical simulation snapshot contains around $150$k gas particles and $16$k star particles, each with a mass of $4000$~\Msun{}.
 
@@ -552,7 +553,7 @@ With a slight abuse of notation we will write directly $\vect x' = \conj{\quat{q
 
 
 
-\subsection{Velocity and acceleration of the particles in the moving box}
+\subsection{Velocity and acceleration of the particles in the moving box} \label{sec:moving_box_vel_acc}
 \paragraph{Reference frames}
 \begin{figure}[H]
  \centering
@@ -606,7 +607,7 @@ We start by noting empirically that for our typical galaxy size a sufficient acc
 Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
 A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
   \includegraphics[width=0.8\textwidth]{adhoc69p200i.png}
 \caption{Adhoc acceleration relative to the total gravitational acceleration of the simulation ID 69 with pericenter 200 kpc.}
@@ -681,7 +682,7 @@ with scale length $R_s = 120$ kpc and $c=8.15$ derived from scaling relations in
 with $\rho_c = 127.3$~\Msun{}~kpc$^{-3}$ the critical density of the universe at $z=0$ for a cosmology with Hubble constant $h=0.67$ and $\Omega_m = 0.31$ \citep{Planck2015}.
 The cluster virial radius of the model is $R_{\mathrm{vir}} = c R_s = 978$~kpc.
 
-\subsubsection{ICM} \label{sec:ICM}
+\subsubsection{Intra-Cluster Medium (ICM)} \label{sec:ICM}
 Following \citet{Paolillo2002}, we use the superposition of three spherically symmetric beta-models, $\rho(r) = \rho_0 (1 + (r/r_0)^2 )^{-3\beta/2}$, to construct the gas density profile in the Fornax cluster, as shown in Figure \ref{fig:profiles}.
 They identify three contributions to the hot gas distributions: a central component (dominating for $r<5''$), coincident with the optical galaxy NGC1399; a less dense and more extended galactic component ($50''<r<400''$); and a cluster component ($r>400''$).
 We assume the gas to be in hydrostatic equilibrium with temperature $T(r)$ computed as:
