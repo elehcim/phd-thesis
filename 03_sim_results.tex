@@ -211,7 +211,7 @@ Tidal squeezing increase~$\sigma$ while subsequent mass loss can dramatically lo
 \includegraphics[width=\textwidth]{mass_sigma_multi_sim.pdf}
 \caption{The estimated mass from velocity dispersion with equation \eqref{eq:wolf} relative to the total mass within an effective radius computed from simulation particles,
 for simulation ID 69, 71, 41 on an orbit with 200~kpc pericenter.
-Dashed line is for unbound snapshots (the condition \eqref{eq:tidal_radius_condition} is not verified anymore).
+Dashed line indicates unbound snapshots (\ie{} for which the condition \eqref{eq:tidal_radius_condition} is not verified anymore).
 }
 \label{fig:wolf}
 \end{figure}
@@ -328,8 +328,7 @@ The size of the markers is proportional to the number of stars born between the 
 \end{figure}
 In Figure \ref{fig:sf_location} we show the average position of the star forming particles for each simulation snapshot.
 The galaxy is moving in the $-y$ direction (the direction of the instantaneous velocity, see \refsec{sec:MovingBox}) around pericenter.
-For each simulation snapshot the number of new stars with respect to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted.
-\footnote{
+For each simulation snapshot the number of new stars with respect to the previous snapshot ($10$~Myr before) is counted and their average position in the $xy$ plane is plotted\footnote{
 We could have computed the star formation rate from the last galaxy snapshot at $z=0$, reading the time of formation of the star particles.
 This is the common approach %\citep[e.g.][]{Hausammann2019}
 when computing star formation histories of galaxies, and it is observationally motivated.
@@ -338,7 +337,7 @@ In fact the star formation history of an observed galaxy is inferred from the ph
 However, the large amount of star particles lost during the orbit, leads to a large underestimation (of a maximum of 30\% for the most recent bins especially on low mass galaxies on radial orbits) of what has actually happened during the galaxy journey around the cluster.
 The method of counting individual star particles newly born is therefore employed.
 The choice of a high frequency snapshot cadence plays a fundamental role to this end.
-}
+}.
 In this projection the instantaneous velocity of the galaxy is always directed towards the $-y$ axis.
 The ram pressure is therefore pushing in the vertically upwards direction in these diagrams, causing gas to be stripped and stars to be formed in the upper part of the panels.
 
@@ -581,7 +580,7 @@ $T= 1/2\, M\, V^2_\mathrm{rms}$ and $W = -GM^2/r_g$ the kinetic and potential en
 
 The approximations of using the projected radius $R$ instead of both the gravitational radius $r_g$ and the distance from the spinning axis $r$, are taken into account through the coefficients $\kappa_R$ and $\kappa_J$;
 similarly, using the second order velocity moment $V^2+\sigma^2$ instead of the mean-square speed of the system $V^2_{\mathrm{rms}}$, is considered through the coefficients $(\kappa_V, \kappa_\sigma)$.
-All in all these four coefficients grasp the effects of projection and of the luminous and mass distributions:
+All in all these four coefficients grasp the effects of projection and of the luminous and mass distribution:
 \begin{equation}
   \left\{
   \begin{array}{cl}
