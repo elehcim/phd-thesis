@@ -444,7 +444,7 @@ Black points are snapshots with no star formation.
 Our simulations can be checked on the \Hi{} size-mass plane.
 We post-processed our simulations to obtain the neutral hydrogen fraction, $\neutralfraction$, of each gas particle.
 This is done leveraging the models explained in Section~\ref{sec:extended_gas_physics}.
-In particular, the \Hi{} fraction of a gas particle is computed based on tabulated data from \citet{DeRijcke2013} as a function of:
+In particular, the \Hi{} fraction of a gas particle is computed based on tabulated data from \citet{DeRijcke2013} as a function of density, temperature, composition, and redshift:
 \[\neutralfraction = \neutralfraction(T, \feh, \mgfe, z, \rho),\]
 resulting in a \Hi{} mass consistent with the sub-grid model employed during the simulations.
 As in \citet{Verbeke2017}, we computed the \Hi{} mass by integrating the \Hi{} column density $\Sigma_{\text{\Hi}}$.
@@ -453,7 +453,7 @@ To compute the \Hi{} radius, we fit an ellipse to the $1$~\Msun{}~pc$^{-2}$ cont
 
 In Figure \ref{fig:hi_size_mass} we show the behaviour of the gas of three different simulations on four different orbits each.
 The snapshots have been oriented following the assumption that the infinitely distant observer lies on the plane of the orbit of the galaxy.
-We see that our dwarfs stay on the \Hi{} size-mass relation as computed by \citet{Wang2016}
+We see that our dwarfs stay on the \Hi{} size-mass relation as computed by \citet{Wang2016}:
 \begin{equation*}
   \log r_{\text{\Hi}} = (0.506 \pm 0.003) \log M_{\text{\Hi}} -(3.594 \pm 0.009).
 \end{equation*}
@@ -461,7 +461,7 @@ The slope of $0.5$ implies that the \Hi{} mass is proportional to the surface ar
 Also, data from the ALFALFA blind survey \citep{Papastergis2016} is used for comparison.
 For the least massive galaxy (simulation ID 71) on the most radial orbits, the relation is followed closely.
 In case of no stripping (high pericenter distances) the snapshots lay within the scatter of the data. On the other hand, when there is stripping (for the simulation ID~41, only for the orbit on $50$~kpc pericenter), the snapshots move along the relation on the mass-size plane.
-In other words, the surface density of \Hi{} is constant not only among different galaxies but also over time when the galaxy undergoes stripping.
+In other words, the surface density of \Hi{} is constant not only among different galaxies but also over time when a galaxy undergoes stripping.
 
 \section{Kinematics}
 To correctly compute galaxy kinematics we have to take into account the rotation of the moving box.
