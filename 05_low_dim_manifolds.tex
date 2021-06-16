@@ -331,25 +331,43 @@ From the derivative along the edges $e_{ij}$ of the mapping $\f$ it is possible 
 
 \section{Experiments on a simulated jellyfish galaxy}\label{sec:Ex_JellyFish}
 
-We will demonstrate our methodology on analysis of formation of a peculiar astronomical object, a simulated ``jellyfish galaxy".
-% The term "jellyfish galaxy" refers to an observed galaxy showing signs of gas stripping \cite{Poggianti2017}, whose signatures are a dense "head" of mainly gas and stars and an elongated gaseous, star-forming tail.
-% Particularly interesting is the case of jellyfish galaxies originated as dwarf galaxies disrupted by their environment (e.g., a cluster of other galaxies). Dwarf galaxies, due to their low mass, are more susceptible to the environment's interaction than their more massive analogous.
-Even though the characteristic feature of these objects is their gaseous tail, little is known about its detailed structure and physical properties, including the rate at which new stars are formed.
+We will demonstrate our methodology on the analysis of formation of a peculiar astronomical object, a simulated ``jellyfish galaxy".
+The term refers to an observed galaxy showing signs of gas stripping \citep{Poggianti2017a}, whose signatures are a dense ``head" of mainly gas and stars and an elongated gaseous, star-forming tail.
+These galaxies are usually observed when falling into large clusters of other galaxies, where the hot ionized gas filling the cluster is able to strip away ``tentacles" of relative cold gas from the galactic body.
+% Particularly interesting is the case of jellyfish galaxies originated as dwarf galaxies disrupted by their environment (e.g., a cluster of other galaxies).
+% Dwarf galaxies, due to their low mass, are more susceptible to the environment's interaction than their more massive analogous.
 
-Analyzing in detail the SFR of these tails can provide useful insights on the formation scenario of galaxies infalling in a cluster \cite{Ebeling2013}.
-As an example, dwarf galaxy NGC~1427A in the Fornax cluster, described in detail in Chapter \ref{ch:ngc1427a} provides an interesting case of still unclear formation scenario.
-%It has been observed multiple times, but a generally accepted common interpretation is still lacking \cite{Lee-Waddell2018, Mora2015}.
+The technique described above can be a valuable tool to investigate the behaviour of physical quantities in the head and in the gaseous tail.
+We will focus our study on identifying star formation regions in the head and in the tail of the galaxy for two main reasons:
+\begin{itemize}
+  \item[i)] presence of new stars born in the head is an important indicator of how much the galactic gas is affected by the stripping pressure;
+  \item[ii)] since stars are created from dense and cold regions of gas, the presence (or lack thereof) of stars formed in the gaseous tail carries information about how much the galaxy gas is mixed with the hot gas in the surrounding environment.
+\end{itemize}
+% rate at which new stars are formed (Star Formation Rate, SFR)\footnote{
+% SFR is a quantity used for inferring the stellar mass in galaxies as a function of time.}.
+To quantify the star formation we will measure the intensity of the \cii{} emission line.
+Recent observations with the Herschel Space Observatory showed a tight correlation between the intensity of \cii{} and other well known tracers of Star Formation Rate (SFR) \citep{DeLooze2011,Herrera-Camus2015}.
+
+% Also, a characteristic feature of star forming regions is the presence of spherical bubbles of gas, tracers of recent supernovae explosions.
+% In fact, due to their high mass, young stars burn efficiently and relatively fast all their gas reservoir, terminating their life as supernovae and injecting energy and debris in the surroundings.
+
+% Even though the characteristic feature of these objects is their gaseous tail, little is known about its detailed structure and physical properties, including the rate at which new stars are formed (Star Formation Rate, SFR)\footnote{
+% SFR is a quantity used for inferring the stellar mass in galaxies as a function of time.}.
+The study can provide useful insights on the formation scenario of galaxies infalling in a cluster \citep{Ebeling2013}.
+As an example, dwarf galaxy NGC~1427A in the Fornax cluster, described in detail in Chapter \ref{ch:ngc1427a},
+provides an interesting case of still unclear formation scenario and a generally accepted common interpretation is still lacking \citep{Lee-Waddell2018, Mora2015}.
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Figures_png/JF_Dataset}
-    \caption{Gas particles having $\rho \ge 10^{-3} ~ \mathrm{atoms/cm^3}$ of the simulated dwarf galaxy falling into the halo of the Fornax Galaxy Cluster.}
-    \label{fig:JF_Dataset}
+  \centering
+  \includegraphics[width=\textwidth]{Figures_png/JF_Dataset}
+  \caption{Gas particles of the simulated dwarf galaxy falling into the halo of the Fornax Galaxy Cluster.}
+  \label{fig:JF_Dataset}
 \end{figure}
 
-Starting from the suite of simulations of dwarf galaxies evolving in a Fornax-like cluster environment (explained in details in chapter \ref{ch:simulations}),
-we chose a single snapshot representing an irregular, gas rich galaxy, exposing an elongated star forming tail during intense ram pressure stripping.
-We want to investigate the geometry of the star forming regions in the tails.
-%In particular, we will concentrate on morphology of gas with density $\rho \ge 10^{-3} ~ \mathrm{atoms/cm^3}$,
+Starting from the suite of simulations of dwarf galaxies evolving in a Fornax-like cluster environment (explained in detail in Chapter \ref{ch:simulations}), we chose a single simulated snapshot representing an irregular, gas rich galaxy, exposing an elongated star forming gaseous tail during intense ram pressure stripping (we used a snapshot at $\tau=0.97, t=12.1$~Gyr of simulation ID 69).
+% We want to investigate the geometry of their star forming regions.
+% The simulation is performed using a modified version of the mixed N-body/Smoothed Particle Hydrodynamics (SPH) code GADGET-2 \cite{Springel_2005, DeRijcke2013}.
+% The simulation output consists of three types of particles: Dark Matter (DM), stellar and gaseous.
+% In particular, we will concentrate on morphology of gas with density $\rho \ge 10^{-3} ~ \mathrm{atoms/cm^3}$,
 %which is a
 %since this is a reasonable condition for it to be visible in the observed electromagnetic bandwidth.
 \begin{figure}[ht]
@@ -359,22 +377,25 @@ We want to investigate the geometry of the star forming regions in the tails.
     Highlighted in black are the points belonging to two distinct 1-D and 2-D structures discussed in section \ref{sec:manifold_jellyfish}.}
     \label{fig:JF_Res}
 \end{figure}
-%We disregard DM and stellar particles (needed for evolution of the object, but not relevant for our analysis) and concentrate on the distribution of gas particles.
-%The computation model is based on a particle formulation of hydrodynamics where each particle samples physical properties (mass, temperature, density etc.) of a volume of radius $r_N$ - radius of the sphere containing $N$ neighbouring particles.
-%A continuous distribution of the physical variables over the full domain is then obtained by spatial smoothing with Gaussian kernels centered on each particle \cite{1977MNRAS.181..375G}.
-%Associated with each gas particle (representing the corresponding volume) are values of physical quantities such as density, temperature, pressure etc.
+% We disregard DM and stellar particles (needed for evolution of the object, but not relevant for our analysis) and concentrate on the distribution of gas particles.
+As described in Section \ref{sec:SPH}, the computation model in SPH simulations is based on a particle formulation of hydrodynamics where each particle samples physical properties of a volume of radius $r_N$ - radius of the sphere containing $N$ neighbouring particles.
+A continuous distribution of the physical variables over the full domain is then obtained by spatial smoothing with Gaussian kernels centered on each particle \citep{1977MNRAS.181..375G}.
+Associated with each gas particle are values of physical quantities such as density, temperature, pressure etc.
+
 To do this we post process the simulation obtaining for each particle the intensity of the \cii{} emission line.
 This is the ``forbidden" line emitted by a carbon atom which has been ionized - having 5 out of 6 electrons.
 The outermost electron of the ionized atom gets excited on a higher energy level by radiation.
 The excited electron, under extremely low density environment conditions, is able to re-emit radiation at a specific wavelength ($158 ~ \mathrm{\mu m}$) while jumping to a lower energy level.
 These types of emission lines are called ``forbidden" due to their impossibility to be seen in normal terrestrial environments.
 %They are, however, commonly observed in astronomy ([HII], O[III], etc.).
-Recent observations with the Herschel Space Observatory showed a tight correlation between the intensity of \cii{} and other well known tracers of Star Formation Rate (SFR) \cite{DeLooze2011, Herrera-Camus2015}.
-\cii{} emission in this kind of simulations is obtained by using evolved quantities of the gas (metallicity, density and temperature) as inputs of chemical evolution models of the radiating gas, taking into account its ionization equilibrium and ion level occupation model \cite{Maio2007, DeRijcke2013}.
 
-The resulting gas particle data set is presented in Figure \ref{fig:JF_Dataset}. Several low dimensional structures are clearly visible, for example the long 1-dimensional manifold departing from the head and elongating along the $x$-axis of the simulation box.
+
+An estimate of \cii{} emission in  this kind of simulations is obtained by using evolved quantities of the gas (metallicity, density and temperature) as inputs of chemical evolution models of the radiating gas, taking into account its ionization equilibrium and ion level occupation model \citep{Maio2007, DeRijcke2013}.
+
+The resulting gas particle data set is presented in Figure \ref{fig:JF_Dataset}.
+Several low dimensional structures are clearly visible, for example the long 1-D manifold departing from the head and elongating along the $x$-axis of the simulation box.
 Visually inspecting the data set, we chose a radius $r~=~1~\mathrm{kpc}$ as the characteristic scale parameter for the manifolds (shown as the small sphere in Figure \ref{fig:JF_Dataset}).
-%This observation is reassuring, given that it is in agreement with the spatial resolution of recent observations.
+The chosen radius is in agreement with the spatial resolution of recent observations.
 The parameter $r$ is fixed for preprocessing through diffusion and filtering (section \ref{sec:SAF}), local dimensionality estimation (section \ref{sec:D_Index}) and manifold crawling (section \ref{sec:Crawling}).
 % The other parameters are set as in the synthetic data experiments of section \ref{subsec:MulitCrawl}: $\epsilon=1$, $\eta=0.75$ and $\beta=0.4$.
 
@@ -394,24 +415,14 @@ The latter is analysed by studying the the behaviour of emission line \cii{} ove
 in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and (right), respectively
 - the gaseous stream of gas particles departing from the head and reaching half way through the tail and the predominant 2-D structure in the tail.
 \begin{figure}[ht]
-\centering
-%\begin{subfigure}[t]{0.49\textwidth}
-% \caption{}
-% \label{subfig:CurvJF}
-% \includegraphics[width=\textwidth,trim = 100 0 150 0 ,clip = true]{Figures_png/Curvature_2DMan1_2.png}
-\includegraphics[width=\textwidth]{Figures_png/JF_TotalCurvature_Man2d.png}
-%\end{subfigure}
-%\begin{subfigure}[t]{0.49\textwidth}
-% \caption{}
-% \label{subfig:CurvJF_Plane}
-% \includegraphics[width=\textwidth,trim = 50 0 75 0,clip=true]{Figures_png/Curvature_2DMan1_OnPlane.png}
-%\end{subfigure}
-\caption{Embedded graph (left) and planar representation (right) of a 2-dimensional manifold extracted from the jellyfish data set.
+  \centering
+  \includegraphics[width=\textwidth]{Figures_png/JF_TotalCurvature_Man2d.png}
+  \caption{Embedded graph (left panel) and planar representation (right panel) of a 2-dimensional manifold extracted from the jellyfish data set.
   The local curvature for each vertex is shown in color.}
 \label{fig:curvatureJF}
 \end{figure}
 
-Figure \ref{fig:curvatureJF} shows two regions of high curvature, for the 2-dimensional manifold presented in Figure \ref{fig:JF_Res}, right panel.
+Figure \ref{fig:curvatureJF}, left panel shows two regions of high curvature, for the 2-dimensional manifold presented in Figure \ref{fig:JF_Res}, right panel.
 The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of Figure \ref{fig:curvatureJF}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants.
 
 We performed the SAF filtering dimensionality analysis and manifold crawling, and for an identified manifold we show in Figure \ref{subfig:1dManGraph} the embedded vertices
@@ -446,7 +457,6 @@ These conditions are reflected in an increase of the \cii{} emission line over t
 The graphs' nodes are colored based on the value of \cii{} of the surrounding particles lying not further than $\mathrm{1~kpc}$ from the local tangent space of the manifold, weighted by the nodes' responsibilities.}
 \label{fig:Man2D}
 \end{figure}
-
 The 2-D structure shows an overall constant \cii{} intensity whereas the region at $5 < x < 9$ presents sharply higher values.
 The shape of this region is particularly interesting. It is, in fact, a hole with an almost spherical section.
 This structure detected with Manifold Crawling, with potent \cii{} emission at its boundary, is the remnant of a supernova explosion.
