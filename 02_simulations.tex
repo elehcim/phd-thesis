@@ -239,8 +239,8 @@ Accordingly, the most widely used B-spline for SPH is the lowest order B-spline 
 \begin{equation}
 M_4(q) = \frac{1}{\pi h^3} \left\{
 \begin{array}{ll}
-\frac{1}{4}(2-q)^3 - (1 - q)^{3}, & 0 \le q < 1; \\
-\frac{1}{4}(2-q)^3, & 1 \le q < 2; \\
+\frac{1}{4}(2-q)^3 - (1 - q)^{3}, & 0 \le q < 1; \\[1ex]
+\frac{1}{4}(2-q)^3, & 1 \le q < 2; \\[1ex]
 0. & q \ge 2,
 \end{array}
 \right.
@@ -266,6 +266,18 @@ In case of the density the interpolation simplifies to:
   \rho_I(\vect{r}) = \sum_i m_i W(\norm{\vect{r} - \vect{r}_i},h).
 \end{equation}
 
+\paragraph{Projected interpolation}
+In order to analyze the results of an SPH simulation, it is common to produce maps of interpolated quantities as seen from a particular point of view.
+To do so the only extra step to perform is the integration of the smoothing kernel along the line of sight.
+If we are viewing along $z$, the projected kernel $\Tilde W$ is :
+\begin{multline}
+  \tilde W  = \int W \left(\norm{\vect{r} - \vect{r}_i},h \right) \dd z' =\\
+   \int W \left(\sqrt{(x-x_i)^2+(y-y_i)^2+(z-z_i)^2}, h_i \right) \dd z' %=\\
+%    \tilde{W} \left(\sqrt{(x-x_i)^2+(y-y_i)^2}, h_i \right).
+\label{eq:projected_kernel}
+\end{multline}
+
+%In case
 
 %\paragraph{Role of the normalization term}
 %% TODO probabilistic treatment if it fits
@@ -288,7 +300,7 @@ Then, in addition to the mass, rotation has been found to have a significant inf
 Later, the addition of advanced prescriptions for cooling has allowed to increase the resolution when simulating the formation of cold, neutral, high-density clouds suitable for star formation \citep{DeRijcke2013}. %\citep{Verbeke2015}.
 MoRIA models could then be used to investigate and reproduce a whole range of observational properties of dwarfs in the field.
 Studies have been devoted to characterize their cosmological evolution \citep{Cloet-Osselaer2012}, their star formation evolution \citep{Verbeke2015}, their neutral gas contents and kinematics \citep{Koleva2014}.
-This has helped to shed light onto the ``Too big-too fail'' problem \citep{Verbeke2017}.
+This has helped to shed light onto the ``Too big to fail'' problem \citep{Verbeke2017}.
 
 
 \paragraph{Physical characteristics} MoRIA dwarfs, have a virial mass at $z=0$ of $M_{200} \approx 10^{10} - 10^{11}$\Msun{}. The dark particle mass is $m_{\mathrm{dm}} = 2 \cdot 10^4$ \Msun{} whereas the baryonic particle mass $m_{\mathrm{b}}$ follows from the relation $\Omega_\mathrm{b}/\Omega_{\mathrm{dm}} = 0.2115$ \citep{Planck2015}.
