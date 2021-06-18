@@ -32,7 +32,7 @@ Depending on the redshift $z$ and on the current line-of-sight velocity $V_{\mat
   F_i(\lambda) = \frac{S_i\left(\lambda_e\,(1 + z + V_{\mathrm{los},i}/c);\feh_i, t_i \right) m_i }{4\pi d},
   \label{eq:shifted_flux}
 \end{equation}
-with $d = 20$~Mpc is the distance from the galaxy, equivalent to the Fornax cluster assumed distance.
+with $d = 20$~Mpc is the distance from the galaxy, equivalent to the Fornax cluster assumed distance and $m_i$ the star particle mass.
 
 After binning the wavelength dimension in $K=10000$ channels $j$, for each frequency $\lambda_j$, at each spatial position $(x,y)$ in the plane of the sky we compute the projected SPH interpolation along the $z-$axis of the observed spectra, producing a SPH map using eq. \eqref{eq:projected_kernel}:
 \begin{equation}
