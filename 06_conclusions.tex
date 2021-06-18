@@ -2,14 +2,64 @@
 
 \chapter{Conclusions and future work}
 \label{ch:conclusions}
+We sum up here the main conclusions of the research carried out in this PhD effort, and we briefly give an overview of the ongoing research projects.
+\section{Conclusions}
+
+\begin{itemize}
+  \item
+\end{itemize}
+
+\section{Ongoing research efforts}
+\subsection{MUSE mock cube}
+Integral-Field Units (IFU) are powerful instruments which couple the discovery potential of imaging devices to the measuring capabilities of spectrographs.
+MUSE (Multi Unit Spectroscopic Explorer is an integral-field spectrograph operating in the visible wavelength range, currently mounted on the Very Large Telescope (VLT) of the European Southern Observatory (ESO) \citep{Bacon2010, MUSEWebpage}.
+As a way to compare simulations with observations and check the tools currently employed in the analysis of IFUs data cubes, we created a tool to produce MUSE-like data cubes from the MoRIA suite of simulations.
+Code is freely available from \url{https://github.com/elehcim/simifucube}.
+This work has been done in collaboration with the Heidelberg node of the SUNDIAL network.
+
+We start by taking the star particles of a simulated snapshot.
+Similarly to \citet{Ibarra-Medel2019}, depending on the age $t_i$ and metallicity $\feh_i$ of each star particle $i$, we assign to it a spectrum from the EMILES library \citep{Vazdekis2010}, with intensity $S_i$ for each \emph{emitted} wavelength $\lambda_e$: in practice the spectrum can be written as $S_i(\lambda_e;\feh_i, t_i)$.
+%Where $S_L$ is the “perfect” noiseless spectrum built from the spectral library.
+We use the library of spectra modeled with a Chabrier IMF with slope $1.3$ and BaSTI isochrones \citep[][Bag of Stellar Tracks and Isochrones]{Pietrinferni2013}.
+Other spectral libraries are easily configurable if needed.
+Depending on the redshift $z$ and on the current line-of-sight velocity $V_{\mathrm{los},i}$ of the particle, the spectrum should be Doppler shifted, obtaining the \emph{observed} flux $F_i(\lambda)$:
+
+%\begin{equation}
+%  F(\lambda) = \sum_{i=0}^{N} \frac{S_i(\lambda\,(1 + z + V_{\mathrm{los},i}/c),\feh_i, t_i) m_i }{4\pi d},
+%  \label{eq:shifted_flux}
+%\end{equation}
+\begin{equation}
+  F_i(\lambda) = \frac{S_i\left(\lambda_e\,(1 + z + V_{\mathrm{los},i}/c);\feh_i, t_i \right) m_i }{4\pi d},
+  \label{eq:shifted_flux}
+\end{equation}
+with $d = 20$~Mpc is the distance from the galaxy, equivalent to the Fornax cluster assumed distance.
+
+After binning the wavelength dimension in $K=10000$ channels $j$, for each frequency $\lambda_j$, at each spatial position $(x,y)$ in the plane of the sky we compute the projected SPH interpolation along the $z-$axis of the observed spectra, producing a SPH map using eq. \eqref{eq:projected_kernel}:
+\begin{equation}
+  F(x,y, \lambda_j) = \sum_{i=0}^{N} \tilde{W} \left(\sqrt{(x-x_i)^2+(y-y_i)^2}, h_i \right) F_i(\lambda_j),
+\end{equation}
+where N is the number of star particles in the snapshot and $(x_i, y_i)$ their projected position.
+Our tests have been carried out with a spatial grid of $80\times 80$ spaxels.
+
+Given the amount of frequency channels in the spectral library, we had to carefully optimize the routine to perform SPH projected interpolation.
+In fact, the code presented in the repository \citet{simifucube} uses some \textsc{pynbody} \citep{Pontzen2013} routines modified and optimized for spectral data, and heavily uses the \textsc{SpectralCube} tool \citep{SpectralCube}.
+
+We then convolve each spaxel with the MUSE line spread function (LSF) \citep[$F_{\mathrm{udf}10}$, eq. (8) in][]{Bacon2017}.
+We finally add to the the datacube value a zero centered normal distributed contamination $\mathcal{N}$ with dispersion $\sigma$:
+%\begin{equation}
+%  S = S_L + \mathcal{N}(0, S_L\cdot \sigma )
+%\end{equation}
+\begin{equation}
+  F(x,y, \lambda_j) = F(x,y, \lambda_j) + \mathcal{N}(0, F(x,y, \lambda_j)\cdot \sigma )
+\end{equation}
+
+We defined the contamination dispersion as the dispersion of the residuals of the fit for a typical galaxy (from \citet{Bidaran2020} dataset we take the VCC~1836 bin \#70 with initial $S/N=3$ and target $S/N=40$).
+This resulted in a dispersion of $\sigma = 0.073$.
+Eventually, we create the \verb|STAT HDU| in the datacube using \verb|DER_SNR| algorithm \citep{Stoehr2008}. The noise model chosen in this stage is wavelength independent.
+
+\subsubsection{Preliminary results}
+Various research effort are ongoing with the collaboration of Heidelberg node.
 
 
-\section{MUSE mock cube}
-
-Code is freely available from \url{}
-% \section{Lessons learned}
-
-
-
-\section{Future work}
-\label{se:futurework}
+%\section{Future perspectives}
+%\label{sec:futurework}
