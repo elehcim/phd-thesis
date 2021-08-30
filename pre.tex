@@ -6,27 +6,11 @@
 % Half-title
 \maketitle
 
-% Copyright page
-\clearpage
-\thispagestyle{empty}
-\null%
-\label{thesis:colophon}
-\vfill
-\pdfbookmark[1]{Colophon}{thesis:colophon}
-Written in 2021 by {\makeatletter{\@author}\makeatother}.\\
-\textbf{Copyright}~\cczero{} The template for the layout of this thesis was inspired by my colleague Sam Verstocken who used the template of the dissertation of \href{ken.mx}{Ken Arroyo Ohori},
-which was released into the public domain using the Creative~Commons~\cczero{}~code.
-To view a copy of the \cczero{}~code, visit:\\\url{http://creativecommons.org/publicdomain/zero/1.0/}
 
-\textbf{Colophon}
-% This thesis was typeset with \XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) using the \mbox{{\fanciestfont{}Feijoa}}, \texttt{GT Pressura} and $\mathrm{Asana\ Math}$ typefaces.
-Most of the figures were created using \href{http://ipe.otfried.org/}{Ipe} (Copyright © 1993–2020 Otfried Cheong).
-The source code of this thesis is available at: \\
-\url{https://github.com/elehcim/phd-thesis}
-
-\textbf{Cover}
+\includepdf[pages=-]{title_page.pdf}
 
 
+\begin{comment}
 % Official title
 \begin{titlepage}
 \null%
@@ -74,6 +58,10 @@ en aan de\\
 \end{center}
 \end{titlepage}
 
+
+
+
+
 % Official verso
 \clearpage
 \thispagestyle{empty}
@@ -88,7 +76,7 @@ en aan de\\
 \begin{tabular}{@{}lll@{}}{Promotors:}\\\\
   \quad{}Prof.\ dr. Sven De Rijcke & Ghent University & (promotor)\\
   \quad{}Prof.\ dr. Michael\ Biehl & University of Groningen & (promotor)\\
-  \quad{}Prof.\ dr. Reynier\ Peletier & University of Groningen & (copromotor)\\
+  \quad{}Prof.\ dr. Reynier\ Peletier & University of Groningen & (promotor)\\
 \\\\
 \multicolumn{2}{@{}l@{}}{Composition of the Joint Evaluation Committee:} \\
 \\
@@ -110,12 +98,32 @@ en aan de\\
 % \\
 %   \quad{}Dr.\ & ...\\
 \end{tabular}
+\end{comment}
 
+
+
+% Copyright page
+\clearpage
+\thispagestyle{empty}
+\null%
+\label{thesis:colophon}
+\vfill
+\pdfbookmark[1]{Colophon}{thesis:colophon}
+\noindent Written in 2021 by {\makeatletter{\@author}\makeatother}.\\
+\textbf{Copyright}~\cczero{} The template for the layout of this thesis was inspired by my colleague Sam Verstocken who used the template of the dissertation of \href{ken.mx}{Ken Arroyo Ohori},
+which was released into the public domain using the Creative~Commons~\cczero{}~code.
+To view a copy of the \cczero{}~code, visit:\\\url{http://creativecommons.org/publicdomain/zero/1.0/}\\
+\textbf{Colophon}
+% This thesis was typeset with \XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) using the \mbox{{\fanciestfont{}Feijoa}}, \texttt{GT Pressura} and $\mathrm{Asana\ Math}$ typefaces.
+Most of the figures were created using \href{http://ipe.otfried.org/}{Ipe} (Copyright © 1993–2020 Otfried Cheong).
+The source code of this thesis is available at: \\
+\url{https://github.com/elehcim/phd-thesis}\\
+\textbf{Cover}
+...\\[2ex]
 This research was funded by the European Union's Horizon 2020 research and innovation programme under the Marie Sk\l odowska-Curie
 % Skłodowska-Curie
 grant agreement N.~721463 to the \href{www.astro.rug.nl/~sundial}{SUNDIAL ITN network}.
-\begin{figure*}[b!]
+\begin{figure*}[bh!]
   \centering
   \includegraphics[width=0.2\textwidth]{EUflag}
 \end{figure*}
-
