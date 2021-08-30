@@ -18,3 +18,7 @@ library.bib
 /thesis-diff*
 /math_definitions.tex
 Figures_png/
+*.synctex.gz
+/propositions.pdf
+/thesis.zip
+*.tex.bak
