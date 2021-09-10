@@ -404,7 +404,7 @@ We then tabulate a small number of possible two-element compositions covering th
 The cooling and heating rates can then be interpolated for each gas particle given its density, temperature, \mgfe{}, \feh{} and the cosmic redshift (which is necessary to weight the contribution of the UVB, see the last paragraph of this section).
 %Also, an approximated scheme for exponentially suppressing the UV background in regions with $n_{\text{\Hi}}\geq 0.007$~cm$^{-3}$ is taken into account, implementing a \emph{self-shielding} from UV background in dense clouds of gas.
 
-\paragraph{Ionization aware equation of state}
+\paragraph{Ionization aware equation of state} \label{par:new_eos}
 In an ideal gas with a single type of constituents, the pressure is given by the equation of state:
 \begin{equation}
 p = n k_B T.
@@ -419,7 +419,7 @@ This quantity depends on the chemical composition of the gas, its ionization sta
 As such, following models from \citet{DeRijcke2013}, we can precompute and tabulate it as a function of:
 \[\mean\mu = \mean\mu(T, \feh, \mgfe, z, \rho).\]
 
-\subparagraph{Modified equation of energy when considering ionization}
+\paragraph{Modified equation of energy when considering ionization}
 We assume a gas of ${}^1$H with an ionization fraction $x$.
 We consider the internal energy to be composed by a (thermal) kinetic part and a ionization part:
 \begin{equation}
@@ -609,6 +609,7 @@ The goal of the ad hoc acceleration is to move the box to follow the center of t
 In the original implementation, $\Ap^{hoc}$ is put to zero as soon as the velocity of the central low energy particles is again directed towards the pivot point (i.e. $(\vect X_{64}-\vect X_\mathrm p) \vdot (\vect{V}_{64} - \Vp) < 0$).
 This understandably is done to minimize the total impulse due to the ad hoc term.
 But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because of the particle acceleration in equation \eqref{eq:mb_acceleration}.
+
 An improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
 \begin{equation}
  \Ap^{hoc} = 2\,\zeta\omega_0 \Vp + \omega_0^2 \vect X_\mathrm p,
@@ -629,7 +630,11 @@ A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fi
 
 \subsection{Recovering the correct kinematics from a moving box simulation}
 \label{sec:correct_kinematics}
-We are interested in finding the expression of the velocity $\vect{V}$ in the inertial frame at a certain position $\vect{x}$ in the moving box, knowing its velocity in the rotating frame $\vect{v}$.
+Essential to the analysis of the kinematics of simulated galaxies, is the recovery of the velocity in the correct reference frame.
+Only after this processing, the simulation snapshots are ready to be analyzed.
+To do so, we have to invert the transformations explained in the previous sections.
+
+We are therefore interested in finding the expression of the velocity $\vect{V}$ in the inertial frame at a certain position $\vect{x}$ in the moving box, knowing its velocity in the rotating frame $\vect{v}$.
 Let $\vect{\Omega}$ be the angular velocity of the box in the inertial frame which can be computed as:
 \begin{equation}
  \vect{\Omega} = {(\Vp\cross\Ap)}/{\Vp^2}.
@@ -664,7 +669,7 @@ A slice of the glass unit cube is then taken in such a way that its depth is
 \begin{equation}
 \frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},
 \end{equation}
-and width and length are both $\sqrt[3]{\xi}$. The density and the temperature of the new particles are set according to the quantities instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state.
+and width and length are both $\sqrt[3]{\xi}$. The density and the temperature of the new particles are set according to the instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state (\cf{} paragraph \ref{par:new_eos}).
 By construction the new particles have velocity $\norm{\Vp}$ directed towards the local moving box axes $+y$.
 
 If a particle of any kind gets closer than $L/100$ from the rear edge of the box, it gets deleted.
