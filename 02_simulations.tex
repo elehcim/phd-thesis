@@ -659,12 +659,13 @@ The resulting low energy distribution of particles guarantees a low probability 
 
 At each timestep the correct amount of new particles to be injected is taken from the ``cartridge''.
 The number of particles belonging to the cluster $N_c$ would be the correct amount to fill up the entire box of size $L$ with the correct cluster density $\rho_c(r)$ at the instantaneous orbital radius $r$.
-Therefore they respect the relation:
+Therefore they satisfy the relation:
 \begin{equation}
  N_c m_g = \rho_c(r) L^3.
 \end{equation}
 
-The fraction of particles to be taken from the cartridge is then: $\xi=\dfrac{N_c}{N_{\text{glass}}}$. The number of particles in the glass should be chosen in order for $\xi\leq1$.
+The fraction of particles to be taken from the cartridge is then: $\xi=\dfrac{N_c}{N_{\text{glass}}}$.
+The number of particles in the glass should be chosen in order for $\xi\leq1$.
 A slice of the glass unit cube is then taken in such a way that its depth is
 \begin{equation}
 \frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},

@@ -6,7 +6,7 @@
 We present here the results of the simulations performed using the technique described in the previous Chapter.
 We will concentrate on following the journey of the galaxy into the cluster and characterize its evolution depending on the initial mass at the time of injection and its orbit.
 Generally, galaxies will undergo some ``phase transitions" which will happen mainly at pericenter passages.
-Some of the galaxy will effectively be transformed into Ultra Diffuse Galaxies (as shown in Section~\ref{sec:UDG}), some others will be allowed to be briefly identified as ``jellyfish" (Section~\ref{sec:where_star_formation}).
+Some of the galaxies will effectively be transformed into Ultra Diffuse Galaxies (as shown in Section~\ref{sec:UDG}), some others will be allowed to be briefly identified as ``jellyfish" (Section~\ref{sec:where_star_formation}).
 
 \begin{sidewaystable}
  \centering
@@ -335,7 +335,8 @@ This is the common approach %\citep[e.g.][]{Hausammann2019}
 when computing star formation histories of galaxies, and it is observationally motivated.
 In fact the star formation history of an observed galaxy is inferred from the photometry and spectrum of the detected starlight.
 
-However, the large amount of star particles lost during the orbit, leads to a large underestimation (of a maximum of 30\% for the most recent bins especially on low mass galaxies on radial orbits) of what has actually happened during the galaxy journey around the cluster.
+However, the star particles lost during the orbit (\ie{} going out of the Moving Box), leads to an underestimation (of a maximum of 30\% for the most recent bins especially on low mass galaxies on radial orbits) of what has actually happened during the galaxy journey around the cluster.
+This is especially true for star particles formed in the tail of the infalling galaxies: these particles at the time of creation have the same velocity as the stripped gas, which makes them travel away from the simulation box.
 The method of counting individual star particles newly born is therefore employed.
 The choice of a high frequency snapshot cadence plays a fundamental role to this end.
 }.
@@ -349,9 +350,9 @@ Star formation flickers on and off inside the gaseous tails as gas clumps are ab
 This result supports the idea that the jellyfish phenomenon is a relatively short transitory phase of the galaxy along its orbit.
 
 In the three panels of Figure~\ref{fig:sf_location}, three representative galaxies are shown in increasing order of mass.
-For the least massive galaxy (simulation ID 71), as confirmed in Figure~\ref{fig:cold_gas}, no stars are formed after pericenter (red markers) because the cold gas is completely stripped by ram-pressure.
+For the least massive galaxy (simulation~ID~71), as confirmed in Figure~\ref{fig:cold_gas}, no stars are formed after pericenter (red markers) because the cold gas is completely stripped by ram-pressure.
 However, during the stripping phase new star particles appear in the gaseous tail.
-For the intermediate mass galaxy (simulation ID 69), in the radial orbits, the behaviour is similar to simulation ID 71.
+For the intermediate mass galaxy (simulation~ID~69), in the radial orbits, the behaviour is similar to simulation ID 71.
 Also, a front of newly born star is formed in the center (see panel $69$p$50$) as the gas is compressed and pushed upwards.
 For the more circular orbits, stars are continuously formed in the center.
 This is a behaviour similar to the most massive galaxy, simulation ID 41, where clumps of gas are detached only in radial orbits.
