@@ -670,7 +670,9 @@ A slice of the glass unit cube is then taken in such a way that its depth is
 \begin{equation}
 \frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},
 \end{equation}
-and width and length are both $\sqrt[3]{\xi}$. The density and the temperature of the new particles are set according to the instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state (\cf{} paragraph \ref{par:new_eos}).
+and width and length are both $\sqrt[3]{\xi}$.
+% TODO add the consideration that the glass can be extended in multiple directions.
+The density and the temperature of the new particles are set according to the instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state (\cf{} paragraph \ref{par:new_eos}).
 By construction the new particles have velocity $\norm{\Vp}$ directed towards the local moving box axes $+y$.
 
 If a particle of any kind gets closer than $L/100$ from the rear edge of the box, it gets deleted.
@@ -678,7 +680,8 @@ The lateral edges of the box are periodic for gas particles, to keep a constant 
 This process has been fine tuned and extensively tested by \citet{Nichols2015} and \citet{Hausammann2019}.
 
 % It's worthwhile noting that the implementation the deletion or creation of particles in distributed code as the \textsc{Gadget-2} is not a trivial task.
-% The arrays representing the particles undergo this kind of algorithm.
+% In general for a massively parallel code, it is not optimal to have to rearrange because of cache misses and interruption to the flow of the parallel processors because of additional message passing.
+% The arrays representing the particles undergo an optimized kind of algorithm.
 % In the end, a rolling
 
 \section{Simulating the Fornax cluster environment}
