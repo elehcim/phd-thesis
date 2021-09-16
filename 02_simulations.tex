@@ -677,7 +677,8 @@ By construction the new particles have velocity $\norm{\Vp}$ directed towards th
 
 If a particle of any kind gets closer than $L/100$ from the rear edge of the box, it gets deleted.
 The lateral edges of the box are periodic for gas particles, to keep a constant flow around the galaxy, but dark matter or stellar particles are removed if closer than $L/500$ from any lateral edge of the box.
-This process has been fine tuned and extensively tested by \citet{Nichols2015} and \citet{Hausammann2019}.
+This process was introduced by \citet{Nichols2015} and \citet{Hausammann2019} to avoid the spurious build-up of particles at the edges of the box.
+Using the same parameters we checked that no such build up occurred in our simulations, and that gas, stars and dark matter flows smoothly out of the box.
 
 % It's worthwhile noting that the implementation the deletion or creation of particles in distributed code as the \textsc{Gadget-2} is not a trivial task.
 % In general for a massively parallel code, it is not optimal to have to rearrange because of cache misses and interruption to the flow of the parallel processors because of additional message passing.
