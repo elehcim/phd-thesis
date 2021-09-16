@@ -2,18 +2,20 @@
 
 \chapter{Conclusions and future work}
 \label{ch:conclusions}
-We sum up here the main conclusions of the research carried out in this PhD effort, and we briefly give an overview of the ongoing research projects.\\[5ex]
-
+We sum up here the main conclusions of the research carried out in this PhD effort, and we briefly give an overview of the ongoing research projects.\\[1ex]
 
 \section{Conclusions}
 Relative to the scientific questions stated in Section~\ref{sec:motivations}, we can outline the following conclusions:
 
 \begin{itemize}
-  \item we applied for the first time the Moving Box technique (see Section~\ref{sec:MovingBox}) to a galaxy-cluster setup, being able to simulate gas-rich realistic late-type galaxies falling into a Fornax-like cluster (Chapter~\ref{ch:simulations});
-  \item analyzing the results of the simulations we found that the jellyfish phenomenon is a relatively short transitory phase of the galaxy along its orbit, and its likely a precursor of the transformation of a dwarf galaxy into an UDG (Chapter~\ref{ch:sim_results}).
-  A catalogue of results of simulations can be found online: \url{http://moria-fornax.herokuapp.com/};
-  \item we were able to propose an estimate of the the most likely position of an NGC~1427A-like galaxy in front of the cluster center, and its most likely flight direction (Chapter~\ref{ch:ngc1427a});
-  \item we contributed to the development of novel low-dimensional manifold extraction technique from cloud points and applied the method to the analysis of the tails of a simulated jellyfish galaxy (Chapter~\ref{ch:manifolds}).
+  \item I implemented the Moving Box technique in the existing N-body/SPH code used to simulate dwarf galaxies in isolation.
+  We applied for the first time this technique (see Section~\ref{sec:MovingBox}) to a galaxy-cluster setup, being able to simulate gas-rich realistic late-type galaxies falling into a Fornax-like cluster (Chapter~\ref{ch:simulations});
+  \item analyzing the results of the simulations I found that the jellyfish phenomenon is a relatively short transitory phase of the galaxy along its orbit, and its likely a precursor of the transformation of a dwarf galaxy into an UDG (Chapter~\ref{ch:sim_results}).\\
+  I created a catalogue of results of simulations that can be found online: \url{http://moria-fornax.herokuapp.com/};
+  \item I was able to propose an estimate of the the most likely position of an NGC~1427A-like galaxy in front of the cluster center, and its most likely flight direction (Chapter~\ref{ch:ngc1427a}).
+  Based on the idea that gaseous and stellar tails are impacted differently by environmental processes, using the simulation setup developed I was able to reproduce the peculiar morphology of NGC~1427A;
+  \item I contributed to the development of novel low-dimensional manifold extraction technique from cloud points and applied the method to the analysis of the tails of a simulated jellyfish galaxy (Chapter~\ref{ch:manifolds}). My direct contributions to the work are the idea of analysis of jellyfish tails, the development of  independent code to test the manifold analysis,
+  the scientific questions driving the application of the method, supervision on the implementation, the proposal of physical quantities to be analyzed from the simulation and their physical interpretation.
 \end{itemize}
 
 \section{Ongoing research efforts}
