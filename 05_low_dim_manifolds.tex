@@ -279,7 +279,7 @@ In \citet{Canducci2021} also a ``soft" and spatially smoothed version of the dim
 %\end{figure}
 
 
-We leave once again the mathematical details to \citet{Canducci2021} for a clear and thorough exposition, and we highlight here the fundamental ideas.
+%We leave once again the mathematical details to \citet{Canducci2021} for a clear and thorough exposition, and we highlight here the fundamental ideas.
 % TODO This crawling is part of a more general technique to extract probabilistic models of filaments/manifolds and smooth the extracted filament by training a maximum likelihood.
 %TODO Difference with Disperse. We have instead a Knowledge aware starting point.
 
@@ -290,6 +290,7 @@ The goal is to create a latent space containing all the information about a dete
 %The assumed distribution in the data space is a Gaussian with the local manifold-aligned covariance matrix $\Sigma$ computed as:
 %\[...\]
 
+%As shown in \citet{Canducci2021} for a clear and thorough exposition, and we highlight here the fundamental ideas.
 The mapping $\f: \cV \to \RR^d$ from the latent space to the data space is, following \citet{Bishop1998GTMTG},
 a nonlinear model, linear in parameters.
 The latent space grid structure can be represented by an abstract undirected graph $\cG = (\cV,\cE)$, where each grid point corresponds to a vertex $v_i \in \cV$ and edges $e_{ij} \in \cE$ are connecting vertices corresponding to neighbouring grid points.
@@ -368,7 +369,7 @@ provides an interesting case of still unclear formation scenario and a generally
   \label{fig:JF_Dataset}
 \end{figure}
 
-Starting from the suite of simulations of dwarf galaxies evolving in a Fornax-like cluster environment (explained in detail in Chapter \ref{ch:simulations}), we chose a single simulated snapshot representing an irregular, gas rich galaxy, exposing an elongated star forming gaseous tail during intense ram pressure stripping (we used a snapshot at $\tau=0.97, t=12.1$~Gyr of simulation ID 69).
+Starting from the suite of simulations of dwarf galaxies evolving in a Fornax-like cluster environment (explained in detail in Chapter \ref{ch:simulations}), we chose a single simulated snapshot representing an irregular, gas rich galaxy, exposing an elongated star forming gaseous tail during intense ram pressure stripping (we used a snapshot at $\tau=0.10, t=9.17$~Gyr of simulation ID $69$p$100$, snapshot 100). % redshift 0.4
 % We want to investigate the geometry of their star forming regions.
 % The simulation is performed using a modified version of the mixed N-body/Smoothed Particle Hydrodynamics (SPH) code GADGET-2 \cite{Springel_2005, DeRijcke2013}.
 % The simulation output consists of three types of particles: Dark Matter (DM), stellar and gaseous.
@@ -384,7 +385,7 @@ Starting from the suite of simulations of dwarf galaxies evolving in a Fornax-li
 \end{figure}
 % We disregard DM and stellar particles (needed for evolution of the object, but not relevant for our analysis) and concentrate on the distribution of gas particles.
 As described in Section \ref{sec:SPH}, the computation model in SPH simulations is based on a particle formulation of hydrodynamics where each particle samples physical properties of a volume of radius $r_N$ - radius of the sphere containing $N$ neighbouring particles.
-A continuous distribution of the physical variables over the full domain is then obtained by spatial smoothing with Gaussian kernels centered on each particle \citep{1977MNRAS.181..375G}.
+A continuous distribution of the physical variables over the full domain is then obtained by spatial smoothing with Gaussian kernels centered on each particle \citep{1977MNRAS.181..375G}. %TODO spline is an approximation of the gaussian kernel.
 Associated with each gas particle are values of physical quantities such as density, temperature, pressure etc.
 
 To do this we post process the simulation obtaining for each particle the intensity of the \cii{} emission line.
@@ -459,7 +460,7 @@ These conditions are reflected in an increase of the \cii{} emission line over t
  \includegraphics[width=\textwidth]{Figures_png/Manifold2D_AGTM2_cii_Shading}
 \end{subfigure}
 \caption{1-D (a) and 2-D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
-The graphs' nodes are colored based on the value of \cii{} of the surrounding particles lying not further than $\mathrm{1~kpc}$ from the local tangent space of the manifold, weighted by the nodes' responsibilities.}
+The graphs' nodes are colored based on the value of the SPH smoothed \cii{} emission.}
 \label{fig:Man2D}
 \end{figure}
 The 2-D structure shows an overall constant \cii{} intensity whereas the region at $5 < x < 9$ presents sharply higher values.
@@ -610,7 +611,7 @@ We can iterate the whole process for every center the manifold, obtaining for ea
 \subsection{How do quantities vary along the tail manifold?}
 By considering both longitudinal profiles (defined along the tangent bundle of the manifold $\cM$, see Figure~\ref{fig:segmented_manifold})
 and radial profiles (obtained by the linear operator defined in equation~\eqref{eq:cylOperator} on point cloud $\cC$), we obtain the plots shown in Figure~\ref{fig:ManifoldLong}. % and \ref{fig:ManifoldExists}.
-They represent a 1-D manifold detected with the crawling.
+They represent a 1-D manifold detected with the crawling, the same as in Figure~\ref{fig:segmented_manifold}.
 In each panel, the vertical axis of the plot contains the radius of the cylindrical shells $r$
 and the horizontal axis the approximated geodesic distance (computed by summation of the lengths of the individual linear segments) from the head of the manifold.
 The longitudinal axis in the figure goes from the jellyfish head (corresponding to $0$~kpc) to the tail.
