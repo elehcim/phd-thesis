@@ -651,33 +651,71 @@ where $\mathbf x$ and $\mathbf v$ are position and velocity of the particle in t
 
 \subsection{Injecting and removing particles in the moving box}
 The wind of the moving box is due to particles belonging to the cluster injected with correct velocity, density and temperature in the box.
-We assume the cluster gas to have the density and pressure of the Fornax cluster as described by \citet{Paolillo2002} and in \refsec{sec:ICM}. We also assumed zero metallicity and $\alpha-$abundance.
+We assume the cluster gas to have the density and pressure of the Fornax cluster as described by \citet{Paolillo2002} and in \refsec{sec:ICM}.
+We also assumed zero metallicity and $\alpha-$abundance (which means no \Fe{} or \Mg{} content in our simulations, \cf{} Section~\ref{sec:extended_gas_physics}).
 
 The cluster gas is injected using a sort of ``cartridge'' of particles previously computed as a unit sized cubic glass structure of $N_{\text{glass}} \approx 18000$ particles.
 The glass is generated from a random distribution of particles letting them evolve in a periodic box with negative gravitational attraction (effectively being a repulsive force).
-The resulting low energy distribution of particles guarantees a low probability of injecting dense clumps of particles which would have high kinetic energy once released.
+The resulting low energy distribution of particles guarantees a low probability of injecting dense clumps of particles which may have high kinetic energy once released.
 
-At each timestep the correct amount of new particles to be injected is taken from the ``cartridge''.
-The number of particles belonging to the cluster $N_c$ would be the correct amount to fill up the entire box of size $L$ with the correct cluster density $\rho_c(r)$ at the instantaneous orbital radius $r$.
-Therefore they satisfy the relation:
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{cartridge.pdf}
+  \caption{Injection of new particles in the box from a ``cartridge" of particles in a glass.}
+  \label{fig:cartridge}
+\end{figure}
+
+At each timestep we inject new particles to the moving box with the correct cluster density $\rho_c(r)$ at the instantaneous orbital radius $r$.
+The number of particles $N_c$ needed to fill up the moving box of size $L$ with density $\rho_c(r)$ is:
 \begin{equation}
- N_c m_g = \rho_c(r) L^3.
+ N_c = \dfrac{\rho_c(r) L^3}{m_g}.
+\end{equation}
+Analogously, the total number of particles in the cubic glass $N_{\text{glass}}$ of size $l=1$ is linked to the density of the glass by the same relation:
+\begin{equation}
+  N_{\text{glass}} = \dfrac{\rho_\text{glass}\,l^3}{m_g}.
+  \label{eq:N_glass}
 \end{equation}
 
-The fraction of particles to be taken from the cartridge is then: $\xi=\dfrac{N_c}{N_{\text{glass}}}$.
-The number of particles in the glass should be chosen in order for $\xi\leq1$.
-A slice of the glass unit cube is then taken in such a way that its depth is
+At each timestep $\Delta t$ the correct amount of new particles $N_c^{\mathrm{new}}$ needed to fill the volume $V = L^2\, h = L^2 \norm{\Vp}\Delta t$ in the moving box, see Figure~\ref{fig:cartridge}, can be computed as:
 \begin{equation}
-\frac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi},
+ N_c^{\mathrm{new}} = \dfrac{\rho_c(r) V}{m_g}.
+ \label{eq:nc_new}
 \end{equation}
-and width and length are both $\sqrt[3]{\xi}$.
-% TODO add the consideration that the glass can be extended in multiple directions.
-The density and the temperature of the new particles are set according to the instantaneous radial distance of the galaxy, the pressure and energy computed using the equation of state (\cf{} paragraph \ref{par:new_eos}).
+%Similarly, the density of the glass $\rho_{\text{glass}}$ and of the cluster  can be computed with the relation:
+%\begin{equation}
+%  \rho_{\text{glass}} = \dfrac{N_\text{glass}\,l^3}{m_g}.
+%\end{equation}
+We now want to compute the volume $V'$ in the glass that corresponds to~$N_c^{\mathrm{new}}$:
+\begin{equation}
+  V' = \frac{N_c^{\mathrm{new}} \, m_g}{\rho_{\text{glass}}}.
+\label{eq:vprime}
+\end{equation}
+The particles in $V'$ will be selected, their positions scaled and then injected into the moving box.
+
+Substituting equations \eqref{eq:N_glass} and \eqref{eq:nc_new} into \eqref{eq:vprime}, we find an expression for the volume:
+\begin{equation}
+  V' = \frac{l^3 d}{L} \frac{N_c}{N_{\text{glass}}}.
+\end{equation}
+We define $\xi=\dfrac{N_c}{N_{\text{glass}}}$, and we note that the number of particles in the glass should be chosen in order for $\xi<1$ for all the timesteps.
+Since $l=1$, the dimensions of $V' = x' \times y' \times z'$ are defined as:
+\begin{equation}
+  \left\{
+  \begin{array}{ll}
+    x' &= \sqrt[3]{\xi} \\[1ex]
+    y' &= \dfrac{\norm{\Vp}\Delta t}{L} \sqrt[3]{\xi} \\[1ex]
+    z' &= \sqrt[3]{\xi}
+  \end{array}
+  \right.
+\end{equation}
+At the next step the new volume in the cartridge is taken starting from $y'$ of the previous timestep, so that new particles are used.
+After a considerable number of steps, when the top of the glass is reached, the process is repeated in a periodic fashion, starting to take particles again from the bottom of the cartridge.
+
+The density and the temperature of the new particles are set according to the instantaneous radial distance $r$ of the galaxy in orbit, the pressure and energy computed using the equation of state (\cf{} paragraph \ref{par:new_eos}).
 By construction the new particles have velocity $\norm{\Vp}$ directed towards the local moving box axes $+y$.
 
 If a particle of any kind gets closer than $L/100$ from the rear edge of the box, it gets deleted.
 The lateral edges of the box are periodic for gas particles, to keep a constant flow around the galaxy, but dark matter or stellar particles are removed if closer than $L/500$ from any lateral edge of the box.
-This process was introduced by \citet{Nichols2015} and \citet{Hausammann2019} to avoid the spurious build-up of particles at the edges of the box.
+This ``death zone" on some edges of the box was introduced by \citet{Nichols2015} and \citet{Hausammann2019} to avoid the spurious build-up of particles at the edges of the box.
 Using the same parameters we checked that no such build up occurred in our simulations, and that gas, stars and dark matter flows smoothly out of the box.
 
 % It's worthwhile noting that the implementation the deletion or creation of particles in distributed code as the \textsc{Gadget-2} is not a trivial task.
@@ -701,7 +739,7 @@ with scale length $R_s = 120$ kpc and $c=8.15$ derived from scaling relations in
     c \simeq 20 \left(\frac{M}{10^{11} \text{\Msun{}} }\right)^{-0.13}, \qquad
     R_s = \frac 1 c \left(\frac{M}{\frac 4 3 \pi 200 \rho_c}\right)^\frac 1 3,
 \end{equation}
-with $\rho_c = 127.3$~\Msun{}~kpc$^{-3}$ the critical density of the universe at $z=0$ for a cosmology with Hubble constant $h=0.67$ and $\Omega_m = 0.31$ \citep{Planck2015}.
+with $\rho_c = 127.3$~\Msun{}~kpc$^{-3}$ the critical density of the universe at $z=0$ for a cosmology with Hubble constant $h=0.67$ and $\Omega_m = 0.31$ \citep{Planck2015}.\\
 The cluster virial radius of the model is $R_{\mathrm{vir}} = c R_s = 978$~kpc.
 
 \subsubsection{Intra-Cluster Medium (ICM)} \label{sec:ICM}
