@@ -251,7 +251,7 @@ where $q=r/h$ is the distance normalized by the smoothing length.
 To apply the interpolation \eqref{eq:sph_interpolation} to a fluid we proceed as follows:
 \begin{equation}
 A_I(\vect{r}) = \int \frac{A(\vect{r}')\rho(\vect{r}')}{\rho(\vect{r}')} W(\norm{\vect{r} - \vect{r}'},h)\, \dd\vect{r}' \approx
-\sum_i m_i\frac{A_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h)
+\sum_i A_i\frac{m_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h)
 \label{eq:sph_approx}
 \end{equation}
 where we used the approximation that an element of mass $m = \rho(\vect{r}') \dd\vect{r}'$.
