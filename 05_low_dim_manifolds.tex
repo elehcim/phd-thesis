@@ -447,7 +447,7 @@ with $N$ the total number of particles in the dataset.
 
 It is worth noting that this method (the classical SPH) is different from what is employed in \citet{Canducci2021}, where a probabilistic approach with a mixture of locally manifold-aligned trivariate gaussians is used to retrieve the intensity of the nodes.
 Their intensity is modulated by the weighted mean of \cii{} values $\mathcal{I}^{\text{\cii{}}}_i$ of particles $\vect{t}_i$ in the manifold, where the weights are the posterior probabilities of the node $v_j$, given particles $\vect{t}_i$.
-The fact that the gaussians themselves are oriented as the manifold may highlight zones where the intensity is manifold aligned, like in the edges of the hole found in the 2-D manifold.
+The fact that the gaussians themselves are oriented on the manifolds may highlight areas of the dataset where the intensity is more manifold aligned, like in the edges of the hole found in the 2-D manifold.
 This is indeed at the basis of manifold learning: it is assumed that data points are the expression of an underlying manifold aligned distribution.
 
 %\begin{figure}[ht]
