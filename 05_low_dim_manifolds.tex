@@ -429,45 +429,74 @@ in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and 
 \end{figure}
 
 Figure \ref{fig:curvatureJF}, left panel shows two regions of high curvature, for the 2-dimensional manifold presented in Figure \ref{fig:JF_Res}, right panel.
-The far right region of intense curvature, is located towards the end of the tail, where the gas motion is more chaotic due to the motion of the galaxy through the halo of the galaxy cluster. However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of Figure \ref{fig:curvatureJF}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants.
+The far right region of intense curvature, is located towards the end of the tail, where it's expected a turbulent chaotic behaviour of the gas due to the motion of the galaxy through the halo of the galaxy cluster.
+However, the spherical region on the left side of the manifold, presenting a coherent curvature throughout its elongation (top right corner of Figure \ref{fig:curvatureJF}) suggests, as a possible cause of formation, an isotropic expansion, typical of Supernova remnants.
 
-We performed the SAF filtering dimensionality analysis and manifold crawling, and for an identified manifold we show in Figure \ref{subfig:1dManGraph} the embedded vertices
+We performed the SAF filtering, dimensionality analysis and manifold crawling, and for the two identified manifolds we show in Figure \ref{fig:ManCII} the embedded vertices
 $\bar{\vect{v}}_j$ of the graph $\bar{\cal G}$
-for the stream model.
-The color codes are the intensity modulated by the weighted mean of \cii{} values $\mathcal{I}^{\text{\cii{}}}_i$ of particles $\vect{t}_i$ in the manifold, using the SPH smoothing kernel $W$ defined in equation \eqref{eq:cubicspline} in Section \ref{sec:density_estimation}:
+for both the stream and the 2-D manifold.
+The vertices are color coded with the SPH interpolation of the \cii{} intensity field.
+That is the average of the \cii{} intensity of the particles at the nodes' positions $\bar{\vect{v}}_j$ weighted with the SPH smoothing kernel $W$ defined in equation \eqref{eq:cubicspline} in Section \ref{sec:density_estimation}:
 %\begin{equation}\label{eq:WeightedVar}
 %    \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_i,\zeta_j\Sigma_j,\vect{W}_j) ~ \mathcal{I}^{\mathrm{[CII]}}_i}{\sum_{k=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_k,\zeta_j\Sigma_j,\vect{W}_j)}
 %\end{equation}
 \begin{equation}\label{eq:WeightedVar}
   \langle\mathcal{I}^{\text{\cii{}}}_j\rangle = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (\norm{\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/\rho_i }{\sum_{i=1}^{N} W ({\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/ \rho_i}
 \end{equation}
-Analogous diagram for the 2-D structure is presented in Figure \ref{subfig:2dManGraph}.
+with $N$ the total number of particles in the dataset.
 
-In the 1-D case, the manifold is located at the outskirts of the Jellyfish (Figure~\ref{fig:JF_Dataset}, left panel),
-meaning that it is more exposed during the evolution to the surrounding gas of the galaxy cluster.
-This implies that the manifold is subject to a higher ram pressure than the tail, leading to a higher density and lower temperature of the gas - necessary conditions for the formation of new stars.
-These conditions are reflected in an increase of the \cii{} emission line over the middle section of the manifold, $3 < x < 6$, thus informing us of an enhanced star formation rate, compared to the rest of the manifold.
+It is worth noting that this method (the classical SPH) is different from what is employed in \citet{Canducci2021}, where a probabilistic approach with a mixture of locally manifold-aligned trivariate gaussians is used to retrieve the intensity of the nodes.
+Their intensity is modulated by the weighted mean of \cii{} values $\mathcal{I}^{\text{\cii{}}}_i$ of particles $\vect{t}_i$ in the manifold, where the weights are the posterior probabilities of the node $v_j$, given particles $\vect{t}_i$.
+The fact that the gaussians themselves are oriented as the manifold may highlight zones where the intensity is manifold aligned, like in the edges of the hole found in the 2-D manifold.
+This is indeed at the basis of manifold learning: it is assumed that data points are the expression of an underlying manifold aligned distribution.
+
+%\begin{figure}[ht]
+%  \centering
+%  \begin{subfigure}[t]{0.48\textwidth}
+%    \caption{}
+%    \label{subfig:1dManGraph_prob}
+%    \includegraphics[width=\textwidth]{Figures_png/Manifold1D_AGTM2_cii_Shading}
+%  \end{subfigure}
+%  \begin{subfigure}[t]{0.49\textwidth}
+%    \caption{}
+%    \label{subfig:2dManGraph_prob}
+%    \includegraphics[width=\textwidth]{Figures_png/Manifold2D_AGTM2_cii_Shading}
+%  \end{subfigure}
+%  \caption{1-D (a) and 2-D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
+%    The graphs' nodes are colored based on the value of \cii{} of all the particles, weighted by the nodes’ responsibilities.}
+%  \label{fig:Man2D_prob}
+%\end{figure}
+
 \begin{figure}[ht]
 \centering
-\begin{subfigure}[t]{0.48\textwidth}
+\begin{subfigure}[t]{0.44\textwidth}
  \caption{}
  \label{subfig:1dManGraph}
- \includegraphics[width=\textwidth]{Figures_png/Manifold1D_AGTM2_cii_Shading}
+ \includegraphics[width=\textwidth]{Figures_png/Manifolds_69p100s100/my_plots/Manifold_1d_SPHWeightedProperties_NoGalaxy_Correct}
 \end{subfigure}
-\begin{subfigure}[t]{0.49\textwidth}
+\begin{subfigure}[t]{0.53\textwidth}
  \caption{}
  \label{subfig:2dManGraph}
- \includegraphics[width=\textwidth]{Figures_png/Manifold2D_AGTM2_cii_Shading}
+ \includegraphics[width=\textwidth]{Figures_png/Manifolds_69p100s100/my_plots/Manifold_2d_SPHWeightedProperties_NoGalaxy_Correct}
 \end{subfigure}
 \caption{1-D (a) and 2-D (b) manifolds extracted from the data set in Figure~\ref{fig:JF_Dataset}.
-The graphs' nodes are colored based on the value of the SPH smoothed \cii{} emission.}
-\label{fig:Man2D}
+  The graphs' nodes are colored based on the value of the SPH smoothed \cii{} emission.}
+\label{fig:ManCII}
 \end{figure}
-The 2-D structure shows an overall constant \cii{} intensity whereas the region at $5 < x < 9$ presents sharply higher values.
-The shape of this region is particularly interesting. It is, in fact, a hole with an almost spherical section.
-This structure detected with Manifold Crawling, with potent \cii{} emission at its boundary, is the remnant of a supernova explosion.
+
+
+
+In the 1-D case, the manifold is located at the outskirts of the Jellyfish (Figure~\ref{fig:JF_Res}, left panel),
+meaning that it is more exposed to the surrounding gas of the galaxy cluster.
+This implies that the manifold is subject to a higher ram pressure than the tail, leading to a higher density and lower temperature of the gas - necessary conditions for the formation of new stars.
+These conditions are reflected in an increase of the \cii{} emission line over the end section of the manifold, as shown in Figure~\ref{subfig:1dManGraph} at $3 < y < 7$, where there are clumps of high \cii{} emission, thus informing us of an enhanced star formation rate, compared to the rest of the manifold.
+
+The 2-D structure in Figure~\ref{subfig:2dManGraph} shows an overall constant \cii{} intensity whereas the region at $6 < y < 10$ presents clumps of higher values.
+The shape of this region is particularly interesting.
+It is, in fact, a hole with an almost spherical section.
+This structure detected with Manifold Crawling, with clumps of \cii{} emission at its boundary, is the remnant of a supernova explosion.
 Due to their high mass, young stars burn efficiently and relatively fast all their gas reservoir, terminating their life as supernovae and injecting energy and debris in the surroundings.
-This process is modeled in the simulation via an injection of $10^{51}$~erg of energy for a short amount of time and a transfer of metallic elements (in the case of our simulation, the model tracks iron and magnesium, \cite{DeRijcke2013}) to the neighbouring gas particles.
+This process is modeled in the simulation via an injection of $10^{51}$~erg of energy for a short amount of time and a transfer of metallic elements \citep[in the case of our simulations, the model tracks iron and magnesium,][] {DeRijcke2013} to the neighbouring gas particles.
 The metal-enriched gas particles (like in the surrounding of a supernova explosion) are then able to cool down more efficiently and show strong \cii{} emission line.
 
 Our methodology provides a strong tool for extracting such an information from the morphology of gas particles and can be used to effectively calibrate feedback models in simulations.
