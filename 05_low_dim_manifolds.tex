@@ -403,20 +403,20 @@ Several low dimensional structures are clearly visible, for example the long 1-D
 Visually inspecting the data set, we chose a radius $r~=~1~\mathrm{kpc}$ as the characteristic scale parameter for the manifolds (shown as the small sphere in Figure \ref{fig:JF_Dataset}).
 The chosen radius is in agreement with the spatial resolution of recent observations.
 The parameter $r$ is fixed for preprocessing through diffusion and filtering (section \ref{sec:SAF}), local dimensionality estimation (section \ref{sec:D_Index}) and manifold crawling (section \ref{sec:Crawling}).
+We highlight that this parameter is not used to smooth, and is not related to the smoothing lengths coming from SPH.
 % The other parameters are set as in the synthetic data experiments of section \ref{subsec:MulitCrawl}: $\epsilon=1$, $\eta=0.75$ and $\beta=0.4$.
 
 As mentioned earlier, the main body of the data set can be visually divided into head and tail parts.
-However, from the topological standpoint there is no justification for clear segregation into 1-D manifolds in the tail and 2-D manifolds in the head.
-Dimensionality index estimation clearly identified 1-D structures in the tail, such as the elongated stream of particles starting from the head.
+However, from the topological standpoint there is no justification for clear segregation into 1-D manifolds in the tail and 2-D manifolds in the head, as one may expect naively.
+Dimensionality index estimation clearly identified 1-D structures in the tail, such as elongated streams of particles starting from the head.
 However, points in the head were also predominantly identified as 1-D, due to its complicated, intertwined filamentary structure.
 On the other hand, distribution of 2-D points was more localized in the main body of the tail.
-
 
 \section{A multi-manifold analysis of a dwarf jellyfish galaxy}\label{sec:manifold_jellyfish}
 
 Having obtained the multi-manifold probabilistic profile of the gas particles in the tail of the jellyfish galaxy,
 it is possible to perform various kinds of detailed analysis of how physical properties vary along the manifolds.
-Here we concentrate on the curvature (Figure \ref{fig:curvatureJF}), computed through the embedding (details in \citet{Canducci2021} and on the star formation potential.
+Here we concentrate on the curvature (Figure \ref{fig:curvatureJF}), computed through the embedding \citep[details in][section 3.2.1]{Canducci2021} and on the star formation potential.
 The latter is analysed by studying the the behaviour of emission line \cii{} over the 1-D and 2-D structures
 in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and (right), respectively
 - the gaseous stream of gas particles departing from the head and reaching half way through the tail and the predominant 2-D structure in the tail.
@@ -439,7 +439,7 @@ The color codes are the intensity modulated by the weighted mean of \cii{} value
 %    \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_i,\zeta_j\Sigma_j,\vect{W}_j) ~ \mathcal{I}^{\mathrm{[CII]}}_i}{\sum_{k=1}^{N_{\mathcal{M}}} p(v_j | \vect{t}_k,\zeta_j\Sigma_j,\vect{W}_j)}
 %\end{equation}
 \begin{equation}\label{eq:WeightedVar}
-  \overline{\mathcal{I}}^{\text{\cii{}}}_j = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (\norm{\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/\rho_i }{\sum_{k=1}^{N} W ({\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/ \rho_i}
+  \langle\mathcal{I}^{\text{\cii{}}}_j\rangle = \frac{\sum_{i=1}^{N} \mathcal{I}^{\text{\cii{}}}_i W (\norm{\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/\rho_i }{\sum_{i=1}^{N} W ({\vect{t}_i - \bar{\vect{v}}_j}, h_i) m_i/ \rho_i}
 \end{equation}
 Analogous diagram for the 2-D structure is presented in Figure \ref{subfig:2dManGraph}.
 
