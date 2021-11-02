@@ -51,7 +51,7 @@ where N is the number of star particles in the snapshot and $(x_i, y_i)$ their p
 Our tests have been carried out with a spatial grid of $80\times 80$ spaxels.
 
 Given the amount of frequency channels in the spectral library, we had to carefully optimize the routine to perform SPH projected interpolation.
-In fact, the code presented in the repository \citet{simifucube} uses some \textsc{pynbody} \citep{Pontzen2013} routines modified and optimized for spectral data, and heavily uses the \textsc{SpectralCube} tool \citep{SpectralCube}.
+In fact, the code presented in the repository \textsc{simifucube} \citep{simifucube} uses some \textsc{pynbody} \citep{Pontzen2013} routines modified and optimized for spectral data, and heavily uses the \textsc{SpectralCube} tool \citep{SpectralCube}.
 
 We then convolve each spaxel with the MUSE line spread function (LSF) \citep[$F_{\mathrm{udf}10}$, eq. (8) in][]{Bacon2017}.
 We finally add to the the datacube value a zero centered normal distributed contamination $\mathcal{N}$ with dispersion $\sigma$:

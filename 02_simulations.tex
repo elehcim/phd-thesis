@@ -6,7 +6,7 @@
 Numerical simulations have emerged as a new tool to investigate nature, alongside theory and experiments.
 This is particularly valid for astronomy where, unlike laboratory-based disciplines, astronomers may not exert full control over their study objects \citep{Heng2014}.
 
-Computer simulations are essentially a tools to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2015}.
+Computer simulations are essentially a tool to solve complex systems of equations which are intractable with analytic techniques, or only tractable with very coarse level of approximation \citep{Springel2015}.
 This allows an unprecedentedly detailed exploration of the consequences of assumed models for physical systems.
 In this sense, the reproduction of observations through computer simulations is a way to validate scientific hypotheses.
 The main mathematical model used in galaxy simulations is the fluid model, a branch of continuum mechanics which deals with materials represented as continuous mass as opposed to discrete particles.
@@ -22,13 +22,13 @@ Similarly, the cross section of stars is small compared to galactic scales, and 
 Stars, though, affect the gas by pumping energy and metals into their surroundings.
 Dark matter and stars are therefore sensitive only to gravity, a weak, conservative, long-range force which is caused by a generally smooth potential.
 
-On the other hand, as we shall see, gas is collisional and its behaviour at any point is affected by short-range interactions, whose modeling requires other assumptions (see below Sections \ref{sec:extended_gas_physics} and \ref{sec:dwarf_models}).
+On the other hand, as we shall see, gas is collisional and its behaviour at any point is affected by short-range interactions, whose modeling requires other assumptions (see below Sections  \ref{sec:dwarf_models} and \ref{sec:extended_gas_physics}).
 
 \subsection{Boltzmann Equation - Equations of motion}
 The Boltzmann Equation is the general equation which governs the behaviour of a fluid.
 From it, the equations of motions can be derived and solved to assess the evolution through time of the fluid.
 
-For simplicity, in this section we assume a single-species fluid, a generalization to multiple species being straightforward.
+For simplicity, in this section we assume a single-specie fluid, a generalization to multiple species being straightforward.
 For each point of the fluid we would like to know its position and velocity.
 Following a statistical approach, at any given time $t$ we can write the distribution function
 \begin{equation}
@@ -105,7 +105,7 @@ These definitions implicitly fix an equation of state
 \label{eq:simple_eos}
 p = \frac 2 3 \rho \energy.
 \end{equation}
-Usually a more general equation of state is assumed $p = (\gamma - 1) \rho \energy$.
+Usually a more general equation of state is assumed $p = (\gamma - 1) \rho \energy$, with $\gamma$ the adiabatic index.
 For a monoatomic gas: $\gamma = \dfrac{5}{3}$, so equation \eqref{eq:simple_eos} is returned.
 
 Also, the internal energy is related to the temperature via the Boltzmann constants $k_B$:
@@ -135,14 +135,14 @@ The gravitational potential $\vect a = - \grad \Phi$ can therefore be found thro
 
 \section{N-Body systems}
 The direct numerical solution of the Boltzmann equation, a non-linear PDE in seven dimensions, is not feasible.
-It is interesting to note that in this description the particles have basically completely vanished and have been replaced with a continuum fluid description.
+It is interesting to note that in this description the molecules have basically completely vanished and have been replaced with a continuum fluid description.
 In order to solve the Boltzmann equation (or equivalently the Euler's equations), we represent the fluid by $N$ mass elements (particles), that are conceptually different from the microscopic particles (molecules) constituting the fluid.
 The main idea is to discretize the equations above introducing particles.
 These are therefore fiducial macro particles that sample the phase-space in a Monte-Carlo fashion \citep{Springel2015}.
 Thus, in practice an $N$-body method is a tool for solving the Boltzmann equation.
 % In this way then it reduces to solving the gravitational interactions for this $N$-body system \citep{Dehnem2011}.
 
-The equation of motion for particles, following equations \eqref{eq:poisson} can be written as follows:
+The equatiosn of motion for particles, following equations \eqref{eq:poisson} can be written as follows:
 \begin{equation}
  \vect a_i = -\nabla_i \Phi(\vect x_i),
 \end{equation}
@@ -158,10 +158,10 @@ Also, if two particles get very close their gravitational attraction will explod
 The softening length is also called force resolution because we cannot resolve gravitational forces below that distance.
 The value of the gravitational resolution is important when trying to follow the collapse of dense gas clouds where star formation is about to occur, as we shall see in Section~\ref{sec:star_formation}.
 In our simulations we use a softening length of $\epsilon=30$~pc.
-An estimate of this smoothing length is obtained by requiring that in the simulated gas clouds with the highest density, $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
+An estimate of this softening length is obtained by requiring that in the simulated gas clouds with the highest density, $\epsilon$ is about equal to the average distance between the gas particles \citep{Schroyen2013}. % Mail Sven 24/11/2017
 Given that in the densest gas clouds star formation occurs at a density of $n\approx100$~amu/cm$^{3}$, when a galaxy is simulated with gas particles of $4000$~\Msun{}, the average distance between the particles in that gas cloud will be of the order of $11$~pc.
 
-As \citet{Bate1997} and \citet{Springel2005} discuss, in order for SPH to produce the correct results in problems involving self-gravity, the hydrodynamic smoothing length and gravitational softening length must always be less than the local \emph{Jeans length} (see \refsec{sec:star_formation}). However, a gravitational softening much smaller than the SPH smoothing length can lead to artificial convergence of SPH particles.
+As \citet{Bate1997} and \citet{Springel2005} discuss, in order for Smooth-ed Particle Hydrodynamics (SPH, \cf{} next Section \ref{sec:SPH}) to produce the correct results in problems involving self-gravity, the hydrodynamic smoothing length and gravitational softening length must always be less than the local \emph{Jeans length} (see \refsec{sec:star_formation}). However, a gravitational softening much smaller than the SPH smoothing length can lead to artificial convergence of SPH particles.
 This can be avoided if the force resolution is greater than the hydrodynamical resolution at the scale of high density clumps.
 
 \section{Smoothed Particles Hydrodynamics}\label{sec:SPH}
@@ -182,7 +182,7 @@ It is interesting to see how a certain gain in accuracy is translated in an incr
 %\paragraph{Origin of SPH}
 SPH has been originally developed as a \emph{probabilistic} particle method for simulating astrophysical problems \citep{Lucy1977, Gingold1977, Monaghan2005}\footnote{In a lecture given at Monash University in 2018 \url{https://youtu.be/tAXHCAEgSuE}, prof. Monaghan retraces the origin of the SPH method, recalling that the inspiration for the particle methods to estimate density in fluids comes from David George Kendall, a statistician he collaborated with in Cambridge.}.
 
-The main idea of the SPH formalism is to write the equations of motion of the fluid for the sampling particles, solve them and then computed physical quantities in every point of the domain trough the so called \emph{SPH interpolation}.
+The main idea of the SPH formalism is to write the equations of motion of the fluid for the sampling particles, solve them and then compute physical quantities in every point of the domain trough the so called \emph{SPH interpolation}.
 
 This kind of interpolation is the same as the one used for the calculation of probability distributions from samples \citep{parzen1962estimation, 5178637}.
 Given a kernel $W(x, h)$ function of the spatial coordinate $x$ with smoothing length $h$, the interpolation $A_I(\vect{r})$ of a quantity $A(\vect{r})$ is given by:
@@ -198,7 +198,7 @@ Any function which follow these two assumptions can be used as the smoothing ker
 
 %If we choose $W=\delta$, a delta function, then $A_I=A$.
 %In practice, the kernels tend to the delta function as the smoothing length $h$ goes to zero.
-An example of the kernel is a Gaussian:
+An example of a kernel is a Gaussian:
 \begin{equation}
   W(x, h) = \frac{1}{h\sqrt{\pi}} e^{-x^2/h^2}
 \end{equation}
@@ -251,11 +251,12 @@ where $q=r/h$ is the distance normalized by the smoothing length.
 To apply the interpolation \eqref{eq:sph_interpolation} to a fluid we proceed as follows:
 \begin{equation}
 A_I(\vect{r}) = \int \frac{A(\vect{r}')\rho(\vect{r}')}{\rho(\vect{r}')} W(\norm{\vect{r} - \vect{r}'},h)\, \dd\vect{r}' \approx
-\sum_i A_i\frac{m_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h)
+\sum_i A_i\frac{m_i}{\rho_i} W(\norm{\vect{r} - \vect{r}_i},h_i)
 \label{eq:sph_approx}
 \end{equation}
 where we used the approximation that an element of mass $m = \rho(\vect{r}') \dd\vect{r}'$.
 The summation is on all the particles in the domain.
+% TODO h_i. Why each particle has its own smoothing length
 That's why a finite support kernel is useful, so that a limited amount of particles is needed to compute the interpolation.
 It's important to note that in eq. \eqref{eq:sph_approx}, two approximations are at play:
 the first is the fact that the result is $A_I(\vect{r}) \approx A(\vect{r})$ given that the kernel~$W$ only approximates a delta function; the second being that the integral has being substituted with a finite summation.
@@ -263,7 +264,7 @@ the first is the fact that the result is $A_I(\vect{r}) \approx A(\vect{r})$ giv
 
 In case of the density the interpolation simplifies to:
 \begin{equation}
-  \rho_I(\vect{r}) = \sum_i m_i W(\norm{\vect{r} - \vect{r}_i},h).
+  \rho_I(\vect{r}) = \sum_i m_i W(\norm{\vect{r} - \vect{r}_i},h_i).
 \end{equation}
 
 \paragraph{Projected interpolation}
@@ -271,7 +272,7 @@ In order to analyze the results of an SPH simulation, it is common to produce ma
 To do so the only extra step to perform is the integration of the smoothing kernel along the line of sight.
 If we are viewing along $z$, the projected kernel $\Tilde W$ is :
 \begin{multline}
-  \tilde W  = \int W \left(\norm{\vect{r} - \vect{r}_i},h \right) \dd z' =\\
+  \tilde W  = \int W \left(\norm{\vect{r} - \vect{r}_i},h_i \right) \dd z' =\\
    \int W \left(\sqrt{(x-x_i)^2+(y-y_i)^2+(z-z_i)^2}, h_i \right) \dd z' %=\\
 %    \tilde{W} \left(\sqrt{(x-x_i)^2+(y-y_i)^2}, h_i \right).
 \label{eq:projected_kernel}
@@ -330,7 +331,7 @@ From this, we can solve the simple differential equation:
 \begin{equation}
 \rho_\star = 1 - e^{c_\star \frac{t}{t_g}}.
 \end{equation}
-We can then use a stochastic method to determine if an eligible gas particle has to be turned in a gas particle.
+We can then use a stochastic method to determine if an eligible gas particle has to be turned into a gas particle.
 The Monte Carlo threshold probability of star formation event:
 \begin{equation}
 P_\star = 1-\exp(-\frac{c_\star \delta t}{t_g}),
@@ -346,13 +347,13 @@ The Jeans length is defined as \citep{Jeans1902}:
 \begin{equation}
  \lambda_J = c_s\sqrt{\frac{\pi}{G \rho}},
 \end{equation}
-where $c_s$ is the local sound speed $c_s=\sqrt{k_BT/\mean{\mu}}$ and $\mean{\mu}$ is the mean molecular mass and $\rho$ and $T$ the local density and temperature respectively.
+where $c_s$ is the local sound speed $c_s=\sqrt{\gamma k_BT/\mean{\mu}}$ with $\mean{\mu}$ the mean molecular mass and $\rho$ and $T$ the local density and temperature respectively.
 
-Following Jeans criterion, smaller scales are stable but given that is Jeans stable, but given that cooling by radiation scales quadratically with the density, while the pressure only scales linearly, the cloud will effectively become unstable.
+Following Jeans criterion, smaller scales are stable, but given that cooling by radiation scales quadratically with the density, while the pressure only scales linearly, the cloud will effectively become unstable.
 The contraction won't give rise to enough pressure to counteract the gravitational collapse, thus the fragmentation.
 This highlight the importance of having cooling curves which can be used at high density, and low temperature \citep{DeRijcke2013}.
 
-Also, \citet{Bate1997} show that SPH produces in problems involving self-gravity, numerical results are only trustworthy so long as the minimum resolvable mass is always less than a Jeans mass (which is just the mass contained in a sphere of diameter $\lambda_J$).
+Also, \citet{Bate1997} show that SPH, in problems involving self-gravity, produces numerical results which are only trustworthy so long as the minimum resolvable mass is always less than a Jeans mass (which is just the mass contained in a sphere of diameter $\lambda_J$).
 Previous versions of the code used directly the Jeans length as a criterion for dynamical instability.
 But since this requires the comparison between the dynamical time (or free-fall time) of collapse and the local sound crossing time ($t_s = h/c_s$ where $h$ is the smoothing length), the criterion introduced a dependency on the number of particles in the simulations, becoming not practical \citep{Valcke2008, Stinson2006}. That's why a fixed high density threshold has been used.
 
@@ -380,7 +381,7 @@ The ratio of $\alpha$-elements to iron, [$\alpha$/Fe] (in our case we use magnes
 
 % The ratio of alpha-elements to iron, [alpha/Fe], is commonly used to trace the star-formation timescale in a system, because it is sensitive to the ratio of SNII (massive stars) to SNIa (intermediate mass binary systems with mass transfer) that have occurred in the past. SNIa have a longer time scale than SNII and as soon as they start to contribute they dominate the iron enrichment and [alpha/Fe] inevitably decreases. After that, no SFH can ever again result in enhanced [alpha/Fe], unless coupled with galactic winds removing only the SNIa ejecta and not that of SNII. Tolstoy2009
 
-A second type type of feedback is the stellar wind from young O and B stars.
+A second type of feedback is the stellar wind from young O and B stars.
 Stellar wind is taken into account as a uniformly spread energy injection of $10^{50}$ erg in the ISM for $31$~Myr, i.e. from the birth of the star particle until the last massive star ($m = 8$~\Msun) turns \snii{}.
 
 
@@ -608,7 +609,7 @@ In practice, the $64$ particles with lower total energy (kinetic plus potential)
 The goal of the ad hoc acceleration is to move the box to follow the center of the galaxy and so compensate the drift of these particles from the pivot.
 In the original implementation, $\Ap^{hoc}$ is put to zero as soon as the velocity of the central low energy particles is again directed towards the pivot point (i.e. $(\vect X_{64}-\vect X_\mathrm p) \vdot (\vect{V}_{64} - \Vp) < 0$).
 This understandably is done to minimize the total impulse due to the ad hoc term.
-But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because of the particle acceleration in equation \eqref{eq:mb_acceleration}.
+But this sudden acceleration removal can cause active particles during the numerical time integration to be kicked away unnaturally, because of the first term of the particles acceleration in equation \eqref{eq:mb_acceleration}.
 
 An improvement in our implementation of the moving-box method is the use of a critically damped oscillator for the \emph{ad~hoc} acceleration.
 \begin{equation}
@@ -617,7 +618,7 @@ An improvement in our implementation of the moving-box method is the use of a cr
 where $\omega_0$ is the undamped angular frequency of the oscillator, and $\zeta$ the damping ratio.
 
 We start by noting empirically that for our typical galaxy size a sufficient acceleration requires that $\omega_n^2\approx 10$ Gyr$^{-2}$.
-Given that we want to dump the oscillation as fast as possible. We use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
+Given that we want to dump the oscillation as fast as possible, we use a critically damped oscillator  for which $\zeta = 1$. Therefore the viscous coefficient $2\,\zeta\omega_0$ is simply $6.3$~Gyr$^{-1}$.
 A typical behaviour of the \emph{ad~hoc} acceleration is shown in Figure \ref{fig:adhoc}.
 
 \begin{figure}[ht]

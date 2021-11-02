@@ -11,22 +11,11 @@ Part of this work has been carried out during the planned SUNDIAL secondment at 
 
 \abstract{
 The intrinsic nature of noisy and complex data sets is often concealed in low-dimensional structures embedded in a higher dimensional space.
-%Number of methodologies have been developed to extract and represent such structures in the form of manifolds (i.e. geometric structures that locally resemble continuously deformable intervals of $\mathbb{R}^j$ \footnote{$j$ is the manifold dimensionality.
-%Mathematically, continuous deformation corresponds to homehomorphism: one-to-one continuous mapping with continuous inverse.}).
-% Usually a-priori knowledge of the manifold's intrinsic dimensionality is required.
-% Additionally, their performance can often be hampered by the presence of a significant high-dimensional noise aligned along the low-dimensional core manifold.
 In real-world applications, the data can contain several low-dimensional structures of different dimensionalities.
 We propose a framework for dimensionality estimation and reconstruction of multiple noisy manifolds embedded in a noisy environment.
-%To the best of our knowledge, this work represents the first attempt at detection and modelling
-%of a set of coexisting general noisy manifolds by uniting two aspects of multi-manifold learning:
-%the recovery and approximation of core noiseless manifolds and the construction of their probabilistic models.
-%The easy-to-understand hyper-parameters can be manipulated to obtain an emerging picture of the multi-manifold structure of the data.
-% We demonstrate the workings of the framework on two synthetic data sets, presenting challenging features for state-of-the-art techniques in Multi-Manifold learning.
-% The first data set consists of multiple sampled noisy manifolds of different intrinsic dimensionalities, such as M\"{o}bius strip, toroid and spiral arm. The second one is a topologically complex set of three interlocked toroids.
-% Given the absence of such unified methodologies in the literature, the comparison with existing techniques is organized along the two separate aspects of our approach mentioned above, namely manifold approximation and probabilistic modelling.
 The framework is then applied to a complex data set containing simulated gas volume particles from a particle simulation of a dwarf galaxy interacting with its host galaxy cluster.
 Detailed analysis of the recovered \mbox{1-D} and 2-D manifolds can help us to understand the distribution of various physical quantities in such complex systems.
-The technique allows to isolate the evolution of quantities around tails of a simulated jellyfish galaxy, so that of star formation regions and the mixing of galaxy gas and cluster gas can be studied.
+The technique allows to isolate the evolution of quantities around tails of a simulated jellyfish galaxy, so that star formation regions and the mixing of galaxy gas and cluster gas can be studied.
 }
 \section{Introduction}
 
@@ -38,29 +27,6 @@ This realisation has driven the development of a variety of Manifold Learning al
 Principal Component Analysis \citep[PCA, ][]{Pearson1901} is a well understood and widely used linear dimensionality reduction scheme.
 %\Marco{It can be considered the progenitor of Manifold Learning, where the data is assumed to lie on a multivariate Gaussian and the recovered principal components capture the variance of the data along orthogonal directions.}
 However, by design, PCA cannot appropriately capture non-linear low-dimensional structures.
-% This lack of flexibility has been addressed by non-linear dimensionality reduction algorithms such as Isomap \cite{Tenenbaum2319}
-% and Locally Linear Embedding \citep[LLE][]{Roweis00nonlineardimensionality},
-% where the manifold is approximated by a neighbourhood graph and a neighbouring preserving map respectively.
-% Both methods take advantage of the definition of a manifold as a locally linear low dimensional structure of dimension $j$.
-
-% Many other Manifold Learning algorithms aiming to provide suitable approximations to low-dimensional data manifold have been proposed.
-% Examples include Laplacian eigenmaps \citep{Belkin01laplacianeigenmaps},
-% Hessian eigenmaps \citep{Donoho5591},
-% Local Space Tangent Alignment \citep[LSTA, ][]{Zhang02principalmanifolds},
-% C-Isomap \citep[an extension of Isomap to conformal embeddings][]{Silva:2002:GVL:2968618.2968708},
-% NMDS \citep[non-metric formulation of Multidimensional Scaling (MDS)][]{doi:10.1002/bs.3830040308, Cox2008, Kruskal1964},
-% Riemannian Manifold Learning \citep[RML, ][]{10.1109/TPAMI.2007.70735}.
-
-% In \cite{boissonnat:hal-01615863} (and bibliographic references therein) a different angle, based on computational geometry,
-% has been proposed in order to extract low-dimensional manifolds from data samples.
-% Here, simplicial complexes (such as Delaunay triangulations, $\alpha$-complexes and filtrations)
-% are used for manifold reconstruction.
-% With these techniques it is possible to infer geometrical and topological properties of data points
-% that uniformly sample a single manifold embedded in a higher dimensional space.
-
-% While such techniques are potentially powerful and theoretically well grounded,
-% their capability to naturally handle high-dimensional noise aligned along low-dimensional manifolds is limited.
-% Besides the sensitivity to the noise issues, it is often required that the intrinsic data dimensionality is known a priori.
 
 Generative Topographic Mapping \cite[GTM, ][]{Bishop1998GTMTG} was proposed as a probabilistic formulation of the Self-Organizing Map \citep{Kohonen1982}.
 Its main advantage is that instead of treating noisy manifold as a core low-dimensional manifold to be discovered,
@@ -68,39 +34,9 @@ plus some ``noise" around it that somehow needs to be dealt with,
 it formulates a consistent manifold-aligned density model in the form of a constrained mixture of Gaussians.
 The location parameters (means) of the Gaussian components are constrained to lie on a smooth manifold
 -- most commonly a smooth image in the data space of a two-dimensional interval (latent space).
-%The original GTM formulation is trained in the maximum likelihood framework using the the Expectation-Maximization (E-M) algorithm \citep{10.2307/2984875}.
-%Because of the sensitivity to initialization, a suitable initialization is required (e.g, using PCA).
-% Bayesian formulations of GTM have also been proposed \cite{Olier2008VariationalBG}.
-
-%Other global density estimators, whether non-parametric, e.g. Parzen windows \cite{parzen1962estimation}
-%(and its extensions such as Manifold Parzen Windows \cite{NIPS2002_2203}, Fast-Parzen Windows \cite{5178637}),
-%or semi-parametric, e.g. Infinite Gaussian Mixture model\cite{10.5555/3009657.3009736},
-%are not designed to extract a representation of the embedded low-dimensional structures.
-%They also may be computationally expensive to train and/or evaluate.
-
-% To deal with complex data sets, where several manifolds of different dimensionalities can co-exist,
-% generalizations of the previous methods have been developed:
-% Multi-Manifold Discriminant Analysis (MMDA, \cite{Yang:2011:MDA:1963661.1963809}),
-% Sparse-Manifold Clustering and Embedding (SMCE,\cite{NIPS2011_4246}),
-% Multi-Manifold Isomap (M-ISOMAP\cite{Fan2012IsometricML}),
-% Multi-manifold Proximity Embedding  (MPE,\cite{Fan:2016:EIM:2903049.2903101}),
-% Multi-Manifold LLE (MM-LLE,\cite{Hettiarachchi:2015:MLL:2791619.2792198}),
-% S-Isomap++ \cite{2017arXiv171006462M},
-% Hierarchical GTM \cite{Tino_PAMI_2002}.
-% However, based on the same assumptions as their predecessors, the methods still need to be informed
-% about the dimensionalities of the different manifolds
-% and struggle when dealing with topologically complex, noisy structures}.
 
 In \citet{Canducci2021} we propose a framework for automated dimensionality estimation and reconstruction
 of multiple noisy manifolds embedded in a noisy environment called \emph{Abstract Generative Topographic Mapping} (AGTM).
-%\begin{itemize}
-%  \item it proposes a new robust dimensionality index estimation for data points,
-%  \item through a dedicated manifold crawling mechanism it allows for completely abstract manifold representations in the GTM latent space (instead of a regular grid), and
-%  \item it has Gaussian noise components naturally aligned along the manifold, unlike the spherical noise models in the original GTM and \cite{10.1007/978-3-540-87481-2_37}.
-%\end{itemize}
-%Manifold aligned noise models in GTM were also considered in \cite{Bishop1998DevelopmentsOT},
-%but under the assumption of simple latent space structure in the form of $j$-dimensional interval.
-%The key idea was to impose larger and smaller variances in directions locally parallel and perpendicular, respectively, to the manifold.
 Since our latent space is a discrete structure (abstract graph representing a skeleton of a given manifold),
 we formulate local noise models through kernel based estimates of the local covariance matrix of the data,
 with trainable scale parameter to allow for optimized overlapping of the neighbouring Gaussian components.
@@ -114,43 +50,7 @@ It should be clear that the original mathematical treatment of dimensionality es
 My direct contributions to the work are the idea of analysis of jellyfish tails, the development of  independent code to test the manifold analysis,
 the scientific questions driving the application of the method, supervision on the implementation, the proposal of physical quantities to be analyzed from the simulation and their physical interpretation.
 
-%This is achieved by replacing the simple Euclidean latent space (generally parametrized as a discretized interval of $\mathbb{R}^j$)
-%with an abstract graph reflecting the topology of the data manifold that, when embedded in the data space,
-%provides a manifold skeleton around which the noise models can be organized.
-
-%Our work presents a radical reformulation of GTM to capture and model low-dimensional general noisy manifolds
-%through a dedicated abstract graph-structured latent space reflecting the core manifold structure, specific to each noisy manifold.
-% \citet{Bacciu13} present another radical generalization of GTM in the reverse direction -
-% this time keeping the original simple latent space structure, but allowing for abstract structure in the data space - the space of trees.
-
-%The paper has the following organization: in section \ref{sec:Methodology} we set up the scene,
-%explain the broad outline of the methodology and introduce the synthetic data set on which different steps of the methodology will be demonstrated.
-%Section \ref{sec:AGTM} introduces the core model of our methodology, Abstract~GTM (AGTM),
-%representing density aligned along a single manifold.
-%We explain how the abstract latent space graph representing topology of the data manifold is
-%extracted through manifold crawling and how this graph is then embedded in the data space along with the suitable set of noise models.
-%We also show how to calculate local curvature at the edges of the embedded graph,
-%taking advantage of the smooth manifold description provided by AGTM.
-%Section \ref{sec:D_Index} defines our notion of dimensionality index for individual points.
-%We also offer a computationally efficient alternative to Multi-Manifold Crawling.
-%The price to pay for gains in efficiency is weaker detection stability of low dimensional manifold entities buried in the data.
-% Section \ref{sec:Comparison} presents an experimental comparison on two synthetic data sets of our methodology
-% with alternative multi-manifold learning and probabilistic modelling methods.
-%Even though our methodology aims to provide density models of multiple low-dimensional manifolds buried in the data,
-%we organise the comparative experiments separately for the multi-manifold capture and probabilistic modelling aspects of our work.
-%This is because to the best of our knowledge, no other method exists that can simultaneously recover low dimensional
-%representations of an unknown number of manifolds while building their probabilistic models.
-
-%Our main contributions can be summarized as follows:
-%\begin{itemize}
-%    \item Formulation of a new dimensionality index assigned to individual points based on which point cloud can be partitioned into background points and sets representing cloud points organised along noisy low-dimensional manifold structures;
-%    \item Development of a recursive crawling algorithm for the extraction of multiple low-dimensional, noisy manifolds embedded in a higher dimensional space: Multi-Manifold crawling;
-%    \item Extension of GTM's applicability to a broad class of manifolds (\eg{} non-orientable or closed manifolds) by reformulating the latent space as an abstract graph and introducing a manifold-aligned noise attached to the embedded nodes of the latent graph: Abstract GTM.
-%    The abstract latent space and its embedding allows us to {\em understand the important global structural features of the underlying manifolds}
-%%     - an important aspect of our methodology bringing manifold learning under the umbrella of Artificial Intelligence.
-%\end{itemize}
-
-The methodology is applied in section \ref{sec:Ex_JellyFish} to a numerical simulation of a dwarf galaxy falling into the gaseous halo of a Fornax-like cluster, a snapshot of the simulation ID 69 described in Chapter~\ref{ch:simulations}.
+The methodology is applied in Section \ref{sec:Ex_JellyFish} to a numerical simulation of a dwarf galaxy falling into the gaseous halo of a Fornax-like cluster, a snapshot of the simulation ID 69 described in Chapter~\ref{ch:simulations}.
 {The point cloud generated by the simulation presents non linear, noisy, low dimensional structures,
 providing for an ideal test bed for our methodology.}
 We extract and model two of the most significant manifolds, suggesting a possible scenario for formation of new stars in such a disrupted dwarf galaxy.
@@ -179,11 +79,11 @@ Hence, if both $\mathcal{B}(\vect{t}_i;r)$ and $\mathcal{B}(\tilde{\vect{t}}_i;r
 
 %\subsection{Manifold analysis overview}
 Following this, the first task in capturing the multi-manifold structure in $\tilde{\mathcal{Q}}$ is to estimate local dimensionality of the cloud point around each $\tilde{\vect{t}}_i$
-in the form of a \emph{dimensionality index} $\delta_i$ (section \ref{sec:D_Index}).
+in the form of a \emph{dimensionality index} $\delta_i$ (Section \ref{sec:D_Index}).
 Using the dimensionality indices, we partition the data into subsets $\tilde{\mathcal{Q}}_j$ according to the local dimensionalities $j=1,2,...,d$.
 
 Since $\mathcal{Q}_j, \tilde{\mathcal{Q}}_j$ can contain several distinct sampled manifolds of dimensionality $j$,
-we use a dedicated \emph{manifold crawling} procedure operating on $\tilde{\mathcal{Q}}$ to separate the individual manifolds (section \ref{sec:Crawling}).
+we use a dedicated \emph{manifold crawling} procedure operating on $\tilde{\mathcal{Q}}$ to separate the individual manifolds (Section~\ref{sec:Crawling}).
 Moreover, the crawling also produces for each manifold a graph structure embedded in $\mathbb{R}^d$ representing a piece-wise linear ``skeleton" approximation of the spine of the noisy manifold.
 %To isolate a low dimensional manifold and generate the topography of the latent space containing all the information about a detected manifold the \emph{manifold crawling} algorithm has been developed \citep[see section 3.2 of][]{Canducci2021}.
 
@@ -230,7 +130,7 @@ lies in the ($d-1$)-dimensional simplex $\mathcal{S}_0$ with vertices:
 %Considering $\mathcal{S}$ as the simplex of multinomial distributions,
 %the appropriate Riemannian geodesic distance is the Fisher distance % FIXME why the Fisher?
 %\citep{Lebanon:2005:RGS:1087529}.
-It is useful to see $\mathcal{S}_0$ as a subset of the the simplex of multinomial distributions, so that for any point of the simplex, $\tilde{\Lambda}_k \in \mathcal{S_0}$,
+It is useful to see $\mathcal{S}_0$ as a subset of the simplex of multinomial distributions, so that for any point of the simplex, $\tilde{\Lambda}_k \in \mathcal{S_0}$,
 we will compute its distance from the vertex $\s_j$ using the Fisher distance \citep{Lebanon:2005:RGS:1087529}:
 \begin{equation}
 	\label{eq:FishDist}
@@ -250,34 +150,11 @@ In \citet{Canducci2021} also a ``soft" and spatially smoothed version of the dim
 
 \begin{figure}[ht!]
   \includegraphics[width=\textwidth]{Figures_png/Classified_Simplex_lowRes.pdf}
-  \caption{Simplex $\mathcal{S}_0$ in three dimensions. p1, p2 and p3 are the analogous of the $\s_1, \s_2, \s_3$ vertexes. The three parts of the simplex are coloured depending on the minimum distance vertex using the Fisher metric \eqref{eq:FishDist}.}
+  \caption{Simplex $\mathcal{S}_0$ in three dimensions. p1, p2 and p3 are the analogous of the $\s_1, \s_2, \s_3$ vertexes. The three parts of the simplex are coloured depending on the minimum distance vertex using the Fisher metric, eq. \eqref{eq:FishDist}.}
   \label{fig:simplex}
 \end{figure}
 
 \subsection{Crawling} \label{sec:Crawling}
-%\begin{figure}[th!]
-%\begin{subfigure}[t]{\textwidth}
-% \includegraphics[width=\textwidth]{Figures_png/RanStrip_Whole.png}
-% \caption{}
-% \label{subfig:MGraph}
-%\end{subfigure}
-%\begin{subfigure}[t]{\textwidth}
-% \includegraphics[width=\textwidth]{Figures_png/Mobius_Whole.png}
-% \caption{}
-% \label{fig:Mobius_Whole}
-%\end{subfigure}
-%%  \subfloat[][]{\label{subfig:MGraph}\includegraphics[width = 0.9\textwidth]{Figures_png/RanStrip_Whole}} \\
-%%  \subfloat[][]{\label{subfig:MGraph_Emb}\includegraphics[width = 0.9\textwidth]{Figures_png/Mobius_Whole}}
-%\caption{ (a) shows the classic GTM setup;
-%the leftmost panel is a representation of the latent space discretized in a grid of points $x_i$.
-%The $j$-dimensional interval $[-1,+1]^j$ is mapped through the parametrized function $\vect{y}(\mathcal{X};W)$ onto the data space with a spherical Gaussian centered on each point assumed as noise.
-%The noise model aims at describing the true distribution of points in the data space (rightmost panel).\\
-%(b) is a sketch of \emph{AGTM}.
-%The latent space is substituted with an abstract graph, shown here for the M\"obius strip, together with its topological representation (the two arrows pointing in opposite directions on the shortest edges of the graph).
-%Function $f(\cV;\W)$ maps the graph onto the data space and manifold-aligned noise models are estimated on each graph's node $\overline{\vect{v}}_i$ % FIXME why f is not bold?
-%The true noisy distribution is displayed in the rightmost panel.}
-%\end{figure}
-
 
 %We leave once again the mathematical details to \citet{Canducci2021} for a clear and thorough exposition, and we highlight here the fundamental ideas.
 % TODO This crawling is part of a more general technique to extract probabilistic models of filaments/manifolds and smooth the extracted filament by training a maximum likelihood.
@@ -295,7 +172,7 @@ The mapping $\f: \cV \to \RR^d$ from the latent space to the data space is, foll
 a nonlinear model, linear in parameters.
 The latent space grid structure can be represented by an abstract undirected graph $\cG = (\cV,\cE)$, where each grid point corresponds to a vertex $v_i \in \cV$ and edges $e_{ij} \in \cE$ are connecting vertices corresponding to neighbouring grid points.
 In particular, the image of a vertex $v \in \cV$ %under $\Phi = (\phi_1,..., \phi_M)^\top$
-is obtained as $\overline{\vect{v}}_i = \f(v)$ operating on the latent space $\cG$ \citep[see section 3.1 of][for details]{Canducci2021}.
+is obtained as $\overline{\vect{v}}_i = \f(v)$ operating on the latent space $\cG$ \citep[see Section 3.1 of][for details]{Canducci2021}.
 The goal of the crawling is to create a manifold skeleton formed by the embedded graph
 $\overline{\cG} = (\overline{\cV},\overline{\cE})$.%, where the vertexes
 %$\overline{\cV} = \{ \bar{\vect{v}}_i, ..., \bar{\vect{v}}_K\}$ and the edges
@@ -402,7 +279,7 @@ The resulting gas particle data set is presented in Figure \ref{fig:JF_Dataset}.
 Several low dimensional structures are clearly visible, for example the long 1-D manifold departing from the head and elongating along the $x$-axis of the simulation box.
 Visually inspecting the data set, we chose a radius $r~=~1~\mathrm{kpc}$ as the characteristic scale parameter for the manifolds (shown as the small sphere in Figure \ref{fig:JF_Dataset}).
 The chosen radius is in agreement with the spatial resolution of recent observations.
-The parameter $r$ is fixed for preprocessing through diffusion and filtering (section \ref{sec:SAF}), local dimensionality estimation (section \ref{sec:D_Index}) and manifold crawling (section \ref{sec:Crawling}).
+The parameter $r$ is fixed for preprocessing through diffusion and filtering (Section \ref{sec:SAF}), local dimensionality estimation (Section \ref{sec:D_Index}) and manifold crawling (Section \ref{sec:Crawling}).
 We highlight that this parameter is not used to smooth, and is not related to the smoothing lengths coming from SPH.
 % The other parameters are set as in the synthetic data experiments of section \ref{subsec:MulitCrawl}: $\epsilon=1$, $\eta=0.75$ and $\beta=0.4$.
 
@@ -416,8 +293,8 @@ On the other hand, distribution of 2-D points was more localized in the main bod
 
 Having obtained the multi-manifold probabilistic profile of the gas particles in the tail of the jellyfish galaxy,
 it is possible to perform various kinds of detailed analysis of how physical properties vary along the manifolds.
-Here we concentrate on the curvature (Figure \ref{fig:curvatureJF}), computed through the embedding \citep[details in][section 3.2.1]{Canducci2021} and on the star formation potential.
-The latter is analysed by studying the the behaviour of emission line \cii{} over the 1-D and 2-D structures
+Here we concentrate on the curvature (Figure \ref{fig:curvatureJF}), computed through the embedding \citep[details in][Section 3.2.1]{Canducci2021} and on the star formation potential.
+The latter is analysed by studying the behaviour of emission line \cii{} over the 1-D and 2-D structures
 in the jellyfish tail shown as black dots in Figure~\ref{fig:JF_Res} (left) and (right), respectively
 - the gaseous stream of gas particles departing from the head and reaching halfway through the tail and the predominant 2-D structure in the tail.
 \begin{figure}[ht]
@@ -501,8 +378,8 @@ The metal-enriched gas particles (like in the surrounding of a supernova explosi
 Our methodology provides a strong tool for extracting such an information from the morphology of gas particles and can be used to effectively calibrate feedback models in simulations.
 
 Such a detailed analysis of low dimensional structures (remnants of galaxy interactions) is not currently possible with tools routinely used to calibrate and analyse astrophysical simulations of galaxy evolution.
-The technique presented in this paper can be used as a semi-automatic exploratory tool by the domain experts, where the focus and characteristic scale of the structures to be mined can be varied continuously with analysis of their physical properties of interest (after necessary computations) performed and studied on the fly.
-As an example we show an application in the next section.
+The technique presented in this Chapter can be used as a semi-automatic exploratory tool by the domain experts, where the focus and characteristic scale of the structures to be mined can be varied continuously with analysis of their physical properties of interest (after necessary computations) performed and studied on the fly.
+As an example we show an application in the next Section.
 
 \section{Evolution of quantities along the jellyfish tails}
 
@@ -510,7 +387,7 @@ As an example we show an application in the next section.
 
 %After optimization of the parameters of SGTM through the E-M algorithm, every manifold $\cM_k$ is represented as a gaussian mixture with manifold aligned noise, whose updated centers $\{\ti_{\ell}; \ell = 1,\dots,L^k\}$ are constrained to lie on a 1-dimensional subspace of $\RR^3$.
 We now describe a methodology that, taking full advantage of the manifold extraction technique and SPH density formulation, simultaneously recovers the behaviour of simulated properties along the manifold's elongation and its thickness within the simulated volume.
-In this section we consider only the 1-D case.
+In this Section we consider only the 1-D case.
 It's possible to carry out a similar analysis for the 2-D case, but
 the result is not of easy interpretation and not appropriate in this context.
 
